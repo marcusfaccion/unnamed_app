@@ -28,6 +28,7 @@ class SiteController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
+                    'index' => ['get', 'post'],
                     'logout' => ['post'],
                 ],
             ],
@@ -67,6 +68,9 @@ class SiteController extends Controller
     
     public function actionIndex()
     {
+        if(isset($_POST['Encomenda']['name'])){
+            echo('');
+        }
         return $this->render('index');
     }
 
@@ -94,8 +98,10 @@ class SiteController extends Controller
     
     public function actionTeste($msg='hello world')
     {
+        $user = Yii::$app->db->createCommand('SELECT * FROM public.user')
+            ->queryOne();
         return $this->render('teste', [
-            'msg' => $msg,
+            'user' => $user,
         ]);
     } 
 }

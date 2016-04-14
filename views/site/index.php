@@ -2,18 +2,30 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'My Yii Application';
+$this->title = 'Rastreador de ecomenda em tempo real';
 ?>
 <div class="site-index">
 
-    <div class="jumbotron">
-        <h1>Congratulations!</h1>
-
-        <p class="lead">You have successfully created your Yii-powered application.</p>
-
-        <p><a class="btn btn-lg btn-success" href="http://www.yiiframework.com">Get started with Yii</a></p>
+    <div class="jumbotron col-sm-offset-2 col-sm-8">
+        <?php //<h1> Código da Encomenda:</h1>?>
+        <form class="form-inline" name="track-form" id="index-track-form" method="post">
+          <div class="form-group <?php //has-success?>">
+            <label class="sr-only" for="Encomenda_name">Código da Encomenda</label>
+            <div class="input-group">
+              <div class="input-group-addon">#</div>
+              <input type="text" class="form-control input-lg" name="Encomenda[name]" id="Encomenda_name" placeholder="Código da Encomenda">
+              <div class="input-group-addon"><a href="#" onclick="$('#index-track-form').submit();" title="Track It!"><span class="glyphicon glyphicon-eye-open"<?php //glyphicon-search ?> aria-hidden="true"></span>
+</a></div>
+            </div>
+          </div>
+        </form>
+      
+        <cite class="text-muted">Veja informações e a localização em tempo real de sua encomenda.</cite>
+        
+        <?php  /*<div class="col-sm-12">&nbsp;</div>
+         <p><a class="btn btn-lg btn-success" href="#" onclick="">Rastrear!</a></p>*/?>
     </div>
-
+<?php /*
     <div class="body-content">
 
         <div class="row">
@@ -49,5 +61,5 @@ $this->title = 'My Yii Application';
             </div>
         </div>
 
-    </div>
+    </div>*/?>
 </div>
