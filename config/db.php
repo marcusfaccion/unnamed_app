@@ -2,7 +2,7 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'pgsql:host=localhost;port=5432;dbname=rastreador_de_entrega_rt',
+    'dsn' => 'pgsql:host=localhost;port=5432;dbname=app',
     'username' => 'postgres',
     'password' => '123456',
     'charset' => 'utf8',

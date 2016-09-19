@@ -51,7 +51,6 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
 
     /**
      * Finds user by username
-     *
      * @param  string      $username
      * @return static|null
      */
@@ -62,7 +61,6 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
                 return new static($user);
             }
         }
-
         return null;
     }
 

@@ -1,0 +1,21 @@
+actor: Tester
+paths:
+    tests: tests
+    log: tests/_output
+    data: tests/_data
+    support: tests/_support
+    envs: tests/_envs
+settings:
+    bootstrap: _bootstrap.php
+    colors: false
+    memory_limit: 1024M
+extensions:
+    enabled:
+        - Codeception\Extension\RunFailed
+modules:
+    config:
+        Db:
+            dsn: 'pgsql:host=localhost;port=5432;dbname=rastreador_de_entrega_rt'
+            user: 'postgres'
+            password: '123456'
+            dump: tests/_data/dump.sql

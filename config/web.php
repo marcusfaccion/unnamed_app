@@ -3,9 +3,17 @@
 $params = require(__DIR__ . '/params.php');
 
 $config = [
-    'id' => 'basic',
+    'id' => 'aplicacao-ACC',
+    'name' => 'Apicação Colaborativa para Ciclistas',	
     'basePath' => dirname(__DIR__),
+    'homeUrl' => '?r=inicio/index',
     'bootstrap' => ['log'],
+    'layout'=>'aplicacao',
+    'defaultRoute' => 'site/index',
+    'aliases' => [
+        '@inicio' => '@app/controllers/inicio',
+        '@sibilino/yii2/openlayers' => '@vendor/sibilino/yii2-openlayers/widget'
+    ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
@@ -15,7 +23,8 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
+            //'identityClass' => 'app\models\User',
+            'identityClass' => 'app\modules\usuario\models\Usuario',
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
@@ -42,7 +51,8 @@ $config = [
                 'app*' => [
                     'class' => 'yii\i18n\PhpMessageSource',
                     'basePath' => '@app/messages',
-                    'sourceLanguage' => 'en-US',
+                    //'sourceLanguage' => 'pt-US',
+                    'sourceLanguage' => 'pt-BR',
                     'targetLanguage' => 'pt-BR',
                     'fileMap' => [
                         'app' => 'app.php',
@@ -60,6 +70,14 @@ $config = [
             ],
         ],
         */
+    ],
+    'modules' => [
+            'configuracoes' => [
+                'class' => 'app\modules\configuracoes\Configuracoes',
+            ],
+            'usuario' => [
+                'class' => 'app\modules\usuario\Usuario',
+            ],
     ],
     'params' => $params,
 ];

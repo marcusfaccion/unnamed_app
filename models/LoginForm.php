@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\base\Model;
+use app\modules\usuario\models\Usuario;
 
 /**
  * LoginForm is the model behind the login form.
@@ -16,7 +17,15 @@ class LoginForm extends Model
 
     private $_user = false;
 
-
+    public function attributeLabels()
+    {
+        return [
+            'username' => 'Usuário',
+            'password' => 'Senha',
+            'rememberMe' => 'Lembre-me'
+        ];
+    }
+    
     /**
      * @return array the validation rules.
      */
@@ -70,7 +79,16 @@ class LoginForm extends Model
     public function getUser()
     {
         if ($this->_user === false) {
-            $this->_user = User::findByUsername($this->username);
+            switch(Yii::$app->user->identityClass){
+                case 'app\models\User':
+                    $this->_user = User::findByUsername($this->username);
+                    break;
+                case 'app\modules\usuario\models\Usuario':
+                    $this->_user = Usuario::findOne(['username'=>$this->username]);
+                    break;
+                default :
+                    $this->_user = null;
+            }
         }
 
         return $this->_user;
