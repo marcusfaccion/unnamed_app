@@ -6,26 +6,29 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
-use yii\helpers\Url;
 use app\models\LoginForm;
 use app\models\ContactForm;
 
-class SiteController extends Controller
-{
-    
-    public $layout = 'site';
-    
+class HomeController extends Controller
+{   
     public function behaviors()
     {
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout'],
+                'only' => ['index'],
                 'rules' => [
                     [
-                        'actions' => ['logout'],
+                        //'controllers' => [],
+                        'actions' => ['index'],
                         'allow' => true,
                         'roles' => ['@'],
+                        //'verbs' => ['GET','POST'],
+                        //'ips' => [127.0.0.1, ::1],
+                        'denyCallback' => function ($rule, $action) {
+                            throw new \Exception('You are not allowed to access this page');
+                        },
+                        //'matchCallback' => []
                     ],
                 ],
             ],
@@ -72,12 +75,12 @@ class SiteController extends Controller
     
     public function actionIndex()
     {
-        if(!Yii::$app->user->isGuest){
-            $this->redirect(Url::to(['home/index']));
+        if(isset($_POST['Encomenda']['name'])){
+            echo('');
         }
         return $this->render('index');
     }
-    
+
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
@@ -97,8 +100,7 @@ class SiteController extends Controller
     {
         Yii::$app->user->logout();
 
-        //return $this->goHome();
-        return $this->redirect(Url::to([Yii::$app->defaultRoute]));
+        return $this->goHome();
     }  
     
     public function actionTeste($msg='hello world')

@@ -6,11 +6,10 @@
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
-//use yii\bootstrap\Button;
-//use yii\widgets\Breadcrumbs;
-use app\assets\SiteAsset;
+use yii\widgets\Breadcrumbs;
+use app\assets\AppAsset;
 
-SiteAsset::register($this);
+AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -19,6 +18,12 @@ SiteAsset::register($this);
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
+     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    
+    <style>
+        body { margin:0; padding:0; }
+        #map { position:absolute; top:0; bottom:0; width:100%; }
+    </style>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
@@ -28,7 +33,7 @@ SiteAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'Logo aqui',
+        'brandLabel' => "BIKE SOCIAL",//Html::img("images/icons/logo_32.png"),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -36,20 +41,20 @@ SiteAsset::register($this);
     ]);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
-        'encodeLabels' => true, 
         'items' => [
-          //  ['label' => 'Home', 'url' => ['/site/index']],
-          //  ['label' => 'About', 'url' => ['/site/about']],
-          //  ['label' => 'Contact', 'url' => ['/site/contact']],
-               Yii::$app->user->isGuest ? (
-                 ['label' => 'Entrar',
-               //'options' => ['class' => 'TesteZ'],
-               'linkOptions' => [   
-                                    'class' => 'btn btn-danger',
-                                    'data-toggle' => 'modal',
-                                    'data-target' => '#modal_login',
-                                ],
-                ]
+            ['label' => 'Home', 'url' => ['/site/index']],
+             /*[
+            'label' => 'Dropdown',
+            'items' => [
+                 ['label' => 'Level 1 - Dropdown A', 'url' => '#'],
+                 '<li class="divider"></li>',
+                 '<li class="dropdown-header">Dropdown Header</li>',
+                 ['label' => 'Level 1 - Dropdown B', 'url' => '#'],
+            ],
+        ],*/
+            ['label' => 'Feed', 'url' => ['/feed']],
+            Yii::$app->user->isGuest ? (
+                ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
@@ -62,16 +67,13 @@ SiteAsset::register($this);
             )
         ],
     ]);
-     //   Button::begin();
-       //     Button::widget();
-        //Button::end();
     NavBar::end();
     ?>
 
-    <div class="container">
-        <?php /*Breadcrumbs::widget([
+    <div class="<?php echo(Yii::$app->controller->id==='home'?'container-fluidMap':'container') ?>">
+        <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) */ ?>
+        ]) ?>
         <?= $content ?>
     </div>
 </div>
@@ -83,7 +85,7 @@ SiteAsset::register($this);
         <p class="pull-right"><?= Yii::powered() ?></p>
     </div>
 </footer>
-<?php if(Yii::$app->user->isGuest) {echo $this->renderFile('@app/views/site/_modal_login.part.php', ['numero_formulario' => 1]);} ?>
+<?php if(Yii::$app->user->isGuest) {echo $this->renderFile('@app/views/site/_modal_login.part.php');} ?>
 <?php $this->endBody() ?>
 </body>
 </html>

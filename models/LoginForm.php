@@ -4,7 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\base\Model;
-use app\modules\usuario\models\Usuario;
+use app\modules\user\models\User;
 
 /**
  * LoginForm is the model behind the login form.
@@ -83,8 +83,8 @@ class LoginForm extends Model
                 case 'app\models\User':
                     $this->_user = User::findByUsername($this->username);
                     break;
-                case 'app\modules\usuario\models\Usuario':
-                    $this->_user = Usuario::findOne(['username'=>$this->username]);
+                case 'app\modules\user\models\User':
+                    $this->_user = User::findOne(['username'=>$this->username]);
                     break;
                 default :
                     $this->_user = null;

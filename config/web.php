@@ -6,15 +6,26 @@ $config = [
     'id' => 'aplicacao-ACC',
     'name' => 'Apicação Colaborativa para Ciclistas',	
     'basePath' => dirname(__DIR__),
-    'homeUrl' => '?r=inicio/index',
+    'homeUrl' => '?r=home/index',
     'bootstrap' => ['log'],
-    'layout'=>'aplicacao',
+    'layout'=>'app',
     'defaultRoute' => 'site/index',
     'aliases' => [
-        '@inicio' => '@app/controllers/inicio',
-        '@sibilino/yii2/openlayers' => '@vendor/sibilino/yii2-openlayers/widget'
+        '@alerts' => '@app/modules/alerts',
+        '@bike-keeper' => '@app/modules/bikeKeeper',
+        '@events' => '@app/modules/events',
+        '@lending' => '@app/modules/lending',
+        '@renting' => '@app/modules/renting',
+        '@routes' => '@app/modules/routes',
     ],
     'components' => [
+        'assetManager' => [
+            'appendTimestamp' => true,
+            'assetMap' => [
+                'mapbox.js' => 'https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.js',
+                'mapbox.css' => 'https://api.mapbox.com/mapbox.js/v2.4.0/mapbox.css',
+            ],
+        ],
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'oQAYahdFAVD7js-I0ykkVB4czUvmh6XT',
@@ -24,7 +35,7 @@ $config = [
         ],
         'user' => [
             //'identityClass' => 'app\models\User',
-            'identityClass' => 'app\modules\usuario\models\Usuario',
+            'identityClass' => 'app\modules\user\models\User',
             'enableAutoLogin' => true,
         ],
         'errorHandler' => [
@@ -72,11 +83,39 @@ $config = [
         */
     ],
     'modules' => [
-            'configuracoes' => [
-                'class' => 'app\modules\configuracoes\Configuracoes',
+            'settings' => [
+                'class' => 'app\modules\settings\Settings',
             ],
-            'usuario' => [
-                'class' => 'app\modules\usuario\Usuario',
+            'user' => [
+                'class' => 'app\modules\user\User',
+            ],
+            'alerts' => [
+                'class' => 'app\modules\alerts\Alerts',
+            ],
+            'bike-keeper' => [
+
+                'class' => 'app\modules\bikeKeeper\BikeKeeper',
+
+            ],
+            'lending' => [
+
+                'class' => 'app\modules\lending\Lending',
+
+            ],
+            'renting' => [
+
+                'class' => 'app\modules\renting\Renting',
+
+            ],
+            'events' => [
+
+                'class' => 'app\modules\events\Events',
+
+            ],
+            'routes' => [
+
+                'class' => 'app\modules\routes\Routes',
+
             ],
     ],
     'params' => $params,
