@@ -52,6 +52,9 @@ class HomeController extends Controller
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
+            'build-popup' => [
+                'class' => 'app\controllers\home\BuildPopupAction',
+            ],
         ];
     }
     

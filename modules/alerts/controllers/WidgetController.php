@@ -56,6 +56,6 @@ class WidgetController extends Controller
      */
     public function actionIndex()
     {
-        echo $this->renderFile('@alerts/views/widget/index.php');
+        return $this->renderFile('@alerts/views/widget/index.php');
     }
 }
