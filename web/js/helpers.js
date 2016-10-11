@@ -1,0 +1,1 @@
+var img_preload = "<div class='text-center'><img src='images/preload/gears.gif'></div>";

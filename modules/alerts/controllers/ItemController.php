@@ -10,7 +10,7 @@ use yii\helpers\Url;
 /**
  * Default controller for the `alerts` module
  */
-class WidgetController extends Controller
+class ItemController extends Controller
 {
     
     public function behaviors()
@@ -55,11 +55,11 @@ class WidgetController extends Controller
     }
     
     /**
-     * Renders the index view for the module
+     * Crição de Alerta
      * @return string
      */
-    public function actionIndex()
+    public function actionCreate()
     {
-        return $this->renderAjax('@alerts/views/widget/index.php');
+        //return $this->renderAjax('@alerts/views/widget/index.php');
     }
 }

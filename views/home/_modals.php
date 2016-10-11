@@ -32,6 +32,11 @@ Modal::begin([
                         }
                     });
                  }"
+                , []),
+          'hide.bs.modal'=>  new JsExpression(
+                "function() {
+                            $(this).find('.modal-body').html('');
+                 }"
                 , [])
     ]
 ]);

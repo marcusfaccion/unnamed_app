@@ -82,7 +82,7 @@ AppAsset::register($this);
     <div class="container">
         <p class="pull-left">&copy; Marcus Faccion <?php //= date('Y') ?> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="images/license/cc-by-sa/v4.png" class="col-xs-offset-0 col-sm-offset-0"></a></p>
        
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <?php /* <p class="pull-right"><?= Yii::powered() ?></p> */?>
     </div>
 </footer>
 <?php if(Yii::$app->user->isGuest) {echo $this->renderFile('@app/views/site/_modal_login.part.php');} ?>
