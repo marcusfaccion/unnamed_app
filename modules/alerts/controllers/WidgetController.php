@@ -2,11 +2,9 @@
 
 namespace app\modules\alerts\controllers;
 
-use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
-use yii\helpers\Url;
 /**
  * Default controller for the `alerts` module
  */

@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\geometries\models;
+namespace app\modules\alerts\models;
 
 /**
  * This is the ActiveQuery class for [[Geometries]].

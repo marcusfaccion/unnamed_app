@@ -40,8 +40,6 @@ Modal::begin([
                 , [])
     ]
 ]);
-
-//echo $this->renderFile('@app/modules/alerts/views/_form_alert.part.php');
 ?>
 
 <?php

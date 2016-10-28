@@ -3,11 +3,11 @@
 namespace app\modules\alerts\models;
 
 /**
- * This is the ActiveQuery class for [[AlertsTypes]].
+ * This is the ActiveQuery class for [[AlertTypes]].
  *
- * @see AlertsTypes
+ * @see AlertTypes
  */
-class AlertsTypesQuery extends \yii\db\ActiveQuery
+class AlertTypesQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
@@ -16,7 +16,7 @@ class AlertsTypesQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return AlertsTypes[]|array
+     * @return AlertTypes[]|array
      */
     public function all($db = null)
     {
@@ -25,7 +25,7 @@ class AlertsTypesQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return AlertsTypes|array|null
+     * @return AlertTypes|array|null
      */
     public function one($db = null)
     {

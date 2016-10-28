@@ -19,7 +19,7 @@ use yii\web\IdentityInterface;
  * @property string $signup_date
  * @property string $last_access_date
  */
-class User extends ActiveRecord implements IdentityInterface
+class Users extends ActiveRecord implements IdentityInterface
 {
     
     /**
@@ -89,7 +89,12 @@ class User extends ActiveRecord implements IdentityInterface
     public function getId(){
         return $this->id;
     }
-
+    
+    public function getfriends(){
+        $friends = new \stdClass();
+        $friends->total = rand(0, 99);
+        return $friends;
+    }
     /**
      * Returns a key that can be used to check the validity of a given identity ID.
      *

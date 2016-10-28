@@ -83,7 +83,7 @@ SiteAsset::register($this);
        <?php /* <p class="pull-right"><?= Yii::powered() ?></p> */?>
     </div>
 </footer>
-<?php if(Yii::$app->user->isGuest) {echo $this->renderFile('@app/views/site/_modal_login.part.php', ['numero_formulario' => 1]);} ?>
+<?php if(Yii::$app->user->isGuest) {echo $this->renderFile('@app/views/site/_modal_login.part.php', ['form_number' => 1]);} ?>
 <?php $this->endBody() ?>
 </body>
 </html>

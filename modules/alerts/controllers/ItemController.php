@@ -2,11 +2,10 @@
 
 namespace app\modules\alerts\controllers;
 
-use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
-use yii\helpers\Url;
+
 /**
  * Default controller for the `alerts` module
  */
@@ -21,7 +20,7 @@ class ItemController extends Controller
                 'only' => ['logout'],
                 'rules' => [
                     [
-                        'actions' => ['index','form'],
+                        'actions' => ['create','render-popup'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -31,8 +30,8 @@ class ItemController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'index' => ['get', 'post'],
-                    'form' => ['get', 'post'],
-                    'logout' => ['post'],
+                    'render-popup' => ['get', 'post'],
+                    'create' => ['get', 'post'],
                 ],
             ],
         ];
@@ -48,18 +47,16 @@ class ItemController extends Controller
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
-            'form' => [
-                'class'=>'app\modules\alerts\controllers\widget\FormAction',
+            'create' => [
+                'class'=>'app\modules\alerts\controllers\item\CreateAction',
+            ],
+             'render-popup' => [
+                'class'=>'app\modules\alerts\controllers\item\RenderPopupAction',
             ],
         ];
     }
     
-    /**
-     * Crição de Alerta
-     * @return string
-     */
-    public function actionCreate()
-    {
-        //return $this->renderAjax('@alerts/views/widget/index.php');
+    public function actionIndex(){
+       return $this->renderContent("{$this->module->id} Index");
     }
 }

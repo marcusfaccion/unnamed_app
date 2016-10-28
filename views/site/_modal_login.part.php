@@ -12,10 +12,10 @@ use yii\bootstrap\Modal;
 <?php
 Modal::begin([
     'id' => 'modal_login', 
-   // 'header' => '<h2>Hello world</h2>',
+   'header' => 'Entrar',
    //'toggleButton' => ['label' => 'click me'],
 ]);
-echo $this->renderFile('@app/views/site/_form_login.part.php', ['numero_formulario' => 1]);
+echo $this->renderFile('@app/views/site/_form_login.part.php', ['form_number' => 1]);
 ?>
 
 <?php

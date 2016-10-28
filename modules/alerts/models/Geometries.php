@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\geometries\models;
+namespace app\modules\alerts\models;
 
 use Yii;
 
@@ -30,7 +30,7 @@ class Geometries extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['srid'], 'integer'],
+            [['id','srid'], 'integer'],
             [['geom'], 'string'],
             [['name'], 'string', 'max' => 100],
         ];
@@ -42,10 +42,10 @@ class Geometries extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('app', 'ID'),
-            'srid' => Yii::t('app', 'Srid'),
-            'geom' => Yii::t('app', 'Geom'),
-            'name' => Yii::t('app', 'Name'),
+            'id' => 'ID',
+            'srid' => 'Srid',
+            'geom' => 'Geom',
+            'name' => 'Name',
         ];
     }
 

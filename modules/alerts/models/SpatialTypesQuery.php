@@ -3,11 +3,11 @@
 namespace app\modules\alerts\models;
 
 /**
- * This is the ActiveQuery class for [[Alerts]].
+ * This is the ActiveQuery class for [[SpatialTypes]].
  *
- * @see Alerts
+ * @see SpatialTypes
  */
-class AlertsQuery extends \yii\db\ActiveQuery
+class SpatialTypesQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
@@ -16,7 +16,7 @@ class AlertsQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return Alerts[]|array
+     * @return SpatialTypes[]|array
      */
     public function all($db = null)
     {
@@ -25,11 +25,10 @@ class AlertsQuery extends \yii\db\ActiveQuery
 
     /**
      * @inheritdoc
-     * @return Alerts|array|null
+     * @return SpatialTypes|array|null
      */
-    public function one($db = null, $params)
+    public function one($db = null)
     {
-        $this->addSelect('ST_AsGeoJSON(geom)');
         return parent::one($db);
     }
 }

@@ -2,7 +2,6 @@
 use app\assets\AppAlertsAsset;
 use app\modules\alerts\models\AlertTypes;
 use marcusfaccion\helpers\String;
-use marcusfaccion\helpers\TimeZone;
 ?>
 
 <?php
