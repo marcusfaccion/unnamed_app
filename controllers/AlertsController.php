@@ -2,14 +2,11 @@
 
 namespace app\controllers;
 
-use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
 
-class HomeController extends Controller
+class AlertsController extends Controller
 {   
     public function behaviors()
     {
@@ -20,7 +17,13 @@ class HomeController extends Controller
                 'rules' => [
                     [
                         //'controllers' => [],
-                        'actions' => ['index', 'build-popup-menu'],
+                        'actions' => [
+                                        'render-types-menu',
+                                        'render-popup',
+                                        'form',
+                                        'get-features',
+                                        'create'
+                                    ],
                         'allow' => true,
                         'roles' => ['@'],
                         //'verbs' => ['GET','POST'],
@@ -35,9 +38,11 @@ class HomeController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'index' => ['get', 'post'],
-                    'logout' => ['post'],
-                    'build-popup-menu'=>['get']
+                    'get-features'=>['get'],
+                    'render-types-menu' => ['get'],
+                    'render-popup' => ['get'],
+                    'form' => ['get'],
+                    'create' => ['post']
                 ],
             ],
         ];
@@ -53,15 +58,29 @@ class HomeController extends Controller
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
-            'build-popup-menu' => [
-                'class' => 'app\controllers\home\BuildPopupMenuAction',
+            'create' => [
+                'class'=>'app\controllers\alerts\CreateAction',
             ],
+            'form' => [
+                'class'=>'app\controllers\alerts\FormAction',
+            ],
+             'render-popup' => [
+                'class'=>'app\controllers\alerts\RenderPopupAction',
+            ],
+             'get-features' => [
+                'class'=>'app\controllers\alerts\GetFeaturesAction',
+            ],
+            
         ];
     }
-
-    public function actionIndex()
+    
+    /**
+     * Renderiza o menu de tipos de alertas
+     * @return string
+     */
+    public function actionRenderTypesMenu()
     {
-        return $this->render('index');
+        return $this->renderAjax('render-types-menu');
     }
-
+ 
 }

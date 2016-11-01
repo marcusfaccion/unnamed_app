@@ -2,7 +2,7 @@
 use yii\bootstrap\Html;
 use app\assets\AppHomeAsset;
 use app\assets\AppAlertsAsset;
-use app\modules\user\models\Users;
+use app\models\Users;
 /* @var $this yii\web\View */
 $this->title = 'Apicação Colaborativa para Ciclistas';
 ?>

@@ -4,9 +4,6 @@
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model app\models\LoginForm */
 
-use yii\helpers\Html;
-use yii\helpers\Url;
-use yii\bootstrap\ActiveForm;
 use yii\bootstrap\Modal;
 use yii\web\JsExpression;
 
@@ -26,7 +23,7 @@ Modal::begin([
                     var modal = $(this);
                     $.ajax({
                         type: 'GET',
-                        url: '?r='+((action.length>2)?action[1]+'/'+action[2]:action[1]+'/widget'),    
+                        url: ((action.length>2)?action[1]+'/'+action[2]:action[1]+'/render-types-menu'),    
                         success: function(response){
                             modal.find('.modal-body').html(response);
                         }

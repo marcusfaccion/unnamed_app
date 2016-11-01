@@ -1,7 +1,7 @@
 var popup = {
     /**
      *  @param {string} _url Endereço url da requisição 
-     *  @param {object} options opções Ajax permitidas (type, data, assync)
+     *  @param {object} options opções Ajax permitidas (type, data, async)
      *  @return {sring|HTML} conteúdo dinâmico do popup
      */
     getContentAjax: function(_url, options){

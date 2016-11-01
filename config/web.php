@@ -8,19 +8,15 @@ $config = [
     'language' => 'pt-BR',
     'sourceLanguage' => 'pt-BR',
     'basePath' => dirname(__DIR__),
-    'homeUrl' => '?r=home/index',
+    'homeUrl' =>'home',
     'bootstrap' => ['log'],
     'layout'=>'app',
     'timeZone' => 'UTC',
-    'defaultRoute' => 'site/index',
+    'defaultRoute' =>'site',
     'aliases' => [
-        '@alerts' => '@app/modules/alerts',
-        '@bike-keeper' => '@app/modules/bikeKeeper',
-        '@events' => '@app/modules/events',
-        '@lending' => '@app/modules/lending',
+        '@admin' => '@app/modules/admin',
+        '@api' => '@app/modules/api',
         '@marcusfaccion' => '@vendor/marcusfaccion',
-        '@renting' => '@app/modules/renting',
-        '@routes' => '@app/modules/routes',
     ],
     'components' => [
         'assetManager' => [
@@ -89,55 +85,35 @@ $config = [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'oQAYahdFAVD7js-I0ykkVB4czUvmh6XT',
         ],
-        
+        'response' => [
+            'formatters' => [
+                \yii\web\Response::FORMAT_JSON => [
+                    'class' => 'yii\web\JsonResponseFormatter',
+                    'prettyPrint' => YII_DEBUG, // use "pretty" output in debug mode
+                    'encodeOptions' => JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE,
+                ],
+            ],
+        ],
+
         'user' => [
             //'identityClass' => 'app\models\User',
-            'identityClass' => 'app\modules\user\models\Users',
+            'identityClass' => 'app\models\Users',
             'enableAutoLogin' => true,
         ],
-        /*
+
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
-        */
     ],
     'modules' => [
-            'settings' => [
-                'class' => 'app\modules\settings\Settings',
+            'admin' => [
+                'class' => 'app\modules\admin\Admin',
             ],
-            'user' => [
-                'class' => 'app\modules\user\User',
-            ],
-            'alerts' => [
-                'class' => 'app\modules\alerts\Alerts',
-            ],
-            'bike-keeper' => [
-
-                'class' => 'app\modules\bikeKeeper\BikeKeeper',
-
-            ],
-            'lending' => [
-
-                'class' => 'app\modules\lending\Lending',
-
-            ],
-            'renting' => [
-
-                'class' => 'app\modules\renting\Renting',
-
-            ],
-            'events' => [
-
-                'class' => 'app\modules\events\Events',
-
-            ],
-            'routes' => [
-
-                'class' => 'app\modules\routes\Routes',
-
+            'api' => [
+                'class' => 'app\modules\api\Api',
             ],
     ],
     'params' => $params,

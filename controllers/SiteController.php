@@ -32,7 +32,7 @@ class SiteController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'index' => ['get', 'post'],
+                    'index' => ['get', 'post','put'],
                     'logout' => ['post'],
                 ],
             ],
@@ -86,7 +86,7 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+            return $this->goBack([Yii::$app->homeUrl]);
         }
         return $this->render('login', [
             'model' => $model,
@@ -96,17 +96,11 @@ class SiteController extends Controller
     public function actionLogout()
     {
         Yii::$app->user->logout();
-
-        //return $this->goHome();
-        return $this->redirect(Url::to([Yii::$app->defaultRoute]));
+        return Yii::$app->getResponse()->redirect([Yii::$app->defaultRoute]);
     }  
     
-    public function actionTeste($msg='hello world')
-    {
-        $user = Yii::$app->db->createCommand('SELECT * FROM public.user')
-            ->queryOne();
-        return $this->render('teste', [
-            'user' => $user,
-        ]);
-    } 
+    public function goHome() {
+        return Yii::$app->getResponse()->redirect([Yii::$app->homeUrl]);
+    }
+
 }

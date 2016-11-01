@@ -6,6 +6,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
+use yii\helpers\Url;
 //use yii\bootstrap\Button;
 //use yii\widgets\Breadcrumbs;
 use app\assets\SiteAsset;
@@ -29,7 +30,7 @@ SiteAsset::register($this);
     <?php
     NavBar::begin([
         'brandLabel' => 'Logo aqui',
-        'brandUrl' => Yii::$app->homeUrl,
+        'brandUrl' => Yii::$app->user->isGuest?Url::to(['/'.Yii::$app->defaultRoute]):Url::to(['/'.Yii::$app->homeUrl]),
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
@@ -78,12 +79,12 @@ SiteAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; Marcus Faccion <?php //= date('Y') ?> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="images/license/cc-by-sa/v4.png" class="col-xs-offset-0 col-sm-offset-0"></a></p>
+        <p class="pull-left">&copy; Marcus Faccion <?php //= date('Y') ?> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="<?=Url::to("@web/images/license/cc-by-sa/v4.png")?>" class="col-xs-offset-0 col-sm-offset-0"></a></p>
        
        <?php /* <p class="pull-right"><?= Yii::powered() ?></p> */?>
     </div>
 </footer>
-<?php if(Yii::$app->user->isGuest) {echo $this->renderFile('@app/views/site/_modal_login.part.php', ['form_number' => 1]);} ?>
+<?php if(Yii::$app->user->isGuest) {echo $this->renderFile('@app/views/site/_modal_login.php', ['form_number' => 1]);} ?>
 <?php $this->endBody() ?>
 </body>
 </html>

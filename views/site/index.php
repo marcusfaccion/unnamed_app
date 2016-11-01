@@ -7,7 +7,7 @@ $this->title = Yii::$app->name;
 
 <?php
     if(Yii::$app->user->isGuest){
-        echo $this->renderFile('@app/views/site/_form_login.part.php', ['form_number' => 2]);
+        echo $this->renderFile('@app/views/site/_form_login.php', ['form_number' => 2]);
     }
 ?>
     

@@ -147,3 +147,9 @@ a.desc:after {
 .tall-px5-13 {height: 65px;} .tall-px5-14 {height: 70px;} .tall-px5-15 {height: 75px;}
 .tall-px5-16 {height: 80px;} .tall-px5-17 {height: 85px;} .tall-px5-18 {height: 90px;}
 .tall-px5-19 {height: 95px;} .tall-px5-20 {height: 100px;}
+
+
+ul.navbar-nav.navbar-right.nav > li.active > a {
+    color: #fff;
+    background-color: transparent; 
+}

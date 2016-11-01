@@ -2,6 +2,66 @@ var _return;
 
 var Icons;
 
+/* Usar com map.hasLayer?
+ * var alert = {
+    id: null,
+    marker: null,
+    title: null,
+    description: null,
+    latlng: null,
+}
+
+var alerts = {
+    alert: []
+}*/
+
+var geoJSON_layer = {
+    alerts:{},
+    bike_keeper:{},
+};
+
+var me = {
+    id: null,
+    marker: null,
+    circle: null,
+    latlng: null,
+    latlng_history: {
+        items: [],
+        getFirst: function(){
+            return this.items[0];
+        },
+        getLast: function(){
+            return this.items[this.items.length-1];
+        },
+        getItem: function(pos){
+            return this.items[pos];
+        },
+        add: function(item){
+            this.items.push(item);
+        },
+        remove: function(start, countDelete){
+            this.items.splice(start, countDelete);
+        },
+        destroy: function(){
+            this.items = [];
+        }
+    },
+    setNull: function(){
+        this.id = this.marker = this.circle = this.latlng = null;
+        this.latlng_history.destroy();
+    }
+};
+
+var users = {
+    user: [],
+    new: function(id){
+        var me_copy = jQuery.extend({}, me);
+        this.user.push(me_copy);
+        this.user[this.user.length-1].setNull();
+        this.user[this.user.length-1].id = id;
+    }
+};
+
 var isAjax = false;
 
 var selectedlatlng;
@@ -23,9 +83,10 @@ var leaflet_style =
         };
 
 // Área do mapa restrita ao Rio de Janeiro
+// http://www.latlong.net/
 var map_bounding_box = [
-    [-22.7721, -43.1613],
-    [-23.0661, -43.7894]
+    [-23.112931, -43.816910], // vértice ao Suldoeste
+    [-22.724613, -43.054733]  // vértice ao Nordeste
 ];
 
 //LatLng inicial do mapa (centro do BoundingBox)
@@ -66,7 +127,7 @@ var map_conf = {
                    getContent: function(){
                         $.ajax({
                             type: 'GET',
-                            url: '?r=home/build-popup',
+                            url: 'home/build-popup-menu',
                             async: false,
                             success: function(response){
                                 _return = response; 
@@ -77,34 +138,6 @@ var map_conf = {
             }
 };
 
-var my_location = {
-    marker: null,
-    circle: null,
-    latlng: null,
-    latlng_history: {
-        items: [],
-        getFirst: function(){
-            return this.items[0];
-        },
-        getLast: function(){
-            return this.items[this.items.length-1];
-        },
-        getItem: function(pos){
-            return this.items[pos];
-        },
-        add: function(item){
-            this.items.push(item);
-        },
-        remove: function(start, countDelete){
-            this.items.splice(start, countDelete);
-        },
-        destroy: function(){
-            this.items = [];
-        }
-    },
-};
-
-
 //Configurando o token de acesso a API MapBox
 L.mapbox.accessToken = map_conf.accessToken;
         
@@ -113,14 +146,21 @@ $(document).ready(function() {
         //Bootstrapping 
         //
         //verificando se browser suporta API geolocation
-        if (!"geolocation" in navigator) {
+        if (!'geolocation' in navigator) {
             alert('Seu navergador não possui suporte a geolocalização ou está desativada');
         }
         //Inicializando opções de mapa e renderizando
         map = new L.map('map', map_conf.options);
-              
-        //Renderizando mapa
-        //map.setView();
+        
+        //Adicionando a camada geoJSON para renderização dinâmica de geojson Features
+        //http://leafletjs.com/examples/geojson/
+        //Alerts
+        geoJSON_layer.alerts = L.geoJson(null,{   
+                            pointToLayer: generateAlertMarkerFeature,
+                            onEachFeature: onEachAlertMarkerFeature
+                            }).addTo(map);
+        //bike_keeper
+        geoJSON_layer.bike_keeper = L.geoJson().addTo(map);
         
         ////Inicializando o conteúdo do menu de contexto
         map_popup_menu.setContent(map_conf.popup_menu.getContent());
@@ -128,7 +168,7 @@ $(document).ready(function() {
        // Adicionando controle de atribuição/créditos
         L.control.attribution( 
             {
-                prefix: "<div class='hidden-xs'>Mapbox, OpenStreetMap, Leaflet</div>"
+                    prefix: "<a class='hidden-xs' href='http://openstreetmap.org'>OpenStreetMap contributors</a> <a class='visible-xs' href='http://openstreetmap.org'>OSM</a> <a class='hidden-xs' href='http://creativecommons.org/licenses/by-sa/2.0/'> CC-BY-SA</a><a href='http://mapbox.com'>© Mapbox</a>"
             }
          ).addTo(map);
        
@@ -143,21 +183,30 @@ $(document).ready(function() {
         //Adicionando Controle de camadas
         L.control.layers(
         {
-            //baseMap layer
+            //base layers
             'Mapa': L.tileLayer(leaflet_style.app_style).addTo(map),
             'Satélite': L.tileLayer(leaflet_style.satellite)
         },
         {
            //overLayers
-            'Bike Stations': L.mapbox.tileLayer('examples.bike-locations'),
-            'Bike Lanes': L.mapbox.tileLayer('examples.bike-lanes'),
-            'Alertas': {},
-            'Usuários': {}
+            'Alertas': geoJSON_layer.alerts,
+            'Guardadores': geoJSON_layer.bike_keeper
         },
         {
             position: 'bottomright'
         }).addTo(map);
         
+        //Plotando Alertas
+        $.ajax({
+            url: 'alerts/get-features',
+            type: 'GET',
+            success: function(geojson){
+                geoJSON_layer.alerts.addData(
+                        JSON.parse(geojson)
+                );
+            }
+        });
+       
         //EventListeners do mapa
         map.on('locationfound', onLocationFound);
         map.on('locationerror', onLocationError);

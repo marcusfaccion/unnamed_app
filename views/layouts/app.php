@@ -34,7 +34,7 @@ AppAsset::register($this);
     <?php
     NavBar::begin([
         'brandLabel' => "BIKE SOCIAL",//Html::img("images/icons/logo_32.png"),
-        'brandUrl' => Yii::$app->homeUrl,
+        'brandUrl' => ['/home'],
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
@@ -42,7 +42,7 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
+            ['label' => 'Home', 'url' => ['index']],
              /*[
             'label' => 'Dropdown',
             'items' => [

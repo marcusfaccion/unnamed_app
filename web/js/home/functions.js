@@ -3,18 +3,18 @@ function onLocationFound(e) {
     
     var radius = (e.accuracy / 2).toFixed(1);
    
-    if(my_location.latlng!=null){
+    if(me.latlng!=null){
         // Atualizando a posição usuário
-        my_location.latlng_history.add(my_location.latlng);
-        my_location.latlng = [e.latlng.lat, e.latlng.lng];
-        my_location.marker.setLatLng(my_location.latlng);
-        my_location.circle.setLatLng(my_location.latlng);
-        my_location.marker.update();
-        my_location.marker.update();
+        me.latlng_history.add(me.latlng);
+        me.latlng = [e.latlng.lat, e.latlng.lng];
+        me.marker.setLatLng(me.latlng);
+        me.circle.setLatLng(me.latlng);
+        me.marker.update();
+        me.marker.update();
     }else{
-        my_location.latlng = [e.latlng.lat, e.latlng.lng];
-        my_location.marker = L.marker(
-            my_location.latlng,
+        me.latlng = [e.latlng.lat, e.latlng.lng];
+        me.marker = L.marker(
+            me.latlng,
             {
                 icon: L.mapbox.marker.icon({
                     'marker-size': 'large',
@@ -24,20 +24,20 @@ function onLocationFound(e) {
                 riseOnHover: true
             }).bindPopup("Você está " + radius + " metros deste ponto")
             .openPopup();
-        my_location.circle = L.circle(e.latlng, radius);   
+        me.circle = L.circle(e.latlng, radius);   
         
-        my_location.marker.addTo(map);
-        my_location.circle.addTo(map);
+        me.marker.addTo(map);
+        me.circle.addTo(map);
     }    
 }
 function onLocationError(e) {
-    if(my_location.latlng_history.items.length>0){
+    if(me.latlng_history.items.length>0){
         // Atualizando a posição usuário para a última válida
-        my_location.latlng = my_location.latlng_history.getLast();
-        my_location.marker.setLatLng(my_location.latlng);
-        my_location.circle.setLatLng(my_location.latlng);
-        my_location.marker.update();
-        my_location.marker.update();
+        me.latlng = me.latlng_history.getLast();
+        me.marker.setLatLng(me.latlng);
+        me.circle.setLatLng(me.latlng);
+        me.marker.update();
+        me.marker.update();
     }
     
     //alert(e.message);
@@ -61,14 +61,46 @@ function onCreatedMarkerClick(marker){
  * @returns {Boolean} true se a localização foi ativada false caso contrário 
  */
 function showMyLocation(){
-    if(map.hasLayer(my_location.marker)){
-        map.removeLayer(my_location.marker);
-        map.removeLayer(my_location.circle);
+    if(map.hasLayer(me.marker)){
+        map.removeLayer(me.marker);
+        map.removeLayer(me.circle);
         map.stopLocate();
-        my_location.latlng = null;
-        my_location.latlng_history.destroy();
+        me.latlng = null;
+        me.latlng_history.destroy();
         return false;
     }
     map.locate({setView: map_conf.locate.setView, enableHighAccuracy: map_conf.locate.enableHighAccuracy , watch: map_conf.locate.watch});
     return true;
+}
+
+/**
+ * Gera um L.Marker a partir do feature geoJSON passado
+ * @param {geoJSON Feature} feature
+ * @param {Latlng|array} latlng do marcador
+ * @returns L.Marker
+ */
+function generateAlertMarkerFeature(feature, latlng){
+    if (feature.properties && feature.properties.type_desc) {
+        return L.marker(latlng,
+     {
+        icon: Icons[feature.properties.type_desc_en],
+        title: feature.properties.title,
+        alt: feature.properties.type_desc,
+        riseOnHover: true
+       });
+    }
+}
+
+function onEachAlertMarkerFeature(feature, layer){
+     if (feature.properties) {
+        //layer.bindPopup('<b>Alerta id: </b>'+feature.properties.id );
+        layer.bindPopup(popup.getContentAjax(
+            'alerts/render-popup',
+            {
+                type: 'GET',
+                data: {id: feature.properties.id},
+                async: false,
+            }
+        ));
+     }
 }
