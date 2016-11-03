@@ -21,7 +21,17 @@ use yii\web\IdentityInterface;
  */
 class Users extends ActiveRecord implements IdentityInterface
 {
+    const AVATAR_SIZE = 90;
+    const AVATAR_EXT = 'png';
+    const DEFAULT_USER_ID = 0;
+    const DEFAULT_USERNAME = 'bikesocial';
     
+    /**
+     * Endereço url relativo/fixo da imagem avtar do usuário 
+     * @var string $avatar
+     */
+    protected $avatar = '';
+
     /**
      * @inheritdoc
      */
@@ -158,5 +168,20 @@ class Users extends ActiveRecord implements IdentityInterface
     public function validatePassword($password)
     {   
         return $this->password === $password;
+    }
+    
+    public function getavatar(){
+        if(trim($this->user_avatar_src)==='')
+            $this->setavatar();
+        else
+            $this->setavatar($this->user_avatar_src);
+        return $this->avatar;
+    }
+    public function setavatar($src=''){
+        if(trim($src)===''){
+            $this->avatar = 'users/'.self::DEFAULT_USERNAME.'/images/avatar_'.self::AVATAR_SIZE.'.'.self::AVATAR_EXT;
+        }else{
+            $this->avatar = $src;
+        }
     }
 }

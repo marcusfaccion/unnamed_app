@@ -3,10 +3,6 @@ use app\assets\AppAlertsAsset;
 use app\models\AlertTypes;
 use marcusfaccion\helpers\String;
 ?>
-
-<?php
-AppAlertsAsset::register($this);
-?>
     <div class="alerts-widget-index">
         <div id='alerts-widget-menu' class="row col-xs-offset-2">
         <?php foreach (AlertTypes::find()->orderBy('id desc')->all() as $alert_type):?>

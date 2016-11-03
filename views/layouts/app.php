@@ -58,7 +58,7 @@ AppAsset::register($this);
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
-                . Html::img("images/users/avatar_90.png", ['class'=>'img-circle wide-px5-8 tall-px5-8'])
+                . Html::img(Yii::$app->user->identity->avatar, ['class'=>'img-circle wide-px5-8 tall-px5-8'])
                 . Html::submitButton(
                     'Logout (' . Yii::$app->user->identity->username . ')',
                     ['class' => 'btn btn-link']

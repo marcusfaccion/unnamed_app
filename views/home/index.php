@@ -2,6 +2,7 @@
 use yii\bootstrap\Html;
 use app\assets\AppHomeAsset;
 use app\assets\AppAlertsAsset;
+use app\assets\AppBikeKeepersAsset;
 use app\models\Users;
 /* @var $this yii\web\View */
 $this->title = 'Apicação Colaborativa para Ciclistas';
@@ -10,6 +11,7 @@ $this->title = 'Apicação Colaborativa para Ciclistas';
 <?php
 AppHomeAsset::register($this);
 AppAlertsAsset::register($this);
+AppBikeKeepersAsset::register($this);
 ?>
 
 <div id='map'>

@@ -23,7 +23,7 @@ Modal::begin([
                     var modal = $(this);
                     $.ajax({
                         type: 'GET',
-                        url: ((action.length>2)?action[1]+'/'+action[2]:action[1]+'/render-types-menu'),    
+                        url: ((action.length>2)?action[1]+'/'+action[2]:action[1]+'/begin'),    
                         success: function(response){
                             modal.find('.modal-body').html(response);
                         }

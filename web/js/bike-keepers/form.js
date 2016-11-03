@@ -1,32 +1,10 @@
 var alert_type_desc;
 
-$('body').on('click', 'a.alert-trigger', function(e){
-        /*if(!$('#home_actions_alerts_form').is(':hidden')){
-            $('#home_actions_alerts_form').fadeOut();
-        }*/
-        preloader.hide('alerts-widget-menu', 'cicle_ball', '64',  function(){
-            $.ajax({
-                type: 'GET',
-                async: false,
-                url: 'alerts/form',
-                data: { type_id: e.currentTarget['id'].split('_')[1]},
-                success: function(response){
-                    preloader.show('home_actions_alerts_form', 'cicle_ball', '64', function(){ 
-                        $('#home_actions_alerts_form').html(response).hide().fadeIn('fast');
-                    });
-                }
-            })
-        });
+$('body').on('click', 'button.bike-keepers.cancel', function(e){
+    $('#home_actions_modal').modal('hide'); 
 });
 
-$('body').on('click', 'button.alerts.back', function(e){
-    preloader.hide('home_actions_alerts_form', 'cicle_ball', '64', function(){
-        $('#home_actions_alerts_form').html('');
-        preloader.show('alerts-widget-menu', 'cicle_ball', '64');  
-    }); 
-});
-
-$('body').on('click', 'button.alerts.save', function(e){
+$('body').on('click', 'button.bike-keepers.save', function(e){
    
     // Gerando GeoJSON para salvar geometria
     $('#alerts-widget-form').find("input[id='Alerts_geojson_string']").val(JSON.stringify(L.marker(selectedlatlng,{}).toGeoJSON().geometry));

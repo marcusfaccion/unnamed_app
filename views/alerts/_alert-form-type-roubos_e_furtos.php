@@ -39,7 +39,7 @@ use marcusfaccion\helpers\String;
 <?php echo Html::hiddenInput('isAjax', true, ['class' => 'isAjax','id'=>'alerts-widget-form_isAjax']);?>
 
 <div class="top-buffer-4 col-lg-offset-4 col-lg-12">
-    <?php echo Html::button('Voltar', ['class'=>'btn btn-danger back']);?>
-    <?php echo Html::button('Salvar', ['class'=>'btn btn-success save']);?>
+    <?php echo Html::button('Voltar', ['class'=>'btn btn-danger alerts back']);?>
+    <?php echo Html::button('Salvar', ['class'=>'btn btn-success alerts save']);?>
 </div>
 <?php $form->end();?>

@@ -18,7 +18,7 @@ class AlertsController extends Controller
                     [
                         //'controllers' => [],
                         'actions' => [
-                                        'render-types-menu',
+                                        'begin',
                                         'render-popup',
                                         'form',
                                         'get-features',
@@ -39,7 +39,7 @@ class AlertsController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'get-features'=>['get'],
-                    'render-types-menu' => ['get'],
+                    'begin' => ['get'],
                     'render-popup' => ['get'],
                     'form' => ['get'],
                     'create' => ['post']
@@ -78,9 +78,9 @@ class AlertsController extends Controller
      * Renderiza o menu de tipos de alertas
      * @return string
      */
-    public function actionRenderTypesMenu()
+    public function actionBegin()
     {
-        return $this->renderAjax('render-types-menu');
+        return $this->renderAjax('begin');
     }
  
 }
