@@ -13,7 +13,7 @@ class FormAction extends Action
     public function run()        
     {
         
-        $alert = new Alerts();
+        $alert = new Alerts(['scenario'=>Alerts::SCENARIO_CREATE]);
         $alert_type = AlertTypes::findOne(['id'=>$_GET['type_id']]);
    
         $alert->type_id = $alert_type->id;
