@@ -5,6 +5,7 @@ namespace app\controllers;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
+use app\models\BikeKeepers;
 
 class BikeKeepersController extends Controller
 {
@@ -61,7 +62,7 @@ class BikeKeepersController extends Controller
      */
     public function actionBegin()
     {
-        $bike_keeper = new \app\models\BikeKeepers();
+        $bike_keeper = new BikeKeepers(['scenario'=>BikeKeepers::SCENARIO_CREATE]);
         return $this->renderAjax('begin', ['bike_keeper' => $bike_keeper]);
     }
     /**

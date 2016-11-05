@@ -20,7 +20,6 @@ class AlertsSearch extends Alerts
         return [
             [['id', 'type_id', 'user_id', 'likes', 'unlikes'], 'integer'],
             [['title', 'description', 'created_date', 'updated_date', 'geom'], 'safe'],
-            [['visible'], 'boolean'],
         ];
     }
 
@@ -67,7 +66,6 @@ class AlertsSearch extends Alerts
             'likes' => $this->likes,
             'unlikes' => $this->unlikes,
             'updated_date' => $this->updated_date,
-            'visible' => $this->visible,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])

@@ -1,11 +1,11 @@
 <?php
 
-namespace app\modules\admin\controllers;
+namespace app\modules\settings\controllers;
 
 use yii\web\Controller;
 
 /**
- * Default controller for the `admin` module
+ * Default controller for the `settings` module
  */
 class DefaultController extends Controller
 {

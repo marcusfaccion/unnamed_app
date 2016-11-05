@@ -4,6 +4,7 @@ namespace app\models;
 
 use Yii;
 use marcusfaccion\db\GeoJSON_ActiveRecord;
+use yii\web\UploadedFile;
 
 /**
  * This is the model class for table "bike_keepers".
@@ -49,21 +50,22 @@ class BikeKeepers extends GeoJSON_ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'description', 'capacity', 'multimedias_file'], 'required', 'on' => self::SCENARIO_CREATE],
+            [['title', 'description', 'capacity', 'multimedia_files', 'public', 'outdoor'], 'required', 'on' => self::SCENARIO_CREATE],
             [['multimedia_files'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, jpeg, avi, mp4, webm', 'maxFiles' => 4],
-            [['likes', 'unlikes', 'capacity', 'used_capacity', 'user_id'], 'integer'],
+            [['likes', 'unlikes', 'capacity', 'used_capacity', 'user_id', 'public', 'outdoor', 'enable'], 'integer'],
+            [['created_date'], 'safe'],
             [['title'], 'string', 'max' => 40],
             [['description'], 'string'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
     
-    // define os atributos seguros "safe" para massive atribuition via $model->attributes 
+    // define os atributos seguros "safe" para população massiva via $model->attributes 
     public function scenarios()
     {
         // verificar se multimedias (manymany relation) pode gerar erro por não ser um atributo(somente em runtime)
         return [
-            self::SCENARIO_CREATE => ['title', 'description', 'multimedia_files', 'capacity', 'user_id', 'geojson_string'],
+            self::SCENARIO_CREATE => ['title', 'description', 'multimedia_files', 'capacity', 'user_id', 'geojson_string', 'public', 'outdoor'],
         ];
     }
 
@@ -82,6 +84,9 @@ class BikeKeepers extends GeoJSON_ActiveRecord
             'description' => Yii::t('app', 'Descrição'),
             'used_capacity' => 'Used Capacity',
             'user_id' => 'User ID',
+            'enable'=>'Ativado',
+            'outdoor'=>'Ao ar livre',
+            'public'=>'Público',
         ];
     }
 

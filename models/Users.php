@@ -49,6 +49,7 @@ class Users extends ActiveRecord implements IdentityInterface
             'last_access_date' => Yii::t('app', 'Data Ultimo Acesso'),
             'auth_key' => Yii::t('app', 'Chave de autenticação'),
             'access_token' => Yii::t('app', 'Token de acesso'),
+            'online' =>  Yii::t('app', 'Online'),
         ];
     }
     /**
@@ -129,7 +130,8 @@ class Users extends ActiveRecord implements IdentityInterface
         return [
             [['signup_date', 'last_access_date'], 'safe'],
             [['first_name', 'last_name'], 'string', 'max' => 50],
-            [['how_to_be_called'], 'string', 'max' => 25],
+            [['how_to_be_called'], 'string', 'max' => 30],
+            [['online'], 'integer'],            
             [['username'], 'string', 'max' => 30],
             [['auth_key','access_token'], 'string', 'max' => 32],
             [['email'], 'string', 'max' => 100],

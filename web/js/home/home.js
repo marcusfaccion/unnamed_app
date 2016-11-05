@@ -154,13 +154,23 @@ $(document).ready(function() {
         
         //Adicionando a camada geoJSON para renderização dinâmica de geojson Features
         //http://leafletjs.com/examples/geojson/
-        //Alerts
+         
+        //camada Alerts
         geoJSON_layer.alerts = L.geoJson(null,{   
                             pointToLayer: generateAlertMarkerFeature,
                             onEachFeature: onEachAlertMarkerFeature
                             }).addTo(map);
-        //bike_keeper
-        geoJSON_layer.bike_keeper = L.geoJson().addTo(map);
+        //camada bike_keeper
+       /* geoJSON_layer.bike_keeper = L.geoJson(null,{   
+                            pointToLayer: generateBikeKeeperMarkerFeature,
+                            onEachFeature: onEachBikeKeeperMarkerFeature
+                            }).addTo(map);*/
+        
+        //camada de usuário online
+        /*geoJSON_layer.users = L.geoJson(null,{   
+                            pointToLayer: generateUserMarkerFeature,
+                            onEachFeature: onEachUserMarkerFeature
+                            }).addTo(map);*/
         
         ////Inicializando o conteúdo do menu de contexto
         map_popup_menu.setContent(map_conf.popup_menu.getContent());

@@ -20,7 +20,6 @@ class CreateAction extends Action
         
         $alert->attributes = Yii::$app->request->post('Alerts');
         $alert->created_date = date('Y-m-d H:i:s');
-        $alert->visible = 1;
        
         $alert_type = AlertTypes::findOne($alert->type_id);
         $alert_user = Users::findOne($alert->user_id);

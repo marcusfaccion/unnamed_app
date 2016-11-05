@@ -42,7 +42,6 @@ $this->title = $alert->title;
             'likes',
             'unlikes',
             'updated_date',
-            'visible:boolean',
             'geom',
         ],
     ]) ?>

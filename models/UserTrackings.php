@@ -32,7 +32,7 @@ class UserTrackings extends \yii\db\ActiveRecord
         return [
             [['user_id'], 'integer'],
             [['register_date'], 'safe'],
-            [['latlng'], 'string', 'max' => 60],
+            [['geom'], 'string'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
@@ -46,6 +46,7 @@ class UserTrackings extends \yii\db\ActiveRecord
             'id' => 'ID',
             'latlng' => 'Latlng',
             'user_id' => 'Users ID',
+            'geom' => 'Posição',
             'register_date' => 'Register Date',
         ];
     }

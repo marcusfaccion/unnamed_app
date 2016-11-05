@@ -104,3 +104,89 @@ function onEachAlertMarkerFeature(feature, layer){
         ));
      }
 }
+/**
+ * Gera um L.Marker a partir do feature geoJSON passado
+ * @param {geoJSON Feature} feature
+ * @param {Latlng|array} latlng do marcador
+ * @returns L.Marker
+ */
+function generateBikeKeeperMarkerFeature(feature, latlng){
+    if (feature.properties && feature.properties.type_desc) {
+        return L.marker(latlng,
+     {
+        icon: Icons[feature.properties.type_desc_en],
+        title: feature.properties.title,
+        alt: feature.properties.type_desc,
+        riseOnHover: true
+       });
+    }
+}
+
+function onEachBikeKeeperMarkerFeature(feature, layer){
+     if (feature.properties) {
+        //layer.bindPopup('<b>Alerta id: </b>'+feature.properties.id );
+        layer.bindPopup(popup.getContentAjax(
+            'bike-keepers/render-popup',
+            {
+                type: 'GET',
+                data: {id: feature.properties.id},
+                async: false,
+            }
+        ));
+     }
+}
+/**
+ * Gera um L.Marker a partir do feature geoJSON passado
+ * @param {geoJSON Feature} feature
+ * @param {Latlng|array} latlng do marcador
+ * @returns L.Marker
+ */
+function generateUserMarkerFeature(feature, latlng){
+    if (feature.properties && feature.properties.type_desc) {
+        return L.marker(latlng,
+     {
+        icon: Icons[feature.properties.type_desc_en],
+        title: feature.properties.title,
+        alt: feature.properties.type_desc,
+        riseOnHover: true
+       });
+    }
+}
+
+function onEachUserMarkerFeature(feature, layer){
+     if (feature.properties) {
+        //layer.bindPopup('<b>Alerta id: </b>'+feature.properties.id );
+        layer.bindPopup(popup.getContentAjax(
+            'users/render-popup',
+            {
+                type: 'GET',
+                data: {id: feature.properties.id},
+                async: false,
+            }
+        ));
+     }
+}
+
+// Editar código para criar um helper
+/*
+function uploadFile(){
+    myApp.showPleaseWait(); //show dialog
+    var file=document.getElementById('file_name').files[0];
+    var formData = new FormData();
+    formData.append("file_name", file);
+    ajax = new XMLHttpRequest();
+    ajax.upload.addEventListener("progress", progressHandler, false);
+    ajax.addEventListener("load", completeHandler, false);
+    ajax.open("POST", "/to/action");
+    ajax.send(formData);
+}
+
+function progressHandler(event){
+    var percent = (event.loaded / event.total) * 100;
+    $('.bar').width(percent); //from bootstrap bar class
+}
+
+function completeHandler(){
+    myApp.hidePleaseWait(); //hide dialog
+    $('.bar').width(100);
+}*/

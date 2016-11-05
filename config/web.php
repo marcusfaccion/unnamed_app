@@ -14,7 +14,7 @@ $config = [
     'timeZone' => 'UTC',
     'defaultRoute' =>'site',
     'aliases' => [
-        '@admin' => '@app/modules/admin',
+        '@settings' => '@app/modules/settings',
         '@api' => '@app/modules/api',
         '@marcusfaccion' => '@vendor/marcusfaccion',
     ],
@@ -109,8 +109,8 @@ $config = [
         ],
     ],
     'modules' => [
-            'admin' => [
-                'class' => 'app\modules\admin\Admin',
+            'settings' => [
+                'class' => 'app\modules\settings\Settings',
             ],
             'api' => [
                 'class' => 'app\modules\api\Api',
