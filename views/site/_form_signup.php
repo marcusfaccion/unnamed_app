@@ -10,15 +10,14 @@ use yii\helpers\Url;
 use yii\bootstrap\ActiveForm;
 ?>
 
-<?php $model = new \app\models\LoginForm(); ?>
-<?php $form_number = !isset($form_number)? 1 : $form_number ?>
+<?php $model = new \app\models\Users(); ?>
 
 <div class="site-login col-lg-offset-1">
 
     <?php $form = ActiveForm::begin([
-        'id' => 'login-form'.$form_number,
+        'id' => 'signup-form',
         'options' => ['class' => 'form-horizontal'],
-        'action' => isset($route)?$route:Url::to(['site/login']),
+        'action' => Url::to(['site/signup']),
         'fieldConfig' => [
             'template' => "{label}\n<div class=\"col-lg-5\">{input}</div>\n<div class=\"col-lg-7\">{error}</div>",
             //'labelOptions' => ['class' => 'col-lg-1 control-label'],
@@ -26,17 +25,25 @@ use yii\bootstrap\ActiveForm;
         ],
     ]); ?>
 
-        <?= $form->field($model, 'username')->textInput(['autofocus' => true, 'placeholder' => 'Usuário']) ?>
+        <?= $form->field($model, 'first_name')->textInput(['autofocus' => true, 'placeholder' => 'Primeiro nome']) ?>
 
-        <?= $form->field($model, 'password')->passwordInput(['placeholder' => 'Senha']) ?>
-
-        <?= $form->field($model, 'rememberMe')->checkbox([
-            'template' => "<div class=\"col-lg-5\">{input} {label} <a class='strong pull-right' href='#site-signup_form' onclick=$('#modal_login').modal('hide')>Criar conta?</a></div>\n<div class=\"col-lg-7\">{error}</div>",
-        ]) ?>
+        <?= $form->field($model, 'last_name')->passwordInput(['placeholder' => 'Último nome']) ?>
         
+        <?= $form->field($model, 'how_to_be_called')->textInput(['placeholder' => 'Come quer ser chamado?']) ?>
+
+        <?= $form->field($model, 'username')->passwordInput(['placeholder' => 'Nome de usuário']) ?>
+        
+        <?= $form->field($model, 'email')->textInput(['placeholder' => 'E-mail']) ?>
+    
+        <?= $form->field($model, 'password')->passwordInput(['placeholder' => 'Senha']) ?>
+    
+        <?= $form->field($model, 'password_repeat')->passwordInput(['placeholder' => 'confirmação']) ?>
+
+        <?= $form->field($model, 'avatar_file')->fileInput(['placeholder' => 'Imagem do perfil']) ?>
+
         <div class="form-group">
             <div class="col-lg-11">
-                <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                <?= Html::submitButton('Enviar', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
             </div>
         </div>
 

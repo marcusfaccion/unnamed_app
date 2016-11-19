@@ -1,51 +1,46 @@
 <?php
+use yii\helpers\Url;
 /* @var $this yii\web\View */
 
 $this->title = Yii::$app->name;
 ?>
 <div class="site-index">
-
-<?php
-    if(Yii::$app->user->isGuest){
-        echo $this->renderFile('@app/views/site/_form_login.php', ['form_number' => 2]);
-    }
-?>
     
-<?php /*
-    <div class="body-content">
-
-        <div class="row">
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
+     <div id="site_showcase" class="jumbotron home">
+         <h1 class="text-hint">Pedale e compartilhe sua experiência com seus amigos!</h1>
+            <div class="row top-buffer-9">
+                <div class="col-md-3">
+                    <img class="img-responsive" src="<?=Url::to(['images/icons/site_showcase_bike1_256.png'])?>">
+                </div>
+                <div class="col-md-8">
+                    <ul class="tsize-6 text-left">
+                        <li class="top-buffer-4">
+                            Comparthile alertas
+                        </li>
+                        <li class="top-buffer-4">
+                            Ache onde guardar sua bike
+                        </li>
+                        <li class="top-buffer-4">
+                            Crie Eventos
+                        </li>
+                        <li class="top-buffer-4">
+                            Compartilhe rotas
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/forum/">Yii Forum &raquo;</a></p>
+    </div>
+    <div id="login-form-container" class="container">
+        <a name="site-signup_form" href="#site-signup_form"></a><h3 class="col-md-offset-1 text-hint"> Crie sua conta:</h3>
+            <div class="row top-buffer-5">
+                <div class="col-md-12">
+                   <?php
+                        if(Yii::$app->user->isGuest){
+                            echo $this->renderFile('@app/views/site/_form_signup.php', ['form_number' => 2, 'route'=>Url::to(['/site'])]);
+                        }
+                    ?>
+                </div>
             </div>
-            <div class="col-lg-4">
-                <h2>Heading</h2>
-
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
-                    fugiat nulla pariatur.</p>
-
-                <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
-            </div>
-        </div>
-
-    </div>*/?>
+    </div>
+   
 </div>

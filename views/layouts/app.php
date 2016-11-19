@@ -6,6 +6,7 @@
 use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
+use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
@@ -33,7 +34,16 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => "BIKE SOCIAL",//Html::img("images/icons/logo_32.png"),
+        'brandLabel' => 
+        "<ul class='list-unstyled list-inline'>
+            <li>"
+            .Html::img(Url::to(['images/icons/logo_48.png']))
+            ."</li>
+            <li>
+            <span class='text-white'><strong>".Yii::$app->name."</strong></span>
+            </li>
+        </ul>",
+        'brandOptions' => ['class'=>'no-paddings'],
         'brandUrl' => ['/home'],
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',

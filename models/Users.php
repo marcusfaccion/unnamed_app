@@ -26,11 +26,17 @@ class Users extends ActiveRecord implements IdentityInterface
     const DEFAULT_USER_ID = 0;
     const DEFAULT_USERNAME = 'bikesocial';
     
+    const SCENARIO_CREATE = 'create';
+    
     /**
      * Endereço url relativo/fixo da imagem avtar do usuário 
      * @var string $avatar
      */
     protected $avatar = '';
+    
+    public $password_repeat = '';
+    
+    public $avatar_file;
 
     /**
      * @inheritdoc
@@ -45,11 +51,13 @@ class Users extends ActiveRecord implements IdentityInterface
             'username' => Yii::t('app', 'Usuário'),
             'email' => Yii::t('app', 'conta de email do usuário'),
             'password' => Yii::t('app', 'password do usuário, usada na autenticação'),
+            'password_repeat' => Yii::t('app', 'Confirmação'),
             'signup_date' => Yii::t('app', 'Data Cadastro'),
             'last_access_date' => Yii::t('app', 'Data Ultimo Acesso'),
             'auth_key' => Yii::t('app', 'Chave de autenticação'),
             'access_token' => Yii::t('app', 'Token de acesso'),
             'online' =>  Yii::t('app', 'Online'),
+            'avatar_file' => Yii::t('app', 'Imagem do perfil'),
         ];
     }
     /**
@@ -136,6 +144,19 @@ class Users extends ActiveRecord implements IdentityInterface
             [['auth_key','access_token'], 'string', 'max' => 32],
             [['email'], 'string', 'max' => 100],
             [['password'], 'string', 'max' => 16],
+            // regras para cadastro
+            // compara "password" com "password_repeat"
+           // ['password', 'compare', 'compareAttribute' => 'password_repeat', 'on'=>self::SCENARIO_CREATE], 'message'=>Yii::t('app', 'Senhas não conferem'),
+            // Verifica o arquivo do perfil no cadastro
+            [['avatar_file'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, jpeg', 'maxFiles' => 1, 'on'=>self::SCENARIO_CREATE],
+        ];
+    }
+    
+    // define os atributos seguros "safe" para massive atribuition via $model->attributes 
+    public function scenarios()
+    {
+        return [
+            self::SCENARIO_CREATE => ['first_name', 'last_name', 'how_to_be_called', 'username', 'password', 'password_repeat', 'email', 'avatar_file'],
         ];
     }
 

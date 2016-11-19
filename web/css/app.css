@@ -102,7 +102,7 @@ a.desc:after {
 
 .navbar-inverse {
   background-color: #2AE42A; 
-  border-color: #6EC0E7;
+  border-color: #2AE42A;
 }
 
 .app-horizontal-widget {
@@ -120,9 +120,21 @@ a.desc:after {
 .top-buffer-1 { margin-top:5px; }.top-buffer-2 { margin-top:10px; }.top-buffer-3 { margin-top:15px; }
 .top-buffer-4 { margin-top:20px; }.top-buffer-5 { margin-top:25px; }.top-buffer-6 { margin-top:30px; }
 .top-buffer-7 { margin-top:35px; }.top-buffer-8 { margin-top:40px; }.top-buffer-9 { margin-top:45px; }
+.top-buffer-10 { margin-top:50px; }.top-buffer-11 { margin-top:55px; }.top-buffer-12 { margin-top:60px; }
+
 .bottom-buffer-1 { margin-bottom:5px; }.bottom-buffer-2 { margin-bottom:10px; }.bottom-buffer-3 { margin-bottom:15px; }
 .bottom-buffer-4 { margin-bottom:20px; }.bottom-buffer-5 { margin-bottom:25px; }.bottom-buffer-6 { margin-bottom:30px; }
 .bottom-buffer-7 { margin-bottom:35px; }.bottom-buffer-8 { margin-bottom:40px; }.bottom-buffer-9 { margin-bottom:45px; }
+.bottom-buffer-7 { margin-bottom:50px; }.bottom-buffer-8 { margin-bottom:55px; }.bottom-buffer-9 { margin-bottom:60px; }
+
+.top-pbuffer-1 { padding-top:5px; }.top-pbuffer-2 { padding-top:10px; }.top-pbuffer-3 { padding-top:15px; }
+.top-pbuffer-4 { padding-top:20px; }.top-pbuffer-5 { padding-top:25px; }.top-pbuffer-6 { padding-top:30px; }
+.top-pbuffer-7 { padding-top:35px; }.top-pbuffer-8 { padding-top:40px; }.top-pbuffer-9 { padding-top:45px; }
+.top-pbuffer-7 { padding-top:50px; }.top-pbuffer-8 { padding-top:55px; }.top-pbuffer-9 { padding-top:60px; }
+.bottom-pbuffer-1 { padding-bottom:5px; }.bottom-pbuffer-2 { padding-bottom:10px; }.bottom-pbuffer-3 { padding-bottom:15px; }
+.bottom-pbuffer-4 { padding-bottom:20px; }.bottom-pbuffer-5 { padding-bottom:25px; }.bottom-pbuffer-6 { padding-bottom:30px; }
+.bottom-pbuffer-7 { padding-bottom:35px; }.bottom-pbuffer-8 { padding-bottom:40px; }.bottom-pbuffer-9 { padding-bottom:45px; }
+.bottom-pbuffer-7 { padding-bottom:50px; }.bottom-pbuffer-8 { padding-bottom:55px; }.bottom-pbuffer-9 { padding-bottom:60px; }
 
 .wide-1 {width: 5%;} .wide-2 {width: 7%;} .wide-3 {width: 10%;}
 .wide-4 {width: 16%;} .wide-5 {width: 24%;} .wide-6 {width: 36%;}
@@ -148,6 +160,13 @@ a.desc:after {
 .tall-px5-16 {height: 80px;} .tall-px5-17 {height: 85px;} .tall-px5-18 {height: 90px;}
 .tall-px5-19 {height: 95px;} .tall-px5-20 {height: 100px;}
 
+.tsize-1{ font-size: 5px} .tsize-2{ font-size: 9px} .tsize-3{ font-size: 12px} .tsize-4{ font-size: 16px}
+.tsize-5{ font-size: 20px} .tsize-6{ font-size: 24px} .tsize-7{ font-size: 27px} .tsize-8{ font-size: 30px}
+.tsize-9{ font-size: 33px} .tsize-10{ font-size: 35px}
+
+.no-paddings{ padding: 0 !important;} no-bottom-padding{ padding-bottom: 0 !important;} no-top-padding{ padding-top: 0 !important;}
+
+.text-white{ color: #ffffff}
 
 ul.navbar-nav.navbar-right.nav > li.active > a {
     color: #fff;

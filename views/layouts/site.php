@@ -29,7 +29,16 @@ SiteAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => 'Logo aqui',
+        'brandLabel' => 
+        "<ul class='list-unstyled list-inline'>
+            <li>"
+            .Html::img(Url::to(['images/icons/logo_48.png']))
+            ."</li>
+            <li>
+            <span class='text-white'><strong>".Yii::$app->name."</strong></span>
+            </li>
+        </ul>",
+        'brandOptions' => ['class'=>'no-paddings'],
         'brandUrl' => Yii::$app->user->isGuest?Url::to(['/'.Yii::$app->defaultRoute]):Url::to(['/'.Yii::$app->homeUrl]),
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
@@ -46,7 +55,7 @@ SiteAsset::register($this);
                  ['label' => 'Entrar',
                //'options' => ['class' => 'TesteZ'],
                'linkOptions' => [   
-                                    'class' => 'btn btn-danger',
+                                    'class' => 'btn strong tsize-4 text-white',
                                     'data-toggle' => 'modal',
                                     'data-target' => '#modal_login',
                                 ],
