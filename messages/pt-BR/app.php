@@ -1,4 +1,5 @@
 <?php
 
-return [          
+return [
+    '{attribute} cannot be blank' => 'E lelele',
 ];

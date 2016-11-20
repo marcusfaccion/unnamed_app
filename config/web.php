@@ -14,9 +14,12 @@ $config = [
     'timeZone' => 'UTC',
     'defaultRoute' =>'site',
     'aliases' => [
+        '@webroot' => '@app/web',
         '@settings' => '@app/modules/settings',
         '@api' => '@app/modules/api',
         '@marcusfaccion' => '@vendor/marcusfaccion',
+        '@users_dir_path' => '@webroot/users',
+        '@users_dir' => 'users',
     ],
     'components' => [
         'assetManager' => [
@@ -49,15 +52,15 @@ $config = [
         ],
         'i18n'=>[
             'translations' => [
-                'yii' => [
+                'core' => [
                     'class' => 'yii\i18n\PhpMessageSource',
-                    'basePath' => '@app/messages',
-                    'sourceLanguage' => 'en-US',
+                    'basePath' => '@yii/messages',
+                    //'sourceLanguage' => 'en-US',
                 ],
                 'app*' => [
                     'class' => 'yii\i18n\PhpMessageSource',
-                    //'basePath' => '@app/messages',
-                    //'sourceLanguage' => 'pt-BR',
+                    'basePath' => '@app/messages',
+                    'sourceLanguage' => 'pt-BR',
                     'fileMap' => [
                         'app' => 'app.php',
                         'app/error' => 'error.php',

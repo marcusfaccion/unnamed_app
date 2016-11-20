@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
-
+use yii\helpers\Url;
 /**
  * This is the model class for table "users".
  *
@@ -18,11 +18,13 @@ use yii\web\IdentityInterface;
  * @property string $password
  * @property string $signup_date
  * @property string $last_access_date
+ * @property string $question
+ * @property string $answer
+ * @property string $home_dir_name
  */
 class Users extends ActiveRecord implements IdentityInterface
 {
-    const AVATAR_SIZE = 90;
-    const AVATAR_EXT = 'png';
+    const AVATAR_FILE = 'avatar.png';
     const DEFAULT_USER_ID = 0;
     const DEFAULT_USERNAME = 'bikesocial';
     
@@ -39,6 +41,13 @@ class Users extends ActiveRecord implements IdentityInterface
     public $avatar_file;
 
     /**
+     *
+     * @var string  user directory path
+     */
+    protected $home_dir;
+    
+
+    /**
      * @inheritdoc
      */
     public function attributeLabels()
@@ -46,17 +55,21 @@ class Users extends ActiveRecord implements IdentityInterface
         return [
             'id' => Yii::t('app', 'ID'),
             'first_name' => Yii::t('app', 'Primeiro Nome'),
+            'answer' => Yii::t('app', 'Resposta'),
+            'question' => Yii::t('app', 'Pergunta secreta'),
             'last_name' => Yii::t('app', 'Ultimo Nome'),
             'how_to_be_called' => Yii::t('app', 'Como Ser Chamado'),
             'username' => Yii::t('app', 'Usuário'),
             'email' => Yii::t('app', 'conta de email do usuário'),
-            'password' => Yii::t('app', 'password do usuário, usada na autenticação'),
+            'password' => Yii::t('app', 'senha do usuário, usada na autenticação'),
             'password_repeat' => Yii::t('app', 'Confirmação'),
             'signup_date' => Yii::t('app', 'Data Cadastro'),
             'last_access_date' => Yii::t('app', 'Data Ultimo Acesso'),
             'auth_key' => Yii::t('app', 'Chave de autenticação'),
             'access_token' => Yii::t('app', 'Token de acesso'),
             'online' =>  Yii::t('app', 'Online'),
+            'home_dir_name' =>  Yii::t('app', 'diretório do home'),
+            'home_dir' =>  Yii::t('app', 'diretório do home'),
             'avatar_file' => Yii::t('app', 'Imagem do perfil'),
         ];
     }
@@ -136,19 +149,26 @@ class Users extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
+            [$this->scenarios()[self::SCENARIO_CREATE], 'required', 'on'=>self::SCENARIO_CREATE],
+            [['avatar_file'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, jpeg, gif', 'maxFiles' => 1, 'on'=>self::SCENARIO_CREATE],
+            ['username', 'unique', 'on'=>self::SCENARIO_CREATE],
+            ['email', 'unique', 'on'=>self::SCENARIO_CREATE],
+            ['password_repeat', 'compare', 'compareAttribute' => 'password', 'on'=>self::SCENARIO_CREATE],
             [['signup_date', 'last_access_date'], 'safe'],
             [['first_name', 'last_name'], 'string', 'max' => 50],
             [['how_to_be_called'], 'string', 'max' => 30],
+            [['question','answer'], 'string'],
+            [['home_dir'], 'string'],
             [['online'], 'integer'],            
             [['username'], 'string', 'max' => 30],
             [['auth_key','access_token'], 'string', 'max' => 32],
             [['email'], 'string', 'max' => 100],
+            [['email'], 'email'],
             [['password'], 'string', 'max' => 16],
             // regras para cadastro
             // compara "password" com "password_repeat"
-           // ['password', 'compare', 'compareAttribute' => 'password_repeat', 'on'=>self::SCENARIO_CREATE], 'message'=>Yii::t('app', 'Senhas não conferem'),
             // Verifica o arquivo do perfil no cadastro
-            [['avatar_file'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, jpeg', 'maxFiles' => 1, 'on'=>self::SCENARIO_CREATE],
+            
         ];
     }
     
@@ -156,7 +176,7 @@ class Users extends ActiveRecord implements IdentityInterface
     public function scenarios()
     {
         return [
-            self::SCENARIO_CREATE => ['first_name', 'last_name', 'how_to_be_called', 'username', 'password', 'password_repeat', 'email', 'avatar_file'],
+            self::SCENARIO_CREATE => ['first_name', 'last_name', 'how_to_be_called','username', 'password', 'password_repeat', 'email', 'avatar_file', 'question', 'answer'],
         ];
     }
 
@@ -194,17 +214,35 @@ class Users extends ActiveRecord implements IdentityInterface
     }
     
     public function getavatar(){
-        if(trim($this->user_avatar_src)==='')
-            $this->setavatar();
-        else
-            $this->setavatar($this->user_avatar_src);
+        $this->setavatar(Url::to('@users_dir/'.$this->getHomeDirName().'/images/'.self::AVATAR_FILE));
         return $this->avatar;
     }
     public function setavatar($src=''){
-        if(trim($src)===''){
-            $this->avatar = 'users/'.self::DEFAULT_USERNAME.'/images/avatar_'.self::AVATAR_SIZE.'.'.self::AVATAR_EXT;
-        }else{
-            $this->avatar = $src;
+        $this->avatar = $src;
+    }
+    
+    public function getHomeDirName(){
+        if($this->isNewRecord){
+            $this->home_dir_name = md5(Yii::$app->security->generateRandomString());
+            return $this->home_dir_name;
+        }
+        return $this->home_dir_name;
+    }
+    public function getHomeDir(){
+        return Url::to('@users_dir').'/'.$this->getHomeDirName();
+    }
+    
+    public function upload()
+    {
+        if ($this->validate()) {
+            $this->home_dir = Yii::getAlias('@users_dir_path').'/'.$this->getHomeDirName();
+            if(!is_dir($this->home_dir)){
+                mkdir($this->home_dir.'/images', 775, true);
+            }
+            $this->avatar_file->saveAs($this->home_dir.'/images/'.self::AVATAR_FILE, false);
+            return true;
+        }else {
+            return false;
         }
     }
 }

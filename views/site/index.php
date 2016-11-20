@@ -21,9 +21,6 @@ $this->title = Yii::$app->name;
                             Ache onde guardar sua bike
                         </li>
                         <li class="top-buffer-4">
-                            Crie Eventos
-                        </li>
-                        <li class="top-buffer-4">
                             Compartilhe rotas
                         </li>
                     </ul>
@@ -31,12 +28,12 @@ $this->title = Yii::$app->name;
             </div>
     </div>
     <div id="login-form-container" class="container">
-        <a name="site-signup_form" href="#site-signup_form"></a><h3 class="col-md-offset-1 text-hint"> Crie sua conta:</h3>
+        <a name="site-signup-form" href="#site-signup-form"></a><h3 class="col-md-offset-1 text-hint"> Crie sua conta:</h3>
             <div class="row top-buffer-5">
                 <div class="col-md-12">
                    <?php
                         if(Yii::$app->user->isGuest){
-                            echo $this->renderFile('@app/views/site/_form_signup.php', ['form_number' => 2, 'route'=>Url::to(['/site'])]);
+                            echo $this->renderFile('@app/views/site/_form_signup.php', ['user'=>$user, 'form_number' => 2, 'route'=>Url::to(['/site'])]);
                         }
                     ?>
                 </div>

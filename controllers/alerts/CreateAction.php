@@ -16,11 +16,11 @@ class CreateAction extends Action
     {
         
         $alert = new Alerts(['scenario'=>Alerts::SCENARIO_CREATE]);
-        $this->isAjax = \Yii::$app->request->post('isAjax');
+        $this->isAjax = \Yii::$app->request->isAjax;
         
         $alert->attributes = Yii::$app->request->post('Alerts');
         $alert->created_date = date('Y-m-d H:i:s');
-       
+        die;
         $alert_type = AlertTypes::findOne($alert->type_id);
         $alert_user = Users::findOne($alert->user_id);
         
