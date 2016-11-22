@@ -16,8 +16,9 @@ use yii\web\UploadedFile;
  * @property integer $capacity
  * @property integer $used_capacity
  * @property integer $user_id
- *
+ * @property string $geom
  * @property Users $user
+ * @property string $public_dir_name
  */
 class BikeKeepers extends GeoJSON_ActiveRecord
 {
@@ -25,10 +26,10 @@ class BikeKeepers extends GeoJSON_ActiveRecord
     const SCENARIO_CREATE = 'create';
     
     /**
-     * Armazena em runtime as multimédias relacionadas ao model BikeKeepers
+     * Armazena em runtime as multimedias relacionadas ao model BikeKeepers
      * @var array Multimedias models 
      */
-    public $multimidias;
+    public $multimedias;
     
     /**
      *  Variável auxiliar para upload de arquivos
@@ -55,7 +56,7 @@ class BikeKeepers extends GeoJSON_ActiveRecord
             [['likes', 'unlikes', 'capacity', 'used_capacity', 'user_id', 'public', 'outdoor', 'enable'], 'integer'],
             [['created_date'], 'safe'],
             [['title'], 'string', 'max' => 40],
-            [['description'], 'string'],
+            [['description','geom'], 'string'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
@@ -65,7 +66,7 @@ class BikeKeepers extends GeoJSON_ActiveRecord
     {
         // verificar se multimedias (manymany relation) pode gerar erro por não ser um atributo(somente em runtime)
         return [
-            self::SCENARIO_CREATE => ['title', 'description', 'multimedia_files', 'capacity', 'user_id', 'geojson_string', 'public', 'outdoor'],
+            self::SCENARIO_CREATE => ['title', 'description', 'multimedia_files', 'capacity', 'user_id', 'geojson_string', 'public', 'outdoor', 'public_dir_name'],
         ];
     }
 
@@ -87,6 +88,7 @@ class BikeKeepers extends GeoJSON_ActiveRecord
             'enable'=>'Ativado',
             'outdoor'=>'Ao ar livre',
             'public'=>'Público',
+            'public_dir_name'=>'Diretório público',
         ];
     }
 
@@ -145,14 +147,26 @@ class BikeKeepers extends GeoJSON_ActiveRecord
         return $this->geojson_array;
     }
     
+    public function getPublicDirName(){
+        if($this->isNewRecord){
+            $this->public_dir_name = md5(Yii::$app->security->generateRandomString());
+            return $this->public_dir_name;
+        }
+        return $this->public_dir_name;
+    }
+    
     public function upload()
     {
-        if ($this->validate()) { 
+        if ($this->validate()) {
+            $this->public_dir = Yii::getAlias('@bike_keepers_dir_path').'/'.$this->getPublicDirName();
+            if(!is_dir($this->public_dir)){
+                mkdir($this->public_dir.'/images', 775, true);
+            }
             foreach ($this->multimidia_files as $file) {
-                $file->saveAs('bike-keepers/' . $file->baseName . '.' . $file->extension);
+                $file->saveAs($this->public_dir.'/id_bikeeper_criptografado/' . $file->baseName . '.' . $file->extension, false);
             }
             return true;
-        } else {
+        }else {
             return false;
         }
     }
