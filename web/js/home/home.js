@@ -144,7 +144,15 @@ L.mapbox.accessToken = map_conf.accessToken;
 
 $(document).ready(function() {
         //Bootstrapping 
-        //
+        
+        //Iniciando componentes
+        $(function () {
+          $('[data-toggle="tooltip"]').tooltip()
+        });
+        $(function () {
+          $('[data-toggle="popover"]').tooltip()
+        });
+        
         //verificando se browser suporta API geolocation
         if (!'geolocation' in navigator) {
             alert('Seu navergador não possui suporte a geolocalização ou está desativada');
