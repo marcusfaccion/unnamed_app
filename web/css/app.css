@@ -116,6 +116,9 @@ a.desc:after {
     -webkit-transform: translateZ(0);
     transform: translateZ(0);
 }
+.hasTooltip{
+    border-bottom: 2px #2AE42A dashed;
+}
 
 .top-buffer-1 { margin-top:5px; }.top-buffer-2 { margin-top:10px; }.top-buffer-3 { margin-top:15px; }
 .top-buffer-4 { margin-top:20px; }.top-buffer-5 { margin-top:25px; }.top-buffer-6 { margin-top:30px; }

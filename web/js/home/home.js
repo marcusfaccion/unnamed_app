@@ -227,3 +227,9 @@ $(document).ready(function() {
         map.on('locationerror', onLocationError);
         map.on('contextmenu', onContextMenuFired);
 });
+
+// Inicializar tooltip em modais
+$('body').on('mousemove', '.modal.in', function(){
+    $('[data-toggle="tooltip"]').tooltip({container: 'body'});
+});
+ 
