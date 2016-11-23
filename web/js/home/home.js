@@ -146,12 +146,9 @@ $(document).ready(function() {
         //Bootstrapping 
         
         //Iniciando componentes
-        $(function () {
-          $('[data-toggle="tooltip"]').tooltip()
-        });
-        $(function () {
-          $('[data-toggle="popover"]').tooltip()
-        });
+        $('[data-toggle="tooltip"]').tooltip({container: 'body'});
+        $('[data-toggle="popover"]').tooltip({container: 'body'});
+        
         
         //verificando se browser suporta API geolocation
         if (!'geolocation' in navigator) {
