@@ -4,6 +4,19 @@ $('body').on('click', 'button.bike-keepers.cancel', function(e){
     $('#home_actions_modal').modal('hide'); 
 });
 
+$('body').on('change', '.bikekeeprs.input_show_trigger', function(e){
+    if(($(this).attr('value'))==1){
+        $('.bikekeeprs-input-hidden'+$(this).attr('data-target-input')).fadeIn('now').removeClass('hide');
+        $('.bikekeeprs-input-hidden'+$(this).attr('data-target-input')+' input').attr('disabled', false);
+    }else{
+        var radio = $(this);
+        $('.bikekeeprs-input-hidden'+$(this).attr('data-target-input')).fadeOut('now', function(){
+            $('.bikekeeprs-input-hidden'+radio.attr('data-target-input')).addClass('hide');
+            $('.bikekeeprs-input-hidden'+radio.attr('data-target-input')+' input').attr('disabled', true);
+        });
+    }
+});
+
 $('body').on('click', 'button.bike-keepers.save', function(e){
    
     // Gerando GeoJSON para salvar geometria

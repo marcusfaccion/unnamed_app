@@ -1,7 +1,7 @@
 <?php
 
 namespace app\controllers;
-
+use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -48,10 +48,10 @@ class BikeKeepersController extends Controller
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
             'create' => [
-                'class' => 'app\controllers\bikeKeepers\CreateAction.php',
+                'class' => 'app\controllers\bikeKeepers\CreateAction',
             ],
             'form' => [
-                'class' => 'app\controllers\bikeKeepers\FormAction.php',
+                'class' => 'app\controllers\bikeKeepers\FormAction',
             ]
         ];
     }
@@ -63,6 +63,7 @@ class BikeKeepersController extends Controller
     public function actionBegin()
     {
         $bike_keeper = new BikeKeepers(['scenario'=>BikeKeepers::SCENARIO_CREATE]);
+        $bike_keeper->user_id = Yii::$app->user->identity->id;
         return $this->renderAjax('begin', ['bike_keeper' => $bike_keeper]);
     }
     /**
