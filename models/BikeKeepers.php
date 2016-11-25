@@ -19,6 +19,7 @@ use yii\web\UploadedFile;
  * @property string $geom
  * @property Users $user
  * @property string $public_dir_name
+ * @property real $cost
  */
 class BikeKeepers extends GeoJSON_ActiveRecord
 {
@@ -66,7 +67,7 @@ class BikeKeepers extends GeoJSON_ActiveRecord
     {
         // verificar se multimedias (manymany relation) pode gerar erro por não ser um atributo(somente em runtime)
         return [
-            self::SCENARIO_CREATE => ['title', 'description', 'multimedia_files', 'capacity', 'user_id', 'geojson_string', 'public', 'outdoor', 'public_dir_name'],
+            self::SCENARIO_CREATE => ['title', 'description', 'multimedia_files', 'capacity', 'cost','user_id', 'geojson_string', 'public', 'outdoor', 'public_dir_name'],
         ];
     }
 
@@ -77,17 +78,19 @@ class BikeKeepers extends GeoJSON_ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Title',
+            'title' => 'Nome',
             'likes' => 'Likes',
             'unlikes' => 'Unlikes',
-            'capacity' => 'Capacity',
+            'capacity' => 'Número de vagas',
+            'cost' => 'Preço',
             'multimedia_files' => 'Multimídea',
             'description' => Yii::t('app', 'Descrição'),
             'used_capacity' => 'Used Capacity',
             'user_id' => 'User ID',
             'enable'=>'Ativado',
             'outdoor'=>'Ao ar livre',
-            'public'=>'Público',
+            'public'=>'É Pago?',
+            'public2'=>'Público',
             'public_dir_name'=>'Diretório público',
         ];
     }
