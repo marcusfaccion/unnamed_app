@@ -1,7 +1,7 @@
 <?php
 
 namespace app\controllers;
-
+use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -18,7 +18,14 @@ class BikeKeepersController extends Controller
                 'only' => ['logout'],
                 'rules' => [
                     [
-                        'actions' => ['index', 'begin', 'form', 'create'],
+                        'actions' => [
+                                        'index', 
+                                        'begin',
+                                        'form',
+                                        'render-popup',
+                                        'get-features',
+                                        'create'
+                            ],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -29,6 +36,8 @@ class BikeKeepersController extends Controller
                 'actions' => [
                     'index' => ['get', 'post'],
                     'begin' => ['get'],
+                    'get-features'=>['get'],
+                    'render-popup' => ['get'],
                     'form' => ['get'],
                     'create' => ['post'],
                     'logout' => ['post'],
@@ -48,11 +57,17 @@ class BikeKeepersController extends Controller
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
             'create' => [
-                'class' => 'app\controllers\bikeKeepers\CreateAction.php',
+                'class' => 'app\controllers\bikeKeepers\CreateAction',
             ],
             'form' => [
-                'class' => 'app\controllers\bikeKeepers\FormAction.php',
-            ]
+                'class' => 'app\controllers\bikeKeepers\FormAction',
+            ],
+            'render-popup' => [
+                'class'=>'app\controllers\bikeKeepers\RenderPopupAction',
+            ],
+             'get-features' => [
+                'class'=>'app\controllers\bikeKeepers\GetFeaturesAction',
+            ],
         ];
     }
     
@@ -63,6 +78,7 @@ class BikeKeepersController extends Controller
     public function actionBegin()
     {
         $bike_keeper = new BikeKeepers(['scenario'=>BikeKeepers::SCENARIO_CREATE]);
+        $bike_keeper->user_id = Yii::$app->user->identity->id;
         return $this->renderAjax('begin', ['bike_keeper' => $bike_keeper]);
     }
     /**

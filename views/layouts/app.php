@@ -30,7 +30,6 @@ AppAsset::register($this);
 </head>
 <body>
 <?php $this->beginBody() ?>
-
 <div class="wrap">
     <?php
     NavBar::begin([
@@ -40,9 +39,9 @@ AppAsset::register($this);
             .Html::img(Url::to(['images/icons/logo_48.png']))
             ."</li>
             <li>
-            <span class='text-white'><strong>".Yii::$app->name."</strong></span>
+            <span class='text-white'><strong>".Yii::$app->name.'</strong></span>
             </li>
-        </ul>",
+        </ul>',
         'brandOptions' => ['class'=>'no-paddings'],
         'brandUrl' => ['/home'],
         'options' => [

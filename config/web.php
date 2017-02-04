@@ -20,6 +20,8 @@ $config = [
         '@marcusfaccion' => '@vendor/marcusfaccion',
         '@users_dir_path' => '@webroot/users',
         '@users_dir' => 'users',
+        '@bike_keepers_dir_path'=>'@webroot/bike-keepers',
+        '@bike_keepers_dir'=>'bike-keepers',
     ],
     'components' => [
         'assetManager' => [
