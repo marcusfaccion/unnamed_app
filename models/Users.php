@@ -42,7 +42,7 @@ class Users extends ActiveRecord implements IdentityInterface
 
     /**
      *
-     * @var string  user directory path
+     * @var string user directory path
      */
     protected $home_dir;
     

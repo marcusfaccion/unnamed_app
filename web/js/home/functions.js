@@ -117,6 +117,7 @@ function generateBikeKeeperMarkerFeature(feature, latlng){
         icon: Icons[feature.properties.type_desc_en],
         title: feature.properties.title,
         alt: feature.properties.type_desc,
+        keyboard: true,
         riseOnHover: true
        });
     }
@@ -148,6 +149,7 @@ function generateUserMarkerFeature(feature, latlng){
         icon: Icons[feature.properties.type_desc_en],
         title: feature.properties.title,
         alt: feature.properties.type_desc,
+        keyboard: true,
         riseOnHover: true
        });
     }

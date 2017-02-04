@@ -17,7 +17,7 @@ var alerts = {
 
 var geoJSON_layer = {
     alerts:{},
-    bike_keeper:{},
+    bike_keepers:{},
 };
 
 var me = {
@@ -144,6 +144,7 @@ L.mapbox.accessToken = map_conf.accessToken;
 
 $(document).ready(function() {
         //Bootstrapping 
+        Loading.show();
         
         //Iniciando componentes
         $(function () {
@@ -168,12 +169,11 @@ $(document).ready(function() {
                             pointToLayer: generateAlertMarkerFeature,
                             onEachFeature: onEachAlertMarkerFeature
                             }).addTo(map);
-        //camada bike_keeper
-       /* geoJSON_layer.bike_keeper = L.geoJson(null,{   
+        //camada bike_keepers
+        geoJSON_layer.bike_keepers = L.geoJson(null,{   
                             pointToLayer: generateBikeKeeperMarkerFeature,
                             onEachFeature: onEachBikeKeeperMarkerFeature
-                            }).addTo(map);*/
-        
+                            }).addTo(map);
         //camada de usuário online
         /*geoJSON_layer.users = L.geoJson(null,{   
                             pointToLayer: generateUserMarkerFeature,
@@ -208,7 +208,7 @@ $(document).ready(function() {
         {
            //overLayers
             'Alertas': geoJSON_layer.alerts,
-            'Guardadores': geoJSON_layer.bike_keeper
+            'Bicicletários': geoJSON_layer.bike_keepers
         },
         {
             position: 'bottomright'
@@ -218,21 +218,29 @@ $(document).ready(function() {
         $.ajax({
             url: 'alerts/get-features',
             type: 'GET',
+            async: false,
             success: function(geojson){
                 geoJSON_layer.alerts.addData(
                         JSON.parse(geojson)
                 );
             }
         });
-       
+        //Plotando Bicicletários
+        $.ajax({
+            url: 'bike-keepers/get-features',
+            type: 'GET',
+            async: false,
+            success: function(geojson){
+                geoJSON_layer.bike_keepers.addData(
+                        JSON.parse(geojson)
+                );
+            }
+        });
+        
         //EventListeners do mapa
         map.on('locationfound', onLocationFound);
         map.on('locationerror', onLocationError);
         map.on('contextmenu', onContextMenuFired);
-});
-
-// Inicializar tooltip em modais
-$('body').on('mousemove', '.modal.in', function(){
-    $('[data-toggle="tooltip"]').tooltip({container: 'body'});
+        Loading.hide();
 });
  

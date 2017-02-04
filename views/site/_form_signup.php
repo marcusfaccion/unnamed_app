@@ -20,7 +20,6 @@ SiteSignupAsset::register($this);
 <?php $user = isset($user)?$user:new Users(['scenario'=>Users::SCENARIO_CREATE]);?>
 
 <div class="site-login col-lg-offset-1">
-    
      <?php $flash_success = Yii::$app->session->getFlash('signup-success'); ?>
     <?php if($flash_success): ?>
     <div id='site-signup-notice' class='alert alert-success alert-dismissible' role='alert'>

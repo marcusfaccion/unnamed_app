@@ -1,4 +1,10 @@
 Icons = {
+    
+    bicicletario: L.mapbox.marker.icon({
+                    'marker-size': 'small',
+                    'marker-symbol': 'parking-garage',
+                    'marker-color': '#351bfc'
+                }),
     interdicoes: L.mapbox.marker.icon({
                     'marker-size': 'small',
                     'marker-symbol': 'roadblock',

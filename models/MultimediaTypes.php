@@ -53,4 +53,17 @@ class MultimediaTypes extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Multimedias::className(), ['type_id' => 'id']);
     }
+    
+    /**
+     * Retorna o id do registro do tipo de multimidea compatível com o mime type passado, senão retorna o id do mime type default (application/octet-stream)
+     * @param string $mime_type
+     * @return int id
+     */
+    public static function getIdByMimeType($mime_type){
+        foreach (static::find()->all() as $type){
+            if(in_array($mime_type, explode(';', $type->mime_types)))
+                    return $type->id;
+        }
+        return 0;
+    }
 }
