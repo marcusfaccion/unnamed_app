@@ -3,6 +3,9 @@
 namespace app\models;
 
 use Yii;
+use marcusfaccion\helpers\String;
+use yii\helpers\Json;
+use app\models\Users;
 use marcusfaccion\db\GeoJSON_ActiveRecord;
 use yii\web\UploadedFile;
 
@@ -39,6 +42,11 @@ class BikeKeepers extends GeoJSON_ActiveRecord
     public $multimedia_files;
     
     /**
+     *  @var string bike_keeper directory path
+     */
+    public $public_dir;
+    
+    /**
      * @inheritdoc
      */
     public static function tableName()
@@ -55,7 +63,7 @@ class BikeKeepers extends GeoJSON_ActiveRecord
             [['title', 'description', 'capacity', 'multimedia_files', 'public', 'outdoor'], 'required', 'on' => self::SCENARIO_CREATE],
             [['multimedia_files'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, jpeg, avi, mp4, webm', 'maxFiles' => 4],
             [['likes', 'unlikes', 'capacity', 'used_capacity', 'user_id', 'public', 'outdoor', 'enable'], 'integer'],
-            [['created_date'], 'safe'],
+            [['created_date', "updated_date"], 'safe'],
             [['title'], 'string', 'max' => 40],
             [['description','geom'], 'string'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['user_id' => 'id']],
@@ -117,42 +125,46 @@ class BikeKeepers extends GeoJSON_ActiveRecord
      * @param array $attributes nomes dos atributos a retornar, se null retornará todos
      * @return type
      */
+    //964429153 rua ceará casa azul 1200, quintal
+    // rua professor lawrence gillot 471 casa 5 1000,00 + luz + iptu
+    // PASSAR o var js selectedLatLng para bike-keepers-geoson-string hidden input (geom)
     public function toFeature($attributes=null) {
-        parent::toFeture();
-        $type = $this->type;
+        parent::toFeture(); 
         $this->geojson_array['geometry'] = Json::decode($this->geojson_string);
         $this->geojson_array['properties'] = $this->getAttributes($attributes);
         
         // propridades adicionais para o marcador do alerta
         $this->geojson_array['properties'] = array_merge($this->geojson_array['properties'],[
-            'type_desc' => $type->description,
-            'type_desc_en' =>  str_replace(' ', '_', String::changeChars(strtolower($type->description), String::PTBR_DIACR_SEARCH, String::PTBR_DIACR_REPLACE)),
+            'type_desc' => 'bicicletario',
+            'type_desc_en' => 'bicicletario',
         ]);
         
-        $this->geojson_array['id'] = strtolower($this->formName()).'_'.$this->type_id."_$this->id";
+        $this->geojson_array['id'] = strtolower($this->formName()).'_'.$this->id;
         return $this->toGeoJSON();
     }
     
     public function toArray(array $fields = [], array $expand = [], $recursive = true) {
         //parent::toArray($fields, $expand, $recursive = true);
-        $type = $this->type;
         $fields = empty($fields)?null:$fields;
         $this->geojson_array['geometry'] = Json::decode($this->geojson_string);
         $this->geojson_array['properties'] = $this->getAttributes($fields); //$this->getAttributes();
         
         // propridades adicionais para o marcador do alerta
         $this->geojson_array['properties'] = array_merge($this->geojson_array['properties'],[
-            'type_desc' => $type->description,
-            'type_desc_en' =>String::changeChars(strtolower($type->description), String::PTBR_DIACR_SEARCH, String::PTBR_DIACR_REPLACE),
+            'type_desc' => 'bicicletario',
+            'type_desc_en' => 'bicicletario',
         ]);
         
-        $this->geojson_array['id'] = strtolower($this->formName()).'_'.$this->type_id."_$this->id";
+        $this->geojson_array['id'] = strtolower($this->formName()).'_'.$this->id;
         return $this->geojson_array;
     }
     
     public function getPublicDirName(){
+        $last_inserted = $last_inserted_id = null;
         if($this->isNewRecord){
-            $this->public_dir_name = md5(Yii::$app->security->generateRandomString());
+            $last_inserted = BikeKeepers::find()->orderBy('id desc')->one();
+            $last_inserted_id = $last_inserted ? $last_inserted->id : 0;
+            $this->public_dir_name = Yii::$app->security->hashData($last_inserted_id+1, Yii::$app->security->getAppSecret());
             return $this->public_dir_name;
         }
         return $this->public_dir_name;
@@ -165,12 +177,39 @@ class BikeKeepers extends GeoJSON_ActiveRecord
             if(!is_dir($this->public_dir)){
                 mkdir($this->public_dir.'/images', 775, true);
             }
-            foreach ($this->multimidia_files as $file) {
-                $file->saveAs($this->public_dir.'/id_bikeeper_criptografado/' . $file->baseName . '.' . $file->extension, false);
+            foreach ($this->multimedia_files as $file) {
+                $multimedia = new Multimedias;
+                $multimedia->type_id = MultimediaTypes::getIdByMimeType($file->type);
+                $multimedia->created_date = date('Y-m-d H:i:s');
+                $saved = $file->saveAs($this->public_dir.'/images/' . $file->baseName . '.' . $file->extension, false);
+                if($saved){
+                    $multimedia->src = $this->public_dir.'/images/' . $file->baseName . '.' . $file->extension;
+                    if($multimedia->save())
+                        $this->multimedias[] = $multimedia;
+                    else{
+                        unset($this->multimedia_files);
+                        unlink($multimedia->src);
+                    }
+                }
             }
             return true;
         }else {
             return false;
         }
+    }
+    
+    public function beforeSave($insert) {
+        if (parent::beforeSave($insert)) {
+            //$this->geom = (new \yii\db\Query)->select("ST_SetSRID(ST_GeomFromGeoJSON('$this->geom'),$this->srid)")->scalar();
+            $this->geom = Yii::$app->db->createCommand("SELECT ST_SetSRID(ST_GeomFromGeoJSON('$this->geojson_string'),$this->srid)")->queryScalar();
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public function afterFind(){
+        $this->geojson_string = Yii::$app->db->createCommand("SELECT ST_AsGeoJSON('$this->geom')")->queryScalar();
+        $this->geojson_array = $this->toArray();
     }
 }

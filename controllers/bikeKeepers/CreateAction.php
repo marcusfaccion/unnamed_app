@@ -3,6 +3,7 @@ namespace app\controllers\bikeKeepers;
 
 use Yii;
 use yii\base\Action;
+use yii\web\UploadedFile;
 use app\models\BikeKeepers;
 use app\models\Users;
 use marcusfaccion\helpers\String;
@@ -18,17 +19,19 @@ class CreateAction extends Action
         $this->isAjax = \Yii::$app->request->isAjax;
         
         $bike_keeper->attributes = Yii::$app->request->post('BikeKeepers');
+        $bike_keeper->multimedia_files = UploadedFile::getInstances($bike_keeper, 'multimedia_files');
         $bike_keeper->created_date = date('Y-m-d H:i:s');
         $bike_keeper_user = Users::findOne($bike_keeper->user_id);
         
         if($bike_keeper->upload()){
-           $bike_keeper->save(); 
-            Yii::$app->session->setFlash('successfully-saved-bikeKeepers', 'Bicicletário salvo com sucesso!');
+           if($bike_keeper->save()){ 
+            Yii::$app->session->setFlash('successfully-saved-bike_keeper', 'Bicicletário salvo com sucesso!');
             if($this->isAjax){
                return $this->controller->renderAjax('view', ['bike_keeper' => $bike_keeper, 'bike_keeper_user'=>$bike_keeper_user, 'isAjax'=>$this->isAjax]);
                \Yii::$app->end(0);
             }
             return $this->controller->render('view', ['bike_keeper' => $bike_keeper, 'bike_keeper_user'=>$bike_keeper_user,'isAjax'=>$this->isAjax]);
+           }
         }
         
 //        return ($this->isAjax)? 

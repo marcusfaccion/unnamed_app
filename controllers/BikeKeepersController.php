@@ -18,7 +18,14 @@ class BikeKeepersController extends Controller
                 'only' => ['logout'],
                 'rules' => [
                     [
-                        'actions' => ['index', 'begin', 'form', 'create'],
+                        'actions' => [
+                                        'index', 
+                                        'begin',
+                                        'form',
+                                        'render-popup',
+                                        'get-features',
+                                        'create'
+                            ],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -29,6 +36,8 @@ class BikeKeepersController extends Controller
                 'actions' => [
                     'index' => ['get', 'post'],
                     'begin' => ['get'],
+                    'get-features'=>['get'],
+                    'render-popup' => ['get'],
                     'form' => ['get'],
                     'create' => ['post'],
                     'logout' => ['post'],
@@ -52,7 +61,13 @@ class BikeKeepersController extends Controller
             ],
             'form' => [
                 'class' => 'app\controllers\bikeKeepers\FormAction',
-            ]
+            ],
+            'render-popup' => [
+                'class'=>'app\controllers\bikeKeepers\RenderPopupAction',
+            ],
+             'get-features' => [
+                'class'=>'app\controllers\bikeKeepers\GetFeaturesAction',
+            ],
         ];
     }
     

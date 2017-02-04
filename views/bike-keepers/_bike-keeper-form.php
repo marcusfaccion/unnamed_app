@@ -25,14 +25,15 @@ use kartik\file\FileInput;
     <?php $form = ActiveForm::begin([
              //'action'=>  Url::to(['/bike-keeper/item/create']),
                 'id' =>'bike-keepers-widget-form',
-                'options' => ['data' => ['pjax' => true]],
+                'options' => ['data' => ['pjax' => true], 'enctype' => 'multipart/form-data'],
                 'method' => 'post',
                 'action' => Url::to('bike-keepers/create'),
                 'fieldConfig' => [
                     'template' => "{label}\n<div class=\"col-lg-8\">{input}</div>\n<div class=\"col-lg-12\">{error}</div>",
                     'labelOptions' => ['class' => 'col-lg-12'],
                 ],
-        ]); ?>
+        ]); 
+    ?>
 
         <?php echo $form->field($bike_keeper, 'title', ['options' =>['class'=>'col-lg-offset-1']])->textInput(['autofocus'=>true]);?>
         <?php echo $form->field($bike_keeper, 'description',['options' => ['class'=>'col-lg-offset-1'],'template' => "<div class='col-lg-12 top-buffer-3 bottom-buffer-2'>{label}<span class='glyphicon glyphicon-info-sign'></span></div>\n<div class='col-lg-8'>{input}</div>\n<div class='col-lg-12'>{error}</div>", 'labelOptions'=>['class'=>'hasTooltip', 'data-toggle'=>'tooltip', 'data-placement'=>'right', 'title'=>'Informações sobre o bicicletário, dicas de localização, ponto de referência, horário de funcionamento...']])->textArea(['class' => 'wide-12 form-control']);?>
@@ -53,11 +54,11 @@ use kartik\file\FileInput;
                 <div class="col-lg-4"><div class="help-block"></div></div>
         </div>*/?>
         <?php echo $form->field($bike_keeper, 'outdoor', ['template' => "<div class='col-lg-12 top-buffer-3 bottom-buffer-2'>{label}<span class='glyphicon glyphicon-info-sign'></span></div>\n<div class='col-lg-8'>{input}</div>\n<div class='col-lg-12'>{error}</div>", 'labelOptions'=>['class'=>'hasTooltip', 'data-toggle'=>'tooltip', 'data-placement'=>'right', 'title'=>'O bicicletário é localizado ao ar livre?'],  'options'=>['class'=>'col-lg-offset-1']])->radioList([1=>'Sim',0=>'Não']); ?>
-        <?php echo $form->field($bike_keeper, 'multimedia_files[]', ['template' => "<div class='col-lg-12 top-buffer-3'>{label}<span class='glyphicon glyphicon-info-sign'></span></div>\n<div class='col-lg-8'>{input}</div>\n<div class='col-lg-12'>{error}</div>", 'labelOptions'=>['class'=>'hasTooltip', 'data-toggle'=>'tooltip', 'data-placement'=>'right', 'title'=>'Inclua fotos ou vídeos que identifiquem o local'],  'options'=>['class'=>'col-lg-offset-1']])->widget(FileInput::classname(),  ['options' => ['accept' => 'image/*,video/*', 'multiple'=>true], 'pluginOptions'=>['showUpload'=>false, 'fileActionSettings'=>['showZoom'=>false],'browseOnZoneClick'=>true, 'language'=>Yii::$app->language, 'allowedFileTypes'=>['image', 'video'], 'maxFileCount'=>5,'browseLabel'=>'Multimidia']]) ?>
+        <?php echo $form->field($bike_keeper, 'multimedia_files[]', ['template' => "<div class='col-lg-12 top-buffer-3'>{label}<span class='glyphicon glyphicon-info-sign'></span></div>\n<div class='col-lg-8'>{input}</div>\n<div class='col-lg-12'>{error}</div>", 'labelOptions'=>['class'=>'hasTooltip', 'data-toggle'=>'tooltip', 'data-placement'=>'right', 'title'=>'Inclua fotos ou vídeos que identifiquem o local'],  'options'=>['class'=>'col-lg-offset-1', 'multiple'=>true]])->widget(FileInput::classname(),  ['options' => ['accept' => 'image/*,video/*', 'multiple'=>true], 'pluginOptions'=>['showUpload'=>false, 'fileActionSettings'=>['showZoom'=>false],'browseOnZoneClick'=>true, 'language'=>Yii::$app->language, 'allowedFileTypes'=>['image', 'video'], 'maxFileCount'=>5,'browseLabel'=>'Multimidia']]) ?>
 
         <?php // Model Alerts ?>
         <?php echo Html::hiddenInput($bike_keeper->formName().'[user_id]', $bike_keeper->user_id);?>
-        <?php echo Html::hiddenInput($bike_keeper->formName().'[geojson_string]', $bike_keeper->geojson_string);?>
+        <?php echo Html::hiddenInput($bike_keeper->formName().'[geojson_string]', $bike_keeper->geojson_string, ['id'=>  strtolower($bike_keeper->formName()).'-geojson-string']);?>
 
         <?php // Define se a requisição é via Ajax   ?>
         <?php echo Html::hiddenInput('isAjax', true, ['class' => 'isAjax','id'=>'bike-keepers-widget-form_isAjax']);?>
