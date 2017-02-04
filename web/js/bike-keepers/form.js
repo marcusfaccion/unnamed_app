@@ -17,13 +17,11 @@ $('body').on('change', '.bikekeeprs.input_show_trigger', function(e){
     }
 });
 
-$('body').on('focus', 'button.bike-keepers.save', function(e){
-   
+$('body').on('focus', 'button.bike-keepers.save', function(e){   
     // Gerando GeoJSON para salvar geometria
     $('#bike-keepers-widget-form').find("input[id='bikekeepers-geojson-string']").val(JSON.stringify(L.marker(selectedlatlng,{}).toGeoJSON().geometry));
     //alert_type_desc = $('#bike-keepers-widget-form').find("input[id='AlertTypes_description']").val();
     isAjax = $('#bike-keepers-widget-form').find('.isAjax').val();
     
 });
-//
-                            
+//                            
