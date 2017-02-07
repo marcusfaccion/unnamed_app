@@ -1,0 +1,21 @@
+{
+  "name": "Bike Social",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Marcus Faccion"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "leaflet-control-geocoder": "^1.5.4"
+  }
+}

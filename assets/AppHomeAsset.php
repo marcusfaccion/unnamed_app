@@ -23,6 +23,7 @@ class AppHomeAsset extends AppAsset
 
     public $depends = [
         'app\assets\AppAsset',
+        'app\assets\LeafletPluginsAsset',
     ];
     
     public $jsOptions = ['position' => \yii\web\View::POS_BEGIN];

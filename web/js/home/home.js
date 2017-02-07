@@ -211,6 +211,21 @@ $(document).ready(function() {
             position: 'bottomright'
         }).addTo(map);
         
+        //Adicionando Controle de Geocoding
+         L.Control.geocoder({
+             collapsed: false,
+             placeholder: 'Destino...',
+             position: 'bottomright',
+             errorMessage: 'Não encontrado.'
+         }).addTo(map);
+        L.Control.geocoder({
+             collapsed: false,
+             placeholder: 'Origem...',
+             position: 'bottomright',
+             errorMessage: 'Não encontrado.'
+         }).addTo(map);
+         
+        
         //Plotando Alertas
         $.ajax({
             url: 'alerts/get-features',
