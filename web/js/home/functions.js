@@ -50,6 +50,31 @@ function onContextMenuFired(e){
     map.openPopup(map_popup_menu);
 }
 
+function onPreclick(e){ 
+     closeNavigationPane();
+}
+
+function openNavigationPane(){
+    if((keepOpenUserNavigationPane==1||keepOpenUserNavigationPane==2) && $('#user-navigation-pane-toggle').children('span').hasClass('glyphicon-chevron-right')){
+        $('#user-navigation-pane-toggle').fadeOut('now');
+        $("#user-navigation-container").animate( {'margin-left' : "0px"}, 400);
+        $('#user-navigation-pane-toggle').children('span').removeClass('glyphicon-chevron-right');
+        $('#user-navigation-pane-toggle').children('span').addClass('glyphicon-chevron-left');
+        $('#user-navigation-pane-toggle').show('now');
+        return true;
+     }
+     return false;
+}
+function closeNavigationPane(){
+    if((keepOpenUserNavigationPane==0||keepOpenUserNavigationPane==2) && $('#user-navigation-pane-toggle').children('span').hasClass('glyphicon-chevron-left')){
+        $("#user-navigation-container").animate( {'margin-left' : "-1000px"}, 400);
+        $('#user-navigation-pane-toggle').children('span').removeClass('glyphicon-chevron-left');
+        $('#user-navigation-pane-toggle').children('span').addClass('glyphicon-chevron-right'); 
+        return true;
+     }
+     return false;
+}
+
 function onCreatedMarkerClick(marker){
     
 }

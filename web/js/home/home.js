@@ -138,6 +138,16 @@ var map_conf = {
             }
 };
 
+/**
+ *  Variavel de controle do painel de Novaegação (Rounting/Geocoding)
+ * @type Boolean
+ * 
+ * 0 - manter fechado
+ * 1 - manter aberto
+ * 2 - indiferente
+ */
+keepOpenUserNavigationPane = 2;
+
 //Configurando o token de acesso a API MapBox
 L.mapbox.accessToken = map_conf.accessToken;
         
@@ -212,7 +222,7 @@ $(document).ready(function() {
         }).addTo(map);
         
         //Adicionando Controle de Geocoding
-         L.Control.geocoder({
+         /*L.Control.geocoder({
              collapsed: false,
              placeholder: 'Destino...',
              position: 'bottomright',
@@ -223,7 +233,7 @@ $(document).ready(function() {
              placeholder: 'Origem...',
              position: 'bottomright',
              errorMessage: 'Não encontrado.'
-         }).addTo(map);
+         }).addTo(map);*/
          
         
         //Plotando Alertas
@@ -249,10 +259,15 @@ $(document).ready(function() {
             }
         });
         
-        //EventListeners do mapa
+        /**
+         * EventListeners do mapa
+         */
+        // Location Events
         map.on('locationfound', onLocationFound);
         map.on('locationerror', onLocationError);
+        // Interaction Events
         map.on('contextmenu', onContextMenuFired);
+        map.on('preclick', onPreclick);
         Loading.hide();
 });
  

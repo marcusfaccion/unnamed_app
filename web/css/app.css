@@ -2,34 +2,32 @@ html,
 body {
     height: 100%;
 }
-
-#geocoding-pane{
+#home-user-menu-navigation{
+    position: fixed;
+    top: 70px;
+    left: 15px;
+    width: 3.5em;
+    height: 3.5em;
+    border-radius: 50%;
+    box-shadow: 0.1em 0.1em #aaa;
+    background-image: url(../images/icons/list_marker_256.png);
+    background-color: white;
+    background-attachment: local;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 3.5em;    
+}
+#user-navigation-container{
     position: fixed;
     top: 57px;
     margin-left: -1000px;
     background-color: white;
     border: 1px solid #bbb;
-    padding: 2px;
     box-shadow: 2px 1px 10px #bbb;
     z-index: 999;
     height: 92%;
     overflow-y: auto;
 }
-#geocoding-pane-toggle{
-    position: fixed;
-    left: 0.1em;
-    top: 6em;
-    height: 3em;
-    width: 1.5em;
-    float: left;
-    padding: 0.8em 1em 0 0;
-    background-color: white;
-    border: 1px solid #bbb;
-    border-left: 0px;
-    border-radius: 0% 20% 20% 0%;
-    z-index: 999;
-}
-
 .wrap {
     min-height: 100%;
     height: auto;
