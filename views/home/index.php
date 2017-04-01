@@ -15,10 +15,10 @@ AppBikeKeepersAsset::register($this);
 ?>
 
 <div id='map'>
-    <div class="app-horizontal-widget">   
-        <div class="gb_hb gb_wf gb_R gb_vf gb_fa">
-            <div class="gb_hc gb_wf gb_R">
-                <div class="gb_ga" guidedhelpid="gbifp" id="gbsfw">
+    <div class="app-horizontal-widget over-map">   
+        <div>
+            <div>
+                <div>
                     <a id='home_btn_friends' role="button" onclick="$('#home_actions_trigger').val($(this).find('span').text()+';friends')" class="btn btn-default home"><span>Amigos</span><span class="badge bg-primary col-md-offset-1"><?=Users::findOne(Yii::$app->user->id)->friends->total?><span/></a>
                     <a id='home_btn_my_location' role="button" title='Ativar localização' class="btn btn-default home"><span class='glyphicon glyphicon-screenshot'></span></a>
                     <?php // <a role="button" onclick="$('#home_actions_trigger').val($(this).find('span').text()+';layers')" class="btn btn-default"><span>Filtros</span></a>?>
@@ -28,12 +28,13 @@ AppBikeKeepersAsset::register($this);
         </div>
     </div>
 </div>
+
 <div id='user-navigation-container' class='pane col-lg-4 col-md-5 col-xs-11'>
     <div class='row'>
         <div id="user-navigation-pane" class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
             <div class="row">
                 <div id="user-navigation-header" class="col-lg-12">
-                    <ul class="list-unstyled">
+                    <?php /* <ul class="list-unstyled">
                       <li>
                         <input type="text" autocomplete="true" name="nav-panel-i-o" placeholder="Origem">
                       </li>
@@ -43,12 +44,18 @@ AppBikeKeepersAsset::register($this);
                      <li>
                         <button class="btn btn-sm btn-default">Pedalar!!!</button>
                      </li>
-                    </ul>
+                    </ul>*/?>
+                    <div id='errors'></div>
+                    <div id='inputs'></div>
                 </div>
               <div id="user-navigation-details" class="col-lg-12">
-                <p>latin lorem psuin
+                <?php /* <p>latin lorem psuin
                 </p><p>latin lorem psuin
-                </p><p>latin lorem psuin</p>
+                </p><p>latin lorem psuin</p> */ ?>
+                 <div id='directions'>
+                      <div id='routes'></div>
+                      <div id='instructions'></div>
+                 </div> 
               </div>
             </div>
         </div>

@@ -20,6 +20,13 @@ var geoJSON_layer = {
     bike_keepers:{},
 };
 
+var directions;
+var directionsLayer;
+var directionsInputControl;
+var directionsErrorsControl;
+var directionsRoutesControl;
+var directionsInstructionsControl;
+
 var me = {
     id: null,
     marker: null,
@@ -85,7 +92,7 @@ var leaflet_style =
 // Área do mapa restrita ao Rio de Janeiro
 // http://www.latlong.net/
 var map_bounding_box = [
-    [-23.112931, -43.816910], // vértice ao Suldoeste
+    [-23.1814717, -44.2253863],// vértice ao Suldoeste 
     [-22.724613, -43.054733]  // vértice ao Nordeste
 ];
 
@@ -137,6 +144,9 @@ var map_conf = {
                    }
             }
 };
+
+//Adicionando Controle de Geocoding
+//var geocoder = L.Control.geocoder().options.geocoder;
 
 /**
  *  Variavel de controle do painel de Novaegação (Rounting/Geocoding)
@@ -197,6 +207,7 @@ $(document).ready(function() {
             }
          ).addTo(map);
        
+       
        //Adicionando Controle de Zoom
         L.control.zoom(
         {
@@ -204,6 +215,30 @@ $(document).ready(function() {
             zoomInTitle: 'Aumentar Zoom',
             zoomOutTitle: 'Diminuir Zoom',
         }).addTo(map);
+        
+        
+        // create the initial directions object, from which the layer
+        // and inputs will pull data.
+        directions = L.mapbox.directions({
+            profile: 'mapbox.cycling',
+            language: 'pt',
+            units: 'metric',
+        });
+
+        directionsLayer = L.mapbox.directions.layer(directions)
+            .addTo(map);
+
+        directionsInputControl = L.mapbox.directions.inputControl('inputs', directions)
+            .addTo(map);
+
+        directionsErrorsControl = L.mapbox.directions.errorsControl('errors', directions)
+            .addTo(map);
+
+        directionsRoutesControl = L.mapbox.directions.routesControl('routes', directions)
+            .addTo(map);
+
+        directionsInstructionsControl = L.mapbox.directions.instructionsControl('instructions', directions)
+            .addTo(map);
         
         //Adicionando Controle de camadas
         L.control.layers(
@@ -215,28 +250,22 @@ $(document).ready(function() {
         {
            //overLayers
             'Alertas': geoJSON_layer.alerts,
-            'Bicicletários': geoJSON_layer.bike_keepers
+            'Bicicletários': geoJSON_layer.bike_keepers,
+            'Rotas': directionsLayer
         },
         {
             position: 'bottomright'
         }).addTo(map);
         
-        //Adicionando Controle de Geocoding
-         /*L.Control.geocoder({
-             collapsed: false,
-             placeholder: 'Destino...',
-             position: 'bottomright',
-             errorMessage: 'Não encontrado.'
-         }).addTo(map);
-        L.Control.geocoder({
-             collapsed: false,
-             placeholder: 'Origem...',
-             position: 'bottomright',
-             errorMessage: 'Não encontrado.'
-         }).addTo(map);*/
-         
-        
-        //Plotando Alertas
+       // Adicionando controle de geocoding (provider nominatim.openstreetmap.org)
+       // plugin by Per Liedman
+       // https://github.com/perliedman/leaflet-control-geocoder
+       L.Control.geocoder({
+           position: 'bottomright',
+           placeholder: 'Digite um local'
+       }).addTo(map);
+       
+       //Plotando Alertas
         $.ajax({
             url: 'alerts/get-features',
             type: 'GET',

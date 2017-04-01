@@ -125,9 +125,6 @@ class BikeKeepers extends GeoJSON_ActiveRecord
      * @param array $attributes nomes dos atributos a retornar, se null retornará todos
      * @return type
      */
-    //964429153 rua ceará casa azul 1200, quintal
-    // rua professor lawrence gillot 471 casa 5 1000,00 + luz + iptu
-    // PASSAR o var js selectedLatLng para bike-keepers-geoson-string hidden input (geom)
     public function toFeature($attributes=null) {
         parent::toFeture(); 
         $this->geojson_array['geometry'] = Json::decode($this->geojson_string);

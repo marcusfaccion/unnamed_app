@@ -16,17 +16,21 @@ body {
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 3.5em;    
+    z-index: 400;
 }
 #user-navigation-container{
     position: fixed;
     top: 57px;
     margin-left: -1000px;
-    background-color: white;
+    background-color: rgba(153, 153, 153, 0.92);
     border: 1px solid #bbb;
     box-shadow: 2px 1px 10px #bbb;
     z-index: 999;
     height: 92%;
     overflow-y: auto;
+}
+.over-map{
+    z-index: 401;
 }
 .wrap {
     min-height: 100%;
@@ -136,7 +140,6 @@ a.desc:after {
     /*right: 20px;*/
     bottom: 0px;
     white-space: nowrap;
-    z-index: 1;
     max-height: 30px;
     -webkit-transform: translateZ(0);
     transform: translateZ(0);

@@ -21,11 +21,8 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/app.css',
         'css/Loading.css',
-        'mapbox.css'
-        //'css/outro.css',
     ];
     public $js = [
-        'mapbox.js',
         'js/app.js',
         'js/helpers.js',
         'js/Loading.js',
