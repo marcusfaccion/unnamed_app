@@ -111,6 +111,7 @@ class SiteController extends Controller
         $user->attributes = Yii::$app->request->post('Users');
         $user->avatar_file = UploadedFile::getInstance($user, 'avatar_file');
         if($user->upload()){
+            $user->full_name = $user->first_name.' '.$user->last_name;
             $user->save();
             Yii::$app->session->setFlash('signup-success','Cadastro feito com sucesso!');
             return $this->redirect(Url::to(['site/index','#'=>'site-signup-form']));

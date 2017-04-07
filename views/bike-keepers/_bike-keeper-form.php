@@ -12,7 +12,7 @@ use app\models\BikeKeepers;
 use marcusfaccion\helpers\String;
 use kartik\file\FileInput;
 ?>
-<?php $this->title = 'Teste1'; ?>
+<?php $this->title = 'Cadastro - Bicicletário'; ?>
 
 <?php Pjax::begin([
         'id' => 'pjax-bike-keepers-widget-form',

@@ -2,6 +2,9 @@ html,
 body {
     height: 100%;
 }
+ul.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
+    z-index: 1050;
+}
 #home-user-menu-navigation{
     position: fixed;
     top: 70px;
@@ -198,6 +201,8 @@ a.desc:after {
 .no-paddings{ padding: 0 !important;} no-bottom-padding{ padding-bottom: 0 !important;} no-top-padding{ padding-top: 0 !important;}
 
 .text-white{ color: #ffffff}
+
+.message p {padding: 15px; border-radius: 5px;}
 
 ul.navbar-nav.navbar-right.nav > li.active > a {
     color: #fff;

@@ -12,6 +12,7 @@ use yii\helpers\Url;
  * @property integer $id
  * @property string $first_name
  * @property string $last_name
+ * @property string $full_name
  * @property string $how_to_be_called
  * @property string $username
  * @property string $email
@@ -58,6 +59,7 @@ class Users extends ActiveRecord implements IdentityInterface
             'answer' => Yii::t('app', 'Resposta'),
             'question' => Yii::t('app', 'Pergunta secreta'),
             'last_name' => Yii::t('app', 'Ultimo Nome'),
+            'last_name' => Yii::t('app', 'Nome Completo'),
             'how_to_be_called' => Yii::t('app', 'Como Ser Chamado'),
             'username' => Yii::t('app', 'Usuário'),
             'email' => Yii::t('app', 'conta de email do usuário'),
@@ -122,7 +124,7 @@ class Users extends ActiveRecord implements IdentityInterface
         return $this->id;
     }
     
-    public function getfriends(){
+    public function getfakefriends(){
         $friends = new \stdClass();
         $friends->total = rand(0, 99);
         return $friends;
@@ -142,7 +144,28 @@ class Users extends ActiveRecord implements IdentityInterface
     public function getAuthKey(){
          return $this->auth_key;
     }
-
+    
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getFriends()
+    {
+        // Usando operador union, para capturar quando usuário é o mandatário da amizade (user_id = id) e quando ele não é (friend_user_id = id)
+        return $this->hasMany(Users::className(), ['id' => 'friend_user_id'])
+            ->viaTable(UserFriendships::tableName(), ['user_id' => 'id'])->union(
+               $this->hasMany(Users::className(), ['id' => 'user_id'])
+            ->viaTable(UserFriendships::tableName(), ['friend_user_id' => 'id'])
+                    );
+    }
+    
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getFriendshipRequests()
+    {
+        return $this->hasMany(UserFriendshipRequests::className(), ['requested_user_id' => 'id']);
+    }
+    
     /**
      * @inheritdoc
      */
@@ -156,6 +179,7 @@ class Users extends ActiveRecord implements IdentityInterface
             ['password_repeat', 'compare', 'compareAttribute' => 'password', 'on'=>self::SCENARIO_CREATE],
             [['signup_date', 'last_access_date'], 'safe'],
             [['first_name', 'last_name'], 'string', 'max' => 50],
+            [['full_name'], 'string', 'max' => 100],
             [['how_to_be_called'], 'string', 'max' => 30],
             [['question','answer'], 'string'],
             [['home_dir'], 'string'],
@@ -217,6 +241,7 @@ class Users extends ActiveRecord implements IdentityInterface
         $this->setavatar(Url::to('@users_dir/'.$this->getHomeDirName().'/images/'.self::AVATAR_FILE));
         return $this->avatar;
     }
+    
     public function setavatar($src=''){
         $this->avatar = $src;
     }

@@ -18,8 +18,8 @@ $config = [
         '@settings' => '@app/modules/settings',
         '@api' => '@app/modules/api',
         '@marcusfaccion' => '@vendor/marcusfaccion',
-        '@users_dir_path' => '@webroot/users',
-        '@users_dir' => 'users',
+        '@users_dir_path' => '@webroot/user-contents',
+        '@users_dir' => 'user-contents',
         '@bike_keepers_dir_path'=>'@webroot/bike-keepers',
         '@bike_keepers_dir'=>'bike-keepers',
     ],
@@ -97,8 +97,8 @@ $config = [
                 \yii\web\Response::FORMAT_JSON => [
                     'class' => 'yii\web\JsonResponseFormatter',
                     'prettyPrint' => YII_DEBUG, // use "pretty" output in debug mode
-                    //'encodeOptions' => JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE,
-                    'encodeOptions' => JSON_UNESCAPED_SLASHES,
+                    'encodeOptions' => JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE,
+                    //'encodeOptions' => JSON_UNESCAPED_SLASHES,
                 ],
             ],
         ],
