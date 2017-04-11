@@ -20,7 +20,11 @@ class HomeController extends Controller
                 'rules' => [
                     [
                         //'controllers' => [],
-                        'actions' => ['index', 'build-popup-menu'],
+                        'actions' => [
+                                        'index',
+                                        'build-popup-menu',
+                                        'get-confirm-message'
+                                    ],
                         'allow' => true,
                         'roles' => ['@'],
                         //'verbs' => ['GET','POST'],
@@ -37,7 +41,8 @@ class HomeController extends Controller
                 'actions' => [
                     'index' => ['get', 'post'],
                     'logout' => ['post'],
-                    'build-popup-menu'=>['get']
+                    'build-popup-menu'=>['get'],
+                    'get-confirm-message'=>['post']
                 ],
             ],
         ];
@@ -55,6 +60,9 @@ class HomeController extends Controller
             ],
             'build-popup-menu' => [
                 'class' => 'app\controllers\home\BuildPopupMenuAction',
+            ],
+            'get-confirm-message' => [
+                'class' => 'app\controllers\home\GetConfirmMessageAction',
             ],
         ];
     }

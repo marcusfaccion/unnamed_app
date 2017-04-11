@@ -26,6 +26,9 @@ class FriendsController extends Controller
                                         'index', 
                                         'begin',
                                         'add',
+                                        'delete',
+                                        'acept-request',
+                                        'decline-request',
                                         'friends-search',
                                         'get-friends'
                             ],
@@ -40,6 +43,9 @@ class FriendsController extends Controller
                     'index' => ['get', 'post'],
                     'begin' => ['get'],
                     'add' => ['post'],
+                    'delete' => ['post'],
+                    'acept-request' => ['post'],
+                    'decline-request' => ['post'],
                     'friends-search' => ['get'],
                     'get-friends' => ['post'],
                 ],
@@ -59,6 +65,15 @@ class FriendsController extends Controller
             ],
             'add' => [
                 'class' => 'app\controllers\friends\AddAction',
+            ],
+            'delete' => [
+                'class' => 'app\controllers\friends\DeleteAction',
+            ],
+            'acept-request' => [
+                'class' => 'app\controllers\friends\AceptRequestAction',
+            ],
+            'decline-request' => [
+                'class' => 'app\controllers\friends\DeclineRequestAction',
             ],
         ];
     }

@@ -4,13 +4,12 @@ use yii\helpers\Html;
 ?>
 <ul class="list-inline list-unstyled">
 <?php foreach($users as $user):?>
-    <li>
+    <li class='col-lg-4'>
         <div>
             <?=Html::img($user->avatar, ['class'=>'img-circle wide-px5-8 tall-px5-8'])?>
         </div>
         <div>
-            <label>Nome:</label>
-            <?=$user->full_name?>
+            <label><?=$user->full_name?></label>
         </div>
         <div>
             <button class="friends save btn btn-xs btn-primary"><strong>Adicionar</strong></button>

@@ -70,6 +70,7 @@ var users = {
 };
 
 var isAjax = false;
+var confirm_message = '';
 
 var selectedlatlng;
 

@@ -84,11 +84,19 @@ class SiteController extends Controller
     public function actionLogin()
     {
         if (!Yii::$app->user->isGuest) {
+            //Atualiza data da ultima visita
+            Yii::$app->user->identity->last_access_date = date('Y-m-d H:i:s');
+            Yii::$app->user->identity->save(false);
+            
             return $this->goHome();
         }
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            //Atualiza data da ultima visita
+            Yii::$app->user->identity->last_access_date = date('Y-m-d H:i:s');
+            Yii::$app->user->identity->save(false);
+            
             return $this->goBack([Yii::$app->homeUrl]);
         }
         return $this->render('login', [
@@ -98,6 +106,10 @@ class SiteController extends Controller
 
     public function actionLogout()
     {
+        //Atualiza data da ultima visita
+        Yii::$app->user->identity->last_access_date = date('Y-m-d H:i:s');
+        Yii::$app->user->identity->save(false);    
+        
         Yii::$app->user->logout();
         return Yii::$app->getResponse()->redirect([Yii::$app->defaultRoute]);
     }  
@@ -112,7 +124,10 @@ class SiteController extends Controller
         $user->avatar_file = UploadedFile::getInstance($user, 'avatar_file');
         if($user->upload()){
             $user->full_name = $user->first_name.' '.$user->last_name;
+            $user->signup_date = date('Y-m-d H:i:s');
             $user->save();
+            //Efetua algumas configurações iniciais (cria views no postgres etc..)
+            $user->initialBootstrap();
             Yii::$app->session->setFlash('signup-success','Cadastro feito com sucesso!');
             return $this->redirect(Url::to(['site/index','#'=>'site-signup-form']));
         }            

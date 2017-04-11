@@ -11,7 +11,7 @@ $config = [
     'homeUrl' =>'home',
     'bootstrap' => ['log'],
     'layout'=>'app',
-    'timeZone' => 'UTC',
+    'timeZone' => 'UTC', //php executes date_default_timezone_set('UTC')
     'defaultRoute' =>'site',
     'aliases' => [
         '@webroot' => '@app/web',
@@ -42,7 +42,7 @@ $config = [
         ],
         'formatter' => [
             'currencyCode' => 'BRL',
-            'dateFormat' => 'dd-MM-yyyy',
+            'dateFormat' => 'dd-MM-yyyy', // ICU format
             'timeFormat' => 'HH:mm:ss',
             'datetimeFormat' => 'dd-MM-yyyy HH:mm:ss',
             'decimalSeparator' => ',',
@@ -51,7 +51,8 @@ $config = [
                 NumberFormatter::MIN_FRACTION_DIGITS => 0,
                 NumberFormatter::MAX_FRACTION_DIGITS => 2,
             ],
-            'timeZone' => 'America/Sao_Paulo',
+           'timeZone' => 'America/Sao_Paulo', // Se não definido, defaultTimeZone será utilizado
+            //'defaultTimeZone'=>'UTC', // o default é UTC
             'thousandSeparator' => ' ',
         ],
         'i18n'=>[
