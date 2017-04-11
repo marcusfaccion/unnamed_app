@@ -3,6 +3,64 @@
 $('body').on('click', 'button.friends.cancel', function(e){
     $('#home_actions_modal').modal('hide'); 
 });
+
+//Friend List tab
+$('body').on('click', 'button.friend-list.delete', function(e){
+    Loading.show();
+    
+    $('#friend-list-message-panel').fadeOut('now', function(){$(this).html('')});
+    
+    $.ajax({
+         url: "friends/delete",
+         type: "POST",
+         data: {UserFriendships : {friend_user_id: $(this).next().html()}},
+         success: function (data) {
+                $('#friend-list-message-panel').fadeIn('now', function(){$(this).html(data)});
+         }
+    });
+    $(this).parent().parent().fadeOut('now', function(){$(this).remove()});
+
+    Loading.hide();
+});
+
+//Friend Request tab
+$('body').on('click', 'button.friendship-request.acept', function(e){
+    Loading.show();
+    
+    $('#friendship-request-message-panel').fadeOut('now', function(){$(this).html('')});
+    
+    $.ajax({
+         url: "friends/acept-request",
+         type: "POST",
+         data: {UserFriendships : {friend_user_id: $(this).next().html()}},
+         success: function (data) {
+                $('#friendship-request-message-panel').fadeIn('now', function(){$(this).html(data)});
+         }
+    });
+    $(this).parent().parent().fadeOut('now', function(){$(this).remove()});
+
+    Loading.hide();
+});
+
+$('body').on('click', 'button.friendship-request.decline', function(e){
+    Loading.show();
+    
+    $('#friendship-request-message-panel').fadeOut('now', function(){$(this).html('')});
+    
+    $.ajax({
+         url: "friends/decline-request",
+         type: "POST",
+         data: {UserFriendships : {friend_user_id: $(this).prev().html()}},
+         success: function (data) {
+                $('#friendship-request-message-panel').fadeIn('now', function(){$(this).html(data)});
+         }
+    });
+    $(this).parent().parent().fadeOut('now', function(){$(this).remove()});
+
+    Loading.hide();
+});
+
+//Friend Search tab
 $('body').on('click', 'button.friends.save', function(e){
     Loading.show();
     

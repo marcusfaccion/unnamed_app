@@ -23,12 +23,12 @@ ul.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
 }
 #user-navigation-container{
     position: fixed;
-    top: 57px;
+    top: 3.7em;
     margin-left: -1000px;
     background-color: rgba(153, 153, 153, 0.92);
     border: 1px solid #bbb;
     box-shadow: 2px 1px 10px #bbb;
-    z-index: 999;
+    z-index: 1000;
     height: 92%;
     overflow-y: auto;
 }

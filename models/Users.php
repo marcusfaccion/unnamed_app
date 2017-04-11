@@ -104,6 +104,23 @@ class Users extends ActiveRecord implements IdentityInterface
     }
 
     /**
+     * Executa em batch configurações iniciais no banco de dados e aplicação para o usuário.
+     */
+    public function initialBootstrap(){
+        
+        /* Cria a view user_{user_id}_friends_id noo banco de dados para guardar os user_id de amigos */
+        $row_count = Yii::$app->db->createCommand("
+           CREATE VIEW user_{$this->id}_friends_id AS select  b.friend_user_id id from ".Users::tableName()." a
+           inner join ".UserFriendships::tableName(). " b on (a.id=b.user_id) where a.id = 2
+           union
+           select  b.user_id id from ".Users::tableName()." a inner join ".UserFriendships::tableName()." b on (a.id=b.friend_user_id) where a.id = 2  
+        ")->execute();
+           //...
+           //...
+           //...
+    }
+
+    /**
      * Finds an identity by the given token.
      * @param mixed $token the token to be looked for
      * @param mixed $type the type of the token. The value of this parameter depends on the implementation.

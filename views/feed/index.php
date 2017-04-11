@@ -6,7 +6,7 @@ use yii\web\JsExpression;
 $this->title = 'Apicação Colaborativa para Ciclistas';
 ?>
 
-<h1>Index Feed!</h1>
+<h1>Index Feed!<?=Yii::$app->formatter->asDatetime('now', 'php:Y-m-d H:i:s')?></h1>
 
  <?php
                       echo AutoComplete::widget([

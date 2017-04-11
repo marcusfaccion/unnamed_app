@@ -14,7 +14,7 @@ namespace app\assets;
 class AppFriendsAsset extends AppHomeAsset
 {
     public $js = [
-        'js/friends/form.js',
+        'js/friends/actions.js',
     ];
     
     public $jsOptions = ['position' => \yii\web\View::POS_BEGIN];

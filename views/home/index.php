@@ -31,9 +31,9 @@ AppFriendsAsset::register($this);
     </div>
 </div>
 
-<div id='user-navigation-container' class='pane col-lg-4 col-md-5 col-xs-11'>
+<div id='user-navigation-container' class='pane col-lg-4 col-md-5 col-xs-12'>
     <div class='row'>
-        <div id="user-navigation-pane" class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
+        <div id="user-navigation-pane" class="col-lg-11 col-md-11 col-sm-11 col-xs-10 top-buffer-2">
             <div class="row">
                 <div id="user-navigation-header" class="col-lg-12">
                     <?php /* <ul class="list-unstyled">
@@ -61,7 +61,7 @@ AppFriendsAsset::register($this);
               </div>
             </div>
         </div>
-        <div id='user-navigation-pane-toggle' role='button' class="col-lg-1 col-md-1 col-sm-1 col-xs-1 btn">
+        <div id='user-navigation-pane-toggle' role='button' class="col-lg-1 col-md-1 col-sm-1 col-xs-2 btn">
                 <span class="glyphicon glyphicon-chevron-right"></span>
         </div>
     </div>    

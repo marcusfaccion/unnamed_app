@@ -4,7 +4,7 @@ use app\models\AlertTypes;
 use marcusfaccion\helpers\String;
 ?>
     <div class="alerts-widget-index">
-        <div id='alerts-widget-menu' class="row col-xs-offset-2">
+        <div id='alerts-widget-menu' class="row col-xs-offset-1">
         <?php foreach (AlertTypes::find()->orderBy('id desc')->all() as $alert_type):?>
           <div class="col-xs-6 col-md-4">
                 <div class="row">

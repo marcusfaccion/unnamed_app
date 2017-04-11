@@ -6,12 +6,15 @@ use Yii;
 
 /**
  * This is the model class for table "user_friendships".
- *
+ * @property string $created_date
  * @property integer $user_id
  * @property integer $friend_user_id
  */
 class UserFriendships extends \yii\db\ActiveRecord
 {
+    
+    const SCENARIO_CREATE = 'create';
+    
     /**
      * @inheritdoc
      */
@@ -28,8 +31,17 @@ class UserFriendships extends \yii\db\ActiveRecord
         return [
             [['user_id', 'friend_user_id'], 'required'],
             [['user_id', 'friend_user_id'], 'integer'],
+            [['created_date'], 'safe']
         ];
     }
+    
+    // define os atributos seguros "safe" para massive atribuition via $model->attributes 
+    public function scenarios()
+    {
+        return [
+            self::SCENARIO_CREATE => ['user_id', 'friend_user_id', 'created_date'],
+        ];
+    } 
 
     /**
      * @inheritdoc
@@ -39,6 +51,7 @@ class UserFriendships extends \yii\db\ActiveRecord
         return [
             'user_id' => 'User ID',
             'friend_user_id' => 'Friend User ID',
+            'created_date' => 'Created Date',
         ];
     }
 
