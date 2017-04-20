@@ -9,7 +9,7 @@ use marcusfaccion\helpers\String;
           <div class="col-xs-6 col-md-4">
                 <div class="row">
                     <div class="col-xs-12">
-                        <a class="btn alert-trigger" id="aalert_<?=$alert_type->id?>" ><img src="images/icons/<?php echo String::changeChars($alert_type->iconfileName(), String::PTBR_DIACR_SEARCH, String::PTBR_DIACR_REPLACE);?>"></a>
+                        <a class="btn alert-trigger" id="aalert_<?=$alert_type->id?>" ><img class='img-responsive' src="images/icons/<?php echo String::changeChars($alert_type->iconfileName(), String::PTBR_DIACR_SEARCH, String::PTBR_DIACR_REPLACE);?>"></a>
                     </div>
                     <div class="col-xs-12">
                         <label class="col-md-offset-1"><?php echo $alert_type->description; ?></label>

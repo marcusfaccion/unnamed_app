@@ -20,7 +20,8 @@ class CreateAction extends Action
         
         $alert->attributes = Yii::$app->request->post('Alerts');
         $alert->created_date = date('Y-m-d H:i:s');
-        die;
+        $alert->duration_date = !empty($alert->duration_date) ? Yii::$app->formatter->asDatetime($alert->duration_date, 'yyyy-MM-dd HH:mm:ss'):null;
+        
         $alert_type = AlertTypes::findOne($alert->type_id);
         $alert_user = Users::findOne($alert->user_id);
         
@@ -39,7 +40,7 @@ class CreateAction extends Action
         }
         
         if($this->isAjax){
-             return $alert_type ? $this->controller->renderAjax("_alert-wform-type-". String::changeChars($alert_type_name, String::PTBR_DIACR_SEARCH, String::PTBR_DIACR_REPLACE),
+             return $alert_type ? $this->controller->renderAjax("_alert-form-type-". String::changeChars($alert_type_name, String::PTBR_DIACR_SEARCH, String::PTBR_DIACR_REPLACE),
             ['alert'=>$alert, 'alert_type'=>$alert_type, 'alert_user'=>$alert_user , 'isAjax'=>$this->isAjax]):"ERRO 400";
         }
             

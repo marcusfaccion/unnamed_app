@@ -18,10 +18,11 @@ $config = [
         '@settings' => '@app/modules/settings',
         '@api' => '@app/modules/api',
         '@marcusfaccion' => '@vendor/marcusfaccion',
-        '@users_dir_path' => '@webroot/user-contents',
-        '@users_dir' => 'user-contents',
-        '@bike_keepers_dir_path'=>'@webroot/bike-keepers',
-        '@bike_keepers_dir'=>'bike-keepers',
+        '@bs_public_dir_path' => '@webroot/bs-contents',
+        '@users_dir_path' => '@bs_public_dir_path/users',
+        '@users_dir' => 'bs-contents/users',
+        '@bike_keepers_dir_path'=>'@bs_public_dir_path/bike-keepers',
+        '@bike_keepers_dir'=>'bs-contents/bike-keepers',
     ],
     'components' => [
         'assetManager' => [

@@ -208,3 +208,9 @@ ul.navbar-nav.navbar-right.nav > li.active > a {
     color: #fff;
     background-color: transparent; 
 }
+.required label:after{
+    content: " *" 
+}
+.required .parent-requires label:after{
+    content: " " 
+}

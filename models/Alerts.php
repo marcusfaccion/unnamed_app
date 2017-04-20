@@ -21,6 +21,7 @@ use yii\helpers\Json;
  * @property integer $unlikes
  * @property integer $geometry_id
  * @property string $updated_date
+ * @property string $duration_date
  * @property integer $enable
  *
  * @property Geometries $geometry
@@ -44,10 +45,10 @@ class Alerts extends GeoJSON_ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'description'], 'required', 'on' => self::SCENARIO_CREATE],
+            [['description'], 'required', 'on' => self::SCENARIO_CREATE],
             [['description', 'geom'], 'string'],
             [['type_id', 'user_id', 'likes', 'unlikes', 'enable'], 'integer'],
-            [['created_date', 'updated_date'], 'safe'],
+            [['created_date', 'updated_date', 'duration_date'], 'safe'],
             [['title'], 'string', 'max' => 40],
             [['type_id'], 'exist', 'skipOnError' => true, 'targetClass' => AlertTypes::className(), 'targetAttribute' => ['type_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['user_id' => 'id']],
@@ -58,7 +59,7 @@ class Alerts extends GeoJSON_ActiveRecord
     public function scenarios()
     {
         return [
-            self::SCENARIO_CREATE => ['title', 'description', 'type_id', 'user_id', 'geojson_string'],
+            self::SCENARIO_CREATE => ['title', 'description', 'duration_date', 'type_id', 'user_id', 'geojson_string'],
         ];
     }
     
@@ -78,6 +79,7 @@ class Alerts extends GeoJSON_ActiveRecord
             'unlikes' => Yii::t('app', 'Unlikes'),
             'geom' => Yii::t('app', 'Geometry'),
             'updated_date' => Yii::t('app', 'Updated Date'),
+            'duration_date' => Yii::t('app', 'Duration Date'),
             'enable' => Yii::t('app', 'Ativado'),
         ];
     }

@@ -7,22 +7,49 @@ use yii\bootstrap\Html;
 use yii\widgets\ActiveForm;
 //use yii\helpers\Url;
 use marcusfaccion\helpers\String;
+use dosamigos\datetimepicker\DateTimePicker;
 ?>
 
-<h1 class='col-lg-offset-2'>Interdições</h1>
+<div class="row">
+    <div class="col-lg-12">
+        <h2 class=''>Interdições</h1>
+        <small>* Campos obrigatórios </small>
+    </div>
+</div>
 
 <?php $form = ActiveForm::begin([
          //'action'=>  Url::to(['/alert/item/create']),
             'id' =>'alerts-widget-form',
             'fieldConfig' => [
-                'template' => "{label}\n<div class=\"col-lg-7\">{input}</div>\n<div class=\"col-lg-5\">{error}</div>",
-                'labelOptions' => ['class' => 'col-lg-12'],
+                'template' => "<div class='row top-buffer-1'><div class=\"col-lg-10 col-xs-8\">{label}</div>\n<div class=\"col-lg-10 col-xs-11\">{input}</div>\n<div class=\"col-lg-2 col-xs-8\">{error}</div></div>",
+                'labelOptions' => ['class' => ''],
             ],
     ]); ?>
 
-<?php echo $form->field($alert, 'title', ['options' =>['class'=>'col-lg-offset-2']])->textInput(['autofocus'=>true , 'id'=>$alert->formName().'_title']);?>
+<?php  echo $form->field($alert, 'title', ['options' =>['class'=>'']])->textInput(['autofocus'=>true , 'id'=>$alert->formName().'_title']);?>
 
-<?php echo $form->field($alert, 'description', ['options' => ['class'=>'col-lg-offset-2']])->textArea(['id'=>$alert->formName().'_description', 'class' => 'wide-12 form-control']);?>
+<?=$form->field($alert, 'duration_date', ['options' =>['class'=>'']])->widget(DateTimePicker::className(), [
+    'language' => 'pt-BR',
+    'size' => 'ms',
+    'pickButtonIcon' => 'glyphicon glyphicon-calendar',
+    'clientOptions' => [
+        'todayHighlight'=>true,
+        'autoclose' => true,
+        'todayBtn' => true,
+        'startDate'=>yii::$app->formatter->asDatetime('now'),
+        'format' => 'dd-mm-yyyy hh:ii:ss',
+    ],
+    'clientEvents'=>[
+                'show'=>'function(){}',
+                'hide'=>'function(e){
+                            //Corrige bug do modal
+                            e.currentTarget = div.input-group.date.input-ms;
+                        }',
+                'changeDate'=>'function(){}',
+            ]
+]);
+?>
+<?php echo $form->field($alert, 'description', ['options' => ['class'=>'']])->textArea(['id'=>$alert->formName().'_description', 'class' => 'wide-12 form-control']);?>
 
 <?php // Model Alerts ?>
 <?php echo Html::hiddenInput($alert->formName().'[user_id]', $alert->user_id, ['id'=>$alert->formName().'_user_id']);?>
@@ -43,3 +70,33 @@ use marcusfaccion\helpers\String;
     <?php echo Html::button('Salvar', ['class'=>'btn btn-success alerts save']);?>
 </div>
 <?php $form->end();?>
+<?php /* <div class=" field-<?=strtolower($alert->formName())?>_duration_date required">
+    <label class="col-lg-12" for="<?=strtolower($alert->formName())?>_duration_date"><?=$alert->getAttributeLabel('duration_date')?></label>
+    <div class="col-lg-7">
+        <?php 
+        DateTimePicker::begin([
+            'model' => $alert,
+            'id'=>$alert->formName()."_duration_date",
+            'attribute' => 'duration_date',
+            'language' => 'pt-BR',
+            'size' => 'ms',
+            'pickButtonIcon' => 'glyphicon glyphicon-calendar',
+            'clientOptions' => [
+               // 'autoclose' => true,
+                'todayHighlight'=>true,
+                'startDate'=>yii::$app->formatter->asDatetime('now'),
+                'format' => 'dd-mm-yyyy hh:ii:ss',
+                'todayBtn' => true,
+            ],
+            'clientEvents'=>[
+                'show'=>'function(){}',
+                'hide'=>'function(e){
+                            e.currentTarget = div.input-group.date.input-ms;
+                        }',
+                //'changeDate'=>'function(){$(\'#'.strtolower($alert->formName()).'-duration_date\').datetimepicker(\'hide\')}',
+            ]
+        ]);?>
+        <?php DateTimePicker::end();?>
+    </div>
+    <div class="col-lg-5"><div class="help-block"></div></div>
+</div>*/?>

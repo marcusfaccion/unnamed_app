@@ -71,5 +71,16 @@ class HomeController extends Controller
     {
         return $this->render('index');
     }
-
+  
+    public function beforeAction($action)
+    {
+        parent::beforeAction($action);
+        //Index Bootstrap
+        if($this->action->id=='index'){
+            //Chamada de Store Procedure que desativa alertas vencidos 
+            $row_count = Yii::$app->db->createCommand("SELECT st_alerts_check_duration();")->execute();        
+        }
+        return true;
+    }
+    
 }

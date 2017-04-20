@@ -15,14 +15,14 @@ use marcusfaccion\helpers\String;
          //'action'=>  Url::to(['/alert/item/create']),
             'id' =>'alerts-widget-form',
             'fieldConfig' => [
-                'template' => "{label}\n<div class=\"col-lg-7\">{input}</div>\n<div class=\"col-lg-5\">{error}</div>",
-                'labelOptions' => ['class' => 'col-lg-12'],
+                'template' => "<div class='row top-buffer-1'><div class=\"col-lg-10 col-xs-8\">{label}</div>\n<div class=\"col-lg-10 col-xs-11\">{input}</div>\n<div class=\"col-lg-2 col-xs-8\">{error}</div></div>",
+                'labelOptions' => ['class' => ''],
             ],
     ]); ?>
 
-<?php echo $form->field($alert, 'title', ['options' =>['class'=>'col-lg-offset-2']])->textInput(['autofocus'=>true , 'id'=>$alert->formName().'_title']);?>
+<?php echo $form->field($alert, 'title', ['options' =>['class'=>'']])->textInput(['autofocus'=>true , 'id'=>$alert->formName().'_title']);?>
 
-<?php echo $form->field($alert, 'description', ['options' => ['class'=>'col-lg-offset-2']])->textArea(['id'=>$alert->formName().'_description', 'class' => 'wide-12 form-control']);?>
+<?php echo $form->field($alert, 'description', ['options' => ['class'=>'']])->textArea(['id'=>$alert->formName().'_description', 'class' => 'wide-12 form-control']);?>
 
 <?php // Model Alerts ?>
 <?php echo Html::hiddenInput($alert->formName().'[user_id]', $alert->user_id, ['id'=>$alert->formName().'_user_id']);?>

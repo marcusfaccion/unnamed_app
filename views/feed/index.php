@@ -39,3 +39,34 @@ $this->title = 'Apicação Colaborativa para Ciclistas';
                             ],
                         ]);
                   ?>
+
+
+<?php $alert = new app\models\Alerts();?>
+<div class="col-lg-offset-2 field-<?=strtolower($alert->formName())?>_duration_date required">
+    <label class="col-lg-12" for="<?=strtolower($alert->formName())?>_duration_date"><?=$alert->getAttributeLabel('duration_date')?></label>
+    <div class="col-lg-7">
+        <?php 
+                          dosamigos\datetimepicker\DateTimePicker::begin([
+            'model' => $alert,
+            'id'=>$alert->formName()."_duration_date",
+            'attribute' => 'duration_date',
+            'language' => 'pt-BR',
+            'size' => 'ms',
+            'pickButtonIcon' => 'glyphicon glyphicon-calendar',
+            'clientOptions' => [
+                'autoclose' => true,
+                'todayHighlight'=>true,
+                'startDate'=>yii::$app->formatter->asDatetime('now'),
+                'format' => 'dd-mm-yyyy hh:ii:ss',
+                'todayBtn' => true,
+            ],
+            'clientEvents'=>[
+                'show'=>'function(){alert(\'Mostrar\')}',
+                'changeDate'=>'function(){alert(\'Mostrar2\')}',
+                //'hide'=>'console.log("ok2")',
+            ]
+        ]);?>
+        <?php dosamigos\datetimepicker\DateTimePicker::end();?>
+    </div>
+    <div class="col-lg-5"><div class="help-block"></div></div>
+</div>

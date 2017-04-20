@@ -61,6 +61,8 @@ AppAsset::register($this);
                  ['label' => 'Level 1 - Dropdown B', 'url' => '#'],
             ],
         ],*/
+            ['label' => 'Alertas', 'url' => ['/alerts']],
+            ['label' => 'Bicicletários', 'url' => ['/bike-keepers']],
             ['label' => 'Feed', 'url' => ['/feed']],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
