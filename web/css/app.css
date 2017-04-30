@@ -161,6 +161,16 @@ a.desc:after {
 .bottom-buffer-7 { margin-bottom:35px; }.bottom-buffer-8 { margin-bottom:40px; }.bottom-buffer-9 { margin-bottom:45px; }
 .bottom-buffer-7 { margin-bottom:50px; }.bottom-buffer-8 { margin-bottom:55px; }.bottom-buffer-9 { margin-bottom:60px; }
 
+.left-buffer-1 { margin-left:5px; }.left-buffer-2 { margin-left:10px; }.left-buffer-3 { margin-left:15px; }
+.left-buffer-4 { margin-left:20px; }.left-buffer-5 { margin-left:25px; }.left-buffer-6 { margin-left:30px; }
+.left-buffer-7 { margin-left:35px; }.left-buffer-8 { margin-left:40px; }.left-buffer-9 { margin-left:45px; }
+.left-buffer-10 { margin-left:50px; }.left-buffer-11 { margin-left:55px; }.left-buffer-12 { margin-left:60px; }
+
+.right-buffer-1 { margin-right:5px; }.right-buffer-2 { margin-right:10px; }.right-buffer-3 { margin-right:15px; }
+.right-buffer-4 { margin-right:20px; }.right-buffer-5 { margin-right:25px; }.right-buffer-6 { margin-right:30px; }
+.right-buffer-7 { margin-right:35px; }.right-buffer-8 { margin-right:40px; }.right-buffer-9 { margin-right:45px; }
+.right-buffer-7 { margin-right:50px; }.right-buffer-8 { margin-right:55px; }.right-buffer-9 { margin-right:60px; }
+
 .top-pbuffer-1 { padding-top:5px; }.top-pbuffer-2 { padding-top:10px; }.top-pbuffer-3 { padding-top:15px; }
 .top-pbuffer-4 { padding-top:20px; }.top-pbuffer-5 { padding-top:25px; }.top-pbuffer-6 { padding-top:30px; }
 .top-pbuffer-7 { padding-top:35px; }.top-pbuffer-8 { padding-top:40px; }.top-pbuffer-9 { padding-top:45px; }
@@ -197,6 +207,12 @@ a.desc:after {
 .tsize-1{ font-size: 5px} .tsize-2{ font-size: 9px} .tsize-3{ font-size: 12px} .tsize-4{ font-size: 16px}
 .tsize-5{ font-size: 20px} .tsize-6{ font-size: 24px} .tsize-7{ font-size: 27px} .tsize-8{ font-size: 30px}
 .tsize-9{ font-size: 33px} .tsize-10{ font-size: 35px}
+
+.border-radius-1{border-radius: 2px;} .border-radius-2{border-radius: 5px;}
+.border-radius-3{border-radius: 7px;} .border-radius-4{border-radius: 10px;}
+.border-radius-5{border-radius: 15px;} .border-radius-6{border-radius: 20px;}
+.border-radius-7{border-radius: 25px;} .border-radius-8{border-radius: 30px;}
+.border-radius-9{border-radius: 35px;} .border-radius-10{border-radius: 40px;}
 
 .no-paddings{ padding: 0 !important;} no-bottom-padding{ padding-bottom: 0 !important;} no-top-padding{ padding-top: 0 !important;}
 

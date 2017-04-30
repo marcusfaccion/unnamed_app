@@ -138,20 +138,52 @@ use yii\helpers\Html;
         <p class="bg-primary text-white text-center"><strong><span class="glyphicon glyphicon glyphicon-comment"></span> Comentários</strong></p>
     </div>
 </div>
-<div class="row">
-    <div class="col-lg-12 col-xs-12 popup-comment-container">
-       <div class="col-lg-10 col-xs-10 bg-info">
-         Teste de comentário 2 uhgsf usufggggsd ghsgf
+    
+<div class="row popup-comment-container">
+    <div class="col-lg-12 col-xs-12">
+        <div class="row">
+           <div class=" col-lg-10 col-xs-10 left-buffer-3 bg-info border-radius-3">
+  <div>
+  	<label>Marcus</label>           
+  </div>
+  <div>
+  Teste de comentário 2 uhgsf usufggggsd ghsgf
+  </div>
+  <div class="pull-right right-buffer-1">
+  <i><small class="text-muted">há 10min</small></i>
+  </div>
+</div>
+          
+      </div><div class="row top-buffer-1">
+           <div class=" col-lg-10 col-xs-10 left-buffer-3 bg-info border-radius-3">
+  <div>
+  	<label>Marcus</label>           
+  </div>
+  <div>
+  Teste de comentário 2.5 uhgsf usufggggsd ghsgf
+  </div>
+  <div class="pull-right right-buffer-1">
+  <i><small class="text-muted">há 11min</small></i>
+  </div>
+</div>
+          
       </div>
-      <div class="col-lg-10 col-xs-10 bg-info top-buffer-2">
-         Teste de comentário 2 uhgsf usufggggsd ghsgf
-      </div>
-      <div class="col-lg-10 col-xs-10 bg-info top-buffer-2" style="border-radius: 7px;">
-         Teste de comentário 2 uhgsf usufggggsd ghsgf
-      </div>
-      <div class="col-lg-10 col-xs-10 bg-warning top-buffer-2 pull-right">
-         Teste de comentário 2 uhgsf usufggggsd ghsgf
-      </div>
+<div class="row top-buffer-1">
+  <div class=" col-lg-10 col-xs-10 left-buffer-9 bg-warning border-radius-3" style="">
+  	<div class="text-right">
+  		<label>Marcus</label>           
+  	</div>
+  	<div>
+  	Teste de comentário 3 uhgsf usufggggsd ghsgf
+  	</div>
+  	<div class="pull-left right-buffer-1">
+  		<i><small class="text-muted">há 15min</small></i>
+  	</div>
+  </div>
+          
+</div>
+        
+      
     </div>
 </div>
 
