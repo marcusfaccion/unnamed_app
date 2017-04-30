@@ -74,12 +74,12 @@ class Alerts extends GeoJSON_ActiveRecord
             'description' => Yii::t('app', 'Descrição'),
             'type_id' => Yii::t('app', 'Tipo'),
             'user_id' => Yii::t('app', 'Colaborador'),
-            'created_date' => Yii::t('app', 'Criado em'),
-            'likes' => Yii::t('app', 'Likes'),
-            'dislikes' => Yii::t('app', 'Dislikes'),
-            'geom' => Yii::t('app', 'Geometry'),
-            'updated_date' => Yii::t('app', 'Updated Date'),
-            'duration_date' => Yii::t('app', 'Duration Date'),
+            'created_date' => Yii::t('app', 'Criado'),
+            'likes' => Yii::t('app', 'Curtidas'),
+            'dislikes' => Yii::t('app', 'Descurtidas'),
+            'geom' => Yii::t('app', 'Geometria'),
+            'updated_date' => Yii::t('app', 'Atualizado'),
+            'duration_date' => Yii::t('app', 'Duração'),
             'enable' => Yii::t('app', 'Ativado'),
         ];
     }

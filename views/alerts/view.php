@@ -10,45 +10,56 @@ $this->title = $alert->title;
 ?>
 <div id='alerts-widget-viewer' class="alerts-view">
     
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php $flash_success = Yii::$app->session->getFlash('successfully-saved-alerts'); ?>
-    <?php if($flash_success): ?>
-    <div id='alerts-widget-notice' class='alert alert-success alert-dismissible' role='alert'>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
-        <?=$flash_success?>
-    </div>
-    <?php endif; ?>
-    
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $alert->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $alert->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
+ <div class="row">
+     <div class="col-lg-10 col-xs-11">
+    <h3 class="text-success"><strong>Alerta criado <span class="glyphicon glyphicon-ok-sign text-success"></span></strong></h3>
+     </div>
+  </div> 
 
+    <div class="row top-buffer-2">
+        <div class="col-lg-10 col-xs-11">
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Fechar"><span aria-hidden="true">×</span></button>
+                    <strong><?=Yii::$app->session->hasFlash('successfully-saved-alerts')?Yii::$app->session->getFlash('successfully-saved-alerts'):'Este alerta está publicado!'; ?></strong>
+            </div>
+        </div>    
+    </div> 
+    
+    <div class="row top-buffer-2">
+        <div class="col-lg-10 col-xs-11">
     <?= DetailView::widget([
         'model' => $alert,
         'attributes' => [
-            'id',
-            'title',
+            [
+                'attribute' => 'title',
+                //'label' => '',
+                'visible'=>!empty($alert->title),
+            ],
             'description:ntext',
-            'type_id',
-            'user_id',
-            'created_date',
-            'likes',
-            'dislikes',
-            'updated_date',
-            'geom',
+            [
+                'attribute'=>'type_id',
+                'value'=>$alert->type->description,
+            ],
+            [
+                'attribute'=>'user_id',
+                'value'=>$alert->user->how_to_be_called,
+            ],
+            [
+                'attribute'=>'created_date',
+                //'value'=>$alert->created_date,
+                'format'=>'relativeTime'
+            ],
+            [
+                'attribute'=>'likes',
+                'visible'=>!empty($alert->likes),
+            ],
+            [
+                'attribute'=>'dislikes',
+                'visible'=>!empty($alert->dislikes),
+            ],
         ],
+        'options'=> ['class'=>'table table-condensed table-hover'] 
     ]) ?>
-    <?php // Variável para controle de exibição da mensagem de salvamento dos dados ?>
-    <?php $form = ActiveForm::begin(); ?> 
-    <?=Html::hiddenInput($alert->formName()."[saved]", true, ['class'=>'saved' ,'id'=>$alert->formName().'_saved'])?>
-    <?=Html::hiddenInput($alert->formName()."[id]", $alert->id, ['id'=>$alert->formName().'_id'])?>
-    <?=Html::hiddenInput($alert->formName()."[geojson_string]", $alert->toFeature(), ['id'=>$alert->formName().'_geojson_string'])?>
-    <?php $form->end(); ?>
+    </div>
+   </div>     
 </div>

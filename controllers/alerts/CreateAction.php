@@ -30,7 +30,7 @@ class CreateAction extends Action
         
         if($alert->save()){
             
-            Yii::$app->session->setFlash('successfully-saved-alerts', 'Alerta salvo com sucesso');
+            Yii::$app->session->setFlash('successfully-saved-alerts', 'Seu alerta foi publicado e ajudará outras pessoas a pedalar com segurança!');
             if($this->isAjax){
                // $this->controller->renderAjax('@alerts/views/item/view', ['alert' => $alert, 'isAjax'=>$this->isAjax]);
                return $this->controller->renderAjax('view', ['alert' => $alert, 'alert_type'=>$alert_type, 'alert_user'=>$alert_user, 'isAjax'=>$this->isAjax]);

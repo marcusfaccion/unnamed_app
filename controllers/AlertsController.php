@@ -5,6 +5,7 @@ namespace app\controllers;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
+use app\models\Alerts;
 
 class AlertsController extends Controller
 {   
@@ -23,6 +24,7 @@ class AlertsController extends Controller
                                         'form',
                                         'get-features',
                                         'create',
+                                        'view',
                                         'delete',
                                         'disable',
                                         'enable',
@@ -48,6 +50,7 @@ class AlertsController extends Controller
                     'get-features'=>['get'],
                     'begin' => ['get'],
                     'render-popup' => ['get'],
+                    'view' => ['get','post'],
                     'form' => ['get'],
                     'create' => ['post'],
                     'delete' => ['post'],
@@ -115,6 +118,16 @@ class AlertsController extends Controller
     public function actionBegin()
     {
         return $this->renderAjax('begin');
+    }
+    
+    /**
+     * Renderiza os dados de um alerta
+     * @return string
+     */
+    public function actionView($id)
+    {
+        $alert = Alerts::findOne($id);
+        return $this->render('view', ['alert'=>$alert]);
     }
  
 }
