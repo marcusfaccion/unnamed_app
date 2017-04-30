@@ -40,7 +40,7 @@ $this->title = $bike_keeper->title;
             'created_date',
             'public',
             'likes',
-            'unlikes',
+            'dislikes',
             'updated_date',
             'cost',
         ],

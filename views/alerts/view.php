@@ -40,7 +40,7 @@ $this->title = $alert->title;
             'user_id',
             'created_date',
             'likes',
-            'unlikes',
+            'dislikes',
             'updated_date',
             'geom',
         ],

@@ -9,7 +9,12 @@ use yii\widgets\ActiveForm;
 use marcusfaccion\helpers\String;
 ?>
 
-<h1 class='col-lg-offset-2'>Roubos e Furtos</h1>
+<div class="row">
+    <div class="col-lg-12">
+        <h2>Roubos e Furtos <span class="glyphicon glyphicon-bullhorn"></span></h1>
+        <small>* Campos obrigatórios </small>
+    </div>
+</div>
 
 <?php $form = ActiveForm::begin([
          //'action'=>  Url::to(['/alert/item/create']),

@@ -70,7 +70,38 @@ var users = {
 };
 
 var isAjax = false;
-var confirm_message = '';
+
+/**
+ * Variável para configurações e troca de informações em tempo de execução do js.
+ * @type Object
+ */
+var app = {
+    layers:{
+        alerts: {
+        },
+        bikeKeepers: {
+        },
+        selected: null,
+    },
+    /**
+     * Variável para troca de informação entre as rotinas pré requisição http
+     * @type type
+     */
+    request: {},
+    
+    /**
+    * Variável que armazena o código para tradução da mensagem (i18n)
+    * @type String
+    */
+    message_code: '',
+
+    /**
+     * Variável para armazenar a resposta sim|não do usuário aos pedidos de confirmação
+     * @type Number
+     */
+    user_confirmation: 0,
+}
+
 
 var selectedlatlng;
 

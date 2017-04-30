@@ -202,6 +202,8 @@ a.desc:after {
 
 .text-white{ color: #ffffff}
 
+.bg-default{ color: #fff; background-color: #ccc; border-color: #ddd;}
+
 .message p {padding: 15px; border-radius: 5px;}
 
 ul.navbar-nav.navbar-right.nav > li.active > a {

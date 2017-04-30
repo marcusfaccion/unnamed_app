@@ -22,7 +22,14 @@ class AlertsController extends Controller
                                         'render-popup',
                                         'form',
                                         'get-features',
-                                        'create'
+                                        'create',
+                                        'delete',
+                                        'disable',
+                                        'enable',
+                                        'ilike',
+                                        'idislike',
+                                        'not-exists',
+                                        'exists'
                                     ],
                         'allow' => true,
                         'roles' => ['@'],
@@ -42,7 +49,14 @@ class AlertsController extends Controller
                     'begin' => ['get'],
                     'render-popup' => ['get'],
                     'form' => ['get'],
-                    'create' => ['post']
+                    'create' => ['post'],
+                    'delete' => ['post'],
+                    'disable' => ['post'],
+                    'enable' => ['post'],
+                    'ilike' => ['post'],
+                    'idislike' => ['post'],
+                    'not-exists' => ['post'],
+                    'exists' => ['post']
                 ],
             ],
         ];
@@ -61,6 +75,15 @@ class AlertsController extends Controller
             'create' => [
                 'class'=>'app\controllers\alerts\CreateAction',
             ],
+            'delete' => [
+                'class'=>'app\controllers\alerts\DeleteAction',
+            ],
+            'disable' => [
+                'class'=>'app\controllers\alerts\DisableAction',
+            ],
+            'enable' => [
+                'class'=>'app\controllers\alerts\EnableAction',
+            ],
             'form' => [
                 'class'=>'app\controllers\alerts\FormAction',
             ],
@@ -70,7 +93,18 @@ class AlertsController extends Controller
              'get-features' => [
                 'class'=>'app\controllers\alerts\GetFeaturesAction',
             ],
-            
+             'ilike' => [
+                'class'=>'app\controllers\alerts\IlikeAction',
+            ],
+             'idislike' => [
+                'class'=>'app\controllers\alerts\IdislikeAction',
+            ],
+            'exists' => [
+                'class'=>'app\controllers\alerts\ExistsAction',
+            ],
+            'not-exists' => [
+                'class'=>'app\controllers\alerts\NotExistsAction',
+            ],
         ];
     }
     

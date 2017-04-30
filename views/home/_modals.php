@@ -43,24 +43,28 @@ Modal::begin([
 Modal::end();
 ?>
 
-<?php /* Modal de confirmação universal
+<?php
+/** 
+ * Modal de confirmação universal 
+ */
 Modal::begin([
-    'id' => 'home_actions_confirm_modal',
+    'id' => 'home_confirmation_modal',
     'size' => Modal::SIZE_SMALL,
-    'header' =>"<div class='modal-title'>Confirmação</div>",
-    'footer' =>"<button type='button' class='btn btn-xs btn-danger' >Sim</button>
-        <button type='button' class='btn btn-xs btn-success' data-dismiss='modal'>Não</button>",
+    'header' =>"<div class='modal-title'>Confirmação <span class='glyphicon glyphicon-question-sign'></span></div>",
+    'footer' =>"<button id='yes-confirm' type='button' class='btn btn-xs btn-danger' value='1' data-dismiss='modal'>Sim</button>
+        <button id='no-confirm' type='button' class='btn btn-xs btn-success' value='0' data-dismiss='modal'>Não</button>",
     //'closeButton' => ['dat'],
     'options'=>['class' => 'modal modal-wide'],
     'clientEvents' => [
         'shown.bs.modal'=>  new JsExpression("
-            function(){
+            function(e){
                 var modal = $(this);
                 $.ajax({
                     type: 'POST',
-                    url: 'home/get-confirm-message',
-                    data: {message: confirm_message},
+                    url: 'app/get-confirm-message',
+                    data: {confirm_message: app.message_code},
                     success: function(response){
+                        //retorna com a mensagem
                         modal.find('.modal-body').html(response);
                     }
                 });
@@ -72,8 +76,8 @@ Modal::begin([
                 , [])
     ]
 ]);
-*/ ?>
+?>
 
 <?php
-// Modal::end();
+ Modal::end();
 ?>

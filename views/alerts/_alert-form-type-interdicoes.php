@@ -12,7 +12,7 @@ use dosamigos\datetimepicker\DateTimePicker;
 
 <div class="row">
     <div class="col-lg-12">
-        <h2 class=''>Interdições</h1>
+        <h2>Interdições <span class="glyphicon glyphicon-bullhorn"></span></h1>
         <small>* Campos obrigatórios </small>
     </div>
 </div>

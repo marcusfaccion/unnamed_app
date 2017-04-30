@@ -15,6 +15,7 @@ class AppAlertsAsset extends AppHomeAsset
 {
     public $js = [
         'js/alerts/typesMenu.js',
+        'js/alerts/popup.js',
     ];
     
     public $jsOptions = ['position' => \yii\web\View::POS_BEGIN];

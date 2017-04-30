@@ -12,7 +12,7 @@ use Yii;
  * @property integer $user_sharing_id
  * @property string $text
  * @property integer $likes
- * @property integer $unlikes
+ * @property integer $dislikes
  * @property string $created_date
  * @property string $updated_date
  * @property integer $view_level_id
@@ -38,7 +38,7 @@ class UserFeedings extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'user_sharing_id', 'likes', 'unlikes', 'view_level_id'], 'integer'],
+            [['user_id', 'user_sharing_id', 'likes', 'dislikes', 'view_level_id'], 'integer'],
             [['text'], 'string'],
             [['created_date', 'updated_date'], 'safe'],
             [['user_sharing_id'], 'exist', 'skipOnError' => true, 'targetClass' => UserSharings::className(), 'targetAttribute' => ['user_sharing_id' => 'id']],
@@ -58,7 +58,7 @@ class UserFeedings extends \yii\db\ActiveRecord
             'user_sharing_id' => 'User Sharing ID',
             'text' => 'Text',
             'likes' => 'Likes',
-            'unlikes' => 'Unlikes',
+            'dislikes' => 'Unlikes',
             'created_date' => 'Created Date',
             'updated_date' => 'Updated Date',
             'view_level_id' => 'View Level ID',

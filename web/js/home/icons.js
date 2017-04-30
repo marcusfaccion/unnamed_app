@@ -11,10 +11,10 @@ Icons = {
                     'marker-color': '#FF0000'
                 }),
     roubos_e_furtos:L.icon({
-	iconUrl: 'images/icons/marker_roubos_e_furtos_32.png',
+	iconUrl: 'images/icons/marker_roubos_e_furtos_leaflet.png',
 	//iconRetinaUrl: 'my-icon@2x.pcng',
-	iconSize: [22, 27],
-	iconAnchor: [12, 26],
+	//iconSize: [22, 27],
+	//iconAnchor: [12, 26],
 	//popupAnchor: [-3, -76],
 	//shadowUrl: 'my-icon-shadow.png',
 	//shadowRetinaUrl: 'my-icon-shadow@2x.png',
@@ -26,7 +26,7 @@ Icons = {
         'marker-symbol': 'danger',
         'marker-color': '#FF0000'
     }),
-    outro: L.mapbox.marker.icon({
+    alerta_generico: L.mapbox.marker.icon({
         'marker-size': 'small',
         'marker-symbol': 'embassy',
         'marker-color': '#FF0000'

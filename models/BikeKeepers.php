@@ -15,7 +15,7 @@ use yii\web\UploadedFile;
  * @property integer $id
  * @property string $title
  * @property integer $likes
- * @property integer $unlikes
+ * @property integer $dislikes
  * @property integer $capacity
  * @property integer $used_capacity
  * @property integer $user_id
@@ -62,7 +62,7 @@ class BikeKeepers extends GeoJSON_ActiveRecord
         return [
             [['title', 'description', 'capacity', 'multimedia_files', 'public', 'outdoor'], 'required', 'on' => self::SCENARIO_CREATE],
             [['multimedia_files'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, jpeg, avi, mp4, webm', 'maxFiles' => 4],
-            [['likes', 'unlikes', 'capacity', 'used_capacity', 'user_id', 'public', 'outdoor', 'enable'], 'integer'],
+            [['likes', 'dislikes', 'capacity', 'used_capacity', 'user_id', 'public', 'outdoor', 'enable'], 'integer'],
             [['created_date', "updated_date"], 'safe'],
             [['title'], 'string', 'max' => 40],
             [['description','geom'], 'string'],
@@ -88,7 +88,7 @@ class BikeKeepers extends GeoJSON_ActiveRecord
             'id' => 'ID',
             'title' => 'Nome',
             'likes' => 'Likes',
-            'unlikes' => 'Unlikes',
+            'dislikes' => 'Dislikes',
             'capacity' => 'Número de vagas',
             'cost' => 'Preço',
             'multimedia_files' => 'Multimídea',

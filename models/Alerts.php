@@ -18,7 +18,7 @@ use yii\helpers\Json;
  * @property integer $user_id
  * @property string $created_date
  * @property integer $likes
- * @property integer $unlikes
+ * @property integer $dislikes
  * @property integer $geometry_id
  * @property string $updated_date
  * @property string $duration_date
@@ -47,7 +47,7 @@ class Alerts extends GeoJSON_ActiveRecord
         return [
             [['description'], 'required', 'on' => self::SCENARIO_CREATE],
             [['description', 'geom'], 'string'],
-            [['type_id', 'user_id', 'likes', 'unlikes', 'enable'], 'integer'],
+            [['type_id', 'user_id', 'likes', 'dislikes', 'enable'], 'integer'],
             [['created_date', 'updated_date', 'duration_date'], 'safe'],
             [['title'], 'string', 'max' => 40],
             [['type_id'], 'exist', 'skipOnError' => true, 'targetClass' => AlertTypes::className(), 'targetAttribute' => ['type_id' => 'id']],
@@ -76,7 +76,7 @@ class Alerts extends GeoJSON_ActiveRecord
             'user_id' => Yii::t('app', 'Colaborador'),
             'created_date' => Yii::t('app', 'Criado em'),
             'likes' => Yii::t('app', 'Likes'),
-            'unlikes' => Yii::t('app', 'Unlikes'),
+            'dislikes' => Yii::t('app', 'Dislikes'),
             'geom' => Yii::t('app', 'Geometry'),
             'updated_date' => Yii::t('app', 'Updated Date'),
             'duration_date' => Yii::t('app', 'Duration Date'),
@@ -159,6 +159,44 @@ class Alerts extends GeoJSON_ActiveRecord
         $this->geojson_string = Yii::$app->db->createCommand("SELECT ST_AsGeoJSON('$this->geom')")->queryScalar();
         $this->geojson_array = $this->toArray();
     }
+    
+    public function disable(){
+         $this->enable = 0;
+         return $this->update(false);
+     }
+    
+    public function enable(){
+         $this->enable = 1;
+         return $this->update();
+     }
+    
+    public function addLike(){
+        ++$this->likes;
+        return $this->save(false);
+    }
+    public function delLike(){
+        --$this->likes;
+        return $this->save(false);
+    }
+    public function addDisLike(){
+        ++$this->dislikes;
+        return $this->save(false);
+    }
+    public function delDisLike(){
+        --$this->dislikes;
+        return $this->save(false);
+    }
+    static function iLike($alert_id){
+        $alert = Alerts::findOne($alert_id);
+        ++$alert->likes;
+        return $alert->save(false);
+    }
+    static function iDisLike($alert_id){
+        $alert = Alerts::findOne($alert_id);
+        ++$alert->dislikes;
+        return $alert->save(false);
+    }
+    
 }
 
 

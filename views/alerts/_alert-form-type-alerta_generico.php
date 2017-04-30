@@ -12,7 +12,7 @@ use marcusfaccion\helpers\String;
 
 <div class="row">
     <div class="col-lg-12">
-        <h2 class=''>Outros alertas</h1>
+        <h2>Alerta Genérico <span class="glyphicon glyphicon-bullhorn"></span></h1>
         <small>* Campos obrigatórios </small>
     </div>
 </div>

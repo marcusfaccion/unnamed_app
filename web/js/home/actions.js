@@ -12,3 +12,13 @@ $('body').on('click', '#user-navigation-pane-toggle, #home-user-menu-navigation'
         $('#user-navigation-pane-toggle').children('span').addClass('glyphicon-chevron-right');
     }
 });
+
+// Clique dos botões do Modal de Confirmação
+$('body').on('click', '#no-confirm, #yes-confirm', function(){
+    app.user_confirmation = parseInt($(this).val());
+    
+    // Executa ou não a requisição após a confirmação
+    if(app.user_confirmation){
+        $.ajax(app.request.ajax);
+    }
+});

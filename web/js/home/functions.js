@@ -118,15 +118,24 @@ function generateAlertMarkerFeature(feature, latlng){
 
 function onEachAlertMarkerFeature(feature, layer){
      if (feature.properties) {
-        //layer.bindPopup('<b>Alerta id: </b>'+feature.properties.id );
-        layer.bindPopup(popup.getContentAjax(
-            'alerts/render-popup',
-            {
-                type: 'GET',
-                data: {id: feature.properties.id},
-                async: false,
-            }
-        ));
+        layer.bindPopup(
+            popup.getContentAjax(
+                'alerts/render-popup',
+                {
+                    type: 'GET',
+                    data: {id: feature.properties.id},
+                    async: false,
+                }),
+                { 
+                    maxWidth : popup.maxWidth,
+                    minWidth : popup.minWidth,
+                }
+        );
+        // É necessário atualizar o conteúdo do popup toda vez que o usuário o edita (comentário, like ou deslike ...)
+        layer.on('popupclose', function(e){
+            e.popup.setContent($('#alert-popup-content-'+feature.properties.id).parent().html());
+            e.popup.update();
+        });
      }
 }
 /**
