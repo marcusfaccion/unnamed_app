@@ -2,9 +2,7 @@
 /**
  *  @var $alert Alert model
  */
-use yii\widgets\ActiveForm;
 //use yii\helpers\Url;
-use marcusfaccion\helpers\String;
 use yii\helpers\Html;
 ?>
 
@@ -141,7 +139,7 @@ use yii\helpers\Html;
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-12 col-xs-12">
+    <div class="col-lg-12 col-xs-12 popup-comment-container">
        <div class="col-lg-10 col-xs-10 bg-info">
          Teste de comentário 2 uhgsf usufggggsd ghsgf
       </div>
@@ -156,4 +154,17 @@ use yii\helpers\Html;
       </div>
     </div>
 </div>
+
+<div class="row top-buffer-3">
+    <div class="col-lg-12 col-xs-12">
+      <label>Deixe seu comentário:</label>  
+    </div>
+    <div class="col-lg-12 col-xs-12">
+        <?=Html::textarea('AlertComent[text]', '', ['class'=>'form-control', 'rows'=>3])?>
+    </div>
+    <div class="col-lg-12 col-xs-12 top-buffer-1">
+        <?=Html::button("Comentar <span class='glyphicon glyphicon-ok-circle tsize-4'></span>",['class'=>'btn btn-sm btn-success alert-comment', 'data-loading-text'=>'Enviando...', 'autocomplete'=>'off'])?>
+    </div>
+</div>    
+    
 </div>

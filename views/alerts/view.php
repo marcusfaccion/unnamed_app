@@ -62,4 +62,10 @@ $this->title = $alert->title;
     ]) ?>
     </div>
    </div>     
+    <?php // Variável para controle de exibição da mensagem de salvamento dos dados ?>
+    <?php $form = ActiveForm::begin(); ?> 
+    <?=Html::hiddenInput($alert->formName()."[saved]", true, ['class'=>'saved' ,'id'=>$alert->formName().'_saved'])?>
+    <?=Html::hiddenInput($alert->formName()."[id]", $alert->id, ['id'=>$alert->formName().'_id'])?>
+    <?=Html::hiddenInput($alert->formName()."[geojson_string]", $alert->toFeature(), ['id'=>$alert->formName().'_geojson_string'])?>
+    <?php $form->end(); ?>
 </div>

@@ -216,3 +216,8 @@ ul.navbar-nav.navbar-right.nav > li.active > a {
 .required .parent-requires label:after{
     content: " " 
 }
+
+.popup-comment-container{
+    overflow-y: auto;
+    max-height: 12em;
+}

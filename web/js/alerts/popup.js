@@ -101,7 +101,7 @@ $('body').on('click', '.btn.dislike', function(e){
         }
 });
 
-$('body').on('click', '.alert-exists', function(e){
+$('body').on('click', '.btn.alert-exists', function(e){
         
         var alert_id = $(this).parent().parent().find('.alert-id').val();
         
@@ -141,7 +141,7 @@ $('body').on('click', '.alert-exists', function(e){
         }
 });
 
-$('body').on('click', '.alert-notexists', function(e){
+$('body').on('click', '.btn.alert-notexists', function(e){
     
         var alert_id = $(this).parent().parent().find('.alert-id').val();
         
@@ -182,7 +182,7 @@ $('body').on('click', '.alert-notexists', function(e){
 });
 
 // Deletando um alerta
-$('body').on('click', '.alert-disable', function(e){
+$('body').on('click', '.btn.alert-disable', function(e){
     
         var alert_id = $(this).parent().parent().find('.alert-id').val();
         
@@ -212,4 +212,10 @@ $('body').on('click', '.alert-disable', function(e){
                         $('#home_confirmation_modal').modal('show');
                      } 
                 });
+});
+
+$('body').on('click', '.btn.alert-comment', function(e){
+    var $btn = $(this).button('loading');
+    //'stuffs...ajax...'
+    $btn.button('reset'); 
 });
