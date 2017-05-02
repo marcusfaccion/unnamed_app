@@ -19,14 +19,14 @@ $('body').on('click', 'a.alert-trigger', function(e){
         });
 });
 
-$('body').on('click', 'button.alerts.back', function(e){
+$('body').on('click', 'button.alert-back', function(e){
     preloader.hide('home_actions_alerts_form', 'cicle_ball', '64', function(){
         $('#home_actions_alerts_form').html('');
         preloader.show('alerts-widget-menu', 'cicle_ball', '64');  
     }); 
 });
 
-$('body').on('click', 'button.alerts.save', function(e){
+$('body').on('click', 'button.alert-save', function(e){
    
     // Gerando GeoJSON para salvar geometria
     $('#alerts-widget-form').find("input[id='Alerts_geojson_string']").val(JSON.stringify(L.marker(selectedlatlng,{}).toGeoJSON().geometry));

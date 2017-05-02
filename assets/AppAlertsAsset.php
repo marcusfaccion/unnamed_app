@@ -10,6 +10,7 @@ class AppAlertsAsset extends AppHomeAsset
 {
     public $js = [
        'js/alerts/alerts.js',
+       'js/alerts/actions.js',
 //     'js/home/functions.js',
 //     'js/home/icons.js',
 //     'js/home/actions.js'

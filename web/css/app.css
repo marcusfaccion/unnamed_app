@@ -297,3 +297,10 @@ a.desc:after {
     overflow-y: auto;
     max-height: 12em;
 }
+
+/* Hack para firefox mostrar corretamente a largura do elemento fieldset*/
+@-moz-document url-prefix() {
+    fieldset {
+        display: table-cell;
+    }
+}

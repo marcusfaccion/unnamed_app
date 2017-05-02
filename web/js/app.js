@@ -97,6 +97,9 @@ var app = {
     user:{
         id: null
     },
+    alert:{
+      id: null  
+    },
     /**
      * Variável para armazenar a resposta sim|não do usuário aos pedidos de confirmação
      * @type Number
@@ -152,7 +155,7 @@ var map_conf = {
                attributionControl: false,
                // map.setMaxBounds altera dinâmicamente
                maxBounds: map_bounding_box,
-               maxBoundsViscosity: 1.0, // 1.0 Não permermite usuário fazer um drag para uma área fora do bbox defino para o mapa, 0.0 permite o usuário fazer o drag mas ao soltar ao fazer o drop é feito um setView para o bbox do mapa
+               maxBoundsViscosity: 0.0, // 1.0 Não permermite usuário fazer um drag para uma área fora do bbox defino para o mapa, 0.0 permite o usuário fazer o drag mas ao soltar ao fazer o drop é feito um setView para o bbox do mapa
                worldCopyJump: true,
              },
              url_style: leaflet_style.app_style,

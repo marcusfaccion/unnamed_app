@@ -2,10 +2,12 @@
 
 namespace app\controllers;
 
+use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\Alerts;
+use app\models\Users;
 
 class AlertsController extends Controller
 {   
@@ -26,7 +28,7 @@ class AlertsController extends Controller
                                         'get-features',
                                         'create',
                                         'view',
-                                        'delete',
+                                        'update',
                                         'disable',
                                         'enable',
                                         'ilike',
@@ -56,7 +58,7 @@ class AlertsController extends Controller
                     'view' => ['get','post'],
                     'form' => ['get'],
                     'create' => ['post'],
-                    'delete' => ['post'],
+                    'update' => ['post'],
                     'disable' => ['post'],
                     'enable' => ['post'],
                     'ilike' => ['post'],
@@ -81,8 +83,8 @@ class AlertsController extends Controller
             'create' => [
                 'class'=>'app\controllers\alerts\CreateAction',
             ],
-            'delete' => [
-                'class'=>'app\controllers\alerts\DeleteAction',
+            'update' => [
+                'class'=>'app\controllers\alerts\UpdateAction',
             ],
             'disable' => [
                 'class'=>'app\controllers\alerts\DisableAction',
@@ -123,7 +125,8 @@ class AlertsController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $user = Users::findOne(Yii::$app->user->identity->id);
+        return $this->render('index', ['user'=>$user]);
     }
     
     /**

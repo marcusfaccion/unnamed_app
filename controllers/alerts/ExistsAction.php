@@ -3,7 +3,7 @@ namespace app\controllers\alerts;
 
 use Yii;
 use yii\base\Action;
-use app\models\UserAlertExistence;
+use app\models\UserAlertNonexistence;
 
 class ExistsAction extends Action
 {
@@ -16,7 +16,7 @@ class ExistsAction extends Action
         
         $this->isAjax = \Yii::$app->request->isAjax;
         
-        $alert_existence = UserAlertExistence::findOne(['user_id'=>Yii::$app->user->identity->id,'alert_id'=>Yii::$app->request->post('Alerts')['id']]);
+        $alert_existence = UserAlertNonexistence::findOne(['user_id'=>Yii::$app->user->identity->id,'alert_id'=>Yii::$app->request->post('Alerts')['id']]);
         
         // Usuário informa a existência do alerta após ter dito que não existia
        

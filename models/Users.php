@@ -183,6 +183,31 @@ class Users extends ActiveRecord implements IdentityInterface
         return $this->hasMany(UserFriendshipRequests::className(), ['requested_user_id' => 'id']);
     }
     
+    
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getAlerts()
+    {
+        return $this->hasMany(Alerts::className(), ['user_id' => 'id']);
+    }
+    
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getActiveAlerts()
+    {
+        return $this->hasMany(Alerts::className(), ['user_id' => 'id'])->active();
+    }
+    
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getNonexistentAlerts()
+    {
+        return $this->hasMany(Alerts::className(), ['user_id' => 'id'])->nonexistent();
+    }
+    
     /**
      * @inheritdoc
      */
