@@ -19,7 +19,7 @@ use marcusfaccion\helpers\String;
             <?php endforeach; ?>
        </div>
        <div id="home_actions_alerts_form" class="row col-xs-offset-1 bottom-buffer-5">
-          
+           
        </div>
     </div>
  
