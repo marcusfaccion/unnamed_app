@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use marcusfaccion\helpers\String;
 
 /**
  * This is the model class for table "alerts_types".
@@ -47,6 +48,11 @@ class AlertTypes extends \yii\db\ActiveRecord
             'parent_type_id' => Yii::t('app', 'Parent Type ID'),
         ];
     }
+    
+    public function getmarkerIcon(){
+        return String::changeChars(str_replace(' ', '-', strtolower($this->description)).'2.png',String::PTBR_DIACR_SEARCH,String::PTBR_DIACR_REPLACE);
+    }
+    
     
     /**
      * @inheritdoc

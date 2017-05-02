@@ -11,14 +11,14 @@ use Yii;
  * @property integer $alert_id
  * @property string $created_date
  */
-class UserAlertExistence extends \yii\db\ActiveRecord
+class UserAlertNonexistence extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'user_alert_existence';
+        return 'user_alert_nonexistence';
     }
 
     /**
@@ -47,10 +47,10 @@ class UserAlertExistence extends \yii\db\ActiveRecord
 
     /**
      * @inheritdoc
-     * @return UserAlertExistenceQuery the active query used by this AR class.
+     * @return UserAlertNonexistenceQuery the active query used by this AR class.
      */
     public static function find()
     {
-        return new UserAlertExistenceQuery(get_called_class());
+        return new UserAlertNonexistenceQuery(get_called_class());
     }
 }

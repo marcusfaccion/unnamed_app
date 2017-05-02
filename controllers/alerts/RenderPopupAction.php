@@ -5,7 +5,7 @@ use Yii;
 use yii\base\Action;
 use app\models\Alerts;
 use app\models\UserAlertRates;
-use app\models\UserAlertExistence;
+use app\models\UserAlertNonexistence;
 
 class RenderPopupAction extends Action
 {
@@ -13,7 +13,7 @@ class RenderPopupAction extends Action
     {
         $alert = Alerts::findOne($id);
         $user_rating = UserAlertRates::findOne(['user_id'=>Yii::$app->user->identity->id,'alert_id'=>$id]);
-        $user_alert_existence = UserAlertExistence::findOne(['user_id'=>Yii::$app->user->identity->id,'alert_id'=>$id]);
+        $user_alert_existence = UserAlertNonexistence::findOne(['user_id'=>Yii::$app->user->identity->id,'alert_id'=>$id]);
         return $this->controller->renderAjax('_popup',  ['alert'=>$alert, 'user_avaliation'=>$user_rating, 'user_alert_existence'=>$user_alert_existence]);
     }
 }

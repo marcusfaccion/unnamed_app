@@ -30,5 +30,18 @@ class AlertsQuery extends \yii\db\ActiveQuery
     public function one($db = null)
     {
         return parent::one($db);
+    
+    }    
+    
+    public function active($enable=1)
+    {
+        return $this->andOnCondition(['enable' => $enable]);
     }
+    
+    public function nonexistent()
+    {
+        return $this->join('left join', UserAlertNonexistence::tableName().' uan', 'id=uan.alert_id')
+                ->where('uan.alert_id is not null');
+    }
+    
 }

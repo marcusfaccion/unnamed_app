@@ -7,7 +7,7 @@ namespace app\models;
  *
  * @see UserAlertExistence
  */
-class UserAlertExistenceQuery extends \yii\db\ActiveQuery
+class UserAlertNonexistenceQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {

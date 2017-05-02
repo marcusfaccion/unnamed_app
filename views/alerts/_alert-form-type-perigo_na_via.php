@@ -43,8 +43,8 @@ use marcusfaccion\helpers\String;
 <?php // Define se a requisição é via Ajax   ?>
 <?php echo Html::hiddenInput('isAjax', true, ['class' => 'isAjax','id'=>'alerts-widget-form_isAjax']);?>
 
-<div class="top-buffer-4 col-lg-offset-4 col-lg-12">
-    <?php echo Html::button('Voltar', ['class'=>'btn btn-danger alerts back']);?>
-    <?php echo Html::button('Salvar', ['class'=>'btn btn-success alerts save']);?>
+<div class="top-buffer-2 text-center">
+    <?php echo Html::button('Voltar', ['class'=>'btn btn-danger alert-back']);?>
+    <?php echo Html::button('Salvar', ['class'=>'btn btn-success alert-save']);?>
 </div>
 <?php $form->end();?>

@@ -3,7 +3,7 @@ namespace app\controllers\alerts;
 
 use Yii;
 use yii\base\Action;
-use app\models\UserAlertExistence;
+use app\models\UserAlertNonexistence;
 
 class NotExistsAction extends Action
 {
@@ -18,7 +18,7 @@ class NotExistsAction extends Action
         
         
         // Usuário informa a inexistência
-        $alert_existence = new UserAlertExistence;
+        $alert_existence = new UserAlertNonexistence;
         $alert_existence->user_id = Yii::$app->user->identity->id;
         $alert_existence->alert_id = Yii::$app->request->post('Alerts')['id'];
         $alert_existence->created_date = date('Y-m-d H:i:s');
