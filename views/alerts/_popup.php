@@ -140,50 +140,8 @@ use yii\helpers\Html;
 </div>
     
 <div class="row popup-comment-container">
-    <div class="col-lg-12 col-xs-12">
-        <div class="row">
-           <div class=" col-lg-10 col-xs-10 left-buffer-3 bg-info border-radius-3">
-  <div>
-  	<label>Marcus</label>           
-  </div>
-  <div>
-  Teste de comentário 2 uhgsf usufggggsd ghsgf
-  </div>
-  <div class="pull-right right-buffer-1">
-  <i><small class="text-muted">há 10min</small></i>
-  </div>
-</div>
-          
-      </div><div class="row top-buffer-1">
-           <div class=" col-lg-10 col-xs-10 left-buffer-3 bg-info border-radius-3">
-  <div>
-  	<label>Marcus</label>           
-  </div>
-  <div>
-  Teste de comentário 2.5 uhgsf usufggggsd ghsgf
-  </div>
-  <div class="pull-right right-buffer-1">
-  <i><small class="text-muted">há 11min</small></i>
-  </div>
-</div>
-          
-      </div>
-<div class="row top-buffer-1">
-  <div class=" col-lg-10 col-xs-10 left-buffer-9 bg-warning border-radius-3" style="">
-  	<div class="text-right">
-  		<label>Marcus</label>           
-  	</div>
-  	<div>
-  	Teste de comentário 3 uhgsf usufggggsd ghsgf
-  	</div>
-  	<div class="pull-left right-buffer-1">
-  		<i><small class="text-muted">há 15min</small></i>
-  	</div>
-  </div>
-          
-</div>
-        
-      
+    <div class="col-lg-12 col-xs-12 wrapper">
+        <?php echo Yii::$app->controller->renderPartial('@app/views/alert-comments/_comments', ['alert_comments'=>$alert->comments]);?>
     </div>
 </div>
 
@@ -192,7 +150,7 @@ use yii\helpers\Html;
       <label>Deixe seu comentário:</label>  
     </div>
     <div class="col-lg-12 col-xs-12">
-        <?=Html::textarea('AlertComent[text]', '', ['class'=>'form-control', 'rows'=>3])?>
+        <?=Html::textarea('AlertComments[text]', '', ["id"=>"alert-comments-{$alert->id}","class"=>"form-control alert-comment","placeholder"=>"Escreva aqui seu comentário", 'rows'=>3])?>
     </div>
     <div class="col-lg-12 col-xs-12 top-buffer-1">
         <?=Html::button("Comentar <span class='glyphicon glyphicon-ok-circle tsize-4'></span>",['class'=>'btn btn-sm btn-success alert-comment', 'data-loading-text'=>'Enviando...', 'autocomplete'=>'off'])?>

@@ -7,6 +7,7 @@ use app\models\Users;
 use marcusfaccion\db\GeoJSON_ActiveRecord;
 use marcusfaccion\helpers\String;
 use yii\helpers\Json;
+use app\models\AlertComments;
 
 /**
  * This is the model class for table "alerts".
@@ -98,6 +99,15 @@ class Alerts extends GeoJSON_ActiveRecord
    {
        return $this->hasOne(Users::className(), ['id' => 'user_id']);
    }
+   
+    /**
+    * @return \yii\db\ActiveQuery
+    */
+   public function getComments()
+   {
+       return $this->hasMany(AlertComments::className(), ['alert_id' => 'id']);
+   }
+   
     /**
      * @inheritdoc
      * @return AlertsQuery the active query used by this AR class.

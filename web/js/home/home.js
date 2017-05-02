@@ -94,7 +94,9 @@ var app = {
     * @type String
     */
     message_code: '',
-
+    user:{
+        id: null
+    },
     /**
      * Variável para armazenar a resposta sim|não do usuário aos pedidos de confirmação
      * @type Number
@@ -197,6 +199,13 @@ L.mapbox.accessToken = map_conf.accessToken;
 $(document).ready(function() {
         //Bootstrapping 
         Loading.show();
+        
+        //Inicializando variáveis global
+        /**
+         * ID do usuário logado no sistema
+         * @type intesger
+         */
+        app.user.id = $('#app-user-id').val();
         
         //Iniciando componentes
         $('[data-toggle="tooltip"]').tooltip({container: 'body'});

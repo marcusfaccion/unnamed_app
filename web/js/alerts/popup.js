@@ -216,6 +216,32 @@ $('body').on('click', '.btn.alert-disable', function(e){
 
 $('body').on('click', '.btn.alert-comment', function(e){
     var $btn = $(this).button('loading');
-    //'stuffs...ajax...'
-    $btn.button('reset'); 
+    var alert_comment = $(this).parent().parent().find('textarea.alert-comment').val();
+    var last_comment = $(this).parent().parent().parent().find('.popup-comment-container .wrapper').children().last();
+   
+    alert_comment = alert_comment.trim();
+    if(alert_comment.length==0){
+        $(this).parent().prev().addClass('has-error');
+    }else{
+        $(this).parent().prev().removeClass('has-error');
+        var _this = $(this);
+        $.ajax({
+            url:'alert-comments/create',
+            type: 'POST',
+            data: {
+                AlertComments:{
+                   user_id: app.user.id,
+                   alert_id: _this.parent().parent().children().first().val(),
+                   text: alert_comment,
+                }
+            },
+            success: function(rtn){
+                if(rtn){ // comentário salvo
+                  last_comment.append(rtn).fadeIn('now');
+                  // show mensagem de sucesso ex: small - comentário feito!
+                } 
+            }
+        });
+    }
+    $btn.button('reset');
 });
