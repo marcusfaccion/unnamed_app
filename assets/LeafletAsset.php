@@ -23,6 +23,6 @@ class LeafletAsset extends AssetBundle
 
     public $depends = [
      
-        'app\assets\AppAsset',
+      //  'app\assets\AppAsset',
     ];
 }

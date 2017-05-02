@@ -151,47 +151,78 @@ a.desc:after {
     border-bottom: 2px #2AE42A dashed;
 }
 
+.top-buffer-0 { margin-top:0px; }
 .top-buffer-1 { margin-top:5px; }.top-buffer-2 { margin-top:10px; }.top-buffer-3 { margin-top:15px; }
 .top-buffer-4 { margin-top:20px; }.top-buffer-5 { margin-top:25px; }.top-buffer-6 { margin-top:30px; }
 .top-buffer-7 { margin-top:35px; }.top-buffer-8 { margin-top:40px; }.top-buffer-9 { margin-top:45px; }
 .top-buffer-10 { margin-top:50px; }.top-buffer-11 { margin-top:55px; }.top-buffer-12 { margin-top:60px; }
+.top-buffer-minus-1 { margin-top:-5px; }.top-buffer-minus-2 { margin-top:-10px; }.top-buffer-minus-3 { margin-top:-15px; }
+.top-buffer-minus-4 { margin-top:-20px; }.top-buffer-minus-5 { margin-top:-25px; }.top-buffer-minus-6 { margin-top:-30px; }
+.top-buffer-minus-7 { margin-top:-35px; }.top-buffer-minus-8 { margin-top:-40px; }.top-buffer-minus-9 { margin-top:-45px; }
+.top-buffer-minus-10 { margin-top:-50px; }.top-buffer-minus-11 { margin-top:-55px; }.top-buffer-minus-12 { margin-top:-60px; }
 
+.bottom-buffer-0 { margin-bottom:0px; }
 .bottom-buffer-1 { margin-bottom:5px; }.bottom-buffer-2 { margin-bottom:10px; }.bottom-buffer-3 { margin-bottom:15px; }
 .bottom-buffer-4 { margin-bottom:20px; }.bottom-buffer-5 { margin-bottom:25px; }.bottom-buffer-6 { margin-bottom:30px; }
 .bottom-buffer-7 { margin-bottom:35px; }.bottom-buffer-8 { margin-bottom:40px; }.bottom-buffer-9 { margin-bottom:45px; }
 .bottom-buffer-7 { margin-bottom:50px; }.bottom-buffer-8 { margin-bottom:55px; }.bottom-buffer-9 { margin-bottom:60px; }
+.bottom-buffer-minus1 { margin-bottom:-5px; }.bottom-buffer-minus2 { margin-bottom:-10px; }.bottom-buffer-minus3 { margin-bottom:-15px; }
+.bottom-buffer-minus4 { margin-bottom:-20px; }.bottom-buffer-minus5 { margin-bottom:-25px; }.bottom-buffer-minus6 { margin-bottom:-30px; }
+.bottom-buffer-minus7 { margin-bottom:-35px; }.bottom-buffer-minus8 { margin-bottom:-40px; }.bottom-buffer-minus9 { margin-bottom:-45px; }
+.bottom-buffer-minus7 { margin-bottom:-50px; }.bottom-buffer-minus8 { margin-bottom:-55px; }.bottom-buffer-minus9 { margin-bottom:-60px; }
 
+.left-buffer-0 { margin-left:0px; }
 .left-buffer-1 { margin-left:5px; }.left-buffer-2 { margin-left:10px; }.left-buffer-3 { margin-left:15px; }
 .left-buffer-4 { margin-left:20px; }.left-buffer-5 { margin-left:25px; }.left-buffer-6 { margin-left:30px; }
 .left-buffer-7 { margin-left:35px; }.left-buffer-8 { margin-left:40px; }.left-buffer-9 { margin-left:45px; }
 .left-buffer-10 { margin-left:50px; }.left-buffer-11 { margin-left:55px; }.left-buffer-12 { margin-left:60px; }
+.left-buffer-minus1 { margin-left:-5px; }.left-buffer-minus2 { margin-left:-10px; }.left-buffer-minus3 { margin-left:-15px; }
+.left-buffer-minus4 { margin-left:-20px; }.left-buffer-minus5 { margin-left:-25px; }.left-buffer-minus6 { margin-left:-30px; }
+.left-buffer-minus7 { margin-left:-35px; }.left-buffer-minus8 { margin-left:-40px; }.left-buffer-minus9 { margin-left:-45px; }
+.left-buffer-minus10 { margin-left:-50px; }.left-buffer-minus11 { margin-left:-55px; }.left-buffer-minus12 { margin-left:-60px; }
 
+.right-buffer-0 { margin-right:0px; }
 .right-buffer-1 { margin-right:5px; }.right-buffer-2 { margin-right:10px; }.right-buffer-3 { margin-right:15px; }
 .right-buffer-4 { margin-right:20px; }.right-buffer-5 { margin-right:25px; }.right-buffer-6 { margin-right:30px; }
 .right-buffer-7 { margin-right:35px; }.right-buffer-8 { margin-right:40px; }.right-buffer-9 { margin-right:45px; }
 .right-buffer-7 { margin-right:50px; }.right-buffer-8 { margin-right:55px; }.right-buffer-9 { margin-right:60px; }
+.right-buffer-minus1 { margin-right:-5px; }.right-buffer-minus2 { margin-right:-10px; }.right-buffer-minus3 { margin-right:-15px; }
+.right-buffer-minus4 { margin-right:-20px; }.right-buffer-minus5 { margin-right:-25px; }.right-buffer-minus6 { margin-right:-30px; }
+.right-buffer-minus7 { margin-right:-35px; }.right-buffer-minus8 { margin-right:-40px; }.right-buffer-minus9 { margin-right:-45px; }
+.right-buffer-minus7 { margin-right:-50px; }.right-buffer-minus8 { margin-right:-55px; }.right-buffer-minus9 { margin-right:-60px; }
 
 .top-pbuffer-0 { padding-top:0px;}
 .top-pbuffer-1 { padding-top:5px; }.top-pbuffer-2 { padding-top:10px; }.top-pbuffer-3 { padding-top:15px; }
 .top-pbuffer-4 { padding-top:20px; }.top-pbuffer-5 { padding-top:25px; }.top-pbuffer-6 { padding-top:30px; }
 .top-pbuffer-7 { padding-top:35px; }.top-pbuffer-8 { padding-top:40px; }.top-pbuffer-9 { padding-top:45px; }
-.top-pbuffer-7 { padding-top:50px; }.top-pbuffer-8 { padding-top:55px; }.top-pbuffer-9 { padding-top:60px; }
+.top-pbuffer-minusminus1 { padding-top:-5px; }.top-pbuffer-minusminus2 { padding-top:-10px; }.top-pbuffer-minusminus3 { padding-top:-15px; }
+.top-pbuffer-minusminus4 { padding-top:-20px; }.top-pbuffer-minusminus5 { padding-top:-25px; }.top-pbuffer-minusminus6 { padding-top:-30px; }
+.top-pbuffer-minusminus7 { padding-top:-35px; }.top-pbuffer-minusminus8 { padding-top:-40px; }.top-pbuffer-minusminus9 { padding-top:-45px; }
+
+
 .bottom-pbuffer-0 { padding-bottom:0px;}
 .bottom-pbuffer-1 { padding-bottom:5px; }.bottom-pbuffer-2 { padding-bottom:10px; }.bottom-pbuffer-3 { padding-bottom:15px; }
 .bottom-pbuffer-4 { padding-bottom:20px; }.bottom-pbuffer-5 { padding-bottom:25px; }.bottom-pbuffer-6 { padding-bottom:30px; }
 .bottom-pbuffer-7 { padding-bottom:35px; }.bottom-pbuffer-8 { padding-bottom:40px; }.bottom-pbuffer-9 { padding-bottom:45px; }
-.bottom-pbuffer-7 { padding-bottom:50px; }.bottom-pbuffer-8 { padding-bottom:55px; }.bottom-pbuffer-9 { padding-bottom:60px; }
+.bottom-pbuffer-minus1 { padding-bottom:-5px; }.bottom-pbuffer-minus2 { padding-bottom:-10px; }.bottom-pbuffer-minus3 { padding-bottom:-15px; }
+.bottom-pbuffer-minus4 { padding-bottom:-20px; }.bottom-pbuffer-minus5 { padding-bottom:-25px; }.bottom-pbuffer-minus6 { padding-bottom:-30px; }
+.bottom-pbuffer-minus7 { padding-bottom:-35px; }.bottom-pbuffer-minus8 { padding-bottom:-40px; }.bottom-pbuffer-minus9 { padding-bottom:-45px; }
 
 .left-pbuffer-0 { padding-left:0px;}
 .left-pbuffer-1 { padding-left:5px; }.left-pbuffer-2 { padding-left:10px; }.left-pbuffer-3 { padding-left:15px; }
 .left-pbuffer-4 { padding-left:20px; }.left-pbuffer-5 { padding-left:25px; }.left-pbuffer-6 { padding-left:30px; }
 .left-pbuffer-7 { padding-left:35px; }.left-pbuffer-8 { padding-left:40px; }.left-pbuffer-9 { padding-left:45px; }
-.left-pbuffer-7 { padding-left:50px; }.left-pbuffer-8 { padding-left:55px; }.left-pbuffer-9 { padding-left:60px; }
+.left-pbuffer-minus1 { padding-left:-5px; }.left-pbuffer-minus2 { padding-left:-10px; }.left-pbuffer-minus3 { padding-left:-15px; }
+.left-pbuffer-minus4 { padding-left:-20px; }.left-pbuffer-minus5 { padding-left:-25px; }.left-pbuffer-minus6 { padding-left:-30px; }
+.left-pbuffer-minus7 { padding-left:-35px; }.left-pbuffer-minus8 { padding-left:-40px; }.left-pbuffer-minus9 { padding-left:-45px; }
+
 .right-pbuffer-0 { padding-right:0px;}
 .right-pbuffer-1 { padding-right:5px; }.right-pbuffer-2 { padding-right:10px; }.right-pbuffer-3 { padding-right:15px; }
 .right-pbuffer-4 { padding-right:20px; }.right-pbuffer-5 { padding-right:25px; }.right-pbuffer-6 { padding-right:30px; }
 .right-pbuffer-7 { padding-right:35px; }.right-pbuffer-8 { padding-right:40px; }.right-pbuffer-9 { padding-right:45px; }
-.right-pbuffer-7 { padding-right:50px; }.right-pbuffer-8 { padding-right:55px; }.right-pbuffer-9 { padding-right:60px; }
+.right-pbuffer-minusminus1 { padding-right:-5px; }.right-pbuffer-minusminus2 { padding-right:-10px; }.right-pbuffer-minusminus3 { padding-right:-15px; }
+.right-pbuffer-minusminus4 { padding-right:-20px; }.right-pbuffer-minusminus5 { padding-right:-25px; }.right-pbuffer-minusminus6 { padding-right:-30px; }
+.right-pbuffer-minusminus7 { padding-right:-35px; }.right-pbuffer-minusminus8 { padding-right:-40px; }.right-pbuffer-minusminus9 { padding-right:-45px; }
 
 .wide-1 {width: 5%;} .wide-2 {width: 7%;} .wide-3 {width: 10%;}
 .wide-4 {width: 16%;} .wide-5 {width: 24%;} .wide-6 {width: 36%;}

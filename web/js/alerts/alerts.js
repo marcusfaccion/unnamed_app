@@ -20,8 +20,6 @@ $(document).ready(function() {
         }
         //Inicializando opções de mapa e renderizando
         map = new L.map('map', map_conf.options);
-        
-        //Adicionando a camada geoJSON para renderização dinâmica de geojson Features
         //http://leafletjs.com/examples/geojson/
          
         //camada Alerts
@@ -29,11 +27,7 @@ $(document).ready(function() {
                             pointToLayer: generateAlertMarkerFeature,
                             onEachFeature: onEachAlertMarkerFeature
                             }).addTo(map);
-        //camada bike_keepers
-        geoJSON_layer.bike_keepers = L.geoJson(null,{   
-                            pointToLayer: generateBikeKeeperMarkerFeature,
-                            onEachFeature: onEachBikeKeeperMarkerFeature
-                            }).addTo(map);
+                            
         //camada de usuário online
         /*geoJSON_layer.users = L.geoJson(null,{   
                             pointToLayer: generateUserMarkerFeature,
@@ -59,30 +53,6 @@ $(document).ready(function() {
             zoomOutTitle: 'Diminuir Zoom',
         }).addTo(map);
         
-        
-        // create the initial directions object, from which the layer
-        // and inputs will pull data.
-        directions = L.mapbox.directions({
-            profile: 'mapbox.cycling',
-            language: 'pt',
-            units: 'metric',
-        });
-
-        directionsLayer = L.mapbox.directions.layer(directions)
-            .addTo(map);
-
-        directionsInputControl = L.mapbox.directions.inputControl('inputs', directions)
-            .addTo(map);
-
-        directionsErrorsControl = L.mapbox.directions.errorsControl('errors', directions)
-            .addTo(map);
-
-        directionsRoutesControl = L.mapbox.directions.routesControl('routes', directions)
-            .addTo(map);
-
-        directionsInstructionsControl = L.mapbox.directions.instructionsControl('instructions', directions)
-            .addTo(map);
-        
         //Adicionando Controle de camadas
         L.control.layers(
         {
@@ -91,26 +61,18 @@ $(document).ready(function() {
             'Satélite': L.tileLayer(leaflet_style.satellite)
         },
         {
-           //overLayers
-            'Alertas': geoJSON_layer.alerts,
-            'Bicicletários': geoJSON_layer.bike_keepers,
-            'Rotas': directionsLayer
-        },
+            'Alerts': geoJSON_layer.alerts},
         {
             position: 'bottomright'
         }).addTo(map);
         
-       // Adicionando controle de geocoding (provider nominatim.openstreetmap.org)
-       // plugin by Per Liedman
-       // https://github.com/perliedman/leaflet-control-geocoder
-       L.Control.geocoder({
-           position: 'bottomright',
-           placeholder: 'Digite um local'
-       }).addTo(map);
-       
+
+        //Adicionando a camada geoJSON para renderização dinâmica de geojson Features
+        
        //Plotando Alertas
         $.ajax({
-            url: 'alerts/get-features',
+            url: 'alerts/get-user-features',
+            data: { user_id: app.user.id },
             type: 'GET',
             async: false,
             success: function(geojson){
@@ -119,27 +81,13 @@ $(document).ready(function() {
                 );
             }
         });
-        //Plotando Bicicletários
-        $.ajax({
-            url: 'bike-keepers/get-features',
-            type: 'GET',
-            async: false,
-            success: function(geojson){
-                geoJSON_layer.bike_keepers.addData(
-                        JSON.parse(geojson)
-                );
-            }
-        });
         
         /**
          * EventListeners do mapa
          */
-        // Location Events
-        map.on('locationfound', onLocationFound);
-        map.on('locationerror', onLocationError);
         // Interaction Events
-        map.on('contextmenu', onContextMenuFired);
-        map.on('preclick', onPreclick);
+        //map.on('contextmenu', onContextMenuFired);
+        //map.on('preclick', onPreclick);
         Loading.hide();
 });
  

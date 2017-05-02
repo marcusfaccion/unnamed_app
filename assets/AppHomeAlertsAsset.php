@@ -11,10 +11,11 @@ namespace app\assets;
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
-class AppFriendsAsset extends AppHomeAsset
+class AppHomeAlertsAsset extends AppHomeAsset
 {
     public $js = [
-        'js/friends/actions.js',
+        'js/home-alerts/typesMenu.js',
+        'js/home-alerts/popup.js',
     ];
     
     public $jsOptions = ['position' => \yii\web\View::POS_BEGIN];

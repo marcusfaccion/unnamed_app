@@ -11,10 +11,10 @@ namespace app\assets;
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
-class AppBikeKeepersAsset extends AppHomeAsset
+class AppHomeFriendsAsset extends AppHomeAsset
 {
     public $js = [
-        'js/bike-keepers/form.js',
+        'js/home-friends/actions.js',
     ];
     
     public $jsOptions = ['position' => \yii\web\View::POS_BEGIN];

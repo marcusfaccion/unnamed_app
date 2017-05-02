@@ -1,17 +1,12 @@
 <?php
-/**
- * @link http://www.yiiframework.com/
- * @copyright Copyright (c) 2008 Yii Software LLC
- * @license http://www.yiiframework.com/license/
- */
 
 namespace app\assets;
 
 use yii\web\AssetBundle;
 
 /**
- * @author Qiang Xue <qiang.xue@gmail.com>
- * @since 2.0
+ * @author Marcus Faccion <marcusfaccion@bol.com.br>
+ * @since 1.0
  */
 class AppAsset extends AssetBundle
 {
@@ -24,6 +19,8 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         'js/app.js',
+        'js/functions.js',
+        'js/icons.js',
         'js/helpers.js',
         'js/Loading.js',
     ];
@@ -34,6 +31,8 @@ class AppAsset extends AssetBundle
         //'yii\jui\JuiAsset',
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
+        'app\assets\LeafletAsset',
+        'app\assets\MapboxAsset',
         //'yii\bootstrap\BootstrapPluginAsset',
         //'yii\bootstrap\BootstrapThemeAsset',
     ];

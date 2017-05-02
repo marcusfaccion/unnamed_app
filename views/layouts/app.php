@@ -7,7 +7,7 @@ use yii\helpers\Html;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\helpers\Url;
-use yii\widgets\Breadcrumbs;
+//use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 
 AppAsset::register($this);
@@ -23,7 +23,7 @@ AppAsset::register($this);
     
     <style>
         body { margin:0; padding:0; }
-        #map { position:absolute; top:0; bottom:0; width:100%; }
+        <?=Yii::$app->controller->renderFile(in_array(Yii::$app->controller->id, Yii::$app->params['app.layout.mapOverlay.controllers'])?'@app/web/css/_map-overlay.css':'@app/web/css/_map.css')?>
     </style>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
@@ -88,11 +88,8 @@ echo Html::hiddenInput('App[user_id]',Yii::$app->user->isGuest?null:Yii::$app->u
     ]);
     NavBar::end();
     ?>
-
-    <div class="<?php echo(Yii::$app->controller->id==='home'?'container-fluidMap':'container') ?>">
-        <?= Breadcrumbs::widget([
-            'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
-        ]) ?>
+    <div class="<?php echo(in_array(Yii::$app->controller->id, Yii::$app->params['app.layout.mapOverlay.controllers'])?'container-fluidMap':'container-fluid') ?>">
+        <?php //echo Breadcrumbs::widget([ 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [], ]) ?>
         <?= $content ?>
     </div>
 </div>

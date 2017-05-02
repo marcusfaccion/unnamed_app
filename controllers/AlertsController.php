@@ -19,6 +19,7 @@ class AlertsController extends Controller
                     [
                         //'controllers' => [],
                         'actions' => [
+                                        'index',
                                         'begin',
                                         'render-popup',
                                         'form',
@@ -47,7 +48,9 @@ class AlertsController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
+                    'index'=>['get'],
                     'get-features'=>['get'],
+                    'get-user-features'=>['get'],
                     'begin' => ['get'],
                     'render-popup' => ['get'],
                     'view' => ['get','post'],
@@ -96,6 +99,9 @@ class AlertsController extends Controller
              'get-features' => [
                 'class'=>'app\controllers\alerts\GetFeaturesAction',
             ],
+             'get-user-features' => [
+                'class'=>'app\controllers\alerts\GetUserFeaturesAction',
+            ],
              'ilike' => [
                 'class'=>'app\controllers\alerts\IlikeAction',
             ],
@@ -109,6 +115,15 @@ class AlertsController extends Controller
                 'class'=>'app\controllers\alerts\NotExistsAction',
             ],
         ];
+    }
+    
+    /**
+     * Renderiza a página de gerenciamento de alertas do usuário
+     * @return string
+     */
+    public function actionIndex()
+    {
+        return $this->render('index');
     }
     
     /**
