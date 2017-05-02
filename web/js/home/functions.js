@@ -119,21 +119,28 @@ function generateAlertMarkerFeature(feature, latlng){
 function onEachAlertMarkerFeature(feature, layer){
      if (feature.properties) {
         layer.bindPopup(
-            popup.getContentAjax(
-                'alerts/render-popup',
-                {
-                    type: 'GET',
-                    data: {id: feature.properties.id},
-                    async: false,
-                }),
+            '', //renderiza o conteúdo do popup somente quando ele for aberto para melhorar a performance
                 { 
                     maxWidth : popup.maxWidth,
                     minWidth : popup.minWidth,
                 }
         );
         // É necessário atualizar o conteúdo do popup toda vez que o usuário o edita (comentário, like ou deslike ...)
-        layer.on('popupclose', function(e){
-            e.popup.setContent($('#alert-popup-content-'+feature.properties.id).parent().html());
+//        layer.on('popupclose', function(e){
+//            e.popup.setContent($('#alert-popup-content-'+feature.properties.id).parent().html());
+//            e.popup.update();
+//        });
+        // É necessário atualizar (requisiçáo http xhr) o conteúdo do popup toda vez que este abrir
+        layer.on('popupopen', function(e){
+            e.popup.setContent(
+                popup.getContentAjax(
+                    'alerts/render-popup',
+                    {
+                        type: 'GET',
+                        data: {id: feature.properties.id},
+                        async: false,
+                    })
+                );
             e.popup.update();
         });
      }

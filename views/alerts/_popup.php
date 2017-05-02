@@ -18,17 +18,24 @@ use yii\helpers\Html;
 </div>
 <div class="row">
     <div class="col-lg-12 col-xs-12">
-        <div class="col-lg-6 col-xs-6">
+        <div class="col-lg-3 col-xs-3">
             <label>Avisado:</label>
             <?=Yii::$app->formatter->asRelativeTime($alert->created_date)?>
         </div>
-        <div class="col-lg-6 col-xs-6">
-            <label>Por:</label>
-            <?=$alert->user->how_to_be_called?>
+        <div class="col-lg-3 col-xs-3 right-pbuffer-0">
+            <div class="col-lg-12 col-xs-12">
+                <label>Por:</label>
+            </div>
+            <div class="col-lg-12 col-xs-12">
+                <?=$alert->user->how_to_be_called?>
+            </div>
+        </div>
+        <div class="col-lg-5 col-xs-5 right-pbuffer-0">
+            <?=Html::img($alert->user->avatar, ['class'=>'img-circle wide-px5-7  tall-px5-7'])?>
         </div>
     </div>
 </div>
-<div class="row">
+<div class="row top-buffer-1">
     <div class="col-lg-12 col-xs-12">
         <div class="col-lg-3 col-xs-3">
             <label>Mensagem:</label>
@@ -117,7 +124,7 @@ use yii\helpers\Html;
         <?php endif;?>
         
         <input type="hidden"  class="hidden alert-id" value="<?=$alert->id?>">
-        <div class="col-lg-6 col-xs-6">
+        <div class="col-lg-6 col-xs-6 top-buffer-1">
             <?php if($alert->user_id==Yii::$app->user->identity->id): ?>
                 <a role="button" class="btn btn-danger btn-sm alert-disable"><span class="glyphicon glyphicon glyphicon-off text-white tsize-4"></span> <strong><span class="text-white"> Desativar Alerta!</span></strong></a> 
                 <a role="button" class="btn btn-danger btn-sm alert-delete hidden"><span class="glyphicon glyphicon glyphicon-trash text-white tsize-4"></span> <strong><span class="text-white"> Excluir Alerta!</span></strong></a> 
@@ -135,7 +142,7 @@ use yii\helpers\Html;
 <?php //Comentários ?>
 <div class="row top-buffer-1">
     <div class="col-lg-12 col-xs-12">
-        <p class="bg-primary text-white text-center"><strong><span class="glyphicon glyphicon glyphicon-comment"></span> Comentários</strong></p>
+        <p class="bg-primary text-white text-center"><strong><span class="glyphicon glyphicon glyphicon-comment"></span> Comentários <span class="text-white badge"><?=count($alert->comments)>0?count($alert->comments):null?></span></strong></p>
     </div>
 </div>
     

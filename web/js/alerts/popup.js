@@ -220,6 +220,9 @@ $('body').on('click', '.btn.alert-comment', function(e){
     var last_comment = $(this).parent().parent().parent().find('.popup-comment-container .wrapper').children().last();
    
     alert_comment = alert_comment.trim();
+    
+    $(this).parent().prev().removeClass('has-success');//Reset do formulário
+    
     if(alert_comment.length==0){
         $(this).parent().prev().addClass('has-error');
     }else{
@@ -231,13 +234,15 @@ $('body').on('click', '.btn.alert-comment', function(e){
             data: {
                 AlertComments:{
                    user_id: app.user.id,
-                   alert_id: _this.parent().parent().children().first().val(),
+                   alert_id: _this.parent().parent().parent().children().first().val(),
                    text: alert_comment,
                 }
             },
             success: function(rtn){
                 if(rtn){ // comentário salvo
-                  last_comment.append(rtn).fadeIn('now');
+                 _this.parent().prev().addClass('has-success');
+                 _this.parent().parent().find('textarea.alert-comment').val('');
+                  last_comment.after(rtn).fadeIn('now');
                   // show mensagem de sucesso ex: small - comentário feito!
                 } 
             }

@@ -104,7 +104,7 @@ echo Html::hiddenInput('App[user_id]',Yii::$app->user->isGuest?null:Yii::$app->u
         <?php /* <p class="pull-right"><?= Yii::powered() ?></p> */?>
     </div>
 </footer>
-<?php if(Yii::$app->user->isGuest) {echo $this->renderFile('@app/views/site/_modal_login.part.php');} ?>
+<?php if(Yii::$app->user->isGuest) {echo $this->renderFile('@app/views/site/_modal_login.php');} ?>
 <?php $this->endBody() ?>
 </body>
 </html>
