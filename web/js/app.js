@@ -196,6 +196,13 @@ keepOpenUserNavigationPane = 2;
 //Configurando o token de acesso a API MapBox
 L.mapbox.accessToken = map_conf.accessToken;
 
+//Iniciando componentes
+$('[data-toggle="tooltip"]').tooltip({container: 'body'});
+$('[data-toggle="popover"]').tooltip({container: 'body'});
+
+// Inicializar draggable
+$('.draggable' ).draggable();
+
 // Inicializar tooltips 
 $(document).on('mousemove', 'body', function(){
     $('[data-toggle="tooltip"]').tooltip({container: 'body'});

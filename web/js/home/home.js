@@ -9,11 +9,6 @@ $(document).ready(function() {
          */
         app.user.id = $('#app-user-id').val();
         
-        //Iniciando componentes
-        $('[data-toggle="tooltip"]').tooltip({container: 'body'});
-        $('[data-toggle="popover"]').tooltip({container: 'body'});
-        
-        
         //verificando se browser suporta API geolocation
         if (!'geolocation' in navigator) {
             alert('Seu navergador não possui suporte a geolocalização ou está desativada');

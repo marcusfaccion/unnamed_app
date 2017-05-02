@@ -58,7 +58,7 @@ echo Html::hiddenInput('App[user_id]',Yii::$app->user->isGuest?null:Yii::$app->u
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/home']],
+            ['label' => 'Home', 'url' => ['/home'], 'active'=>(Yii::$app->controller->id=='home')],
              /*[
             'label' => 'Dropdown',
             'items' => [
@@ -68,9 +68,9 @@ echo Html::hiddenInput('App[user_id]',Yii::$app->user->isGuest?null:Yii::$app->u
                  ['label' => 'Level 1 - Dropdown B', 'url' => '#'],
             ],
         ],*/
-            ['label' => 'Alertas', 'url' => ['/alerts']],
-            ['label' => 'Bicicletários', 'url' => ['/bike-keepers']],
-            ['label' => 'Feed', 'url' => ['/feed']],
+            ['label' => 'Alertas', 'url' => ['/alerts'], 'active'=>(Yii::$app->controller->id=='alerts')],
+            ['label' => 'Bicicletários', 'url' => ['/bike-keepers'], 'active'=>(Yii::$app->controller->id=='bike-keepers')],
+            ['label' => 'Feed', 'url' => ['/feed'], 'active'=>(Yii::$app->controller->id=='feed')],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (

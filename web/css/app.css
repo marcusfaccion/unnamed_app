@@ -5,6 +5,26 @@ body {
 ul.ui-autocomplete.ui-front.ui-menu.ui-widget.ui-widget-content{
     z-index: 1050;
 }
+
+/* Menu topo */
+ul.navbar-nav.navbar-right.nav > li > a{
+    color: #fff;
+    background-color: transparent;
+    font-weight: 800;
+}
+
+ul.navbar-nav.navbar-right.nav > li > a:hover, ul.navbar-nav.navbar-right.nav > li > a:focus {
+    color: #337ab7;
+    background-color: transparent;
+}
+
+ul.navbar-nav.navbar-right.nav > li.active > a{
+    color: #337ab7;
+    background-color: transparent;
+    font-weight: 800;
+}
+/*fim menu topo*/
+
 #home-user-menu-navigation{
     position: fixed;
     top: 70px;
@@ -266,10 +286,6 @@ a.desc:after {
 
 .message p {padding: 15px; border-radius: 5px;}
 
-ul.navbar-nav.navbar-right.nav > li.active > a {
-    color: #fff;
-    background-color: transparent; 
-}
 .required label:after{
     content: " *" 
 }
