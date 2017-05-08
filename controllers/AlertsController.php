@@ -29,6 +29,7 @@ class AlertsController extends Controller
                                         'create',
                                         'view',
                                         'update',
+                                        'active-alerts',
                                         'disable',
                                         'enable',
                                         'ilike',
@@ -60,6 +61,7 @@ class AlertsController extends Controller
                     'create' => ['post'],
                     'update' => ['post'],
                     'disable' => ['post'],
+                    'active-alerts' => ['get'],
                     'enable' => ['post'],
                     'ilike' => ['post'],
                     'idislike' => ['post'],
@@ -146,6 +148,15 @@ class AlertsController extends Controller
     {
         $alert = Alerts::findOne($id);
         return $this->render('view', ['alert'=>$alert]);
+    }
+    /**
+     * Renderiza a tabela de alertas ativos do usuário
+     * @return string
+     */
+    public function actionActiveAlerts($user_id)
+    {
+        $user = Users::findOne($user_id);
+        return $this->renderPartial('_active-alerts',['alerts'=>$user->activeAlerts]);
     }
  
 }

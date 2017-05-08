@@ -15,7 +15,18 @@ class DisableAction extends Action
         $this->isAjax = \Yii::$app->request->isAjax;
         Yii::$app->response->format = \yii\web\Response::FORMAT_RAW;
         
-        if(Alerts::findOne(Yii::$app->request->post('Alerts')['id'])->disable()){
+        $alerts = Alerts::findAll(Yii::$app->request->post('Alerts')['id']);
+        
+        if(count($alerts>1)){
+          if(Alerts::disableAll($alerts)){
+                Yii::$app->session->setFlash('successfully-disabled-alerts', 'Alertas desativados com sucesso');
+                if($this->isAjax){
+                  return $this->controller->renderPartial('@app/views/_scalar_return',['scalar'=>1]);
+                   \Yii::$app->end(0);
+                }    
+          }  
+        }else
+        if($alerts[0]->disable()){
 
             Yii::$app->session->setFlash('successfully-disabled-alerts', 'Alerta desativado com sucesso');
             if($this->isAjax){

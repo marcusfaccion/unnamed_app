@@ -28,13 +28,24 @@ class UpdateAction extends Action
             }
         }
         
+        $alert->scenario = Alerts::SCENARIO_CREATE;
         $alert->attributes = Yii::$app->request->post('Alerts');
         $alert->updated_date = date('Y-m-d H:i:s');
         
         if($alert->save()){
-            
+            Yii::$app->session->setFlash('successfully-saved-alerts', 'Seu alerta foi atualizado e ajudará outras pessoas a pedalar com segurança!');
+            if($this->isAjax){
+               // $this->controller->renderAjax('@alerts/views/item/view', ['alert' => $alert, 'isAjax'=>$this->isAjax]);
+               return $this->controller->renderAjax('view', ['alert' => $alert, 'alert_type'=>$alert->type, 'alert_user'=>$alert->user, 'isAjax'=>$this->isAjax]);
+               \Yii::$app->end(0);
+            }
+            return $this->controller->render('view', ['alert' => $alert, 'alert_type'=>$alert->type, 'alert_user'=>$alert->user, 'isAjax'=>$this->isAjax]);
         }
         
+        if($this->isAjax){
+             return $alert_type ? $this->controller->renderAjax("_alert-form-type-". String::changeChars($alert_type_name, String::PTBR_DIACR_SEARCH, String::PTBR_DIACR_REPLACE),
+            ['alert'=>$alert, 'alert_type'=>$alert->type, 'alert_user'=>$alert->user , 'isAjax'=>$this->isAjax]):"ERRO 400";
+        }
         
     }
     

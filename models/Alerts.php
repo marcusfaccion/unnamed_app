@@ -80,7 +80,7 @@ class Alerts extends GeoJSON_ActiveRecord
             'dislikes' => Yii::t('app', 'Descurtidas'),
             'geom' => Yii::t('app', 'Geometria'),
             'updated_date' => Yii::t('app', 'Atualizado'),
-            'duration_date' => Yii::t('app', 'Duração'),
+            'duration_date' => Yii::t('app', 'Dura até'),
             'enable' => Yii::t('app', 'Ativado'),
         ];
     }
@@ -115,6 +115,22 @@ class Alerts extends GeoJSON_ActiveRecord
     public static function find()
     {
         return new AlertsQuery(get_called_class());
+    }
+    
+    /**
+     * Desativa e retorna o numero de alerta afetados
+     * @param mixed $alerts (array|Alerts) - array de ids ou array de objetos Alerts
+     * @return type int|false
+     */
+    static function disableAll($alerts){
+        if($alerts[0] instanceof Alerts){
+            $rows = 0;
+            foreach ($alerts as $alert){
+                $rows += $alert->disable();
+            }
+          return $rows;
+        }
+        return Alerts::updateAll(['enable'=>0, $alerts]);
     }
     
     /**

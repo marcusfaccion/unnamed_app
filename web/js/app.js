@@ -87,7 +87,10 @@ var app = {
      * Variável para troca de informação entre as rotinas pré requisição http
      * @type type
      */
-    request: {},
+    request: {
+        ajax: null,
+        afterAction: function(){;;},
+    },
     
     /**
     * Variável que armazena o código para tradução da mensagem (i18n)

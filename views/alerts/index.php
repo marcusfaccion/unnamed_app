@@ -21,7 +21,7 @@ AppAlertsAsset::register($this);
                       <div>
                             <div>
                               <!-- Nav tabs -->
-                              <ul class="nav nav-tabs" role="tablist">
+                              <ul  id='alerts-nav-tabs' class="nav nav-tabs" role="tablist">
                                   <li role="presentation" class="active">
                                       <a href="#active-alerts" aria-controls="active-alerts" role="tab" data-toggle="tab">Ativos <span class="badge"><?=count($user->activeAlerts)?></span></a>
                                   </li>

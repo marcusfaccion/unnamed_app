@@ -193,7 +193,7 @@ $('body').on('click', '.btn.alert-disable', function(e){
                         //Mensagem de confirmação
                         app.message_code = 'alerts.disable.confirmation'; 
                         app.layers.selected = alert_layer;
-                        //Configurando a requisição de exclusão
+                        //Configurando a requisição de desativação
                         app.request.ajax = {
                                     url: 'alerts/disable',
                                     type: 'POST',

@@ -12,7 +12,7 @@ $this->title = $alert->title;
     
  <div class="row">
      <div class="col-lg-10 col-xs-11">
-    <h3 class="text-success"><strong>Alerta criado <span class="glyphicon glyphicon-ok-sign text-success"></span></strong></h3>
+    <h3 class="text-success"><strong>Alerta <?=($alert->updated_date)?'atualizado':'criado'?> <span class="glyphicon glyphicon-ok-sign text-success"></span></strong></h3>
      </div>
   </div> 
 
@@ -48,6 +48,16 @@ $this->title = $alert->title;
                 'attribute'=>'created_date',
                 //'value'=>$alert->created_date,
                 'format'=>'relativeTime'
+            ],
+            [
+                'attribute'=>'updated_date',
+                'visible'=>$alert->updated_date!=null,
+                'format'=>'relativeTime'
+            ],
+            [
+                'attribute'=>'duration_date',
+                'visible'=>$alert->duration_date!=null,
+                'format'=>'datetime'
             ],
             [
                 'attribute'=>'likes',

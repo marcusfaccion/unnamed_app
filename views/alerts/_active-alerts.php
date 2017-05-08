@@ -16,7 +16,7 @@ use yii\bootstrap\Html;
                       <a role='button' class='btn btn-xs btn-default alert-noselect-all'>Desmarcar todos</a>
                   </div>
                   <div class="col-lg-2 col-xs-3 col-lg-offset-1 col-xs-offset-1">
-                      <?=Html::button('<span class="glyphicon glyphicon-remove-circle"></span> Desativar', ['class'=>'btn btn-xs btn-danger'])?>
+                      <?=Html::button('<span class="glyphicon glyphicon-remove-circle"></span> Desativar', ['class'=>'btn btn-xs btn-danger alert-disable-all'])?>
                   </div>
               </div>
         </div>
@@ -45,7 +45,7 @@ use yii\bootstrap\Html;
             <td><?=$alert->description?></td>
             <td>
                 <a data-toggle="tooltip" data-placement="left" title="Editar" role='button' class='btn btn-xs btn-default alert-update'><span class="glyphicon glyphicon-edit"></span></a>
-                <a data-toggle="tooltip" data-placement="left" title="Desativar" role='button' class='btn btn-xs btn-default alert-disable'><span class="glyphicon glyphicon-remove"></span></a>
+                <a data-toggle="tooltip" data-placement="left" title="Desativar" role='button' class='btn btn-xs btn-default alert-disable-one'><span class="glyphicon glyphicon-remove"></span></a>
                 <a data-toggle="tooltip" data-placement="left" title="Ver no mapa" role='button' class='btn btn-xs btn-default alert-view-on-map'><span class="glyphicon glyphicon-globe"></span></a>
                 <?php // Html::hiddenInput($alert->formName().'[id]', $alert->id)?>
             </td>
