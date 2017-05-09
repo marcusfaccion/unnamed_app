@@ -17,6 +17,19 @@ use kartik\file\FileInput;
 <?php Pjax::begin([
         'id' => 'pjax-bike-keepers-widget-form',
         'enablePushState'=>false,
+        'clientOptions'=> [
+                    //Função executada no evento pjax:success
+                    'bike_keepersuccess'=> new yii\web\JsExpression('
+                                function(data, status, xhr){
+                                     geoJSON_layer.bike_keepers.addData(JSON.parse($(\'#bike_keepers-widget-viewer\').find("input[id=\'BikeKeepers_geojson_string\']").val()),
+                                    {    
+                                        pointToLayer: generateBikeKeeperMarkerFeature,
+                                    //  onEachFeature: onEachBikeKeeperMarkerFeature,
+                                    }
+                                   );
+                                }
+                            '),
+                ],
         //'formSelector'=>'#bike-keepers-widget-form',
 ]);?>
 
@@ -30,7 +43,7 @@ use kartik\file\FileInput;
     <?php $form = ActiveForm::begin([
              //'action'=>  Url::to(['/bike-keeper/item/create']),
                 'id' =>'bike-keepers-widget-form',
-                'options' => ['data' => ['pjax' => true], 'enctype' => 'multipart/form-data'],
+                'options' => ['data' => ['pjax' => true], 'enctype' => 'multipart/form-data', 'id'=>'bike-keepers-widget-form'],
                 'method' => 'post',
                 'action' => Url::to('bike-keepers/create'),
                 'fieldConfig' => [

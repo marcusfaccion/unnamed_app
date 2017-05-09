@@ -58,7 +58,7 @@ echo Html::hiddenInput('App[user_id]',Yii::$app->user->isGuest?null:Yii::$app->u
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
-            ['label' => 'Home', 'url' => ['/home'], 'active'=>(Yii::$app->controller->id=='home')],
+            ['label' => 'Início', 'url' => ['/home'], 'active'=>(Yii::$app->controller->id=='home')],
              /*[
             'label' => 'Dropdown',
             'items' => [

@@ -1,5 +1,3 @@
-var alert_type_desc;
-
 $('body').on('click', 'button.bike-keepers.cancel', function(e){
     $('#home_actions_modal').modal('hide'); 
 });
@@ -24,4 +22,3 @@ $('body').on('focus', 'button.bike-keepers.save', function(e){
     isAjax = $('#bike-keepers-widget-form').find('.isAjax').val();
     
 });
-//                            

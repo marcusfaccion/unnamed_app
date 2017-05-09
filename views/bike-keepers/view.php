@@ -52,11 +52,3 @@ $this->title = $bike_keeper->title;
     <?=Html::hiddenInput($bike_keeper->formName()."[geojson_string]", $bike_keeper->toFeature(), ['id'=>$bike_keeper->formName().'_geojson_string'])?>
     <?php $form->end(); ?>
 </div>
-<script  type="text/javascript">
-    geoJSON_layer.bike_keepers.addData(JSON.parse($('#bike_keepers-widget-viewer').find("input[id='BikeKeepers_geojson_string']").val()),
-                                {    
-                                    pointToLayer: generateBikeKeeperMarkerFeature,
-                                  //  onEachFeature: onEachBikeKeeperMarkerFeature,
-                                }
-                            );
-</script>

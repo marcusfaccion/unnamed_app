@@ -15,7 +15,7 @@ function generateAlertMarkerFeature(feature, latlng){
        });
     }
 }
-
+//Define configurações para cada um dos markers feature
 function onEachAlertMarkerFeature(feature, layer){
      if (feature.properties) {
         layer.bindPopup(
@@ -67,14 +67,26 @@ function generateBikeKeeperMarkerFeature(feature, latlng){
 function onEachBikeKeeperMarkerFeature(feature, layer){
      if (feature.properties) {
         //layer.bindPopup('<b>Alerta id: </b>'+feature.properties.id );
-        layer.bindPopup(popup.getContentAjax(
-            'bike-keepers/render-popup',
-            {
-                type: 'GET',
-                data: {id: feature.properties.id},
-                async: false,
+        layer.bindPopup('',
+            { 
+                maxWidth : popup.maxWidth,
+                minWidth : popup.minWidth,
             }
-        ));
+        );
+        
+        //Atualiza conteúdo do popup toda vez que ele for aberto
+        layer.on('popupopen', function(e){
+            e.popup.setContent(
+                popup.getContentAjax(
+                    'bike-keepers/render-popup',
+                    {
+                        type: 'GET',
+                        data: {id: feature.properties.id},
+                        async: false,
+                    })
+                );
+            e.popup.update();
+        });
      }
 }
 /**
