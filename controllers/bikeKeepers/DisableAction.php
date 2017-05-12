@@ -1,9 +1,9 @@
 <?php
-namespace app\controllers\alerts;
+namespace app\controllers\bikeKeepers;
 
 use Yii;
 use yii\base\Action;
-use app\models\Alerts;
+use app\models\BikeKeepers;
 
 class DisableAction extends Action
 {
@@ -14,21 +14,20 @@ class DisableAction extends Action
         
         $this->isAjax = \Yii::$app->request->isAjax;
         Yii::$app->response->format = \yii\web\Response::FORMAT_RAW;
+        $bike_keepers = BikeKeepers::findAll(Yii::$app->request->post('BikeKeepers')['id']);
         
-        $alerts = Alerts::findAll(Yii::$app->request->post('Alerts')['id']);
-        
-        if(count($alerts)>1){
-          if(Alerts::disableAll($alerts)){
-                Yii::$app->session->setFlash('successfully-disabled-alerts', 'Alertas desativados com sucesso');
+        if(count($bike_keepers)>1){
+          if(BikeKeepers::disableAll($bike_keepers)){
+                Yii::$app->session->setFlash('successfully-disabled-bike-keepers', 'Bicicletários desativados com sucesso');
                 if($this->isAjax){
                   return $this->controller->renderPartial('@app/views/_scalar_return',['scalar'=>1]);
                    \Yii::$app->end(0);
                 }    
           }  
         }else
-        if($alerts[0]->disable()){
+        if($bike_keepers[0]->disable()){
 
-            Yii::$app->session->setFlash('successfully-disabled-alerts', 'Alerta desativado com sucesso');
+            Yii::$app->session->setFlash('successfully-disabled-bike-keepers', 'Bicicletário desativado com sucesso');
             if($this->isAjax){
               return $this->controller->renderPartial('@app/views/_scalar_return',['scalar'=>1]);
                \Yii::$app->end(0);

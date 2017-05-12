@@ -18,11 +18,8 @@ Thumbs.db
 # run-time dir
 /runtime
 
-# bike-keepers dir
-/web/bike-keepers
-
-# alerts dir
-/web/alerts
+# public app content dir
+/web/bs-contents
 
 # composer itself is not needed
 composer.phar

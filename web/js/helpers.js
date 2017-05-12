@@ -1,6 +1,6 @@
 var popup = {
-    maxWidth: 401,
-    minWidth: 350,
+    maxWidth: 375,
+    minWidth: 325,
     /**
      *  @param {string} _url Endereço url da requisição 
      *  @param {object} options opções Ajax permitidas (type, data, async)

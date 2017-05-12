@@ -25,7 +25,7 @@ class CreateAction extends Action
         
         if($bike_keeper->upload()){
            if($bike_keeper->save()){ 
-            Yii::$app->session->setFlash('successfully-saved-bike_keeper', 'Bicicletário salvo com sucesso!');
+            Yii::$app->session->setFlash('successfully-saved-bike-keeper', 'Bicicletário salvo com sucesso!');
             if($this->isAjax){
                return $this->controller->renderAjax('view', ['bike_keeper' => $bike_keeper, 'bike_keeper_user'=>$bike_keeper_user, 'isAjax'=>$this->isAjax]);
                \Yii::$app->end(0);

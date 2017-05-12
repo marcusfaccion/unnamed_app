@@ -7,4 +7,6 @@ return [
     'alerts.enable.confirmation' => 'Tem certeza que deseja ativar o alerta?',
     'alerts.disable-all.confirmation' => 'Tem certeza que deseja desativar os alertas?',
     'alerts.disable-all.select-error'=>'É preciso selecionar um alerta!',
+    
+    'bike-keepers.disable.confirmation'=> 'Tem certeza que deseja desativar o bicicletário?',
 ];

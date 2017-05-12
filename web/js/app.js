@@ -103,6 +103,9 @@ var app = {
     alert:{
       id: null  
     },
+    controller: {
+        id: null
+    },
     /**
      * Variável para armazenar a resposta sim|não do usuário aos pedidos de confirmação
      * @type Number

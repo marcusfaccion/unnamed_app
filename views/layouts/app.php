@@ -34,6 +34,7 @@ AppAsset::register($this);
  *  Dados para o JavaScript
  */
 echo Html::hiddenInput('App[user_id]',Yii::$app->user->isGuest?null:Yii::$app->user->identity->id, ['id'=>'app-user-id']);
+echo Html::hiddenInput('App[controller_id]',Yii::$app->user->isGuest?null:Yii::$app->controller->id, ['id'=>'app-controller-id']);
 ?>
     
 <?php $this->beginBody() ?>

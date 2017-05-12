@@ -24,7 +24,12 @@ class BikeKeepersController extends Controller
                                         'form',
                                         'render-popup',
                                         'get-features',
-                                        'create'
+                                        'create',
+                                        'disable',
+                                        'ilike',
+                                        'idislike',
+                                        'not-exists',
+                                        'exists'
                             ],
                         'allow' => true,
                         'roles' => ['@'],
@@ -41,6 +46,11 @@ class BikeKeepersController extends Controller
                     'form' => ['get'],
                     'create' => ['post'],
                     'logout' => ['post'],
+                    'disable' => ['post'],
+                    'ilike' => ['post'],
+                    'idislike' => ['post'],
+                    'not-exists' => ['post'],
+                    'exists' => ['post']
                 ],
             ],
         ];
@@ -67,6 +77,21 @@ class BikeKeepersController extends Controller
             ],
              'get-features' => [
                 'class'=>'app\controllers\bikeKeepers\GetFeaturesAction',
+            ],
+            'disable' => [
+                'class' => 'app\controllers\bikeKeepers\DisableAction',
+            ],
+             'ilike' => [
+                'class'=>'app\controllers\bikeKeepers\IlikeAction',
+            ],
+             'idislike' => [
+                'class'=>'app\controllers\bikeKeepers\IdislikeAction',
+            ],
+            'exists' => [
+                'class'=>'app\controllers\bikeKeepers\ExistsAction',
+            ],
+            'not-exists' => [
+                'class'=>'app\controllers\bikeKeepers\NotExistsAction',
             ],
         ];
     }
