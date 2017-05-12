@@ -1,17 +1,17 @@
 //var x;
 
-$('body').on('click', '.btn.like', function(e){
+$('body').on('click', '.btn.bike-keeper-like', function(e){ 
         var n_likes = $(this).children('.badge').html(); 
-        var alert_id = $(this).parent().parent().find('.alert-id').val();
+        var bike_keeper_id = $(this).parent().parent().find('.bike-keeper-id').val();
         var user_avaliation = 0; // 0 significa não avaliado
         
         if(!$(this).hasClass('disabled')){
             $(this).parent().next().children('small').toggleClass('text-muted');
             $(this).parent().next().children('small').toggleClass('text-danger');
-            $(this).parent().next().children('.btn.dislike').toggleClass('disabled');
+            $(this).parent().next().children('.btn.bike-keeper-dislike').toggleClass('disabled');
             
-            if($(this).parent().next().children('.btn.dislike').hasClass('disabled')){
-                ++n_likes;                
+            if($(this).parent().next().children('.btn.bike-keeper-dislike').hasClass('disabled')){
+                ++n_likes;     
                 user_avaliation = 1; // Usuário avaliou como positivo
             }else{
                 --n_likes; 
@@ -24,12 +24,12 @@ $('body').on('click', '.btn.like', function(e){
             
             var _this = $(this);
             $.ajax({
-                url: 'alerts/ilike',
+                url: 'bike-keepers/ilike',
                 type: 'POST',
                 async: false, //Precisa ser síncrono com o script server side pois utiliza em sua lógica elementos html que são atualizados dinâmicamente 
                 data: {
-                    Alerts: {
-                        id: alert_id,
+                    BikeKeepers: {
+                        id: bike_keeper_id,
                         likes: n_likes,
                         avaliated: user_avaliation,
                     }
@@ -39,28 +39,28 @@ $('body').on('click', '.btn.like', function(e){
                     _this.parent().fadeOut('slow', function(){
                         $(this).fadeIn('slow');
                         
-                        $(this).find('.btn-classes').val($(this).find('.btn.like').attr('class'));
-                        $(this).find('.small-classes').val($(this).find('.btn.like').next().attr('class'));
+                        $(this).find('.btn-classes').val($(this).find('.btn.bike-keeper-like').attr('class'));
+                        $(this).find('.small-classes').val($(this).find('.btn.bike-keeper-like').next().attr('class'));
                         
-                        $(this).next().find('.btn-classes').val($(this).next().find('.btn.dislike').attr('class'));
-                        $(this).next().find('.small-classes').val($(this).next().find('.btn.dislike').next().attr('class'));
+                        $(this).next().find('.btn-classes').val($(this).next().find('.btn.bike-keeper-dislike').attr('class'));
+                        $(this).next().find('.small-classes').val($(this).next().find('.btn.bike-keeper-dislike').next().attr('class'));
                     });
                }
             });
         }
 });
 
-$('body').on('click', '.btn.dislike', function(e){
+$('body').on('click', '.btn.bike-keeper-dislike', function(e){ 
         var n_dislikes = $(this).children('.badge').html(); 
-        var alert_id = $(this).parent().parent().find('.alert-id').val();
+        var bike_keeper_id = $(this).parent().parent().find('.bike-keeper-id').val();
         var user_avaliation = 0;
         
         if(!$(this).hasClass('disabled')){
-            $(this).parent().prev().children('.btn.like').toggleClass('disabled');
+            $(this).parent().prev().children('.btn.bike-keeper-like').toggleClass('disabled');
             $(this).parent().prev().children('small').toggleClass('text-muted');
             $(this).parent().prev().children('small').toggleClass('text-success');
             
-            if($(this).parent().prev().children('.btn.like').hasClass('disabled')){
+            if($(this).parent().prev().children('.btn.bike-keeper-like').hasClass('disabled')){
                 ++n_dislikes;
                 user_avaliation = 1; // Usuário avaliou como positivo
             }else{
@@ -75,12 +75,12 @@ $('body').on('click', '.btn.dislike', function(e){
             
             var _this = $(this);
             $.ajax({
-                url: 'alerts/idislike',
+                url: 'bike-keepers/idislike',
                 type: 'POST',
                 async: false, //Precisa ser síncrono com o script server side pois utiliza em sua lógica elementos html que são atualizados dinâmicamente 
                 data: {
-                    Alerts: {
-                        id: alert_id,
+                    BikeKeepers: {
+                        id: bike_keeper_id,
                         dislikes: n_dislikes,
                         avaliated: user_avaliation,
                     }
@@ -90,11 +90,11 @@ $('body').on('click', '.btn.dislike', function(e){
                     _this.parent().fadeOut('slow', function(){
                         $(this).fadeIn('slow');
                         
-                        $(this).find('.btn-classes').val($(this).find('.btn.dislike').attr('class'));
-                        $(this).find('.small-classes').val($(this).find('.btn.dislike').next().attr('class'));
+                        $(this).find('.btn-classes').val($(this).find('.btn.bike-keeper-dislike').attr('class'));
+                        $(this).find('.small-classes').val($(this).find('.btn.bike-keeper-dislike').next().attr('class'));
                         
-                        $(this).prev().find('.btn-classes').val($(this).prev().find('.btn.like').attr('class'));
-                        $(this).prev().find('.small-classes').val($(this).prev().find('.btn.like').next().attr('class'));
+                        $(this).prev().find('.btn-classes').val($(this).prev().find('.btn.bike-keeper-like').attr('class'));
+                        $(this).prev().find('.small-classes').val($(this).prev().find('.btn.bike-keeper-like').next().attr('class'));
                     });
                }
             });
@@ -103,18 +103,18 @@ $('body').on('click', '.btn.dislike', function(e){
         }
 });
 
-$('body').on('click', '.btn.alert-exists', function(e){
+$('body').on('click', '.btn.bike-keeper-exists', function(e){
         
-        var alert_id = $(this).parent().parent().find('.alert-id').val();
+        var bike_keeper_id = $(this).parent().parent().find('.bike-keeper-id').val();
         
-        // obtém os estados dos botões, outrora armazenados, para usá-los na ativação do alerta 
+        // obtém os estados dos botões, outrora armazenados, para usá-los na ativação do bicicletário 
         var btn_like_classes = $(this).parent().parent().find('.btn-classes.like').val();
         var small_like_classes = $(this).parent().parent().find('.small-classes.like').val();
         var btn_dislike_classes = $(this).parent().parent().find('.btn-classes.dislike').val();
         var small_dislike_classes = $(this).parent().parent().find('.small-classes.dislike').val();
         
         if($(this).parent().parent().find('.btn.like').hasClass('disabled') &&
-           $(this).parent().parent().find('.btn.dislike').hasClass('disabled')){ // O usuário já disse anteriormente que o alerta não existe
+           $(this).parent().parent().find('.btn.dislike').hasClass('disabled')){ // O usuário já disse anteriormente que o bicicletário não existe
            
             $(this).parent().parent().find('.btn.like').attr('class', btn_like_classes);
             $(this).parent().parent().find('.btn.like').next().attr('class', small_like_classes);
@@ -123,11 +123,11 @@ $('body').on('click', '.btn.alert-exists', function(e){
             
             var _this = $(this);
             $.ajax({
-                url: 'alerts/exists',
+                url: 'bike-keepers/exists',
                 type: 'POST',
                 data: {
-                    Alerts: {
-                        id: alert_id,
+                    BikeKeepers: {
+                        id: bike_keeper_id,
                     }
                },
                 success: function(rtn){
@@ -143,9 +143,9 @@ $('body').on('click', '.btn.alert-exists', function(e){
         }
 });
 
-$('body').on('click', '.btn.alert-notexists', function(e){
+$('body').on('click', '.btn.bike-keeper-notexists', function(e){ 
     
-        var alert_id = $(this).parent().parent().find('.alert-id').val();
+        var bike_keeper_id = $(this).parent().parent().find('.bike-keeper-id').val();
         
         // armazena os estados dos botões antes de desativálos
         var btn_like_classes = $(this).parent().parent().find('.btn-classes.like').val();
@@ -154,7 +154,7 @@ $('body').on('click', '.btn.alert-notexists', function(e){
         var small_dislike_classes = $(this).parent().parent().find('.small-classes.dislike').val();
         
         if(!$(this).parent().parent().find('.btn.like').hasClass('disabled') ||
-           !$(this).parent().parent().find('.btn.dislike').hasClass('disabled')){ // O usuário diz que o alerta não existe
+           !$(this).parent().parent().find('.btn.dislike').hasClass('disabled')){ // O usuário diz que o bicicletário não existe
            
             $(this).parent().parent().find('.btn.like').addClass('disabled');
             $(this).parent().parent().find('.btn.like').next().removeClass('text-success').addClass('text-muted');
@@ -163,11 +163,11 @@ $('body').on('click', '.btn.alert-notexists', function(e){
             
             var _this = $(this);
             $.ajax({
-                url: 'alerts/not-exists',
+                url: 'bike-keepers/not-exists',
                 type: 'POST',
                 data: {
-                    Alerts: {
-                        id: alert_id,
+                    BikeKeepers: {
+                        id: bike_keeper_id,
                     }
                },
                success: function(rtn){
@@ -183,30 +183,30 @@ $('body').on('click', '.btn.alert-notexists', function(e){
         }
 });
 
-// Deletando um alerta
-$('body').on('click', '.btn.alert-disable', function(e){
+// Desativando um bicicletário
+$('body').on('click', '.btn.bike-keeper-disable', function(e){
     
-        var alert_id = $(this).parent().parent().find('.alert-id').val();
+        var bike_keeper_id = $(this).parent().parent().find('.bike-keeper-id').val();
         
-        // Percorre todo o Layer alerts para encontrar o alerta sendo excluído
-        geoJSON_layer.alerts.getLayers().forEach(
-                function(alert_layer, index, array){
-                    if(alert_layer.isPopupOpen()){
+        // Percorre todo o Layer bike_keepers para encontrar o bicicletário sendo excluído
+        geoJSON_layer.bike_keepers.getLayers().forEach(
+                function(bike_keeper_layer, index, array){
+                    if(bike_keeper_layer.isPopupOpen()){
                         //Mensagem de confirmação
-                        app.message_code = 'alerts.disable.confirmation'; 
-                        app.layers.selected = alert_layer;
+                        app.message_code = 'bike-keepers.disable.confirmation'; 
+                        app.layers.selected = bike_keeper_layer;
                         //Configurando a requisição de desativação
                         app.request.ajax = {
-                                    url: 'alerts/disable',
+                                    url: 'bike-keepers/disable',
                                     type: 'POST',
                                     data:{
-                                        Alerts: {id: alert_id}
+                                        BikeKeepers: {id: bike_keeper_id}
                                     },
                                     success: function(rtn){
                                         var al = app.layers.selected;
-                                        if(rtn){ //fecha o popup e remove o alerta do mapa
+                                        if(rtn){ //fecha o popup e remove o bicicletário do mapa
                                             al.closePopup();
-                                            geoJSON_layer.alerts.removeLayer(al);
+                                            geoJSON_layer.bike_keepers.removeLayer(al);
                                         }
                                     },
                                 }
@@ -216,21 +216,21 @@ $('body').on('click', '.btn.alert-disable', function(e){
                 });
 });
 
-$('body').on('click', '.btn.alert-comment', function(e){
+$('body').on('click', '.btn.bike-keeper-comment', function(e){
     var $btn = $(this).button('loading');
-    var alert_comment = $(this).parent().parent().find('textarea.alert-comment').val();
+    var bike_keeper_comment = $(this).parent().parent().find('textarea.bike-keeper-comment').val();
     var last_comment = $(this).parent().parent().parent().find('.popup-comment-container .wrapper').children().last();
     var n_comments = parseInt($(this).parent().parent().parent().find('.popup-comment-header .comment-counter .badge').html());
     
     // Parse Int n_comments retorna NaN se não existirem comentários
     n_comments = Number.isNaN(n_comments)?0:n_comments;
-    
-    alert_comment = alert_comment.trim();
+   
+    bike_keeper_comment = bike_keeper_comment.trim();
     
     $(this).parent().prev().removeClass('has-success');//Reset do formulário
     $(this).parent().parent().find('small.text-success').fadeOut('now');
     
-    if(alert_comment.length==0){
+    if(bike_keeper_comment.length==0){
         $(this).parent().prev().addClass('has-error');
         $(this).parent().parent().find('small.text-danger').fadeIn('now');
     }else{
@@ -238,22 +238,22 @@ $('body').on('click', '.btn.alert-comment', function(e){
         $(this).parent().parent().find('small.text-danger').fadeOut('now');
         var _this = $(this);
         $.ajax({
-            url:'alert-comments/create',
+            url:'bike-keeper-comments/create',
             type: 'POST',
             data: {
-                AlertComments:{
+                BikeKeeperComments:{
                    user_id: app.user.id,
-                   alert_id: _this.parent().parent().parent().children().first().val(),
-                   text: alert_comment,
+                   bike_keeper_id: _this.parent().parent().parent().children().first().val(),
+                   text: bike_keeper_comment,
                 }
             },
             success: function(rtn){
                 if(rtn){ // comentário salvo
                  _this.parent().prev().addClass('has-success');
-                 _this.parent().parent().find('textarea.alert-comment').val('');
+                 _this.parent().parent().find('textarea.bike-keeper-comment').val('');
                  _this.parent().parent().find('small.text-success').fadeIn('now');
                   last_comment.after(rtn).fadeIn('now');
-                  _this.parent().parent().parent().find('.popup-comment-header .comment-counter .badge').html(++n_comments);
+                 _this.parent().parent().parent().find('.popup-comment-header .comment-counter .badge').html(++n_comments);
                   // show mensagem de sucesso ex: small - comentário feito!
                 } 
             }

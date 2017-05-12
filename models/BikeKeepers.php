@@ -14,6 +14,8 @@ use yii\web\UploadedFile;
  *
  * @property integer $id
  * @property string $title
+ * @property string $description
+ * @property string $business_hours
  * @property integer $likes
  * @property integer $dislikes
  * @property integer $capacity
@@ -60,12 +62,12 @@ class BikeKeepers extends GeoJSON_ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'description', 'capacity', 'multimedia_files', 'public', 'outdoor'], 'required', 'on' => self::SCENARIO_CREATE],
+            [['title', 'business_hours', 'capacity', 'multimedia_files', 'public', 'outdoor'], 'required', 'on' => self::SCENARIO_CREATE],
             [['multimedia_files'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, jpeg, avi, mp4, webm', 'maxFiles' => 4],
             [['likes', 'dislikes', 'capacity', 'used_capacity', 'user_id', 'public', 'outdoor', 'enable'], 'integer'],
             [['created_date', "updated_date"], 'safe'],
             [['title'], 'string', 'max' => 40],
-            [['description','geom'], 'string'],
+            [['description', 'business_hours', 'geom'], 'string'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
@@ -75,7 +77,7 @@ class BikeKeepers extends GeoJSON_ActiveRecord
     {
         // verificar se multimedias (manymany relation) pode gerar erro por não ser um atributo(somente em runtime)
         return [
-            self::SCENARIO_CREATE => ['title', 'description', 'multimedia_files', 'capacity', 'cost','user_id', 'geojson_string', 'public', 'outdoor', 'public_dir_name'],
+            self::SCENARIO_CREATE => ['title', 'description', 'business_hours', 'multimedia_files', 'capacity', 'cost','user_id', 'geojson_string', 'public', 'outdoor', 'public_dir_name'],
         ];
     }
 
@@ -86,18 +88,19 @@ class BikeKeepers extends GeoJSON_ActiveRecord
     {
         return [
             'id' => 'ID',
-            'title' => 'Nome',
+            'title' => 'Nome do bicicletário',
             'likes' => 'Likes',
             'dislikes' => 'Dislikes',
             'capacity' => 'Número de vagas',
-            'cost' => 'Preço',
+            'cost' => 'Diária cobrada',
             'multimedia_files' => 'Multimídea',
             'description' => Yii::t('app', 'Descrição'),
+            'business_hours' => Yii::t('app', 'Horário de funcionamento'),
             'used_capacity' => 'Used Capacity',
             'user_id' => 'User ID',
             'enable'=>'Ativado',
             'outdoor'=>'Ao ar livre',
-            'public'=>'É Pago?',
+            'public'=>'É de uso público?',
             'public2'=>'Público',
             'public_dir_name'=>'Diretório público',
         ];
@@ -109,6 +112,14 @@ class BikeKeepers extends GeoJSON_ActiveRecord
     public function getUser()
     {
         return $this->hasOne(Users::className(), ['id' => 'user_id']);
+    }
+    
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getComments()
+    {
+        return $this->hasMany(BikeKeeperComments::className(), ['bike_keeper_id' => 'id']);
     }
     
     /**
@@ -209,4 +220,30 @@ class BikeKeepers extends GeoJSON_ActiveRecord
         $this->geojson_string = Yii::$app->db->createCommand("SELECT ST_AsGeoJSON('$this->geom')")->queryScalar();
         $this->geojson_array = $this->toArray();
     }
+   
+    /**
+     * Desativa e retorna o numero de bicicletários afetados
+     * @param mixed $bike_keepers (array|BikeKeepers) - array de ids ou array de objetos BikeKeepers
+     * @return type int|false
+     */
+    static function disableAll($bike_keepers){
+        if($bike_keepers[0] instanceof BikeBikeKeepers){
+            $rows = 0;
+            foreach ($bike_keepers as $bike_keeper){
+                $rows += $bike_keeper->disable();
+            }
+          return $rows;
+        }
+        return BikeKeepers::updateAll(['enable'=>0, $bike_keepers]);
+    }
+    
+    public function disable(){
+         $this->enable = 0;
+         return $this->update(false);
+     }
+    
+    public function enable(){
+         $this->enable = 1;
+         return $this->update();
+     }
 }

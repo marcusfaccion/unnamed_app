@@ -8,6 +8,7 @@ $(document).ready(function() {
          * @type intesger
          */
         app.user.id = $('#app-user-id').val();
+        app.controller.id = $('#app-controller-id').val();
         
         //verificando se browser suporta API geolocation
         if (!'geolocation' in navigator) {

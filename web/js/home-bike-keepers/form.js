@@ -3,7 +3,7 @@ $('body').on('click', 'button.bike-keepers.cancel', function(e){
 });
 
 $('body').on('change', '.bikekeeprs.input_show_trigger', function(e){
-    if(($(this).attr('value'))==1){
+    if(($(this).attr('value'))==0){
         $('.bikekeeprs-input-hidden'+$(this).attr('data-target-input')).fadeIn('now').removeClass('hide');
         $('.bikekeeprs-input-hidden'+$(this).attr('data-target-input')+' input').attr('disabled', false);
     }else{

@@ -4,47 +4,87 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 use yii\widgets\ActiveForm;
 /* @var yii\web\View $this */
-/* @var app\modules\bike_keepers\models\Alerts $bike_keeper  */
+/* @var app\modules\bike_keepers\models\BikeKeepers $bike_keeper  */
 /* @var string $flash_success contém mensagem de sucesso ou null*/
 $this->title = $bike_keeper->title;
 ?>
-<div id='bike_keepers-widget-viewer' class="bike_keepers-view">
+<div id='bike-keepers-widget-viewer' class="bike-keepers-view">
     
-    <h1><?= Html::encode($this->title) ?></h1>
-    <?php $flash_success = Yii::$app->session->getFlash('successfully-saved-bike_keeper'); ?>
-    <?php if($flash_success): ?>
-    <div id='bike_keepers-widget-notice' class='alert alert-success alert-dismissible' role='alert'>
-        <button type="button" class="close" data-dismiss="alert" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
-        <?=$flash_success?>
-    </div>
-    <?php endif; ?>
-    
-    <p>
-        <?= Html::a('Update', ['update', 'id' => $bike_keeper->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $bike_keeper->id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
+ <div class="row">
+     <div class="col-lg-10 col-xs-11">
+    <h3 class="text-success"><strong>Bicicletário <?=($bike_keeper->updated_date)?'atualizado':'criado'?> <span class="glyphicon glyphicon-ok-sign text-success"></span></strong></h3>
+     </div>
+  </div> 
 
-    <?= DetailView::widget([
+    <div class="row top-buffer-2">
+        <div class="col-lg-10 col-xs-11">
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Fechar"><span aria-hidden="true">×</span></button>
+                    <strong><?=Yii::$app->session->hasFlash('successfully-saved-bike-keeper')?Yii::$app->session->getFlash('successfully-saved-bike-keeper'):'Este bicicletário já está publicado!'; ?></strong>
+            </div>
+        </div>    
+    </div> 
+    
+    <div class="row top-buffer-2">
+        <div class="col-lg-10 col-xs-11">
+ <?= DetailView::widget([
         'model' => $bike_keeper,
         'attributes' => [
-            'id',
-            'title',
-            'description:ntext',
-            'user_id',
-            'created_date',
-            'public',
-            'likes',
-            'dislikes',
-            'updated_date',
-            'cost',
+             [
+                'attribute' => 'title',
+                //'label' => '',
+                'visible'=>!empty($bike_keeper->title),
+            ],
+            [
+                'attribute'=>'description',
+                'visible'=>!empty($bike_keeper->description),
+                'value'=>$bike_keeper->description,
+            ],
+            [
+                'attribute'=>'business_hours',
+                'value'=>$bike_keeper->business_hours,
+            ],
+            [
+                'attribute'=>'user_id',
+                'label'=>'Gerente',
+                'value'=>$bike_keeper->user->how_to_be_called,
+            ],
+            [
+                'attribute'=>'created_date',
+                'label'=>'Aberto desde',
+                'format'=>'relativeTime'
+            ],
+            [
+                'attribute'=>'updated_date',
+                'label'=>'Última atualização',
+                'visible'=>$bike_keeper->updated_date!=null,
+                'format'=>'relativeTime'
+            ],
+            [
+                'attribute'=>'likes',
+                'visible'=>!empty($bike_keeper->likes),
+            ],
+            [
+                'attribute'=>'dislikes',
+                'visible'=>!empty($bike_keeper->dislikes),
+            ],
+            [
+                'attribute'=>'public',
+                'label'=>'É público?',
+                'visible'=>$bike_keeper->public!=null,
+                'value'=>$bike_keeper->public?'Sim':'Não',
+            ],
+            [
+                'attribute'=>'cost',
+                'label'=>'Diária',
+                'visible'=>$bike_keeper->cost>0,
+                'format'=>'currency',
+            ],
         ],
+     'options'=> ['class'=>'table table-condensed table-hover'] 
     ]) ?>
+       </div>
+   </div>     
     <?php // Variável para controle de exibição da mensagem de salvamento dos dados ?>
     <?php $form = ActiveForm::begin(); ?> 
     <?=Html::hiddenInput($bike_keeper->formName()."[saved]", true, ['class'=>'saved' ,'id'=>$bike_keeper->formName().'_saved'])?>

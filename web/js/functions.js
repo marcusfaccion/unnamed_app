@@ -34,7 +34,7 @@ function onEachAlertMarkerFeature(feature, layer){
         layer.on('popupopen', function(e){
             e.popup.setContent(
                 popup.getContentAjax(
-                    'alerts/render-popup',
+                    'alerts/render-popup'+(app.controller.id=='home'?'':'-readonly'),
                     {
                         type: 'GET',
                         data: {id: feature.properties.id},
@@ -78,7 +78,7 @@ function onEachBikeKeeperMarkerFeature(feature, layer){
         layer.on('popupopen', function(e){
             e.popup.setContent(
                 popup.getContentAjax(
-                    'bike-keepers/render-popup',
+                    'bike-keepers/render-popup'+(app.controller.id=='home'?'':'-readonly'),
                     {
                         type: 'GET',
                         data: {id: feature.properties.id},

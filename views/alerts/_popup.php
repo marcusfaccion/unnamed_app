@@ -55,7 +55,7 @@ use yii\helpers\Html;
                     <input type="hidden" class="btn-classes like hidden" value="btn btn-md like tsize-4">
                     <input type="hidden" class="small-classes like hidden" value="text-success col-xs-offset-5">
                 </div>
-                <div class="col-lg-3 col-xs-3">
+                <div class="left-pbuffer-0 col-lg-3 col-xs-3">
                     <a role="button" class="btn btn-md dislike tsize-4 disabled"><span class="glyphicon glyphicon-thumbs-down text-danger"></span> <span class="text-danger badge"><?=$alert->dislikes?></span></a> 
                     <small class="text-muted col-xs-offset-3">Não Util!</small>
                     <input type="hidden" class="btn-classes dislike hidden" value="btn btn-md dislike tsize-4 disabled">
@@ -69,7 +69,7 @@ use yii\helpers\Html;
                     <input type="hidden" class="btn-classes like hidden" value="btn btn-md like tsize-4 disabled">
                     <input type="hidden" class="small-classes like hidden" value="text-muted col-xs-offset-5">
                 </div>
-                <div class="col-lg-3 col-xs-3">
+                <div class="left-pbuffer-0 col-lg-3 col-xs-3">
                     <a role="button" class="btn btn-md dislike tsize-4"><span class="glyphicon glyphicon-thumbs-down text-danger"></span> <span class="text-danger badge"><?=$alert->dislikes?></span></a> 
                     <small class="text-danger col-xs-offset-3">Não Util!</small>
                     <input type="hidden" class="btn-classes dislike hidden" value="btn btn-md dislike tsize-4">
@@ -86,7 +86,7 @@ use yii\helpers\Html;
                     <input type="hidden" class="btn-classes like hidden" value="btn btn-md like tsize-4">
                     <input type="hidden" class="small-classes like hidden" value="text-success col-xs-offset-5">
                 </div>
-                <div class="col-lg-3 col-xs-3">
+                <div class="left-pbuffer-0 col-lg-3 col-xs-3">
                     <a role="button" class="btn btn-md dislike tsize-4 disabled"><span class="glyphicon glyphicon-thumbs-down text-danger"></span> <span class="text-danger badge"><?=$alert->dislikes?></span></a> 
                     <small class="text-muted col-xs-offset-3">Não Util!</small>
                     <input type="hidden" class="btn-classes dislike hidden" value="btn btn-md dislike tsize-4 disabled">
@@ -100,7 +100,7 @@ use yii\helpers\Html;
                     <input type="hidden" class="btn-classes like hidden" value="btn btn-md like tsize-4 disabled">
                     <input type="hidden" class="small-classes like hidden" value="text-muted col-xs-offset-5">
                 </div>
-                <div class="col-lg-3 col-xs-3">
+                <div class="left-pbuffer-0 col-lg-3 col-xs-3">
                     <a role="button" class="btn btn-md dislike tsize-4 disabled"><span class="glyphicon glyphicon-thumbs-down text-danger"></span> <span class="text-danger badge"><?=$alert->dislikes?></span></a> 
                     <small class="text-muted col-xs-offset-3">Não Util!</small>
                     <input type="hidden" class="btn-classes dislike hidden" value="btn btn-md dislike tsize-4">
@@ -115,7 +115,7 @@ use yii\helpers\Html;
                     <input type="hidden" class="btn-classes like hidden" value="btn btn-md like tsize-4">
                     <input type="hidden" class="small-classes like hidden" value="text-success col-xs-offset-5">
                 </div>
-                <div class="col-lg-3 col-xs-3">
+                <div class="left-pbuffer-0 col-lg-3 col-xs-3">
                     <a role="button" class="btn btn-md dislike tsize-4"><span class="glyphicon glyphicon-thumbs-down text-danger"></span> <span class="text-danger badge"><?=$alert->dislikes?></span></a> 
                     <small class="text-danger col-xs-offset-3">Não Util!</small>
                     <input type="hidden" class="btn-classes dislike hidden" value="btn btn-md dislike tsize-4">
@@ -124,10 +124,10 @@ use yii\helpers\Html;
         <?php endif;?>
         
         <input type="hidden"  class="hidden alert-id" value="<?=$alert->id?>">
-        <div class="col-lg-6 col-xs-6 top-buffer-1">
+        <div class="left-pbuffer-0 col-lg-6 col-xs-6 top-buffer-1">
             <?php if($alert->user_id==Yii::$app->user->identity->id): ?>
-                <a role="button" class="btn btn-danger btn-sm alert-disable"><span class="glyphicon glyphicon glyphicon-off text-white tsize-4"></span> <strong><span class="text-white"> Desativar Alerta!</span></strong></a> 
-                <a role="button" class="btn btn-danger btn-sm alert-delete hidden"><span class="glyphicon glyphicon glyphicon-trash text-white tsize-4"></span> <strong><span class="text-white"> Excluir Alerta!</span></strong></a> 
+                <a role="button" class="btn btn-danger btn-xs alert-disable"><span class="glyphicon glyphicon glyphicon-off text-white tsize-4"></span> <strong><span class="text-white"> Desativar Alerta!</span></strong></a> 
+                <a role="button" class="btn btn-danger btn-xs alert-delete hidden"><span class="glyphicon glyphicon glyphicon-trash text-white tsize-4"></span> <strong><span class="text-white"> Excluir Alerta!</span></strong></a> 
             <?php elseif($user_alert_existence): ?>
                 <a role="button" class="btn btn-success btn-xs alert-exists"><span class="glyphicon glyphicon-ok-circle text-white tsize-4"></span> <strong><span class="text-white"> Alerta existente!</span></strong></a> 
                 <a role="button" class="btn btn-danger btn-xs alert-notexists" style="display: none;"><span class="glyphicon glyphicon-remove-circle text-white tsize-4"></span> <strong><span class="text-white"> Alerta inexistente!</span></strong></a> 
@@ -140,9 +140,9 @@ use yii\helpers\Html;
     </div>
 </div>
 <?php //Comentários ?>
-<div class="row top-buffer-1">
+<div class="row top-buffer-1 popup-comment-header">
     <div class="col-lg-12 col-xs-12">
-        <p class="bg-primary text-white text-center"><strong><span class="glyphicon glyphicon glyphicon-comment"></span> Comentários <span class="text-white badge"><?=count($alert->comments)>0?count($alert->comments):null?></span></strong></p>
+        <p class="bg-primary text-white text-center comment-counter"><strong><span class="glyphicon glyphicon glyphicon-comment"></span> Comentários <span class="text-white badge"><?=count($alert->comments)>0?count($alert->comments):null?></span></strong></p>
     </div>
 </div>
     
@@ -154,13 +154,15 @@ use yii\helpers\Html;
 
 <div class="row top-buffer-3">
     <div class="col-lg-12 col-xs-12">
-      <label>Deixe seu comentário:</label>  
+      <label>Deixe seu comentário:</label>
+      <small class="text-success display-block" style="display:none;">Comentário enviado com sucesso!</small>
+      <small class="text-danger display-block" style="display:none;">Escreva o comentário.</small>
     </div>
     <div class="col-lg-12 col-xs-12">
         <?=Html::textarea('AlertComments[text]', '', ["id"=>"alert-comments-{$alert->id}","class"=>"form-control alert-comment","placeholder"=>"Escreva aqui seu comentário", 'rows'=>3])?>
     </div>
     <div class="col-lg-12 col-xs-12 top-buffer-1">
-        <?=Html::button("Comentar <span class='glyphicon glyphicon-ok-circle tsize-4'></span>",['class'=>'btn btn-sm btn-success alert-comment', 'data-loading-text'=>'Enviando...', 'autocomplete'=>'off'])?>
+        <?=Html::button("Comentar <span class='glyphicon glyphicon-ok-circle tsize-4'></span>",['class'=>'btn btn-xs btn-success alert-comment', 'data-loading-text'=>'Enviando...', 'autocomplete'=>'off'])?>
     </div>
 </div>    
     

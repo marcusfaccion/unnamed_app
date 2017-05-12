@@ -33,6 +33,7 @@ Modal::begin([
           'hide.bs.modal'=>  new JsExpression(
                 "function() {
                             $(this).find('.modal-body').html('');
+                            map.closePopup(map_popup_menu);
                  }"
                 , [])
     ]

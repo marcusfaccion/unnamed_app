@@ -15,6 +15,7 @@ class AppHomeBikeKeepersAsset extends AppHomeAsset
 {
     public $js = [
         'js/home-bike-keepers/form.js',
+        'js/home-bike-keepers/popup.js',
     ];
     
     public $jsOptions = ['position' => \yii\web\View::POS_BEGIN];

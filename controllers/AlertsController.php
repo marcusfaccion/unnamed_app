@@ -24,6 +24,7 @@ class AlertsController extends Controller
                                         'index',
                                         'begin',
                                         'render-popup',
+                                        'render-popup-readonly',
                                         'form',
                                         'get-features',
                                         'create',
@@ -56,6 +57,7 @@ class AlertsController extends Controller
                     'get-user-features'=>['get'],
                     'begin' => ['get'],
                     'render-popup' => ['get'],
+                    'render-popup-readonly' => ['get'],
                     'view' => ['get','post'],
                     'form' => ['get'],
                     'create' => ['post'],
@@ -99,6 +101,9 @@ class AlertsController extends Controller
             ],
              'render-popup' => [
                 'class'=>'app\controllers\alerts\RenderPopupAction',
+            ],
+             'render-popup-readonly' => [
+                'class'=>'app\controllers\alerts\RenderPopupReadonlyAction',
             ],
              'get-features' => [
                 'class'=>'app\controllers\alerts\GetFeaturesAction',
