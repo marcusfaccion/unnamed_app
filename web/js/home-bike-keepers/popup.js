@@ -108,23 +108,24 @@ $('body').on('click', '.btn.bike-keeper-exists', function(e){
         var bike_keeper_id = $(this).parent().parent().find('.bike-keeper-id').val();
         
         // obtém os estados dos botões, outrora armazenados, para usá-los na ativação do bicicletário 
-        var btn_like_classes = $(this).parent().parent().find('.btn-classes.like').val();
-        var small_like_classes = $(this).parent().parent().find('.small-classes.like').val();
-        var btn_dislike_classes = $(this).parent().parent().find('.btn-classes.dislike').val();
-        var small_dislike_classes = $(this).parent().parent().find('.small-classes.dislike').val();
+        var btn_like_classes = $(this).parent().parent().find('.btn-classes.bike-keeper-like').val();
+        var small_like_classes = $(this).parent().parent().find('.small-classes.bike-keeper-like').val();
+        var btn_dislike_classes = $(this).parent().parent().find('.btn-classes.bike-keeper-dislike').val();
+        var small_dislike_classes = $(this).parent().parent().find('.small-classes.bike-keeper-dislike').val();
         
-        if($(this).parent().parent().find('.btn.like').hasClass('disabled') &&
-           $(this).parent().parent().find('.btn.dislike').hasClass('disabled')){ // O usuário já disse anteriormente que o bicicletário não existe
+        if($(this).parent().parent().find('.btn.bike-keeper-like').hasClass('disabled') &&
+           $(this).parent().parent().find('.btn.bike-keeper-dislike').hasClass('disabled')){ // O usuário já disse anteriormente que o bicicletário não existe
            
-            $(this).parent().parent().find('.btn.like').attr('class', btn_like_classes);
-            $(this).parent().parent().find('.btn.like').next().attr('class', small_like_classes);
-            $(this).parent().parent().find('.btn.dislike').attr('class', btn_dislike_classes);
-            $(this).parent().parent().find('.btn.dislike').next().attr('class', small_dislike_classes);
+            $(this).parent().parent().find('.btn.bike-keeper-like').attr('class', btn_like_classes);
+            $(this).parent().parent().find('.btn.bike-keeper-like').next().attr('class', small_like_classes);
+            $(this).parent().parent().find('.btn.bike-keeper-dislike').attr('class', btn_dislike_classes);
+            $(this).parent().parent().find('.btn.bike-keeper-dislike').next().attr('class', small_dislike_classes);
             
             var _this = $(this);
             $.ajax({
                 url: 'bike-keepers/exists',
                 type: 'POST',
+                async: false,
                 data: {
                     BikeKeepers: {
                         id: bike_keeper_id,
@@ -148,23 +149,24 @@ $('body').on('click', '.btn.bike-keeper-notexists', function(e){
         var bike_keeper_id = $(this).parent().parent().find('.bike-keeper-id').val();
         
         // armazena os estados dos botões antes de desativálos
-        var btn_like_classes = $(this).parent().parent().find('.btn-classes.like').val();
-        var small_like_classes = $(this).parent().parent().find('.small-classes.like').val();
-        var btn_dislike_classes = $(this).parent().parent().find('.btn-classes.dislike').val();
-        var small_dislike_classes = $(this).parent().parent().find('.small-classes.dislike').val();
+        var btn_like_classes = $(this).parent().parent().find('.btn-classes.bike-keeper-like').val();
+        var small_like_classes = $(this).parent().parent().find('.small-classes.bike-keeper-like').val();
+        var btn_dislike_classes = $(this).parent().parent().find('.btn-classes.bike-keeper-dislike').val();
+        var small_dislike_classes = $(this).parent().parent().find('.small-classes.bike-keeper-dislike').val();
         
-        if(!$(this).parent().parent().find('.btn.like').hasClass('disabled') ||
-           !$(this).parent().parent().find('.btn.dislike').hasClass('disabled')){ // O usuário diz que o bicicletário não existe
+        if(!$(this).parent().parent().find('.btn.bike-keeper-like').hasClass('disabled') ||
+           !$(this).parent().parent().find('.btn.bike-keeper-dislike').hasClass('disabled')){ // O usuário diz que o bicicletário não existe
            
-            $(this).parent().parent().find('.btn.like').addClass('disabled');
-            $(this).parent().parent().find('.btn.like').next().removeClass('text-success').addClass('text-muted');
-            $(this).parent().parent().find('.btn.dislike').addClass('disabled');
-            $(this).parent().parent().find('.btn.dislike').next().removeClass('text-danger').addClass('text-muted');
+            $(this).parent().parent().find('.btn.bike-keeper-like').addClass('disabled');
+            $(this).parent().parent().find('.btn.bike-keeper-like').next().removeClass('text-success').addClass('text-muted');
+            $(this).parent().parent().find('.btn.bike-keeper-dislike').addClass('disabled');
+            $(this).parent().parent().find('.btn.bike-keeper-dislike').next().removeClass('text-danger').addClass('text-muted');
             
             var _this = $(this);
             $.ajax({
                 url: 'bike-keepers/not-exists',
                 type: 'POST',
+                async: false,
                 data: {
                     BikeKeepers: {
                         id: bike_keeper_id,

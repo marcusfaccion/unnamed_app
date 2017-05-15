@@ -1,9 +1,9 @@
 <?php
-namespace app\controllers\alerts;
+namespace app\controllers\bikeKeepers;
 
 use Yii;
 use yii\base\Action;
-use app\models\UserAlertNonexistence;
+use app\models\UserBikeKeeperNonexistence;
 
 class NotExistsAction extends Action
 {
@@ -18,12 +18,12 @@ class NotExistsAction extends Action
         
         
         // Usuário informa a inexistência
-        $alert_existence = new UserAlertNonexistence;
-        $alert_existence->user_id = Yii::$app->user->identity->id;
-        $alert_existence->alert_id = Yii::$app->request->post('Alerts')['id'];
-        $alert_existence->created_date = date('Y-m-d H:i:s');
+        $bike_keeper_existence = new UserBikeKeeperNonexistence;
+        $bike_keeper_existence->user_id = Yii::$app->user->identity->id;
+        $bike_keeper_existence->bike_keeper_id = Yii::$app->request->post('BikeKeepers')['id'];
+        $bike_keeper_existence->created_date = date('Y-m-d H:i:s');
         
-        if($alert_existence->save()){
+        if($bike_keeper_existence->save()){
             if($this->isAjax){
                return $this->controller->renderPartial('@app/views/_scalar_return',['scalar'=>1]);
                \Yii::$app->end(0);

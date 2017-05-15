@@ -101,7 +101,11 @@ $(document).ready(function() {
        // https://github.com/perliedman/leaflet-control-geocoder
        L.Control.geocoder({
            position: 'bottomright',
-           placeholder: 'Digite um local'
+           placeholder: 'Digite um local',
+           //geocoder: new L.Control.Geocoder.Mapbox(map_conf.accessToken),
+           geocoder: new L.Control.Geocoder.Nominatim(), // Nominatim geocoding service by OSM
+           defaultMarkGeocode: true,
+           showResultIcons: true,
        }).addTo(map);
        
        //Plotando Alertas
