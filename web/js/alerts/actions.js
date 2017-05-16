@@ -134,8 +134,7 @@ $('body').on('click', '#alerts-table .btn.alert-view-on-map', function(){
                      }
                 });
      window.scrollTo(0, 0); //faz um scroll da tela para o mapa
-     latlng = app.layers.selected.getLatLng(); // obtém o objeto L.latlng do layer alerta
-     corner = L.latLng(latlng.lat, latlng.lng); // obtém o objeto L.latlng corner
+     corner = app.layers.selected.getLatLng(); // obtém o objeto L.latlng do layer alerta
      bounds = L.latLngBounds(corner, corner); // obtém o objeto L.latlngBounds para o alerta
      map.fitBounds(bounds); // aplica o setview com zoom max
     
@@ -165,6 +164,88 @@ $('body').on('click', '#alert_update_modal .btn.alert-save', function(){
 
 $('body').on('click', '#alert_update_modal .btn.alert-back', function(){
     $('#alert_update_modal').modal('hide');
+});
+
+// Aba Problemas //
+
+// Destaca o alerta no mapa aplicando um setView e zoom
+$('body').on('click', '#nonalert-accordion .btn.nonalert-view-on-map', function(){
+     app.alert.id = $(this).parent().find('input:last-child').val();
+     geoJSON_layer.alerts.getLayers().forEach(
+                function(alert_layer, index, array){
+                    if(app.alert.id==alert_layer.feature.properties.id){
+                       app.layers.selected = alert_layer; // guarda alerta
+                     }
+                });
+     window.scrollTo(0, 0); //faz um scroll da tela para o mapa
+     corner = app.layers.selected.getLatLng(); // obtém o objeto L.latlng do layer alerta
+     bounds = L.latLngBounds(corner, corner); // obtém o objeto L.latlngBounds para o alerta
+     map.fitBounds(bounds); // aplica o setview com zoom max 
+});
+
+// Desativa o alerta e o remove do mapa
+$('body').on('click', '#nonalert-accordion .btn.nonalert-disable', function(){
+        app.alert.id = $(this).parent().find('input:last-child').val();
+        //Mensagem de confirmação
+        app.message_code = 'alerts.disable.confirmation'; 
+        //Função para executar após a requisição
+        app.request.afterAction = function(rtn, str){
+            Loading.show();    
+            $.ajax({
+                type: 'POST',
+                url: 'alerts/delete-user-alert-nonexistence',
+                data: { Alerts: { id: app.alert.id }},
+                success: function(_response){
+                    if(_response){
+                        $.ajax({
+                            type: 'GET',
+                            url: 'alerts/active-non-alerts',
+                            data: { user_id: app.user.id },
+                            success: function(response){
+                                $('#active-nonalerts').html(response); // atualiza a tabela de alertas
+                                badge = $('#alerts-nav-tabs .active a span.badge'); // atualiza o badge com a quantidade atualizada de alertas ativos com problemas
+                                badge_active = $('#alerts-nav-tabs #alerts-nav-tab-active a span.badge'); // atualiza o badge da aba alertas ativos com a quantidade atualizada de alertas ativos
+                                badge.html((parseInt(badge.html())-1)>0?parseInt(badge.html())-1:'');
+                                badge_active.html((parseInt(badge_active.html())-1)>0?parseInt(badge_active.html())-1:'');
+                                Loading.hide();
+                            }
+                        });
+                    }
+                }
+            });
+        };
+        //Configurando a requisição de desativação
+        app.request.ajax = {
+                    url: 'alerts/disable',
+                    type: 'POST',
+                    async: false,
+                    data:{
+                        Alerts: {id: app.alert.id}
+    //                                  Alerts: {id: alert_layer.feature.properties.id}
+                    },
+                    success: function(rtn){
+                        if(rtn){ //remove o alerta do mapa
+                                geoJSON_layer.alerts.removeLayer(app.layers.selected);
+                        }
+                    },
+                    complete: app.request.afterAction,
+                }
+
+        // Percorre todo o Layer alerts para encontrar os alertas sendo desativados
+        app.layers.selected = [];
+        geoJSON_layer.alerts.getLayers().forEach(
+                function(alert_layer, index, array){
+                    if(app.alert.id==alert_layer.feature.properties.id){
+                       app.layers.selected = alert_layer; // guarda alerta
+                     }
+                });
+        //Mostra o modal de confirmação
+        $('#alerts_confirmation_modal').modal('show');
+});
+
+// Destaca o alerta no mapa aplicando um setView e zoom
+$('body').on('click', '#nonalert-accordion .btn.nonalert-view-users', function(){
+    console.log($(this));
 });
 
 // Clique dos botões do Modal de Confirmação

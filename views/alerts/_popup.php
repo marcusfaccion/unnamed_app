@@ -33,18 +33,38 @@ use yii\helpers\Html;
         <div class="col-lg-5 col-xs-5 right-pbuffer-0">
             <?=Html::img($alert->user->avatar, ['class'=>'img-circle wide-px5-7  tall-px5-7'])?>
         </div>
+        <div class="col-lg-12 col-xs-12 left-pbuffer-0 top-buffer-1">
+        <?php if($alert->duration_date):?>
+            <div class="col-lg-4 col-xs-12 left-pbuffer-0 right-pbuffer-0">   
+                <div class="col-lg-12 col-xs-12">
+                    <label>Expira em:</label>
+                </div>
+                <div class="col-lg-12 col-xs-12">
+                    <?php 
+                        $timezone = Yii::$app->formatter->timeZone;
+                        Yii::$app->formatter->timeZone = 'UTC';
+                        echo Yii::t('app', Yii::$app->formatter->asDuration(str_replace('+00:00', 'Z', Yii::$app->formatter->format(date('Y-m-d H:i:s'),['datetime','php:c'])).'/'.str_replace('+00:00', 'Z', Yii::$app->formatter->asDatetime($alert->duration_date,'php:c')), 1));
+                        Yii::$app->formatter->timeZone = $timezone;
+                    ?>
+                    <?php // Yii::$app->formatter->asDatetime($alert->duration_date)?>
+                </div>
+            </div>
+            <div class="col-lg-8 col-xs-12 left-pbuffer-0">
+        <?php else:?>
+            <div class="col-lg-8 col-xs-12">
+        <?php endif;?>
+            
+                <div class="col-lg-12 col-xs-12 left-pbuffer-0">
+                    <label>Mensagem:</label>
+                </div>
+                <div class="col-lg-12 col-xs-12 left-pbuffer-0">
+                    <i><?=$alert->description?></i>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
-<div class="row top-buffer-1">
-    <div class="col-lg-12 col-xs-12">
-        <div class="col-lg-3 col-xs-3">
-            <label>Mensagem:</label>
-        </div>
-        <div class="col-lg-9 col-xs-9">
-            <i><?=$alert->description?></i>
-        </div>
-    </div>
-</div>
+
 <div class="row">
     <div class="col-lg-12 col-xs-12">
         <?php if($user_avaliation && !$user_alert_existence): ?>

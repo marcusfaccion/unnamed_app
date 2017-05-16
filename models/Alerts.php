@@ -118,6 +118,14 @@ class Alerts extends GeoJSON_ActiveRecord
     }
     
     /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getNonExistence()
+    {
+        return $this->hasMany(UserAlertNonexistence::className(), ['alert_id' => 'id']);
+    }
+    
+    /**
      * Desativa e retorna o numero de alerta afetados
      * @param mixed $alerts (array|Alerts) - array de ids ou array de objetos Alerts
      * @return type int|false

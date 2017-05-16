@@ -45,8 +45,8 @@ use yii\bootstrap\Html;
             <td><?=$alert->description?></td>
             <td>
                 <a data-toggle="tooltip" data-placement="left" title="Editar" role='button' class='btn btn-xs btn-default alert-update'><span class="glyphicon glyphicon-edit"></span></a>
-                <a data-toggle="tooltip" data-placement="left" title="Desativar" role='button' class='btn btn-xs btn-default alert-disable-one'><span class="glyphicon glyphicon-remove"></span></a>
-                <a data-toggle="tooltip" data-placement="left" title="Ver no mapa" role='button' class='btn btn-xs btn-default alert-view-on-map'><span class="glyphicon glyphicon-globe"></span></a>
+                <a data-toggle="tooltip" data-placement="left" title="Desativar" role='button' class='btn btn-xs btn-default alert-disable-one'><span class="text-danger glyphicon glyphicon-remove-circle"></span></a>
+                <a data-toggle="tooltip" data-placement="left" title="Ver no mapa" role='button' class='btn btn-xs btn-default alert-view-on-map'><span class="text-primary glyphicon glyphicon-globe"></span></a>
                 <?php // Html::hiddenInput($alert->formName().'[id]', $alert->id)?>
             </td>
         </tr> 

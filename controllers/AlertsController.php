@@ -31,6 +31,8 @@ class AlertsController extends Controller
                                         'view',
                                         'update',
                                         'active-alerts',
+                                        'active-non-alerts',
+                                        'delete-user-alert-nonexistence',
                                         'disable',
                                         'enable',
                                         'ilike',
@@ -64,6 +66,8 @@ class AlertsController extends Controller
                     'update' => ['post'],
                     'disable' => ['post'],
                     'active-alerts' => ['get'],
+                    'active-non-alerts' => ['get'],
+                    'delete-user-alert-nonexistence'=>['post'],
                     'enable' => ['post'],
                     'ilike' => ['post'],
                     'idislike' => ['post'],
@@ -123,6 +127,9 @@ class AlertsController extends Controller
             'not-exists' => [
                 'class'=>'app\controllers\alerts\NotExistsAction',
             ],
+            'delete-user-alert-nonexistence' => [
+                'class'=>'app\controllers\alerts\DeleteUserAlertNonexistenceAction',
+            ],
         ];
     }
     
@@ -161,7 +168,16 @@ class AlertsController extends Controller
     public function actionActiveAlerts($user_id)
     {
         $user = Users::findOne($user_id);
-        return $this->renderPartial('_active-alerts',['alerts'=>$user->activeAlerts]);
+        return $this->renderPartial('_active_alerts',['alerts'=>$user->activeAlerts]);
+    }
+    /**
+     * Renderiza a tabela de alertas ativos com problemas reportados por usuários
+     * @return string
+     */
+    public function actionActiveNonAlerts($user_id)
+    {
+        $user = Users::findOne($user_id);
+        return $this->renderPartial('_active_nonalerts',['non_alerts'=>$user->activeNonexistentAlerts]);
     }
  
 }

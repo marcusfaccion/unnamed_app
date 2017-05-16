@@ -56,8 +56,9 @@ $this->title = $alert->title;
             ],
             [
                 'attribute'=>'duration_date',
+                'label'=>'Expira em',
                 'visible'=>$alert->duration_date!=null,
-                'format'=>'datetime'
+                'value'=>'datetime'
             ],
             [
                 'attribute'=>'likes',

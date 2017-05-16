@@ -207,6 +207,13 @@ class Users extends ActiveRecord implements IdentityInterface
     {
         return $this->hasMany(Alerts::className(), ['user_id' => 'id'])->nonexistent();
     }
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getActiveNonexistentAlerts()
+    {
+        return $this->hasMany(Alerts::className(), ['user_id' => 'id'])->nonexistent()->active();
+    }
     
     /**
      * @inheritdoc
