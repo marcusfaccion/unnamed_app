@@ -43,7 +43,7 @@ Modal::begin([
                         url: 'alerts/active-alerts',
                         data: { user_id: app.user.id },
                         success: function(response){
-                            $('#active-alerts').html(response); // atualiza a tabela de alertas
+                            $('#alerts-container').html(response); // atualiza a tabela de alertas
                             Loading.hide();
                         }
                     });
@@ -55,6 +55,47 @@ Modal::begin([
 <div id='alerts_alert_form' class="row col-xs-offset-1 bottom-buffer-5">
 
 </div>
+<?php
+Modal::end();
+?>
+
+<?php
+/**
+ *  Modal
+ */
+Modal::begin([
+    'id' => 'alert_view_users_modal',
+    'size' => Modal::SIZE_SMALL,
+    'header' =>"<div class='modal-title'><strong>Usuários Informantes</strong></div>",
+    //'closeButton' => ['dat'],
+    'options'=>['class' => 'modal modal-wide'],
+    'clientEvents' => [
+        'shown.bs.modal'=>  new JsExpression(
+                "function() {
+                    var modal = $(this);
+                    $.ajax({
+                        type: 'GET',
+                        url: 'alerts/alert-nonexistence-users',
+                        data: { 
+                            Alerts: {
+                                id: app.alert.id, 
+                            },
+                         },
+                        success: function(response){
+                            modal.find('.modal-body').html(response);
+                        }
+                    });
+                 }"
+                , []),
+          'hide.bs.modal'=>  new JsExpression(
+                "function() {
+                        $(this).find('.modal-body').html('');
+                 }"
+                , [])
+    ]
+]);
+?>
+
 <?php
 Modal::end();
 ?>
@@ -94,7 +135,7 @@ Modal::begin([
                         url: 'alerts/active-alerts',
                         data: { user_id: app.user.id },
                         success: function(response){
-                            $('#active-alerts').html(response); // atualiza a tabela de alertas
+                            $('#alerts-container').html(response); // atualiza as tabelas de alertas
                             Loading.hide();
                         }
                     });

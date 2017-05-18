@@ -19,7 +19,9 @@ use yii\bootstrap\Html;
               
           <a id='nonalert-<?=$alert->id?>-btn-viewonmap' data-toggle="tooltip" data-placement="left" title="Ver no mapa" role="button" class="btn btn-xs btn-default nonalert-view-on-map" data-original-title="Ver no mapa"><span class="text-primary glyphicon glyphicon-globe"></span></a>
           <a id='nonalert-<?=$alert->id?>-btn-disable' data-toggle="tooltip" data-placement="left" title="Desativar alerta" role="button" class="btn btn-xs btn-default nonalert-disable" data-original-title="Desativar alerta"><span class="text-danger glyphicon glyphicon-remove-circle"></span></a>
-          <a id='nonalert-<?=$alert->id?>-btn-users' data-toggle="tooltip" data-placement="left" title="Ver informantes" role="button" class="btn btn-xs btn-default nonalert-view-users" data-original-title="Ver informantes"><span class="text-muted glyphicon glyphicon-user"></span></a>
+          <span data-toggle="modal" data-target="#alert_view_users_modal">
+            <a id='nonalert-<?=$alert->id?>-btn-users' data-toggle="tooltip" data-placement="left" title="Ver informantes" role="button" class="btn btn-xs btn-default nonalert-view-users" data-original-title="Ver informantes"><span class="text-muted glyphicon glyphicon-user"></span></a>
+          </span>
           <?=Html::hiddenInput($alert->formName().'[id]', $alert->id);?> 
           
       </div>

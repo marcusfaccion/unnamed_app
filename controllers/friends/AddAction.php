@@ -25,7 +25,7 @@ class AddAction extends Action
             $friendship_request->created_date = date('Y-m-d H:i:s');
             if($friendship_request->save()){
                 Yii::$app->response->format = \yii\web\Response::FORMAT_RAW;
-                return $this->controller->renderPartial('@app/views/_html_message',['text'=>"Solicitação enviada!",'css_class'=>['parent'=>'alert alert-dismissible alert-success','text'=>'bg-success']]);
+                return $this->controller->renderPartial('@app/views/_html_message',['text'=>"Solicitação de amizade enviada com sucesso!",'css_class'=>['parent'=>'alert alert-dismissible alert-success','text'=>'bg-success']]);
             }
         }
         

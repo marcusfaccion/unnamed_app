@@ -53,4 +53,12 @@ class UserAlertNonexistence extends \yii\db\ActiveRecord
     {
         return new UserAlertNonexistenceQuery(get_called_class());
     }
+    /**
+     * @inheritdoc
+     * @return UserAlertNonexistenceQuery the active query used by this AR class.
+     */
+    public function getUser()
+    {
+        return $this->hasOne(Users::className(), ['id' => 'user_id']);
+    }
 }

@@ -307,6 +307,7 @@ a.desc:after {
 .no-paddings{ padding: 0 !important;} no-bottom-padding{ padding-bottom: 0 !important;} no-top-padding{ padding-top: 0 !important;}
 
 .text-white{ color: #ffffff}
+.text-very-muted{ color: #cccccc}
 
 .bg-default{ color: #fff; background-color: #ccc; border-color: #ddd;} .bg-light-green{ background-color: #DAFCCA; border-color: #DCEBD2;}
 

@@ -115,6 +115,9 @@ class AlertsController extends Controller
              'get-user-features' => [
                 'class'=>'app\controllers\alerts\GetUserFeaturesAction',
             ],
+            'alert-nonexistence-users'=>[
+                'class'=>'app\controllers\alerts\AlertNonexistenceUsersAction',
+            ],
              'ilike' => [
                 'class'=>'app\controllers\alerts\IlikeAction',
             ],
@@ -168,7 +171,7 @@ class AlertsController extends Controller
     public function actionActiveAlerts($user_id)
     {
         $user = Users::findOne($user_id);
-        return $this->renderPartial('_active_alerts',['alerts'=>$user->activeAlerts]);
+        return $this->renderPartial('_alerts_manager',['user'=>$user]);
     }
     /**
      * Renderiza a tabela de alertas ativos com problemas reportados por usuários
@@ -178,6 +181,17 @@ class AlertsController extends Controller
     {
         $user = Users::findOne($user_id);
         return $this->renderPartial('_active_nonalerts',['non_alerts'=>$user->activeNonexistentAlerts]);
+    }
+    
+    public function beforeAction($action)
+    {
+        parent::beforeAction($action);
+        //Index Bootstrap
+        if($this->action->id=='index'){
+            //Chamada de Store Procedure que desativa alertas vencidos 
+            $row_count = Yii::$app->db->createCommand("SELECT st_alerts_check_duration();")->execute();        
+        }
+        return true;
     }
  
 }

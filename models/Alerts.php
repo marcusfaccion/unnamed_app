@@ -123,6 +123,7 @@ class Alerts extends GeoJSON_ActiveRecord
     public function getNonExistence()
     {
         return $this->hasMany(UserAlertNonexistence::className(), ['alert_id' => 'id']);
+        //return $this->hasMany(UserAlertNonexistence::className(), ['alert_id' => 'id'])->orderBy('id desc');
     }
     
     /**

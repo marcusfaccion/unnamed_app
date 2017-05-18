@@ -34,12 +34,11 @@ $('body').on('click', '#active-alerts .btn.alert-disable-all', function(){
                 url: 'alerts/active-alerts',
                 data: { user_id: app.user.id },
                 success: function(response){
-                    $('#active-alerts').html(response); // atualiza a tabela de alertas
-                    badge = $('#alerts-nav-tabs .active a span.badge'); // atualiza o badge com a quantidade atualizada de alertas ativos
-                    badge.html((parseInt(badge.html())-alert_ids.length)>0?parseInt(badge.html())-alert_ids.length:'');
+                    $('#alerts-container').html(response); // atualiza a tabela de alertas
                     Loading.hide();
                 }
-            });};
+            });
+        };
         //Configurando a requisição de desativação
         app.request.ajax = {
                     url: 'alerts/disable',
@@ -89,12 +88,11 @@ $('body').on('click', '#alerts-table .btn.alert-disable-one', function(){
                 url: 'alerts/active-alerts',
                 data: { user_id: app.user.id },
                 success: function(response){
-                    $('#active-alerts').html(response); // atualiza a tabela de alertas
-                    badge = $('#alerts-nav-tabs .active a span.badge'); // atualiza o badge com a quantidade atualizada de alertas ativos
-                    badge.html((parseInt(badge.html())-1)>0?parseInt(badge.html())-1:'');
+                    $('#alerts-container').html(response); // atualiza a tabela de alertas
                     Loading.hide();
                 }
-            });};
+            });
+        };
         //Configurando a requisição de desativação
         app.request.ajax = {
                     url: 'alerts/disable',
@@ -199,19 +197,16 @@ $('body').on('click', '#nonalert-accordion .btn.nonalert-disable', function(){
                     if(_response){
                         $.ajax({
                             type: 'GET',
-                            url: 'alerts/active-non-alerts',
+                            url: 'alerts/active-alerts',
                             data: { user_id: app.user.id },
                             success: function(response){
-                                $('#active-nonalerts').html(response); // atualiza a tabela de alertas
-                                badge = $('#alerts-nav-tabs .active a span.badge'); // atualiza o badge com a quantidade atualizada de alertas ativos com problemas
-                                badge_active = $('#alerts-nav-tabs #alerts-nav-tab-active a span.badge'); // atualiza o badge da aba alertas ativos com a quantidade atualizada de alertas ativos
-                                badge.html((parseInt(badge.html())-1)>0?parseInt(badge.html())-1:'');
-                                badge_active.html((parseInt(badge_active.html())-1)>0?parseInt(badge_active.html())-1:'');
+                                $('#alerts-container').html(response); // atualiza as tabelas de alertas
                                 Loading.hide();
                             }
                         });
+
                     }
-                }
+                ;;}
             });
         };
         //Configurando a requisição de desativação
@@ -245,7 +240,27 @@ $('body').on('click', '#nonalert-accordion .btn.nonalert-disable', function(){
 
 // Destaca o alerta no mapa aplicando um setView e zoom
 $('body').on('click', '#nonalert-accordion .btn.nonalert-view-users', function(){
-    console.log($(this));
+    app.alert.id = $(this).parent().parent().find('input:last-child').val();
+});
+
+// Destaca o alerta no mapa aplicando um setView e zoom
+$('body').on('click', '#alert_view_users_modal .btn.nonalert-user-add', function(){
+    user_friend_id = $(this).parent().find('input:last-child').val();
+    _this = $(this);
+    Loading.show();    
+    $.ajax({
+        url: "friends/add",
+        type: "POST",
+        data: {UserFriendshipRequest : {requested_user_id: user_friend_id}},
+        success: function(_response){
+            if(_response){
+                _this.parent().find('small').html(_response).fadeIn('now');
+                _this.addClass('disabled');
+                Loading.hide();
+            }
+        ;;}
+    });
+    
 });
 
 // Clique dos botões do Modal de Confirmação

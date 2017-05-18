@@ -6,6 +6,7 @@ use Yii;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 use yii\helpers\Url;
+
 /**
  * This is the model class for table "users".
  *
@@ -304,6 +305,45 @@ class Users extends ActiveRecord implements IdentityInterface
     }
     public function getHomeDir(){
         return Url::to('@users_dir').'/'.$this->getHomeDirName();
+    }
+    
+    /**
+     * Checa se o usuário identificado por $user_id é um amigo
+     * @param int $user_id id do usuário
+     * @return boolean true se são amigos e false caso não
+     */
+    public function isMyFriend($user_id){
+        return (UserFriendships::find()->where(['user_id'=>$this->id, 'friend_user_id'=>$user_id])->orWhere(['user_id'=>$user_id, 'friend_user_id'=>$this->id])->count()==1)?true:false ;
+    }
+    
+    /**
+     * Verifica se os dois usuários são amigos
+     * @param int $user_id id do usuário 1 
+     * @param int $user_id2 id do usuário 2
+     * @return boolean true se são amigos e false caso não
+     */
+    static function checkFriendShipping($user_id, $user_id2){
+        return (UserFriendships::find()->where(['user_id'=>$user_id, 'friend_user_id'=>$user_id2])->orWhere(['user_id'=>$user_id2, 'friend_user_id'=>$user_id])->count()==1)?true:false ;
+    }
+    
+    /**
+     * Checa se existe uma solicitação de amizade para o usuário identificado por $requested_user_id
+     * @param int $requested_user_id id do usuário solicitado
+     * @return boolean true se existe solicitação de amizade e false caso não
+     */
+    public function wasIRequestFriendship($requested_user_id){
+        return (UserFriendshipRequests::find()->where(['user_id'=>$this->id, 'requested_user_id'=>$requested_user_id])->count()==1)?true:false ;
+    }
+    
+    /**
+     * Checa se existe uma solicitação de amizade para o usuário identificado por $requested_user_id
+     * feita pelo usuário identificado por $user_id
+     * @param int $requested_user_id id do usuário solicitado
+     * @param int $user_id id do usuário que solicita
+     * @return boolean true se existe uma solicitação de amizade e false caso não
+     */
+    static function checkRequestFriendship($user_id, $requested_user_id){
+        return (UserFriendshipRequests::find()->where(['user_id'=>$user_id, 'requested_user_id'=>$requested_user_id])->count()==1)?true:false ;
     }
     
     public function upload()
