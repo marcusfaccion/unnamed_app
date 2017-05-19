@@ -66,19 +66,19 @@ use yii\helpers\Html;
 </div>
 <div class="row">
     <div class="col-lg-12 col-xs-12">
-        
-                <div class="col-lg-3 col-xs-3">
-                    <a role="button" class="btn btn-md like tsize-4"><span class="glyphicon glyphicon-thumbs-up text-success"></span> <span class="text-success badge"><?=$alert->likes?></span></a> 
-                    <small class="text-success col-xs-offset-5">Util!</small>
-                    <input type="hidden" class="btn-classes like hidden" value="btn btn-md like tsize-4">
-                    <input type="hidden" class="small-classes like hidden" value="text-success col-xs-offset-5">
-                </div>
-                <div class="left-pbuffer-0 col-lg-3 col-xs-3">
-                    <a role="button" class="btn btn-md dislike tsize-4"><span class="glyphicon glyphicon-thumbs-down text-danger"></span> <span class="text-danger badge"><?=$alert->dislikes?></span></a> 
-                    <small class="text-danger col-xs-offset-3">Não Util!</small>
-                    <input type="hidden" class="btn-classes dislike hidden" value="btn btn-md dislike tsize-4">
-                    <input type="hidden" class="small-classes dislike hidden" value="text-danger col-xs-offset-3">
-                </div>
+            <div class="col-lg-3 col-xs-3">
+                <a role="button" class="btn btn-md like tsize-4 disabled"><span class="glyphicon glyphicon-thumbs-up text-success"></span> <span class="text-success badge"><?=$alert->likes?></span></a> 
+                <small class="text-muted col-xs-offset-5">Util!</small>
+                <input type="hidden" class="btn-classes like hidden" value="btn btn-md like tsize-4">
+                <input type="hidden" class="small-classes like hidden" value="text-success col-xs-offset-5">
+            </div>
+            <div class="left-pbuffer-0 col-lg-3 col-xs-3">
+                <a role="button" class="btn btn-md dislike tsize-4 disabled"><span class="glyphicon glyphicon-thumbs-down text-danger"></span> <span class="text-danger badge"><?=$alert->dislikes?></span></a> 
+                <small class="text-muted col-xs-offset-3">Não Util!</small>
+                <input type="hidden" class="btn-classes dislike hidden" value="btn btn-md dislike tsize-4">
+                <input type="hidden" class="small-classes dislike hidden" value="text-danger col-xs-offset-3">
+            </div>
+        <input type="hidden"  class="hidden alert-id" value="<?=$alert->id?>">
     </div>
 </div>
 <?php //Comentários ?>

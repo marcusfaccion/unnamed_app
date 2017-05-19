@@ -10,9 +10,9 @@ use yii\web\JsExpression;
 ?>
 <?php
 Modal::begin([
-    'id' => 'alert_update_modal',
+    'id' => 'bike_keeper_update_modal',
     'size' => Modal::SIZE_LARGE,
-    'header' =>"<div class='modal-title'>Editando Alerta</div>",
+    'header' =>"<div class='modal-title'>Editando Bicicletário</div>",
     //'closeButton' => ['dat'],
     'options'=>['class' => 'modal modal-wide'],
     'clientEvents' => [
@@ -21,10 +21,10 @@ Modal::begin([
                     var modal = $(this);
                     $.ajax({
                         type: 'POST',
-                        url: 'alerts/update',
+                        url: 'bikeKeepers/update',
                         data: { 
-                            Alerts: {
-                                id: app.alert.id, 
+                            BikeKeepers: {
+                                id: app.bike_keeper.id, 
                             },
                             nonSubmition: true,
                          },
@@ -40,10 +40,10 @@ Modal::begin([
                         $(this).find('.modal-body').html('');
                     $.ajax({
                         type: 'GET',
-                        url: 'alerts/active-alerts',
+                        url: 'bikeKeepers/active-bike-keepers',
                         data: { user_id: app.user.id },
                         success: function(response){
-                            $('#alerts-container').html(response); // atualiza a tabela de alertas
+                            $('#bike-keepers-container').html(response); // atualiza a tabela de bicicletários
                             Loading.hide();
                         }
                     });
@@ -62,7 +62,7 @@ Modal::end();
  *  Modal
  */
 Modal::begin([
-    'id' => 'alert_view_users_modal',
+    'id' => 'bike_keeper_view_users_modal',
     'size' => Modal::SIZE_SMALL,
     'header' =>"<div class='modal-title'><strong>Usuários Informantes</strong></div>",
     //'closeButton' => ['dat'],
@@ -73,10 +73,10 @@ Modal::begin([
                     var modal = $(this);
                     $.ajax({
                         type: 'GET',
-                        url: 'alerts/alert-nonexistence-users',
+                        url: 'bikeKeepers/bike-keeper-nonexistence-users',
                         data: { 
-                            Alerts: {
-                                id: app.alert.id, 
+                            BikeKeepers: {
+                                id: app.bike_keeper.id, 
                             },
                          },
                         success: function(response){
@@ -103,7 +103,7 @@ Modal::end();
  * Modal de confirmação universal 
  */
 Modal::begin([
-    'id' => 'alerts_confirmation_modal',
+    'id' => 'bike_keepers_confirmation_modal',
     'size' => Modal::SIZE_SMALL,
     'header' =>"<div class='modal-title'>Confirmação <span class='glyphicon glyphicon-question-sign'></span></div>",
     'footer' =>"<button id='yes-confirm' type='button' class='btn btn-xs btn-danger' value='1' data-dismiss='modal'>Sim</button>
@@ -126,14 +126,14 @@ Modal::begin([
         }", []),
         'hide.bs.modal'=>  new JsExpression(
                 "function() {
-                    Loading.show();    
-                    $(this).find('.modal-body').html('');
+                     Loading.show();    
+                        $(this).find('.modal-body').html('');
                     $.ajax({
                         type: 'GET',
-                        url: 'alerts/active-alerts',
+                        url: 'bikeKeepers/active-bike-keepers',
                         data: { user_id: app.user.id },
                         success: function(response){
-                            $('#alerts-container').html(response); // atualiza as tabelas de alertas
+                            $('#bike_keepers-container').html(response); // atualiza as tabelas de bicicletários
                             Loading.hide();
                         }
                     });
@@ -152,7 +152,7 @@ Modal::begin([
  * Modal de informação universal 
  */
 Modal::begin([
-    'id' => 'alerts_information_modal',
+    'id' => 'bike_keepers_information_modal',
     'size' => Modal::SIZE_SMALL,
     'header' =>"<div class='modal-title'>Atenção <span class='glyphicon glyphicon-alert'></span></div>",
     'footer' =>"",

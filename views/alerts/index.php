@@ -2,7 +2,7 @@
 
 use app\assets\AppAlertsAsset;
 
-$this->title = 'Apicação Colaborativa para Ciclistas';
+$this->title = 'Bike Social - Alertas';
 ?>
 
 <?php

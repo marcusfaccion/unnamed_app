@@ -107,6 +107,15 @@ class BikeKeepers extends GeoJSON_ActiveRecord
     }
 
     /**
+     * @inheritdoc
+     * @return AlertsQuery the active query usada por esta ActiveRecord class.
+     */
+    public static function find()
+    {
+        return new AlertsQuery(get_called_class());
+    }
+    
+    /**
      * @return \yii\db\ActiveQuery
      */
     public function getUser()
@@ -129,6 +138,15 @@ class BikeKeepers extends GeoJSON_ActiveRecord
     {
         return $this->hasMany(Multimedias::className(), ['id' => 'bike_keepers_id'])
             ->viaTable(BikeKeepersMultimedias::tableName(), ['multimedias_id' => 'id']);
+    }
+    
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getNonExistence()
+    {
+        return $this->hasMany(UserBikeKeeperNonexistence::className(), ['bike_keeper_id' => 'id']);
+        //return $this->hasMany(UserBikeKeeperNonexistence::className(), ['bike_keeper_id' => 'id'])->orderBy('id desc');
     }
     
     /**

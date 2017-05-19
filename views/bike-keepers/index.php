@@ -1,12 +1,29 @@
-<div class="alerts-default-index">
-    <h1><?= $this->context->action->uniqueId ?></h1>
-    <p>Widget bike keeper
-        This is the view content for action "<?= $this->context->action->id ?>".
-        The action belongs to the controller "<?= get_class($this->context) ?>"
-        in the "<?= $this->context->module->id ?>" module.
-    </p>
-    <p>
-        You may customize this page by editing the following file:<br>
-        <code><?= __FILE__ ?></code>
-    </p>
+<?php
+
+use app\assets\AppBikeKeepersAsset;
+
+$this->title = 'Bike Social - Bicicletários';
+?>
+
+<?php
+AppBikeKeepersAsset::register($this);
+?>
+
+<div id='map' class='right-buffer-minus3 left-buffer-minus3'>
+    
 </div>
+
+<div class='left-buffer-minus3'>
+    <div class='row top-buffer-2'>
+            <div class="col-lg-12 col-xs-12">
+                <div class="col-lg-offset-1 col-xs-offset-1">
+                    <h3><strong>Bicicletários</strong> <span class='glyphicon glyphicon-home'></span></h3>
+                      <div id='bike-keepers-container'>
+                            <?=Yii::$app->controller->renderPartial('_bike_keepers_manager',['user'=>$user])?>
+                      </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+<?php echo $this->render('_modals.php'); ?>
