@@ -10,6 +10,11 @@ use marcusfaccion\helpers\String;
 use dosamigos\datetimepicker\DateTimePicker;
 ?>
 
+<?php if(in_array(Yii::$app->controller->id, ['alerts','bikeKeepers'])):?>
+<div class="left-buffer-3">
+<?php endif;?>
+
+
 <div class="row">
     <div class="col-lg-12">
         <h2>Interdições <span class="glyphicon glyphicon-bullhorn"></span></h1>
@@ -101,3 +106,7 @@ use dosamigos\datetimepicker\DateTimePicker;
     </div>
     <div class="col-lg-5"><div class="help-block"></div></div>
 </div>*/?>
+
+<?php if(in_array(Yii::$app->controller->id, ['alerts','bikeKeepers'])):?>
+</div>
+<?php endif;?>

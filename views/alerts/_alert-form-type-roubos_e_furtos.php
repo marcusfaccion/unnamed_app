@@ -49,3 +49,7 @@ use marcusfaccion\helpers\String;
     <?php echo Html::button('Salvar', ['class'=>'btn btn-success alert-save']);?>
 </div>
 <?php $form->end();?>
+
+<?php if(in_array(Yii::$app->controller->id, ['alerts','bikeKeepers'])):?>
+</div>
+<?php endif;?>

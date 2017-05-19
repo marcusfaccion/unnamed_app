@@ -139,22 +139,21 @@ $('body').on('click', '#alerts-table .btn.alert-view-on-map', function(){
 });
 
 $('body').on('click', '#alert_update_modal .btn.alert-save', function(){
-    $('#alert_update_modal .modal-title').fadeOut('now');
+    
     isAjax = $('#alerts-widget-form').find('.isAjax').val();
     
     if(isAjax){
-        preloader.hide('alert_update_modal .modal-body', 'cicle_ball', '64', function(){
+        preloader.hide('alerts_alert_form', 'cicle_ball', '64', function(){
              $.ajax({
                 type: 'POST',
                 url: 'alerts/update',
                 async: false,
                 data:  $('#alerts-widget-form').serialize(),
                 success: function(response){
-                     $('#alert_update_modal .modal-body').html('');
-                     preloader.show('alert_update_modal .modal-body', 'cicle_ball', '64', function (){
-                        $('#alert_update_modal .modal-body').html(response).hide().fadeIn('fast');  
+                     $('#alerts_alert_form').html('');
+                     preloader.show('alerts_alert_form', 'cicle_ball', '64', function (){
+                        $('#alerts_alert_form').html(response).hide().fadeIn('fast');  
                      });
-                     $('#alert_update_modal .modal-title').fadeIn('now');
                 }
              });
         });

@@ -194,7 +194,8 @@ class Users extends ActiveRecord implements IdentityInterface
     }
     
     /**
-     * @return \yii\db\ActiveQuery
+     * Retorna todos os models Alerts que estão com a propriedade enable=>1
+     * @return \yii\db\ActiveQuery ou null
      */
     public function getActiveAlerts()
     {
@@ -202,18 +203,42 @@ class Users extends ActiveRecord implements IdentityInterface
     }
     
     /**
-     * @return \yii\db\ActiveQuery
+     * Retorna todos os models Alerts que possuem reportes de não existência
+     * @return \yii\db\ActiveQuery ou null
      */
     public function getNonexistentAlerts()
     {
         return $this->hasMany(Alerts::className(), ['user_id' => 'id'])->nonexistent();
     }
+
     /**
-     * @return \yii\db\ActiveQuery
+     * Retorna todos os models Alerts que possuem reportes de não existência que estão com
+     * a propriedade enable=>1
+     * @return \yii\db\ActiveQuery ou null
      */
     public function getActiveNonexistentAlerts()
     {
         return $this->hasMany(Alerts::className(), ['user_id' => 'id'])->nonexistent()->active();
+    }
+    
+    /**
+     * Retorna todos os models BikeKeepers que possuem reportes de não existência que estão com
+     * a propriedade enable=>1
+     * @return \yii\db\ActiveQuery ou null
+     */
+    public function getActiveNonexistentBikeKeepers()
+    {
+        return $this->hasMany(BikeKeepers::className(), ['user_id' => 'id'])->nonexistent()->active();
+    }
+    
+    /**
+     * Retorna todos os models BikeKeepers que estão com
+     * a propriedade enable=>1
+     * @return \yii\db\ActiveQuery ou null
+     */
+    public function getActiveBikeKeepers()
+    {
+        return $this->hasMany(BikeKeepers::className(), ['user_id' => 'id'])->active();
     }
     
     /**

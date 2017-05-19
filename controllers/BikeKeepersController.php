@@ -6,6 +6,7 @@ use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\BikeKeepers;
+use app\models\Users;
 
 class BikeKeepersController extends Controller
 {
@@ -23,7 +24,9 @@ class BikeKeepersController extends Controller
                                         'begin',
                                         'form',
                                         'render-popup',
+                                        'render-popup-readonly',
                                         'get-features',
+                                        'get-user-features',
                                         'create',
                                         'disable',
                                         'ilike',
@@ -42,7 +45,9 @@ class BikeKeepersController extends Controller
                     'index' => ['get', 'post'],
                     'begin' => ['get'],
                     'get-features'=>['get'],
+                    'get-user-features'=>['get'],
                     'render-popup' => ['get'],
+                    'render-popup-readonly' => ['get'],
                     'form' => ['get'],
                     'create' => ['post'],
                     'logout' => ['post'],
@@ -75,8 +80,14 @@ class BikeKeepersController extends Controller
             'render-popup' => [
                 'class'=>'app\controllers\bikeKeepers\RenderPopupAction',
             ],
+            'render-popup-readonly' => [
+                'class'=>'app\controllers\bikeKeepers\RenderPopupReadonlyAction',
+            ],
              'get-features' => [
                 'class'=>'app\controllers\bikeKeepers\GetFeaturesAction',
+            ],
+             'get-user-features' => [
+                'class'=>'app\controllers\bikeKeepers\GetUserFeaturesAction',
             ],
             'disable' => [
                 'class' => 'app\controllers\bikeKeepers\DisableAction',
@@ -112,6 +123,7 @@ class BikeKeepersController extends Controller
      */
     public function actionIndex()
     {
-        return $this->renderFile('index');
+        $user = Users::findOne(Yii::$app->user->identity->id);
+        return $this->render('index', ['user'=>$user]);
     }
 }

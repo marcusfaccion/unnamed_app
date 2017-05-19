@@ -9,6 +9,11 @@ use yii\widgets\ActiveForm;
 use marcusfaccion\helpers\String;
 ?>
 
+<?php if(in_array(Yii::$app->controller->id, ['alerts','bikeKeepers'])):?>
+<div class="left-buffer-3">
+<?php endif;?>
+
+
 <div class="row">
     <div class="col-lg-12">
         <h2>Perigo na Via <span class="glyphicon glyphicon-bullhorn"></span></h1>
@@ -49,3 +54,7 @@ use marcusfaccion\helpers\String;
     <?php echo Html::button('Salvar', ['class'=>'btn btn-success alert-save']);?>
 </div>
 <?php $form->end();?>
+
+<?php if(in_array(Yii::$app->controller->id, ['alerts','bikeKeepers'])):?>
+</div>
+<?php endif;?>

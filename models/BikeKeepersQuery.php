@@ -9,10 +9,12 @@ namespace app\models;
  */
 class BikeKeepersQuery extends \yii\db\ActiveQuery
 {
-    /*public function active()
+    
+    public function active($enable=1)
     {
-        return $this->andWhere('[[status]]=1');
-    }*/
+        $teste2 = 5;
+        return $this->andOnCondition(['enable' => $enable]);
+    }
 
     /**
      * @inheritdoc
@@ -23,6 +25,12 @@ class BikeKeepersQuery extends \yii\db\ActiveQuery
         return parent::all($db);
     }
 
+    public function nonexistent()
+    {
+        return $this->join('left join', UserBikeKeeperNonexistence::tableName().' ubn', 'id=ubn.bike_keeper_id')
+                ->where('ubn.bike_keeper_id is not null');
+    }
+    
     /**
      * @inheritdoc
      * @return BikeKeepers|array|null

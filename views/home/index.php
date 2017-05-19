@@ -5,7 +5,7 @@ use app\assets\AppHomeAlertsAsset;
 use app\assets\AppHomeBikeKeepersAsset;
 use app\assets\AppHomeFriendsAsset;
 /* @var $this yii\web\View */
-$this->title = 'Apicação Colaborativa para Ciclistas';
+$this->title = 'Bike Social - Página Inicial';
 ?>
 
 <?php

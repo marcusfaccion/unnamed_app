@@ -8,7 +8,8 @@ use yii\widgets\ActiveForm;
 /* @var string $flash_success contém mensagem de sucesso ou null*/
 $this->title = $alert->title;
 ?>
-<div id='alerts-widget-viewer' class="alerts-view">
+
+<div id='alerts-widget-viewer' class="alerts-view<?=(in_array(Yii::$app->controller->id, ['alerts','bikeKeepers'])?' left-buffer-3':'')?>">
     
  <div class="row">
      <div class="col-lg-10 col-xs-11">

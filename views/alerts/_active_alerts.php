@@ -39,7 +39,7 @@ use yii\bootstrap\Html;
 <?php $i=1;?>        
 <?php foreach ($alerts as $alert): ?>
         <tr class="data"> 
-            <th scope="row"><?=$i?> <?=Html::checkbox($alert->formName().'[][id]', false, ['value'=>$alert->id])?></th> 
+            <th scope="row"><?=Html::checkbox($alert->formName().'[][id]', false, ['value'=>$alert->id])?> <?=$i?></th> 
             <td data-toggle="tooltip" data-placement="left" title="<?=Yii::$app->formatter->asDate($alert->created_date)?>"><?=Yii::$app->formatter->asRelativeTime($alert->created_date)?></td>
             <td><?=Html::img('images/icons/marker/'.$alert->type->markerIcon,[]);?> <?=$alert->type->description?></td>
             <td><?=$alert->description?></td>

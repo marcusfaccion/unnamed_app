@@ -6,11 +6,11 @@ namespace app\assets;
  * @author Marcus Faccion <marcusfaccion@bol.com.br>
  * @since 1.0
  */
-class AppAlertsAsset extends AppAsset
+class AppBikeKeepersAsset extends AppAsset
 {
     public $js = [
-       'js/alerts/alerts.js',
-       'js/alerts/actions.js',
+       'js/bike-keepers/bike-keepers.js',
+       'js/bike-keepers/actions.js',
 //     'js/home/functions.js',
 //     'js/home/icons.js',
 //     'js/home/actions.js'

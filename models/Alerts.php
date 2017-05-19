@@ -110,7 +110,7 @@ class Alerts extends GeoJSON_ActiveRecord
    
     /**
      * @inheritdoc
-     * @return AlertsQuery the active query used by this AR class.
+     * @return AlertsQuery the active query usada por esta ActiveRecord class.
      */
     public static function find()
     {

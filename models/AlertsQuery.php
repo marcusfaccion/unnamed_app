@@ -9,11 +9,6 @@ namespace app\models;
  */
 class AlertsQuery extends \yii\db\ActiveQuery
 {
-    /*public function active()
-    {
-        return $this->andWhere('[[status]]=1');
-    }*/
-
     /**
      * @inheritdoc
      * @return Alerts[]|array
