@@ -33,7 +33,8 @@ class DisableAction extends Action
         }else
         if(count($alerts)==1){
             // Excluindo os reportes de não existência associados ao alerta 
-            if(UserAlertNonexistence::deleteAll(['alert_id'=>$alerts[0]->id]) && $alerts[0]->disable()){
+            UserAlertNonexistence::deleteAll(['alert_id'=>$alerts[0]->id]);
+            if($alerts[0]->disable()){
                 Yii::$app->session->setFlash('successfully-disabled-alerts', 'Alerta desativado com sucesso');
                 if($this->isAjax){
                   return $this->controller->renderPartial('@app/views/_scalar_return',['scalar'=>1]);

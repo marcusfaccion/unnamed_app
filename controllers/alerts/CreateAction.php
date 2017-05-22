@@ -20,7 +20,13 @@ class CreateAction extends Action
         
         $alert->attributes = Yii::$app->request->post('Alerts');
         $alert->created_date = date('Y-m-d H:i:s');
-        $alert->duration_date = !empty($alert->duration_date) ? Yii::$app->formatter->asDatetime($alert->duration_date, 'yyyy-MM-dd HH:mm:ss'):null;
+        
+
+        
+        //Momentaneamente alterando o timezone da aplicação para salvar data futura em UTC no banco
+        date_default_timezone_set(Yii::$app->formatter->timeZone);
+        $alert->duration_date = !empty($alert->duration_date) ? gmdate('Y-m-d H:i:s', strtotime($alert->duration_date)):null;
+        date_default_timezone_set(Yii::$app->formatter->defaultTimeZone);
         
         $alert_type = AlertTypes::findOne($alert->type_id);
         $alert_user = Users::findOne($alert->user_id);

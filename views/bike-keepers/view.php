@@ -41,32 +41,12 @@ $this->title = $bike_keeper->title;
                 'value'=>$bike_keeper->description,
             ],
             [
+                'attribute'=>'address',
+                'value'=>$bike_keeper->address,
+            ],
+            [
                 'attribute'=>'business_hours',
                 'value'=>$bike_keeper->business_hours,
-            ],
-            [
-                'attribute'=>'user_id',
-                'label'=>'Gerente',
-                'value'=>$bike_keeper->user->how_to_be_called,
-            ],
-            [
-                'attribute'=>'created_date',
-                'label'=>'Aberto desde',
-                'format'=>'relativeTime'
-            ],
-            [
-                'attribute'=>'updated_date',
-                'label'=>'Última atualização',
-                'visible'=>$bike_keeper->updated_date!=null,
-                'format'=>'relativeTime'
-            ],
-            [
-                'attribute'=>'likes',
-                'visible'=>!empty($bike_keeper->likes),
-            ],
-            [
-                'attribute'=>'dislikes',
-                'visible'=>!empty($bike_keeper->dislikes),
             ],
             [
                 'attribute'=>'public',
@@ -75,10 +55,63 @@ $this->title = $bike_keeper->title;
                 'value'=>$bike_keeper->public?'Sim':'Não',
             ],
             [
+                'attribute'=>'outdoor',
+                'label'=>'É ao ar livre?',
+                'value'=>$bike_keeper->outdoor?'Sim':'Não',
+            ],
+            [
                 'attribute'=>'cost',
                 'label'=>'Diária',
                 'visible'=>$bike_keeper->cost>0,
                 'format'=>'currency',
+            ],
+            [
+                'attribute'=>'capacity',
+                'value'=>$bike_keeper->capacity." ".Yii::t('app','{n, plural, =1{vaga} other{vagas}}',['n'=>$bike_keeper->capacity]),
+            ],
+            [
+                'attribute'=>'user_id',
+                'label'=>'Gerente',
+                'value'=>$bike_keeper->user->how_to_be_called,
+            ],
+            [
+                'attribute'=>'tel',
+                'label'=>'Telefone',
+                'value'=>$bike_keeper->tel,
+                'visible'=>!empty($bike_keeper->tel),
+            ],
+            [
+                'attribute'=>'email',
+                'label'=>'Email',
+                'value'=>$bike_keeper->email,
+                'visible'=>!empty($bike_keeper->email),
+            ],
+            [
+                'attribute'=>'created_date',
+                'label'=>'Aberto desde',
+                'format'=>'relativeTime'
+            ],
+            [
+                'attribute'=>'likes',
+                'label'=>'Número de aprovações',
+                'format'=>'html',
+                'value'=>"<span class='glyphicon glyphicon-thumbs-up text-success tsize-4'></span> <span class='badge tsize-3'>".$bike_keeper->likes."</span>",
+                'visible'=>!empty($bike_keeper->likes),
+            ],
+            [
+                'attribute'=>'dislikes',
+                'label'=>'Número de desaprovações',
+                'format'=>'html',
+                'value'=>"<span class='glyphicon glyphicon-thumbs-down text-danger tsize-4'></span> <span class='badge tsize-3'>".$bike_keeper->dislikes."</span>",
+                'visible'=>!empty($bike_keeper->dislikes),
+            ],
+            [
+                'attribute'=>'updated_date',
+                'label'=>'Última atualização',
+                'contentOptions'=>['class'=>'text-danger'],
+                'captionOptions'=>['class'=>'text-danger'],
+                'visible'=>$bike_keeper->updated_date!=null,
+                'format'=>'relativeTime'
             ],
         ],
      'options'=> ['class'=>'table table-condensed table-hover'] 

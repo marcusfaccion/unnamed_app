@@ -19,7 +19,7 @@ AppBikeKeepersAsset::register($this);
                 <div class="col-lg-offset-1 col-xs-offset-1">
                     <h3><strong>Bicicletários</strong> <span class='glyphicon glyphicon-home'></span></h3>
                       <div id='bike-keepers-container'>
-                            <?=Yii::$app->controller->renderPartial('_bike_keepers_manager',['user'=>$user])?>
+                            <?=Yii::$app->controller->renderPartial('_bike_keepers_manager',['user'=>$user, 'config'=>$config])?>
                       </div>
                 </div>
             </div>

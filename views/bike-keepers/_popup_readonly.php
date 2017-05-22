@@ -22,28 +22,51 @@ use yii\helpers\Html;
             <label>Funcinando desde:</label>
             <?=Yii::$app->formatter->asDate($bike_keeper->created_date, 'Y')?>
         </div>
-        <div class="col-lg-3 col-xs-3 right-pbuffer-0">
-            <div class="col-lg-12 col-xs-12">
+        <div class="col-lg-3 col-xs-3 right-pbuffer-0 left-pbuffer-0">
+            <div class="col-lg-12 col-xs-12 right-pbuffer-0">
                 <label>Horário:</label>
             </div>
-            <div class="col-lg-12 col-xs-12">
+            <div class="col-lg-12 col-xs-12 right-pbuffer-0">
                 <?=$bike_keeper->business_hours?>
             </div>
         </div>
-        <div class="col-lg-3 col-xs-3 right-pbuffer-0">
-            <div class="col-lg-12 col-xs-12">
+        <div class="col-lg-4 col-xs-4 right-pbuffer-0 left-pbuffer-1">
+            <div class="col-lg-12 col-xs-12 left-pbuffer-0 right-pbuffer-0">
                 <label>Por:</label>
             </div>
-            <div class="col-lg-12 col-xs-12">
+            <div class="col-lg-12 col-xs-12 left-pbuffer-0 right-pbuffer-0">
                 <?=$bike_keeper->user->how_to_be_called?>
             </div>
         </div>
-        <div class="col-lg-3 col-xs-5 right-pbuffer-0">
+        <div class="col-lg-2 col-xs-2 right-pbuffer-0 left-pbuffer-0">
             <?=Html::img($bike_keeper->user->avatar, ['class'=>'img-circle wide-px5-7  tall-px5-7'])?>
         </div>
     </div>
 </div>
 
+<div class="row top-buffer-1 col-lg-12 col-xs-12">
+        <?php if(!empty($bike_keeper->tel)):?>
+        <div class="col-lg-5 col-xs-5 left-pbuffer-0 right-pbuffer-0">
+            <div class="col-lg-12 col-xs-12">
+                <label>Telefone:</label>
+            </div>
+            <div class="col-lg-12 col-xs-12">
+                <?=$bike_keeper->tel?>
+            </div>
+        </div>
+        <?php endif;?>
+      <?php if(!empty($bike_keeper->email)):?>
+        <div class="col-lg-6 col-xs-6 left-pbuffer-0 right-pbuffer-0">
+            <div class="col-lg-12 col-xs-12">
+                <label>Email:</label>
+            </div>
+            <div class="col-lg-12 col-xs-12">
+                <?=$bike_keeper->email?>
+            </div>
+        </div>
+        <?php endif;?>
+</div>    
+    
 <div class="row top-buffer-1 col-lg-12 col-xs-12">
     <div class="col-lg-6 col-xs-6">
         <div>
@@ -56,15 +79,29 @@ use yii\helpers\Html;
     <?php if(!$bike_keeper->public):?>
     <div class="col-lg-6 col-xs-6">
         <div>
-            <label>Em uso:</label>
+            <label>Vagas disponíveis:</label>
         </div>
         <div>
-            <i><?=$bike_keeper->used_capacity?></i>
+            <i><?=$bike_keeper->capacity-$bike_keeper->used_capacity?></i>
         </div>
     </div>
     <?php endif;?>
 </div>
 
+<?php //Data da última atualização de informações do bicicletário ?>
+<?php if(!empty($bike_keeper->updated_date)):?>
+<div class="row top-buffer-1 col-lg-12 col-xs-12">
+    <div class="col-lg-6 col-xs-6">   
+        <div>
+            <label class="text-danger">Última atuallização:</label>
+        </div>
+        <div>
+            <i class="text-danger"><?=Yii::$app->formatter->asRelativeTime($bike_keeper->updated_date)?></i>
+        </div>
+    </div>    
+</div>
+<?php endif;?>
+    
 <div class="row top-buffer-2 col-lg-12 col-xs-12 left-pbuffer-0 left-buffer-0">
     <?php if(!$bike_keeper->public):?>
     <div class="left-pbuffer-1 left-buffer-2 border-radius-3 bg-info">

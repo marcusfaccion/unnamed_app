@@ -13,6 +13,6 @@ use app\assets\AppBikeKeepersAsset;
            
        </div>
        <div id="home_actions_bike-keepers_form" class="row col-xs-offset-1 bottom-buffer-5">
-          <?php echo $this->renderAjax('_bike-keeper-form', ['bike_keeper'=>$bike_keeper]); ?>
+          <?php echo $this->renderAjax('_bike_keeper_form', ['bike_keeper'=>$bike_keeper]); ?>
        </div>
     </div>

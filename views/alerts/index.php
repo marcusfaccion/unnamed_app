@@ -19,7 +19,7 @@ AppAlertsAsset::register($this);
                 <div class="col-lg-offset-1 col-xs-offset-1">
                     <h3><strong>Alertas</strong> <span class='glyphicon glyphicon-bullhorn'></span></h3>
                       <div id='alerts-container'>
-                            <?=Yii::$app->controller->renderPartial('_alerts_manager',['user'=>$user])?>
+                            <?=Yii::$app->controller->renderPartial('_alerts_manager',['user'=>$user, 'config'=>$config])?>
                       </div>
                 </div>
             </div>

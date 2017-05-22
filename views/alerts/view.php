@@ -42,6 +42,10 @@ $this->title = $alert->title;
                 'value'=>$alert->type->description,
             ],
             [
+                'attribute'=>'address',
+                'value'=>$alert->address,
+            ],
+            [
                 'attribute'=>'user_id',
                 'value'=>$alert->user->how_to_be_called,
             ],
@@ -51,23 +55,32 @@ $this->title = $alert->title;
                 'format'=>'relativeTime'
             ],
             [
-                'attribute'=>'updated_date',
-                'visible'=>$alert->updated_date!=null,
-                'format'=>'relativeTime'
-            ],
-            [
                 'attribute'=>'duration_date',
                 'label'=>'Expira em',
                 'visible'=>$alert->duration_date!=null,
-                'value'=>'datetime'
+                'format'=>'datetime'
             ],
             [
                 'attribute'=>'likes',
+                'label'=>'Número de aprovações',
+                'format'=>'html',
+                'value'=>"<span class='glyphicon glyphicon-thumbs-up text-success tsize-4'></span> <span class='badge tsize-3'>".$alert->likes."</span>",
                 'visible'=>!empty($alert->likes),
             ],
             [
                 'attribute'=>'dislikes',
+                'label'=>'Número de desaprovações',
+                'format'=>'html',
+                'value'=>"<span class='glyphicon glyphicon-thumbs-down text-danger tsize-4'></span> <span class='badge tsize-3'>".$alert->dislikes."</span>",
                 'visible'=>!empty($alert->dislikes),
+            ],
+            [
+                'attribute'=>'updated_date',
+                'label'=>'Última atualização',
+                'contentOptions'=>['class'=>'text-danger'],
+                'captionOptions'=>['class'=>'text-danger'],
+                'visible'=>$alert->updated_date!=null,
+                'format'=>'relativeTime'
             ],
         ],
         'options'=> ['class'=>'table table-condensed table-hover'] 

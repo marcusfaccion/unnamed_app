@@ -30,6 +30,7 @@ class BikeKeepers extends GeoJSON_ActiveRecord
 {
     
     const SCENARIO_CREATE = 'create';
+    const SCENARIO_UPDATE = 'update';
     
     /**
      * Armazena em runtime as multimedias relacionadas ao model BikeKeepers
@@ -62,12 +63,16 @@ class BikeKeepers extends GeoJSON_ActiveRecord
     public function rules()
     {
         return [
-            [['title', 'business_hours', 'capacity', 'multimedia_files', 'public', 'outdoor'], 'required', 'on' => self::SCENARIO_CREATE],
+            [['title', 'business_hours', 'capacity', 'public', 'outdoor'], 'required'],
+            [['multimedia_files'], 'required', 'on'=>self::SCENARIO_CREATE],
             [['multimedia_files'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, jpeg, avi, mp4, webm', 'maxFiles' => 4],
             [['likes', 'dislikes', 'capacity', 'used_capacity', 'user_id', 'public', 'outdoor', 'enable'], 'integer'],
             [['created_date', "updated_date"], 'safe'],
             [['title'], 'string', 'max' => 40],
-            [['description', 'business_hours', 'geom'], 'string'],
+            [['email'], 'string', 'max' => 100],
+            [['email'], 'email'],
+            [['tel'], 'string', 'max' => 20],
+            [['description', 'address', 'business_hours', 'geom'], 'string'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
@@ -77,7 +82,8 @@ class BikeKeepers extends GeoJSON_ActiveRecord
     {
         // verificar se multimedias (manymany relation) pode gerar erro por não ser um atributo(somente em runtime)
         return [
-            self::SCENARIO_CREATE => ['title', 'description', 'business_hours', 'multimedia_files', 'capacity', 'cost','user_id', 'geojson_string', 'public', 'outdoor', 'public_dir_name'],
+            self::SCENARIO_CREATE => ['title', 'description', 'business_hours', 'multimedia_files', 'capacity', 'cost', 'email', 'tel', 'user_id', 'geojson_string', 'public', 'address', 'outdoor', 'public_dir_name'],
+            self::SCENARIO_UPDATE => ['title', 'description', 'business_hours', 'used_capacity', 'cost', 'email', 'tel', 'user_id', 'public', 'address', 'outdoor'],
         ];
     }
 
@@ -91,7 +97,9 @@ class BikeKeepers extends GeoJSON_ActiveRecord
             'title' => 'Nome do bicicletário',
             'likes' => 'Likes',
             'dislikes' => 'Dislikes',
+            'email'=>'Email',
             'capacity' => 'Número de vagas',
+            'address'=>'Endereço',
             'cost' => 'Diária cobrada',
             'multimedia_files' => 'Multimídea',
             'description' => Yii::t('app', 'Descrição'),
@@ -103,6 +111,7 @@ class BikeKeepers extends GeoJSON_ActiveRecord
             'public'=>'É de uso público?',
             'public2'=>'Público',
             'public_dir_name'=>'Diretório público',
+            'tel'=>'Telefone',
         ];
     }
 

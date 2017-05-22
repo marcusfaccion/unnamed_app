@@ -21,6 +21,9 @@ class UpdateAction extends Action
         $alert_type_name = explode('_', strtolower(str_replace(' ', '_', $alert->type->description)));
         $alert_type_name = count($alert_type_name)>1 ? implode('_', $alert_type_name) : $alert_type_name[0];
         
+        //Resgatar a data futura de expiração em horário local
+        $alert->duration_date = !empty($alert->duration_date) ? Yii::$app->formatter->asDatetime($alert->duration_date, 'yyyy-MM-dd HH:mm:ss'):null; //icu formato
+        
         if(Yii::$app->request->post('nonSubmition')){
             if($this->isAjax){
                 return $alert->type ? $this->controller->renderAjax("_alert-form-type-". String::changeChars($alert_type_name, String::PTBR_DIACR_SEARCH, String::PTBR_DIACR_REPLACE),
@@ -30,6 +33,12 @@ class UpdateAction extends Action
         
         $alert->scenario = Alerts::SCENARIO_CREATE;
         $alert->attributes = Yii::$app->request->post('Alerts');
+        
+        //Momentaneamente alterando o timezone da aplicação para salvar data futura em UTC no banco
+        date_default_timezone_set(Yii::$app->formatter->timeZone);
+        $alert->duration_date = !empty($alert->duration_date) ? gmdate('Y-m-d H:i:s', strtotime($alert->duration_date)):null;
+        date_default_timezone_set(Yii::$app->formatter->defaultTimeZone);
+        
         $alert->updated_date = date('Y-m-d H:i:s');
         
         if($alert->save()){

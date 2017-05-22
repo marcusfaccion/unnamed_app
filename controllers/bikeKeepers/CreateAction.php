@@ -38,7 +38,7 @@ class CreateAction extends Action
 //        $this->controller->renderAjax("_bike-keeper-form", ['bike_keeper'=>$bike_keeper, 'bike_keeper_user'=>$bike_keeper_user ,'isAjax'=>$this->isAjax])
 //        :
 //        $this->controller->render("_bike-keeper-form", ['bike_keeper'=>$bike_keeper, 'bike_keeper_user'=>$bike_keeper_user ,'isAjax'=>$this->isAjax]);
-          return $this->controller->renderAjax("_bike-keeper-form", ['bike_keeper'=>$bike_keeper, 'bike_keeper_user'=>$bike_keeper_user ,'isAjax'=>$this->isAjax]);      
+          return $this->controller->renderAjax("_bike_keeper_form", ['bike_keeper'=>$bike_keeper, 'bike_keeper_user'=>$bike_keeper_user ,'isAjax'=>$this->isAjax]);      
     }
     
     /*public function afterRun() {

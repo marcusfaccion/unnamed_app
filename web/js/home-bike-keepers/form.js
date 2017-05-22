@@ -1,16 +1,12 @@
-$('body').on('click', 'button.bike-keepers.cancel', function(e){
-    $('#home_actions_modal').modal('hide'); 
-});
-
-$('body').on('change', '.bikekeeprs.input_show_trigger', function(e){
+$('body').on('change', '.bike-keepers.input_show_trigger', function(e){
     if(($(this).attr('value'))==0){
-        $('.bikekeeprs-input-hidden'+$(this).attr('data-target-input')).fadeIn('now').removeClass('hide');
-        $('.bikekeeprs-input-hidden'+$(this).attr('data-target-input')+' input').attr('disabled', false);
+        $('.bike-keepers-input-hidden'+$(this).attr('data-target-input')).fadeIn('now').removeClass('hide');
+        $('.bike-keepers-input-hidden'+$(this).attr('data-target-input')+' input').attr('disabled', false);
     }else{
         var radio = $(this);
-        $('.bikekeeprs-input-hidden'+$(this).attr('data-target-input')).fadeOut('now', function(){
-            $('.bikekeeprs-input-hidden'+radio.attr('data-target-input')).addClass('hide');
-            $('.bikekeeprs-input-hidden'+radio.attr('data-target-input')+' input').attr('disabled', true);
+        $('.bike-keepers-input-hidden'+$(this).attr('data-target-input')).fadeOut('now', function(){
+            $('.bike-keepers-input-hidden'+radio.attr('data-target-input')).addClass('hide');
+            $('.bike-keepers-input-hidden'+radio.attr('data-target-input')+' input').attr('disabled', true);
         });
     }
 });

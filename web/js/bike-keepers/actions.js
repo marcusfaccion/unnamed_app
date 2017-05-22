@@ -1,206 +1,260 @@
-$('body').on('click', '#active-alerts .alert-select-all', function(){
-    $('#alerts-table').find('input[type=checkbox]').prop('checked',true);
+$('body').on('click', '#active-bike-keepers .bike-keeper-select-all', function(){
+    $('#bike-keepers-table').find('input[type=checkbox]').prop('checked',true);
 });
 
-$('body').on('click', '#active-alerts .alert-noselect-all', function(){
-    $('#alerts-table').find('input[type=checkbox]').prop('checked',false);
+$('body').on('click', '#active-bike-keepers .bike-keeper-noselect-all', function(){
+    $('#bike-keepers-table').find('input[type=checkbox]').prop('checked',false);
 });
 
-$('body').on('click', '#alerts-table tr.data input', function(){
-    $('#alerts-table tr.data').removeClass('success');
+$('body').on('click', '#bike-keepers-table tr.data input', function(){
+    $('#bike-keepers-table tr.data').removeClass('success');
     $(this).parent().parent().toggleClass('success');
 });
 
-$('body').on('click', '#alerts-table .btn.alert-update', function(){
-    app.alert.id = $(this).parent().parent().find('th input').val();
-    $('#alert_update_modal').modal('show');
+//Seleciona o id do bicicletário para a atualização da capacidade do bicicletário
+$('body').on('click', '#bike-keepers-table .btn.bike-keeper-capacity', function(){
+    app.bike_keeper.id = $(this).parent().parent().parent().find('th input').val();
+    app.message_code = 'bike-keepers.update.used-capacity';
 });
 
-// Desativa todos os alertas selecionados
-$('body').on('click', '#active-alerts .btn.alert-disable-all', function(){
-    alert_ids = [];
-    $('#alerts-table').find('input[type=checkbox]:checked').each(
-    function(index, elm){
-        alert_ids[index] = elm.value; // guarda os ids marcados para desativação
+//Interface de cliques para o slider de atualização de quantidade de vagas usadas
+$('body').on('click', '#bike_keepers_used_capacity_modal .bike-keeper-used-capacity-display .btn', function(){
+    capacity = parseInt($('#bike_keepers_used_capacity_modal .bike-keeper-used-capacity-display').find('strong').html());
+    if($(this).hasClass('btn-up') && $(this).parent().next().slider( "option", "max")>capacity){
+        ++capacity;
+        $(this).parent().next().slider( "option", "value", capacity);
+        $(this).prev().html($(this).parent().next().slider( "option", "value"));
+    }else{
+        if($(this).hasClass('btn-down') && $(this).parent().next().slider( "option", "min")<capacity){
+            --capacity;
+            $(this).parent().next().slider( "option", "value", capacity);
+            $(this).next().html($(this).parent().next().slider( "option", "value"));
+        }
+    }
+    app.bike_keeper.used_capacity = capacity;
+});
+
+//Salva a atualização da capacidade do bicicletário
+$('body').on('click', '#bike_keepers_used_capacity_modal .btn.bike-keeper-capacity.save', function(){
+    Loading.show();
+    $.ajax({
+        type: 'POST',
+        url: 'bike-keepers/used-capacity',
+        data: { BikeKeepers: { 
+                id: app.bike_keeper.id,
+                used_capacity: app.bike_keeper.used_capacity,
+                }},
+        success: function(response){
+            $('#bike_keepers_used_capacity_modal .modal-body').html(response); // atualiza a tabela de bicicletários
+            Loading.hide();
+        }
     });
-    if(alert_ids.length>0){ 
+});
+
+//Seleciona o id do bicicletário para atualizá-lo
+$('body').on('click', '#bike-keepers-table .btn.bike-keeper-update', function(){
+    app.bike_keeper.id = $(this).parent().parent().parent().find('th input').val();
+});
+
+$('body').on('change', '#bike_keepers_update_modal .bike-keepers.input_show_trigger', function(e){
+    if(($(this).attr('value'))==0){
+        $('.bike-keepers-input-hidden'+$(this).attr('data-target-input')).fadeIn('now').removeClass('hide');
+        $('.bike-keepers-input-hidden'+$(this).attr('data-target-input')+' input').attr('disabled', false);
+    }else{
+        var radio = $(this);
+        $('.bike-keepers-input-hidden'+$(this).attr('data-target-input')).fadeOut('now', function(){
+            $('.bike-keepers-input-hidden'+radio.attr('data-target-input')).addClass('hide');
+            $('.bike-keepers-input-hidden'+radio.attr('data-target-input')+' input').attr('disabled', true);
+        });
+    }
+});
+
+// Desativa todos os bicicletários selecionados
+$('body').on('click', '#active-bike-keepers .btn.bike-keeper-disable-all', function(){
+    bike_keeper_ids = [];
+    $('#bike-keepers-table').find('input[type=checkbox]:checked').each(
+    function(index, elm){
+        bike_keeper_ids[index] = elm.value; // guarda os ids marcados para desativação
+    });
+    if(bike_keeper_ids.length>0){ 
         //Mensagem de confirmação
-        app.message_code = 'alerts.disable-all.confirmation'; 
+        app.message_code = 'bike-keepers.disable-all.confirmation'; 
         //Função para executar após a requisição
         app.request.afterAction = function(rtn, str){
             Loading.show();    
             $.ajax({
                 type: 'GET',
-                url: 'alerts/active-alerts',
+                url: 'bike-keepers/active-bike-keepers',
                 data: { user_id: app.user.id },
                 success: function(response){
-                    $('#alerts-container').html(response); // atualiza a tabela de alertas
+                    $('#bike-keepers-container').html(response); // atualiza a tabela de bicicletários
                     Loading.hide();
                 }
             });
         };
         //Configurando a requisição de desativação
         app.request.ajax = {
-                    url: 'alerts/disable',
+                    url: 'bike-keepers/disable',
                     type: 'POST',
                     async: false,
                     data:{
-                        Alerts: {id: alert_ids}
-    //                                  Alerts: {id: alert_layer.feature.properties.id}
+                        BikeKeepers: {id: bike_keeper_ids}
+    //                                  BikeKeepers: {id: bike_keeper_layer.feature.properties.id}
                     },
                     success: function(rtn){
-                        if(rtn){ //remove o alerta do mapa
+                        if(rtn){ //remove o bicicletário do mapa
                             app.layers.selected.forEach(function(layer, index, array){
-                                geoJSON_layer.alerts.removeLayer(layer);
+                                geoJSON_layer.bike_keepers.removeLayer(layer);
                             });
                         }
                     },
                     complete: app.request.afterAction,
                 }
 
-        // Percorre todo o Layer alerts para encontrar os alertas sendo desativados
+        // Percorre todo o Layer bike_keepers para encontrar os bicicletários sendo desativados
         app.layers.selected = [];
-        geoJSON_layer.alerts.getLayers().forEach(
-                function(alert_layer, index, array){
-                    if(alert_ids.includes(alert_layer.feature.properties.id.toString())){
-                       app.layers.selected[index] = alert_layer; // guarda alerta
+        geoJSON_layer.bike_keepers.getLayers().forEach(
+                function(bike_keeper_layer, index, array){
+                    if(bike_keeper_ids.includes(bike_keeper_layer.feature.properties.id.toString())){
+                       app.layers.selected[index] = bike_keeper_layer; // guarda bicicletário
                      }
                 });
         //Mostra o modal de confirmação
-        $('#alerts_confirmation_modal').modal('show');
+        $('#bike_keepers_confirmation_modal').modal('show');
     }else{
-        app.message_code = 'alerts.disable-all.select-error'; 
+        app.message_code = 'bike_keepers.disable-all.select-error'; 
         //Mostra o modal de inforrmação
-        $('#alerts_information_modal').modal('show');
+        $('#bike_keepers_information_modal').modal('show');
     }
 });
 
-//desativa o alerta selecionado
-$('body').on('click', '#alerts-table .btn.alert-disable-one', function(){
-    app.alert.id = $(this).parent().parent().find('th input').val();
+//desativa o bicicletário selecionado
+$('body').on('click', '#bike-keepers-table .btn.bike-keeper-disable-one', function(){
+    app.bike_keeper.id = $(this).parent().parent().find('th input').val();
         //Mensagem de confirmação
-        app.message_code = 'alerts.disable.confirmation'; 
+        app.message_code = 'bike-keepers.disable.confirmation'; 
         //Função para executar após a requisição
         app.request.afterAction = function(rtn, str){
             Loading.show();    
             $.ajax({
                 type: 'GET',
-                url: 'alerts/active-alerts',
+                url: 'bike-keepers/active-bike-keepers',
                 data: { user_id: app.user.id },
                 success: function(response){
-                    $('#alerts-container').html(response); // atualiza a tabela de alertas
+                    $('#bike-keepers-container').html(response); // atualiza a tabela de bicicletários
                     Loading.hide();
                 }
             });
         };
         //Configurando a requisição de desativação
         app.request.ajax = {
-                    url: 'alerts/disable',
+                    url: 'bike-keepers/disable',
                     type: 'POST',
                     async: false,
                     data:{
-                        Alerts: {id: app.alert.id}
-    //                                  Alerts: {id: alert_layer.feature.properties.id}
+                        BikeKeepers: {id: app.bike_keeper.id}
+    //                                  BikeKeepers: {id: bike_keeper_layer.feature.properties.id}
                     },
                     success: function(rtn){
-                        if(rtn){ //remove o alerta do mapa
-                                geoJSON_layer.alerts.removeLayer(app.layers.selected);
+                        if(rtn){ //remove o bicicletário do mapa
+                                geoJSON_layer.bike_keepers.removeLayer(app.layers.selected);
                         }
                     },
                     complete: app.request.afterAction,
                 }
 
-        // Percorre todo o Layer alerts para encontrar os alertas sendo desativados
+        // Percorre todo o Layer bike_keepers para encontrar os bicicletários sendo desativados
         app.layers.selected = [];
-        geoJSON_layer.alerts.getLayers().forEach(
-                function(alert_layer, index, array){
-                    if(app.alert.id==alert_layer.feature.properties.id){
-                       app.layers.selected = alert_layer; // guarda alerta
+        geoJSON_layer.bike_keepers.getLayers().forEach(
+                function(bike_keeper_layer, index, array){
+                    if(app.bike_keeper.id==bike_keeper_layer.feature.properties.id){
+                       app.layers.selected = bike_keeper_layer; // guarda bicicletário
                      }
                 });
         //Mostra o modal de confirmação
-        $('#alerts_confirmation_modal').modal('show');
+        $('#bike_keepers_confirmation_modal').modal('show');
 });
 
-// Destaca o alerta no mapa aplicando um setView e zoom
-$('body').on('click', '#alerts-table .btn.alert-view-on-map', function(){
-    app.alert.id = $(this).parent().parent().find('th input').val();
-     geoJSON_layer.alerts.getLayers().forEach(
-                function(alert_layer, index, array){
-                    if(app.alert.id==alert_layer.feature.properties.id){
-                       app.layers.selected = alert_layer; // guarda alerta
+// Destaca o bicicletário no mapa aplicando um setView e zoom
+$('body').on('click', '#bike_keepers-table .btn.bike-keeper-view-on-map', function(){
+    app.bike_keeper.id = $(this).parent().parent().find('th input').val();
+     geoJSON_layer.bike_keepers.getLayers().forEach(
+                function(bike_keeper_layer, index, array){
+                    if(app.bike_keeper.id==bike_keeper_layer.feature.properties.id){
+                       app.layers.selected = bike_keeper_layer; // guarda bicicletário
                      }
                 });
      window.scrollTo(0, 0); //faz um scroll da tela para o mapa
-     corner = app.layers.selected.getLatLng(); // obtém o objeto L.latlng do layer alerta
-     bounds = L.latLngBounds(corner, corner); // obtém o objeto L.latlngBounds para o alerta
+     corner = app.layers.selected.getLatLng(); // obtém o objeto L.latlng do layer bicicletário
+     bounds = L.latLngBounds(corner, corner); // obtém o objeto L.latlngBounds para o bicicletário
      map.fitBounds(bounds); // aplica o setview com zoom max
     
 });
 
-$('body').on('click', '#alert_update_modal .btn.alert-save', function(){
-    
-    isAjax = $('#alerts-widget-form').find('.isAjax').val();
+$('body').on('click', '#bike_keepers_update_modal .btn.bike-keeper-save', function(){
+    $('#bike_keepers_update_modal .modal-title').fadeOut('fast');  
+    isAjax = $('#bike-keepers-widget-form').find('.isAjax').val();
     
     if(isAjax){
-        preloader.hide('alerts_alert_form', 'cicle_ball', '64', function(){
+        preloader.hide('bike_keepers_update_modal .modal-body', 'cicle_ball', '64', function(){
              $.ajax({
                 type: 'POST',
-                url: 'alerts/update',
+                url: 'bike-keepers/update',
                 async: false,
-                data:  $('#alerts-widget-form').serialize(),
+                data:  $('#bike-keepers-widget-form').serialize(),
                 success: function(response){
-                     $('#alerts_alert_form').html('');
-                     preloader.show('alerts_alert_form', 'cicle_ball', '64', function (){
-                        $('#alerts_alert_form').html(response).hide().fadeIn('fast');  
+                     $('#bike_keepers_update_modal .modal-body').html('');
+                     preloader.show('bike_keepers_update_modal .modal-body', 'cicle_ball', '64', function (){
+                        $('#bike_keepers_update_modal .modal-body').html(response).fadeIn('fast');  
                      });
+                     $('#bike_keepers_update_modal .modal-title').fadeIn('fast');  
                 }
              });
         });
     }
 });
 
-$('body').on('click', '#alert_update_modal .btn.alert-back', function(){
-    $('#alert_update_modal').modal('hide');
+$('body').on('click', '#bike_keepers_update_modal .btn.bike-keeper-back', function(){
+    $('#bike_keepers_update_modal').modal('hide');
 });
 
 // Aba Problemas //
 
-// Destaca o alerta no mapa aplicando um setView e zoom
-$('body').on('click', '#nonalert-accordion .btn.nonalert-view-on-map', function(){
-     app.alert.id = $(this).parent().find('input:last-child').val();
-     geoJSON_layer.alerts.getLayers().forEach(
-                function(alert_layer, index, array){
-                    if(app.alert.id==alert_layer.feature.properties.id){
-                       app.layers.selected = alert_layer; // guarda alerta
+// Destaca o bicicletário no mapa aplicando um setView e zoom
+$('body').on('click', '#nonbike-keeper-accordion .btn.nonbike-keeper-view-on-map', function(){
+     app.bike_keeper.id = $(this).parent().find('input:last-child').val();
+     geoJSON_layer.bike_keepers.getLayers().forEach(
+                function(bike_keeper_layer, index, array){
+                    if(app.bike_keeper.id==bike_keeper_layer.feature.properties.id){
+                       app.layers.selected = bike_keeper_layer; // guarda bicicletário
                      }
                 });
      window.scrollTo(0, 0); //faz um scroll da tela para o mapa
-     corner = app.layers.selected.getLatLng(); // obtém o objeto L.latlng do layer alerta
-     bounds = L.latLngBounds(corner, corner); // obtém o objeto L.latlngBounds para o alerta
+     corner = app.layers.selected.getLatLng(); // obtém o objeto L.latlng do layer bicicletário
+     bounds = L.latLngBounds(corner, corner); // obtém o objeto L.latlngBounds para o bicicletário
      map.fitBounds(bounds); // aplica o setview com zoom max 
 });
 
-// Desativa o alerta e o remove do mapa
-$('body').on('click', '#nonalert-accordion .btn.nonalert-disable', function(){
-        app.alert.id = $(this).parent().find('input:last-child').val();
+// Desativa o bicicletário e o remove do mapa
+$('body').on('click', '#nonbike-keeper-accordion .btn.nonbike-keeper-disable', function(){
+        app.bike_keeper.id = $(this).parent().find('input:last-child').val();
         //Mensagem de confirmação
-        app.message_code = 'alerts.disable.confirmation'; 
+        app.message_code = 'bike-keepers.disable.confirmation'; 
         //Função para executar após a requisição
         app.request.afterAction = function(rtn, str){
             Loading.show();    
             $.ajax({
                 type: 'POST',
-                url: 'alerts/delete-user-alert-nonexistence',
-                data: { Alerts: { id: app.alert.id }},
+                url: 'bike-keepers/delete-user-bike-keeper-nonexistence',
+                data: { BikeKeepers: { id: app.bike_keeper.id }},
                 success: function(_response){
                     if(_response){
                         $.ajax({
                             type: 'GET',
-                            url: 'alerts/active-alerts',
+                            url: 'bike-keepers/active-bike-keepers',
                             data: { user_id: app.user.id },
                             success: function(response){
-                                $('#alerts-container').html(response); // atualiza as tabelas de alertas
+                                $('#bike-keepers-container').html(response); // atualiza as tabelas de bicicletários
                                 Loading.hide();
                             }
                         });
@@ -211,40 +265,40 @@ $('body').on('click', '#nonalert-accordion .btn.nonalert-disable', function(){
         };
         //Configurando a requisição de desativação
         app.request.ajax = {
-                    url: 'alerts/disable',
+                    url: 'bike-keepers/disable',
                     type: 'POST',
                     async: false,
                     data:{
-                        Alerts: {id: app.alert.id}
-    //                                  Alerts: {id: alert_layer.feature.properties.id}
+                        BikeKeepers: {id: app.bike_keeper.id}
+    //                                  BikeKeepers: {id: bike_keeper_layer.feature.properties.id}
                     },
                     success: function(rtn){
-                        if(rtn){ //remove o alerta do mapa
-                                geoJSON_layer.alerts.removeLayer(app.layers.selected);
+                        if(rtn){ //remove o bicicletário do mapa
+                                geoJSON_layer.bike_keepers.removeLayer(app.layers.selected);
                         }
                     },
                     complete: app.request.afterAction,
                 }
 
-        // Percorre todo o Layer alerts para encontrar os alertas sendo desativados
+        // Percorre todo o Layer bike_keepers para encontrar os bicicletários sendo desativados
         app.layers.selected = [];
-        geoJSON_layer.alerts.getLayers().forEach(
-                function(alert_layer, index, array){
-                    if(app.alert.id==alert_layer.feature.properties.id){
-                       app.layers.selected = alert_layer; // guarda alerta
+        geoJSON_layer.bike_keepers.getLayers().forEach(
+                function(bike_keeper_layer, index, array){
+                    if(app.bike_keeper.id==bike_keeper_layer.feature.properties.id){
+                       app.layers.selected = bike_keeper_layer; // guarda bicicletário
                      }
                 });
         //Mostra o modal de confirmação
-        $('#alerts_confirmation_modal').modal('show');
+        $('#bike_keepers_confirmation_modal').modal('show');
 });
 
-// Destaca o alerta no mapa aplicando um setView e zoom
-$('body').on('click', '#nonalert-accordion .btn.nonalert-view-users', function(){
-    app.alert.id = $(this).parent().parent().find('input:last-child').val();
+// Destaca o bicicletário no mapa aplicando um setView e zoom
+$('body').on('click', '#nonbike-keeper-accordion .btn.nonbike-keeper-view-users', function(){
+    app.bike_keeper.id = $(this).parent().parent().find('input:last-child').val();
 });
 
-// Destaca o alerta no mapa aplicando um setView e zoom
-$('body').on('click', '#alert_view_users_modal .btn.nonalert-user-add', function(){
+// Destaca o bicicletário no mapa aplicando um setView e zoom
+$('body').on('click', '#bike_keepers_view_users_modal .btn.nonbike-keeper-user-add', function(){
     user_friend_id = $(this).parent().find('input:last-child').val();
     _this = $(this);
     Loading.show();    

@@ -143,7 +143,15 @@ class AlertsController extends Controller
     public function actionIndex()
     {
         $user = Users::findOne(Yii::$app->user->identity->id);
-        return $this->render('index', ['user'=>$user]);
+        
+        $config = [
+            'li.active-alerts'=>['class'=>'active'],
+            'li.active-alerts-problem'=>['class'=>''],
+            'tab-pane.active-alerts'=>['class'=>'in active'],
+            'tab-pane.active-alerts-problem'=>['class'=>''],
+        ];
+        
+        return $this->render('index', ['user'=>$user, 'config'=>$config]);
     }
     
     /**
@@ -168,10 +176,18 @@ class AlertsController extends Controller
      * Renderiza a tabela de alertas ativos do usuário
      * @return string
      */
-    public function actionActiveAlerts($user_id)
+    public function actionActiveAlerts($user_id, $tab='default')
     {
         $user = Users::findOne($user_id);
-        return $this->renderPartial('_alerts_manager',['user'=>$user]);
+        
+        $config = [
+            'li.active-alerts'=>['class'=>($tab=='default'?'active':'')],
+            'li.active-alerts-problem'=>['class'=>($tab=='problem'?'active':'')],
+            'tab-pane.active-alerts'=>['class'=>($tab=='default'?'in active':'')],
+            'tab-pane.active-alerts-problem'=>['class'=>($tab=='problem'?'in active':'')],
+        ];
+        
+        return $this->renderPartial('_alerts_manager',['user'=>$user, 'config'=>$config]);
     }
     /**
      * Renderiza a tabela de alertas ativos com problemas reportados por usuários
@@ -187,7 +203,7 @@ class AlertsController extends Controller
     {
         parent::beforeAction($action);
         //Index Bootstrap
-        if($this->action->id=='index'){
+        if(in_array($this->action->id, ['index','active-alerts', 'active-non-alerts'])){
             //Chamada de Store Procedure que desativa alertas vencidos 
             $row_count = Yii::$app->db->createCommand("SELECT st_alerts_check_duration();")->execute();        
         }

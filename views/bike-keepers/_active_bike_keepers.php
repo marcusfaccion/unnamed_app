@@ -7,15 +7,15 @@ use yii\bootstrap\Html;
   <div class="panel-heading"><strong class="text-primary">Ações em massa:</strong></div>
   <div class="panel-body">
       <div class="row">
-          <div class="col-lg-6 col-xs-12">
+          <div class="col-lg-6 col-xs-12 left-pbuffer-0 right-pbuffer-0">
               <div class="row">
-                  <div class="col-lg-2 col-xs-3">
+                  <div class="col-lg-2 col-xs-4 right-pbuffer-0">
                       <a role='button' class='btn btn-xs btn-default bike-keeper-select-all'>Marcar todos</a>
                   </div>
-                  <div class="col-lg-2 col-xs-3">
+                  <div class="col-lg-2 col-xs-4 left-pbuffer-0 right-pbuffer-0">
                       <a role='button' class='btn btn-xs btn-default bike-keeper-noselect-all'>Desmarcar todos</a>
                   </div>
-                  <div class="col-lg-2 col-xs-3 col-lg-offset-1 col-xs-offset-1">
+                  <div class="col-lg-2 col-xs-3 left-pbuffer-0 right-pbuffer-0 left-buffer-2">
                       <?=Html::button('<span class="glyphicon glyphicon-remove-circle"></span> Desativar', ['class'=>'btn btn-xs btn-danger bike-keeper-disable-all'])?>
                   </div>
               </div>
@@ -41,16 +41,26 @@ use yii\bootstrap\Html;
         <tr class="data"> 
             <th scope="row"><?=Html::checkbox($bike_keeper->formName().'[][id]', false, ['value'=>$bike_keeper->id])?> <?=$i?></th> 
             <?php if($bike_keeper->public):?>
-            <td data-toggle="tooltip" data-placement="left" title="Bicicletário de uso público e gratuíto"><span class="text-success"><strong>Público</strong></span></td>
+            <td data-toggle="tooltip" data-placement="right" title="Bicicletário de uso público e gratuíto"><span class="text-success"><strong>Público</strong></span></td>
             <?php else:?>
-            <td data-toggle="tooltip" data-placement="left" title="Bicicletário de uso particular com cobrança de diária" class="text-danger"><span class="text-danger glyphicon glyphicon-usd"></span><strong>  Privado</strong> </td>
+            <td data-toggle="tooltip" data-placement="right" title="Bicicletário de uso particular com cobrança de diária" class="text-danger"><span class="text-danger glyphicon glyphicon-usd"></span><strong>  Privado</strong> </td>
             <?php endif;?>
             <td></td>
             <td><?=$bike_keeper->description?></td>
             <td>
-                <a data-toggle="tooltip" data-placement="left" title="Editar" role='button' class='btn btn-xs btn-default bike-keeper-update'><span class="glyphicon glyphicon-edit"></span></a>
-                <a data-toggle="tooltip" data-placement="left" title="Desativar" role='button' class='btn btn-xs btn-default bike-keeper-disable-one'><span class="text-danger glyphicon glyphicon-remove-circle"></span></a>
+                <?php if(!$bike_keeper->public):?>
+                <span data-toggle="tooltip" data-placement="left" title="Ajustar a capacidade de vagas" >
+                    <a data-toggle="modal" data-target="#bike_keepers_used_capacity_modal" role='button' class='btn btn-xs btn-default bike-keeper-capacity'><span class="glyphicon glyphicon-adjust"></span></a>                
+                </span>
+                <?php endif;?>
+                <span data-toggle="tooltip" data-placement="left" title="Editar informações" >
+                    <a data-toggle="modal" data-target="#bike_keepers_update_modal" role='button' class='btn btn-xs btn-default bike-keeper-update'><span class="glyphicon glyphicon-edit"></span></a>                
+                </span>
+                <a data-toggle="tooltip" data-placement="left" title="Cuidado: Desativar o bicicletário!" role='button' class='btn btn-xs btn-default bike-keeper-disable-one'><span class="text-danger glyphicon glyphicon-remove-circle"></span></a>
                 <a data-toggle="tooltip" data-placement="left" title="Ver no mapa" role='button' class='btn btn-xs btn-default bike-keeper-view-on-map'><span class="text-primary glyphicon glyphicon-globe"></span></a>
+                <?php if(!$bike_keeper->public):?>
+                    <a data-toggle="tooltip" data-placement="left" title="Fechar o bicicletário por hoje" role='button' class='btn btn-xs btn-default bike-keeper-off'><span class="text-danger glyphicon glyphicon-off"></span></a>
+                <?php endif;?>
                 <?php // Html::hiddenInput($bike-keeper->formName().'[id]', $bike-keeper->id)?>
             </td>
         </tr> 

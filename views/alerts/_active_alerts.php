@@ -7,15 +7,15 @@ use yii\bootstrap\Html;
   <div class="panel-heading"><strong class="text-primary">Ações em massa:</strong></div>
   <div class="panel-body">
       <div class="row">
-          <div class="col-lg-6 col-xs-12">
+          <div class="col-lg-6 col-xs-12 left-pbuffer-0 right-pbuffer-0">
               <div class="row">
-                  <div class="col-lg-2 col-xs-3">
+                  <div class="col-lg-2 col-xs-4 right-pbuffer-0">
                       <a role='button' class='btn btn-xs btn-default alert-select-all'>Marcar todos</a>
                   </div>
-                  <div class="col-lg-2 col-xs-3">
+                  <div class="col-lg-2 col-xs-4 left-pbuffer-0 right-pbuffer-0">
                       <a role='button' class='btn btn-xs btn-default alert-noselect-all'>Desmarcar todos</a>
                   </div>
-                  <div class="col-lg-2 col-xs-3 col-lg-offset-1 col-xs-offset-1">
+                  <div class="col-lg-2 col-xs-3 left-pbuffer-0 right-pbuffer-0 left-buffer-2">
                       <?=Html::button('<span class="glyphicon glyphicon-remove-circle"></span> Desativar', ['class'=>'btn btn-xs btn-danger alert-disable-all'])?>
                   </div>
               </div>
@@ -40,7 +40,7 @@ use yii\bootstrap\Html;
 <?php foreach ($alerts as $alert): ?>
         <tr class="data"> 
             <th scope="row"><?=Html::checkbox($alert->formName().'[][id]', false, ['value'=>$alert->id])?> <?=$i?></th> 
-            <td data-toggle="tooltip" data-placement="left" title="<?=Yii::$app->formatter->asDate($alert->created_date)?>"><?=Yii::$app->formatter->asRelativeTime($alert->created_date)?></td>
+            <td data-toggle="tooltip" data-placement="right" title="<?=Yii::$app->formatter->asDate($alert->created_date)?>"><?=Yii::$app->formatter->asRelativeTime($alert->created_date)?></td>
             <td><?=Html::img('images/icons/marker/'.$alert->type->markerIcon,[]);?> <?=$alert->type->description?></td>
             <td><?=$alert->description?></td>
             <td>

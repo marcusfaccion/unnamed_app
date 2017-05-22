@@ -60,6 +60,7 @@ use dosamigos\datetimepicker\DateTimePicker;
 <?php if(!$alert->isNewRecord){ echo Html::hiddenInput($alert->formName().'[id]', $alert->id, ['id'=>$alert->formName().'_id']);}?>
 <?php echo Html::hiddenInput($alert->formName().'[user_id]', $alert->user_id, ['id'=>$alert->formName().'_user_id']);?>
 <?php echo Html::hiddenInput($alert->formName().'[type_id]', $alert->type_id, ['id'=>$alert->formName().'_type_id']);?>
+<?=Html::hiddenInput($alert->formName().'[address]', $alert->address, ['id'=>  strtolower($alert->formName()).'-address']);?>
 <?php echo Html::hiddenInput($alert->formName().'[geojson_string]', $alert->geojson_string, ['id'=>$alert->formName().'_geojson_string']);?>
 
 <?php // Model AlertTypes ?>

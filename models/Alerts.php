@@ -31,6 +31,7 @@ class Alerts extends GeoJSON_ActiveRecord
 {
     
     const SCENARIO_CREATE = 'create';
+    const SCENARIO_UPDATE = 'update';
     
     /**
      * @inheritdoc
@@ -51,6 +52,7 @@ class Alerts extends GeoJSON_ActiveRecord
             [['type_id', 'user_id', 'likes', 'dislikes', 'enable'], 'integer'],
             [['created_date', 'updated_date', 'duration_date'], 'safe'],
             [['title'], 'string', 'max' => 40],
+            [['address'], 'string'],
             [['type_id'], 'exist', 'skipOnError' => true, 'targetClass' => AlertTypes::className(), 'targetAttribute' => ['type_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
@@ -60,7 +62,8 @@ class Alerts extends GeoJSON_ActiveRecord
     public function scenarios()
     {
         return [
-            self::SCENARIO_CREATE => ['title', 'description', 'duration_date', 'type_id', 'user_id', 'geojson_string'],
+            self::SCENARIO_CREATE => ['title', 'description', 'address', 'duration_date', 'type_id', 'user_id', 'geojson_string'],
+            self::SCENARIO_UPDATE => ['title', 'description', 'address', 'duration_date', 'type_id', 'user_id', 'geojson_string'],
         ];
     }
     
@@ -73,11 +76,12 @@ class Alerts extends GeoJSON_ActiveRecord
             'id' => Yii::t('app', 'ID'),
             'title' => Yii::t('app', 'Título'),
             'description' => Yii::t('app', 'Descrição'),
+            'address'=>'Endereço',
             'type_id' => Yii::t('app', 'Tipo'),
             'user_id' => Yii::t('app', 'Colaborador'),
             'created_date' => Yii::t('app', 'Criado'),
-            'likes' => Yii::t('app', 'Curtidas'),
-            'dislikes' => Yii::t('app', 'Descurtidas'),
+            'likes' => Yii::t('app', 'Avaliações positivas'),
+            'dislikes' => Yii::t('app', 'Avaliações negativas'),
             'geom' => Yii::t('app', 'Geometria'),
             'updated_date' => Yii::t('app', 'Atualizado'),
             'duration_date' => Yii::t('app', 'Dura até'),

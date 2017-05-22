@@ -21,6 +21,7 @@ class BikeKeepersController extends Controller
                     [
                         'actions' => [
                                         'index', 
+                                        'active-bike-keepers',
                                         'begin',
                                         'form',
                                         'render-popup',
@@ -32,7 +33,9 @@ class BikeKeepersController extends Controller
                                         'ilike',
                                         'idislike',
                                         'not-exists',
-                                        'exists'
+                                        'exists',
+                                        'update',
+                                        'used-capacity',
                             ],
                         'allow' => true,
                         'roles' => ['@'],
@@ -43,6 +46,7 @@ class BikeKeepersController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'index' => ['get', 'post'],
+                    'active-bike-keepers' => ['get'],
                     'begin' => ['get'],
                     'get-features'=>['get'],
                     'get-user-features'=>['get'],
@@ -55,7 +59,9 @@ class BikeKeepersController extends Controller
                     'ilike' => ['post'],
                     'idislike' => ['post'],
                     'not-exists' => ['post'],
-                    'exists' => ['post']
+                    'exists' => ['post'],
+                    'used-capacity' => ['post'],
+                    'update' => ['post']
                 ],
             ],
         ];
@@ -104,7 +110,29 @@ class BikeKeepersController extends Controller
             'not-exists' => [
                 'class'=>'app\controllers\bikeKeepers\NotExistsAction',
             ],
+            'update' => [
+                'class' => 'app\controllers\bikeKeepers\UpdateAction',
+            ],
+            'used-capacity' => [
+                'class' => 'app\controllers\bikeKeepers\UsedCapacityAction',
+            ],
         ];
+    }
+    
+    /**
+     * Renderiza a tabela de bicicletários ativos do usuário
+     * @return string
+     */
+    public function actionActiveBikeKeepers($user_id, $tab='default')
+    {
+        $user = Users::findOne($user_id);
+        $config = [
+            'li.active-bike-keepers'=>['class'=>($tab=='default'?'active':'')],
+            'li.active-bike-keepers-problem'=>['class'=>($tab=='problem'?'active':'')],
+            'tab-pane.active-bike-keepers'=>['class'=>($tab=='default'?'in active':'')],
+            'tab-pane.active-bike-keepers-problem'=>['class'=>($tab=='problem'?'in active':'')],
+        ];
+        return $this->renderPartial('_bike_keepers_manager',['user'=>$user, 'config'=>$config]);
     }
     
     /**
@@ -124,6 +152,14 @@ class BikeKeepersController extends Controller
     public function actionIndex()
     {
         $user = Users::findOne(Yii::$app->user->identity->id);
-        return $this->render('index', ['user'=>$user]);
+        
+        $config = [
+            'li.active-bike-keepers'=>['class'=>'active'],
+            'li.active-bike-keepers-problem'=>['class'=>''],
+            'tab-pane.active-bike-keepers'=>['class'=>'in active'],
+            'tab-pane.active-bike-keepers-problem'=>['class'=>''],
+        ];
+        
+        return $this->render('index', ['user'=>$user, 'config'=>$config]);
     }
 }

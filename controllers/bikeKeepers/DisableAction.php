@@ -4,6 +4,7 @@ namespace app\controllers\bikeKeepers;
 use Yii;
 use yii\base\Action;
 use app\models\BikeKeepers;
+use app\models\UserBikeKeeperNonexistence; 
 
 class DisableAction extends Action
 {
@@ -17,6 +18,10 @@ class DisableAction extends Action
         $bike_keepers = BikeKeepers::findAll(Yii::$app->request->post('BikeKeepers')['id']);
         
         if(count($bike_keepers)>1){
+          // Excluindo os reportes de não existência associados ao alerta
+         // foreach ($bike_keepers as $bike_keeper){
+         //     UserBikeKeeperNonexistence::deleteAll(['bike_keeper_id'=>$bike_keeper->id]);
+         // }   
           if(BikeKeepers::disableAll($bike_keepers)){
                 Yii::$app->session->setFlash('successfully-disabled-bike-keepers', 'Bicicletários desativados com sucesso');
                 if($this->isAjax){
@@ -25,13 +30,16 @@ class DisableAction extends Action
                 }    
           }  
         }else
-        if($bike_keepers[0]->disable()){
-
-            Yii::$app->session->setFlash('successfully-disabled-bike-keepers', 'Bicicletário desativado com sucesso');
-            if($this->isAjax){
-              return $this->controller->renderPartial('@app/views/_scalar_return',['scalar'=>1]);
-               \Yii::$app->end(0);
-            }    
+        if(count($bike_keepers)==1){
+            // Excluindo os reportes de não existência associados ao alerta 
+            //UserBikeKeeperNonexistence::deleteAll(['bike_keeper_id'=>$alerts[0]->id);
+            if($bike_keepers[0]->disable()){
+                Yii::$app->session->setFlash('successfully-disabled-bike-keepers', 'Bicicletário desativado com sucesso');
+                if($this->isAjax){
+                  return $this->controller->renderPartial('@app/views/_scalar_return',['scalar'=>1]);
+                   \Yii::$app->end(0);
+                }     
+           }
         }else{
             if($this->isAjax){
               return $this->controller->renderPartial('@app/views/_scalar_return',['scalar'=>0]);

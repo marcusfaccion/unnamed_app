@@ -79,7 +79,7 @@ var app = {
     layers:{
         alerts: {
         },
-        bikeKeepers: {
+        bike_keepers: {
         },
         selected: null,
     },
@@ -102,6 +102,10 @@ var app = {
     },
     alert:{
       id: null  
+    },
+    bike_keeper:{
+      id: null,
+      used_capacity:null,
     },
     controller: {
         id: null
