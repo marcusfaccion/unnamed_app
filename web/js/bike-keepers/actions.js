@@ -245,7 +245,6 @@ $('body').on('click', '#bike-keepers-table .btn.bike-keeper-view-on-map', functi
      corner = app.layers.selected.getLatLng(); // obtém o objeto L.latlng do layer bicicletário
      bounds = L.latLngBounds(corner, corner); // obtém o objeto L.latlngBounds para o bicicletário
      map.fitBounds(bounds); // aplica o setview com zoom max
-    
 });
 
 // Aba Problemas //
