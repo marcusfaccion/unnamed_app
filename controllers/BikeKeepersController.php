@@ -22,6 +22,7 @@ class BikeKeepersController extends Controller
                         'actions' => [
                                         'index', 
                                         'active-bike-keepers',
+                                        'bike-keeper-nonexistence-users',
                                         'begin',
                                         'form',
                                         'render-popup',
@@ -47,6 +48,7 @@ class BikeKeepersController extends Controller
                 'actions' => [
                     'index' => ['get', 'post'],
                     'active-bike-keepers' => ['get'],
+                    'bike-keeper-nonexistence-users'=> ['get'],
                     'begin' => ['get'],
                     'get-features'=>['get'],
                     'get-user-features'=>['get'],
@@ -61,7 +63,9 @@ class BikeKeepersController extends Controller
                     'not-exists' => ['post'],
                     'exists' => ['post'],
                     'used-capacity' => ['post'],
-                    'update' => ['post']
+                    'update' => ['post'],
+                    'on' => ['post'],
+                    'off' => ['post']
                 ],
             ],
         ];
@@ -76,6 +80,9 @@ class BikeKeepersController extends Controller
             'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+            ],
+            'bike-keeper-nonexistence-users'=>[
+                'class'=>'app\controllers\bikeKeepers\BikeKeeperNonexistenceUsersAction',
             ],
             'create' => [
                 'class' => 'app\controllers\bikeKeepers\CreateAction',
@@ -106,6 +113,12 @@ class BikeKeepersController extends Controller
             ],
             'exists' => [
                 'class'=>'app\controllers\bikeKeepers\ExistsAction',
+            ],
+            'on' => [
+                'class'=>'app\controllers\bikeKeepers\OnAction',
+            ],
+            'off' => [
+                'class'=>'app\controllers\bikeKeepers\OffAction',
             ],
             'not-exists' => [
                 'class'=>'app\controllers\bikeKeepers\NotExistsAction',

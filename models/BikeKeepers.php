@@ -66,7 +66,7 @@ class BikeKeepers extends GeoJSON_ActiveRecord
             [['title', 'business_hours', 'capacity', 'public', 'outdoor'], 'required'],
             [['multimedia_files'], 'required', 'on'=>self::SCENARIO_CREATE],
             [['multimedia_files'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, jpeg, avi, mp4, webm', 'maxFiles' => 4],
-            [['likes', 'dislikes', 'capacity', 'used_capacity', 'user_id', 'public', 'outdoor', 'enable'], 'integer'],
+            [['likes', 'dislikes', 'capacity', 'used_capacity', 'user_id', 'is_open','public', 'outdoor', 'enable'], 'integer'],
             [['created_date', "updated_date"], 'safe'],
             [['title'], 'string', 'max' => 40],
             [['email'], 'string', 'max' => 100],
@@ -82,8 +82,8 @@ class BikeKeepers extends GeoJSON_ActiveRecord
     {
         // verificar se multimedias (manymany relation) pode gerar erro por não ser um atributo(somente em runtime)
         return [
-            self::SCENARIO_CREATE => ['title', 'description', 'business_hours', 'multimedia_files', 'capacity', 'cost', 'email', 'tel', 'user_id', 'geojson_string', 'public', 'address', 'outdoor', 'public_dir_name'],
-            self::SCENARIO_UPDATE => ['title', 'description', 'business_hours', 'used_capacity', 'cost', 'email', 'tel', 'user_id', 'public', 'address', 'outdoor'],
+            self::SCENARIO_CREATE => ['title', 'description', 'business_hours', 'multimedia_files', 'is_open', 'capacity', 'cost', 'email', 'tel', 'user_id', 'geojson_string', 'public', 'address', 'outdoor', 'public_dir_name'],
+            self::SCENARIO_UPDATE => ['title', 'description', 'business_hours', 'used_capacity', 'is_open', 'cost', 'email', 'tel', 'user_id', 'public', 'address', 'outdoor'],
         ];
     }
 
@@ -121,7 +121,15 @@ class BikeKeepers extends GeoJSON_ActiveRecord
      */
     public static function find()
     {
-        return new AlertsQuery(get_called_class());
+        return new BikeKeepersQuery(get_called_class());
+    }
+    
+    /**
+     * @return bool false se o bicicletário não estiver aberto para uso
+     */
+    public function getIsItOpen()
+    {
+        return $this->is_open;
     }
     
     /**
@@ -254,7 +262,7 @@ class BikeKeepers extends GeoJSON_ActiveRecord
      * @return type int|false
      */
     static function disableAll($bike_keepers){
-        if($bike_keepers[0] instanceof BikeBikeKeepers){
+        if($bike_keepers[0] instanceof BikeKeepers){
             $rows = 0;
             foreach ($bike_keepers as $bike_keeper){
                 $rows += $bike_keeper->disable();
@@ -264,13 +272,23 @@ class BikeKeepers extends GeoJSON_ActiveRecord
         return BikeKeepers::updateAll(['enable'=>0, $bike_keepers]);
     }
     
-    public function disable(){
-         $this->enable = 0;
+    public function disable($enable=0){
+         $this->enable = $enable;
          return $this->update(false);
      }
     
-    public function enable(){
-         $this->enable = 1;
+    public function enable($enable=1){
+         $this->enable = $enable;
+         return $this->update();
+     }
+    
+     public function goDown(){
+         $this->is_open = 0;
+         return $this->update();
+     }
+     
+     public function goUp(){
+         $this->is_open = 1;
          return $this->update();
      }
 }

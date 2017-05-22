@@ -56,10 +56,15 @@ use yii\bootstrap\Html;
                 <span data-toggle="tooltip" data-placement="left" title="Editar informações" >
                     <a data-toggle="modal" data-target="#bike_keepers_update_modal" role='button' class='btn btn-xs btn-default bike-keeper-update'><span class="glyphicon glyphicon-edit"></span></a>                
                 </span>
-                <a data-toggle="tooltip" data-placement="left" title="Cuidado: Desativar o bicicletário!" role='button' class='btn btn-xs btn-default bike-keeper-disable-one'><span class="text-danger glyphicon glyphicon-remove-circle"></span></a>
+                <a data-toggle="tooltip" data-placement="left" title="Cuidado: Desativar o bicicletário!" role='button' class='btn btn-xs btn-default btn-danger bike-keeper-disable-one'><span class="text-white glyphicon glyphicon-trash"></span></a>
                 <a data-toggle="tooltip" data-placement="left" title="Ver no mapa" role='button' class='btn btn-xs btn-default bike-keeper-view-on-map'><span class="text-primary glyphicon glyphicon-globe"></span></a>
                 <?php if(!$bike_keeper->public):?>
-                    <a data-toggle="tooltip" data-placement="left" title="Fechar o bicicletário por hoje" role='button' class='btn btn-xs btn-default bike-keeper-off'><span class="text-danger glyphicon glyphicon-off"></span></a>
+                    <?php if($bike_keeper->isItOpen):?>
+                        <a data-toggle="tooltip" data-placement="left" title="Fechar o bicicletário por hoje" role='button' class='btn btn-xs btn-default bg-light-danger bike-keeper-off'><span class="text-danger glyphicon glyphicon-off"></span></a>
+                    <?php endif;?>
+                    <?php if(!$bike_keeper->isItOpen):?>
+                        <a data-toggle="tooltip" data-placement="left" title="Abrir bicicletário ao uso agora" role='button' class='btn btn-xs btn-default bg-light-green bike-keeper-on'><span class="text-success glyphicon glyphicon-off"></span></a>
+                    <?php endif;?>
                 <?php endif;?>
                 <?php // Html::hiddenInput($bike-keeper->formName().'[id]', $bike-keeper->id)?>
             </td>

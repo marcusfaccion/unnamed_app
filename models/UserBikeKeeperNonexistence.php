@@ -52,14 +52,6 @@ class UserBikeKeeperNonexistence extends \yii\db\ActiveRecord
    {
        return $this->hasOne(Users::className(), ['id' => 'user_id']);
    }
-   
-   /**
-    * @return \yii\db\ActiveQuery
-    */
-   public function getAlert()
-   {
-       return $this->hasOne(Alerts::className(), ['id' => 'alert_id']);
-   }
 
     /**
      * @inheritdoc

@@ -310,7 +310,7 @@ a.desc:after {
 .text-very-muted{ color: #cccccc}
 
 .bg-default{ color: #fff; background-color: #ccc; border-color: #ddd;} .bg-light-green{ background-color: #DAFCCA; border-color: #DCEBD2;}
-.bg-weigth-danger{ background-color: #FF1801}
+.bg-weigth-danger{ background-color: #FF1801} .bg-light-danger{ background-color: #FCC2C1}
 .message p {padding: 15px; border-radius: 5px;}
 
 .required label:after{

@@ -19,7 +19,7 @@ use kartik\file\FileInput;
         'enablePushState'=>false,
         'clientOptions'=> [
                     //Função executada no evento pjax:success
-                    'bike_keeper_success'=> new yii\web\JsExpression('
+                    'bike_keeper_success'=> in_array(Yii::$app->controller->action->id,['begin'])?new yii\web\JsExpression('
                                 function(data, status, xhr){
                                      geoJSON_layer.bike_keepers.addData(JSON.parse($(\'#bike-keepers-widget-viewer\').find("input[id=\'BikeKeepers_geojson_string\']").val()),
                                     {    
@@ -28,12 +28,12 @@ use kartik\file\FileInput;
                                     }
                                    );
                                 }
-                            '),
+                            '):'function(){;;}',
                 ],
         //'formSelector'=>'#bike-keepers-widget-form',
 ]);?>
 
-<?php if(in_array(Yii::$app->controller->id, ['bike-keepers'])):?>
+<?php if(in_array(Yii::$app->controller->action->id, ['update'])):?>
 <div class="left-buffer-3">
 <?php endif;?>
     

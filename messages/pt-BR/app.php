@@ -9,4 +9,7 @@ return [
     'alerts.disable-all.select-error'=>'É preciso selecionar um alerta!',
     
     'bike-keepers.disable.confirmation'=> 'Tem certeza que deseja desativar o bicicletário?',
+    'bike-keepers.disable-all.confirmation'=> 'Tem certeza que deseja desativar os bicicletários?',
+    'bike-keepers.off.confirmation'=>'Deseja encerrar as atividades do bicicletário por hoje?', 
+    'bike-keepers.on.confirmation'=>'Deseja abrir o bicicletário pra uso agora?', 
 ];

@@ -12,7 +12,6 @@ class BikeKeepersQuery extends \yii\db\ActiveQuery
     
     public function active($enable=1)
     {
-        $teste2 = 5;
         return $this->andOnCondition(['enable' => $enable]);
     }
 
