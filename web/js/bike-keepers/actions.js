@@ -179,6 +179,7 @@ $('body').on('click', '#bike-keepers-table .btn.bike-keeper-disable-one', functi
 // Destaca o bicicletário no mapa aplicando um setView e zoom
 $('body').on('click', '#bike-keepers-table .btn.bike-keeper-off, #bike-keepers-table .btn.bike-keeper-on', function(){
     app.bike_keeper.id = $(this).parent().parent().find('th input').val();
+    app.user.tab = 'default';
     
     if($(this).hasClass('bike-keeper-off') && !$(this).hasClass('bike-keeper-on')){
         action = 'off';
@@ -196,11 +197,25 @@ $('body').on('click', '#bike-keepers-table .btn.bike-keeper-off, #bike-keepers-t
                      }
                 });
       
+        //Função para executar após a requisição
+        app.request.afterAction = function(xhr, str){
+            console.log('after')
+            Loading.show();    
+            $.ajax({
+                type: 'GET',
+                url: 'bike-keepers/active-bike-keepers',
+                data: { user_id: app.user.id, tab: app.user.tab },
+                success: function(response){
+                    $('#bike-keepers-container').html(response); // atualiza a tabela de bicicletários
+                    Loading.hide();
+                }
+            });
+        };
         //Configurando a requisição de fechamento do expediente do bicicletário
         app.request.ajax = {
                     url: 'bike-keepers/'+action,
                     type: 'POST',
-                    async: false,
+                  //  async: false,
                     data:{
                         BikeKeepers: {id: app.bike_keeper.id}
     //                                  BikeKeepers: {id: bike_keeper_layer.feature.properties.id}
@@ -208,24 +223,10 @@ $('body').on('click', '#bike-keepers-table .btn.bike-keeper-off, #bike-keepers-t
                     success: function(rtn){
                         if(rtn){ //remove o bicicletário do mapa
                                // geoJSON_layer.bike_keepers.removeLayer(app.layers.selected);
-                               ;;
+                              app.request.afterAction();
                         }
                     },
-                    complete: app.request.afterAction,
                 }
-        //Função para executar após a requisição
-        app.request.afterAction = function(rtn, str){
-            Loading.show();    
-            $.ajax({
-                type: 'GET',
-                url: 'bike-keepers/active-bike-keepers',
-                data: { user_id: app.user.id },
-                success: function(response){
-                    $('#bike-keepers-container').html(response); // atualiza a tabela de bicicletários
-                    Loading.hide();
-                }
-            });
-        };
         
         //Mostra o modal de confirmação
         $('#bike_keepers_confirmation_modal').modal('show');

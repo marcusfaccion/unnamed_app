@@ -181,9 +181,9 @@ Modal::begin([
                     $.ajax({
                         type: 'GET',
                         url: 'bike-keepers/active-bike-keepers',
-                        data: { user_id: app.user.id},
+                        data: { user_id: app.user.id, tab: app.user.tab },
                         success: function(response){
-                            $('#bike_keepers-container').html(response); // atualiza as tabelas de bicicletários
+                            $('#bike-keepers-container').html(response); // atualiza as tabelas de bicicletários
                             Loading.hide();
                         }
                     });

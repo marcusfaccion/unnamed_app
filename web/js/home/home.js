@@ -38,7 +38,7 @@ $(document).ready(function() {
         
         ////Inicializando o conteúdo do menu de contexto
         map_popup_menu.setContent(map_conf.popup_menu.getContent());
-       
+        
        // Adicionando controle de atribuição/créditos
         L.control.attribution( 
             {
@@ -63,9 +63,44 @@ $(document).ready(function() {
             language: 'pt',
             units: 'metric',
         });
-
-        directionsLayer = L.mapbox.directions.layer(directions)
-            .addTo(map);
+        
+        
+        directions.on('load', function(e){
+            console.log('load capturado');
+            console.log(e);
+        });
+        directions.on('unload', function(e){
+            console.log('unload capturado');
+            console.log(e);
+        });
+        directions.on('origin', function(e,t){
+            console.log('origin capturado');
+            console.log(e);
+        });
+        directions.on('destination', function(e){
+            console.log('destination capturado');
+            console.log(e);
+        });
+        directions.on('highlightRoute', function(e){
+            console.log('highlightRoute capturado');
+            console.log(e);
+        });
+        directions.on('highlightStep', function(e){
+            console.log('highlightStep capturado');
+            console.log(e);
+        });
+        directions.on('selectRoute', function(e){
+            console.log('selectRoute capturado');
+            console.log(e);
+        });
+        
+        
+        
+        directionsLayer = L.mapbox.directions.layer(directions, {
+            readonly:true, //Não permite que origin e destination sejem definidos pelo evento click do L.map
+            // Não permite o drag and drop dos marcadores
+            routeStyle: {color: '#015196', weight: 7, opacity: .6},
+        }).addTo(map);
 
         directionsInputControl = L.mapbox.directions.inputControl('inputs', directions)
             .addTo(map);
@@ -78,6 +113,14 @@ $(document).ready(function() {
 
         directionsInstructionsControl = L.mapbox.directions.instructionsControl('instructions', directions)
             .addTo(map);
+        
+//        directions.setOrigin(L.latLng(-22.957444931986, -43.382949829102));
+//        directions.setDestination(L.latLng(-22.951754475745, -43.564739227295));
+        //directions.addWaypoint(index, waypoint);
+//        directions.query({},function(err, r){
+//            console.log('Callback');
+//            console.log(r);
+//        });
         
         //Adicionando Controle de camadas
         L.control.layers(
@@ -138,8 +181,11 @@ $(document).ready(function() {
         map.on('locationfound', onLocationFound);
         map.on('locationerror', onLocationError);
         // Interaction Events
+        map.on('click', onClickFired);
         map.on('contextmenu', onContextMenuFired);
         map.on('preclick', onPreclick);
+        //map.on('popupopen', function(){});
+        //map.on('popupclose', function(){});
         Loading.hide();
 });
  

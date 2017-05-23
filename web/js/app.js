@@ -31,7 +31,8 @@ var me = {
     id: null,
     marker: null,
     circle: null,
-    latlng: null,
+    latlng: null, // array [lat, lng]
+    latLng: null, // L.latLng
     latlng_history: {
         items: [],
         getFirst: function(){
@@ -84,6 +85,11 @@ var app = {
         selected: null,
     },
     /**
+     * L.latLng em seleção no runtime
+     * @type type
+     */
+    latLng:null,
+    /**
      * Variável para troca de informação entre as rotinas pré requisição http
      * @type type
      */
@@ -98,7 +104,11 @@ var app = {
     */
     message_code: '',
     user:{
-        id: null
+        id: null,
+        nav: {
+            //tab:null
+        },
+        location: false,
     },
     alert:{
       id: null  
@@ -171,7 +181,7 @@ var map_conf = {
              url_style: leaflet_style.app_style,
              accessToken: mapbox_accessToken.public_token,  
              locate: {
-                   setView: true,
+                   setView: false,
                    watch:   true, // para rastrear posição
                    maxZoom: 16,
                    timeout: 20*1000, //20 secs de timeout para geolocalização
