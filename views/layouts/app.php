@@ -71,7 +71,7 @@ echo Html::hiddenInput('App[controller_id]',Yii::$app->user->isGuest?null:Yii::$
         ],*/
             ['label' => 'Alertas', 'url' => ['/alerts'], 'active'=>(Yii::$app->controller->id=='alerts')],
             ['label' => 'Bicicletários', 'url' => ['/bike-keepers'], 'active'=>(Yii::$app->controller->id=='bike-keepers')],
-            ['label' => 'Feed', 'url' => ['/feed'], 'active'=>(Yii::$app->controller->id=='feed')],
+            ['label' => 'Mensagens', 'url' => ['/messages'], 'active'=>(Yii::$app->controller->id=='messages')],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
