@@ -1,7 +1,7 @@
 <?php
 use yii\bootstrap\Html;
 ?>
- 
+ <?php if(count($alerts)>0):?>
  <div class="col-lg-12 col-xs-12 panel panel-default top-buffer-2">
   <!-- Default panel contents -->
   <div class="panel-heading"><strong class="text-primary">Ações em massa:</strong></div>
@@ -32,6 +32,7 @@ use yii\bootstrap\Html;
             <th>Data de envio</th>
             <th>Tipo</th>
             <th>Descrição</th>
+            <th>Endereço</th>
             <th></th>
         </tr>
     </thead>
@@ -40,9 +41,10 @@ use yii\bootstrap\Html;
 <?php foreach ($alerts as $alert): ?>
         <tr class="data"> 
             <th scope="row"><?=Html::checkbox($alert->formName().'[][id]', false, ['value'=>$alert->id])?> <?=$i?></th> 
-            <td data-toggle="tooltip" data-placement="right" title="<?=Yii::$app->formatter->asDate($alert->created_date)?>"><?=Yii::$app->formatter->asRelativeTime($alert->created_date)?></td>
-            <td><?=Html::img('images/icons/marker/'.$alert->type->markerIcon,[]);?> <?=$alert->type->description?></td>
-            <td><?=$alert->description?></td>
+            <td class="text-muted" data-toggle="tooltip" data-placement="right" title="<?=Yii::$app->formatter->asDate($alert->created_date)?>"><strong><?=Yii::$app->formatter->asRelativeTime($alert->created_date)?></strong></td>
+            <td class="text-muted"><strong><?=Html::img('images/icons/marker/'.$alert->type->markerIcon,[]);?> <?=$alert->type->description?></strong></td>
+            <td class="text-muted"><strong><?=$alert->description?></strong></td>
+            <td class="text-muted"><strong><?=$alert->address?></strong></td>
             <td>
                 <a data-toggle="tooltip" data-placement="left" title="Editar" role='button' class='btn btn-xs btn-default alert-update'><span class="glyphicon glyphicon-edit"></span></a>
                 <a data-toggle="tooltip" data-placement="left" title="Desativar" role='button' class='btn btn-xs btn-default alert-disable-one'><span class="text-danger glyphicon glyphicon-remove-circle"></span></a>
@@ -55,3 +57,12 @@ use yii\bootstrap\Html;
     </tbody> 
 </table>
 </div>
+<?php else:?>
+<div class="top-buffer-2 ">
+    
+    <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Fechar"><span aria-hidden="true">×</span></button>
+                    <strong>Não há alertas cadastrados por enquanto.</strong></div>
+            
+</div>
+<?php endif; ?>

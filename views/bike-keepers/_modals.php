@@ -149,6 +149,44 @@ Modal::end();
 
 <?php
 /** 
+ * Modal de fotos dos bicicletários
+ */
+Modal::begin([
+    'id' => 'bike_keepers_photos_modal',
+    'size' => Modal::SIZE_LARGE,
+    'header' =>"<div class='modal-title text-primary tsize-5'><strong><span class='glyphicon glyphicon-picture'></span> Fotos do bicicletário</strong></div>",
+    'footer' =>"",
+    //'closeButton' => ['dat'],
+    'options'=>['class' => 'modal modal-wide'],
+    'clientEvents' => [
+        'shown.bs.modal'=>  new JsExpression("
+            function(e){
+                var modal = $(this);
+                $.ajax({
+                    type: 'GET',
+                    url: 'bike-keepers/multimideas',
+                    data: { id: app.bike_keeper.id},
+                    success: function(response){
+                        //retorna com a mensagem
+                        modal.find('.modal-body').html(response);
+                    }
+                });
+        }", []),
+        'hide.bs.modal'=>  new JsExpression(
+                "function() {
+                            $(this).find('.modal-body').html('');
+                 }"
+                , [])
+    ]
+]);
+?>
+
+<?php
+ Modal::end();
+?>
+
+<?php
+/** 
  * Modal de confirmação universal 
  */
 Modal::begin([

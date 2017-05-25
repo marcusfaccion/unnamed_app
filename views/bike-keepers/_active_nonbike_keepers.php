@@ -27,4 +27,10 @@ use yii\bootstrap\Html;
       </div>
     </div>
 <?php endforeach; ?>
+<?php if(count($non_bike_keepers)==0):?>
+    <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Fechar"><span aria-hidden="true">×</span></button>
+                    <strong>Não há problemas reportados.</strong></div>
+            
+<?php endif;?>
 </div>

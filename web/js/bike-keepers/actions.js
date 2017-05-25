@@ -268,6 +268,8 @@ $('body').on('click', '#nonbike-keeper-accordion .btn.nonbike-keeper-view-on-map
 // Desativa o bicicletário e o remove do mapa
 $('body').on('click', '#nonbike-keeper-accordion .btn.nonbike-keeper-disable', function(){
         app.bike_keeper.id = $(this).parent().find('input:last-child').val();
+        //tab de navegação ativa
+        app.user.tab = 'problem';
         //Mensagem de confirmação
         app.message_code = 'bike-keepers.disable.confirmation'; 
         //Função para executar após a requisição
@@ -293,6 +295,14 @@ $('body').on('click', '#nonbike-keeper-accordion .btn.nonbike-keeper-disable', f
                 ;;}
             });
         };
+        // Percorre todo o Layer bike_keepers para encontrar os bicicletários sendo desativados
+        app.layers.selected = [];
+        geoJSON_layer.bike_keepers.getLayers().forEach(
+                function(bike_keeper_layer, index, array){
+                    if(app.bike_keeper.id==bike_keeper_layer.feature.properties.id){
+                       app.layers.selected = bike_keeper_layer; // guarda bicicletário
+                     }
+                });
         //Configurando a requisição de desativação
         app.request.ajax = {
                     url: 'bike-keepers/disable',
@@ -309,17 +319,14 @@ $('body').on('click', '#nonbike-keeper-accordion .btn.nonbike-keeper-disable', f
                     },
                     complete: app.request.afterAction,
                 }
-
-        // Percorre todo o Layer bike_keepers para encontrar os bicicletários sendo desativados
-        app.layers.selected = [];
-        geoJSON_layer.bike_keepers.getLayers().forEach(
-                function(bike_keeper_layer, index, array){
-                    if(app.bike_keeper.id==bike_keeper_layer.feature.properties.id){
-                       app.layers.selected = bike_keeper_layer; // guarda bicicletário
-                     }
-                });
         //Mostra o modal de confirmação
         $('#bike_keepers_confirmation_modal').modal('show');
+});
+
+//Modal de Fotos
+$('body').on('click', '.btn.bike-keeper-photos', function(e){
+    app.bike_keeper.id = $(this).parent().next().val();
+    console.log(app.bike_keeper.id);
 });
 
 //Seleciona o bicicletário para verificação de informantes

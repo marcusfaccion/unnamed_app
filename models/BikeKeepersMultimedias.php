@@ -12,6 +12,8 @@ use Yii;
  */
 class BikeKeepersMultimedias extends \yii\db\ActiveRecord
 {
+    const SCENARIO_CREATE = 'create';
+    const SCENARIO_UPDATE = 'update';
     /**
      * @inheritdoc
      */
@@ -31,6 +33,16 @@ class BikeKeepersMultimedias extends \yii\db\ActiveRecord
         ];
     }
 
+        // define os atributos seguros "safe" para população massiva via $model->attributes 
+    public function scenarios()
+    {
+        // verificar se multimedias (manymany relation) pode gerar erro por não ser um atributo(somente em runtime)
+        return [
+            self::SCENARIO_CREATE => ['bike_keepers_id', 'multimedias_id'],
+            self::SCENARIO_UPDATE => ['bike_keepers_id', 'multimedias_id'],
+        ];
+    }
+    
     /**
      * @inheritdoc
      */

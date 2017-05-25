@@ -5,6 +5,7 @@ use Yii;
 use yii\base\Action;
 use yii\web\UploadedFile;
 use app\models\BikeKeepers;
+use app\models\BikeKeepersMultimedias;
 use app\models\Users;
 use marcusfaccion\helpers\String;
 
@@ -24,7 +25,14 @@ class CreateAction extends Action
         $bike_keeper_user = Users::findOne($bike_keeper->user_id);
         
         if($bike_keeper->upload()){
-           if($bike_keeper->save()){ 
+           if($bike_keeper->save()){
+               //salvando a relação ManyMany
+               foreach ($bike_keeper->_multimedias as $multimedia){
+                    $bm = new BikeKeepersMultimedias(['scenario'=>BikeKeepersMultimedias::SCENARIO_CREATE]);
+                    $bm->bike_keepers_id = $bike_keeper->id;
+                    $bm->multimedias_id = $multimedia->id;
+                    $bm->save();
+               }
             Yii::$app->session->setFlash('successfully-saved-bike-keeper', 'Bicicletário salvo com sucesso!');
             if($this->isAjax){
                return $this->controller->renderAjax('view', ['bike_keeper' => $bike_keeper, 'bike_keeper_user'=>$bike_keeper_user, 'isAjax'=>$this->isAjax]);

@@ -2,6 +2,7 @@
 use yii\bootstrap\Html;
 ?>
  
+<?php if(count($bike_keepers)>0):?>
  <div class="col-lg-12 col-xs-12 panel panel-default top-buffer-2">
   <!-- Default panel contents -->
   <div class="panel-heading"><strong class="text-primary">Ações em massa:</strong></div>
@@ -30,14 +31,14 @@ use yii\bootstrap\Html;
         <tr> 
             <th>#</th>
             <th>Tipo</th>
-            <th>Localização</th>
+            <th>Endereço</th>
             <th>Descrição</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-<?php $i=1;?>        
-<?php foreach ($bike_keepers as $bike_keeper): ?>
+    <?php $i=1;?>        
+    <?php foreach ($bike_keepers as $bike_keeper): ?>
         <tr class="data"> 
             <th scope="row"><?=Html::checkbox($bike_keeper->formName().'[][id]', false, ['value'=>$bike_keeper->id])?> <?=$i?></th> 
             <?php if($bike_keeper->public):?>
@@ -45,8 +46,8 @@ use yii\bootstrap\Html;
             <?php else:?>
             <td data-toggle="tooltip" data-placement="right" title="Bicicletário de uso particular com cobrança de diária" class="text-danger"><span class="text-danger glyphicon glyphicon-usd"></span><strong>  Privado</strong> </td>
             <?php endif;?>
-            <td></td>
-            <td><?=$bike_keeper->description?></td>
+            <td class="text-muted"><strong><?=$bike_keeper->address?></strong></td>
+            <td class="text-muted"><strong><?=$bike_keeper->description?></strong></td>
             <td>
                 <?php if(!$bike_keeper->public):?>
                 <span data-toggle="tooltip" data-placement="left" title="Ajustar a capacidade de vagas" >
@@ -69,8 +70,17 @@ use yii\bootstrap\Html;
                 <?php // Html::hiddenInput($bike-keeper->formName().'[id]', $bike-keeper->id)?>
             </td>
         </tr> 
-<?php $i++;?>
-<?php endforeach; ?>
+    <?php $i++;?>
+    <?php endforeach; ?>
     </tbody> 
-</table>
+  </table>
 </div>
+<?php else:?>
+<div class="top-buffer-2 ">
+    
+    <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Fechar"><span aria-hidden="true">×</span></button>
+                    <strong>Não há bicicletários cadastrados por enquanto.</strong></div>
+            
+</div>
+<?php endif; ?>

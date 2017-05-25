@@ -124,6 +124,7 @@ var app = {
         origin:{},
         destination:{},
         routes:[],
+        inputSearch: false,
     },
     /**
      * Variável para armazenar a resposta sim|não do usuário aos pedidos de confirmação
@@ -194,7 +195,7 @@ var map_conf = {
                    medZoom: 12,           
                    minZoom: 10,
                    timeout: 20*1000, //20 secs de timeout para geolocalização
-                   maximumAge:  0,
+                   maximumAge:  0, //denotes the maximum age of a cached position that the application will be willing to accept. In milliseconds, with a default value of 0, which means that an attempt must be made to obtain a new position object immediately
                    enableHighAccuracy: true
                },
              popup_menu: {

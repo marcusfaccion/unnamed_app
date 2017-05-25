@@ -18,10 +18,10 @@ class DisableAction extends Action
         $bike_keepers = BikeKeepers::findAll(Yii::$app->request->post('BikeKeepers')['id']);
         
         if(count($bike_keepers)>1){
-          // Excluindo os reportes de não existência associados ao alerta
-         // foreach ($bike_keepers as $bike_keeper){
-         //     UserBikeKeeperNonexistence::deleteAll(['bike_keeper_id'=>$bike_keeper->id]);
-         // }   
+           // Excluindo os reportes de não existência associados
+            foreach ($bike_keepers as $bike_keeper){
+               UserBikeKeeperNonexistence::deleteAll(['bike_keeper_id'=>$bike_keeper->id]);
+            }   
           if(BikeKeepers::disableAll($bike_keepers)){
                 Yii::$app->session->setFlash('successfully-disabled-bike-keepers', 'Bicicletários desativados com sucesso');
                 if($this->isAjax){
@@ -31,8 +31,8 @@ class DisableAction extends Action
           }  
         }else
         if(count($bike_keepers)==1){
-            // Excluindo os reportes de não existência associados ao alerta 
-            //UserBikeKeeperNonexistence::deleteAll(['bike_keeper_id'=>$alerts[0]->id);
+            // Excluindo os reportes de não existência associados
+            UserBikeKeeperNonexistence::deleteAll(['bike_keeper_id'=>$bike_keeper[0]->id]);
             if($bike_keepers[0]->disable()){
                 Yii::$app->session->setFlash('successfully-disabled-bike-keepers', 'Bicicletário desativado com sucesso');
                 if($this->isAjax){

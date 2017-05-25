@@ -23,11 +23,13 @@ class BikeKeepersController extends Controller
                                         'index', 
                                         'active-bike-keepers',
                                         'bike-keeper-nonexistence-users',
+                                        'delete-user-bike-keeper-nonexistence',
                                         'begin',
                                         'form',
                                         'render-popup',
                                         'render-popup-readonly',
                                         'get-features',
+                                        'multimideas',
                                         'get-user-features',
                                         'create',
                                         'disable',
@@ -49,8 +51,10 @@ class BikeKeepersController extends Controller
                     'index' => ['get', 'post'],
                     'active-bike-keepers' => ['get'],
                     'bike-keeper-nonexistence-users'=> ['get'],
+                    'delete-user-bike-keeper-nonexistence' =>['post'],
                     'begin' => ['get'],
                     'get-features'=>['get'],
+                    'multimideas'=>['get'],
                     'get-user-features'=>['get'],
                     'render-popup' => ['get'],
                     'render-popup-readonly' => ['get'],
@@ -99,6 +103,9 @@ class BikeKeepersController extends Controller
              'get-features' => [
                 'class'=>'app\controllers\bikeKeepers\GetFeaturesAction',
             ],
+             'multimideas' => [
+                'class'=>'app\controllers\bikeKeepers\MultimideasAction',
+            ],
              'get-user-features' => [
                 'class'=>'app\controllers\bikeKeepers\GetUserFeaturesAction',
             ],
@@ -128,6 +135,9 @@ class BikeKeepersController extends Controller
             ],
             'used-capacity' => [
                 'class' => 'app\controllers\bikeKeepers\UsedCapacityAction',
+            ],
+            'delete-user-bike-keeper-nonexistence' => [
+                'class'=>'app\controllers\bikeKeepers\DeleteUserBikeKeeperNonexistenceAction',
             ],
         ];
     }

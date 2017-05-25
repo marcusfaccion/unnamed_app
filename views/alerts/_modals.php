@@ -131,7 +131,7 @@ Modal::begin([
                     $.ajax({
                         type: 'GET',
                         url: 'alerts/active-alerts',
-                        data: { user_id: app.user.id },
+                        data: { user_id: app.user.id, tab: app.user.tab},
                         success: function(response){
                             $('#alerts-container').html(response); // atualiza as tabelas de alertas
                             Loading.hide();

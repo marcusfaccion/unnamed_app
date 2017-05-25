@@ -89,8 +89,19 @@ use yii\helpers\Html;
 </div>
 
 <?php //Data da última atualização de informações do bicicletário ?>
+<div class="row top-buffer-3 col-lg-12 col-xs-12">
+    <div class="col-lg-6 col-xs-6">   
+            <div>
+                <span data-toggle="tooltip" title="Veja as fotos do bicicletário">
+                <a class="btn btn-default bike-keeper-photos" data-toggle='modal' data-target='#home_bike_keeper_photos_modal'><span class="glyphicon glyphicon-picture tsize-10"></label></a>
+                </span>
+                <?=yii\bootstrap\Html::hiddenInput($bike_keeper->formName().'[id]', $bike_keeper->id, ['id'=>'bike-keeper-'.str_shuffle(rand(0, 99))])?>
+            </div>
+        <div class="left-pbuffer-1">
+                <small class="text-primary">Fotos</small>
+            </div>
+    </div>    
 <?php if(!empty($bike_keeper->updated_date)):?>
-<div class="row top-buffer-1 col-lg-12 col-xs-12">
     <div class="col-lg-6 col-xs-6">   
         <div>
             <label class="text-danger">Última atuallização:</label>
@@ -99,8 +110,8 @@ use yii\helpers\Html;
             <i class="text-danger"><?=Yii::$app->formatter->asRelativeTime($bike_keeper->updated_date)?></i>
         </div>
     </div>    
-</div>
 <?php endif;?>
+</div>
 
 <div class="row top-buffer-2 col-lg-12 col-xs-12 left-pbuffer-0 left-buffer-0">
     <?php if(!$bike_keeper->public):?>

@@ -36,7 +36,7 @@ class BikeKeepers extends GeoJSON_ActiveRecord
      * Armazena em runtime as multimedias relacionadas ao model BikeKeepers
      * @var array Multimedias models 
      */
-    public $multimedias;
+    public $_multimedias;
     
     /**
      *  Variável auxiliar para upload de arquivos
@@ -153,8 +153,8 @@ class BikeKeepers extends GeoJSON_ActiveRecord
      */
     public function getMultimedias()
     {
-        return $this->hasMany(Multimedias::className(), ['id' => 'bike_keepers_id'])
-            ->viaTable(BikeKeepersMultimedias::tableName(), ['multimedias_id' => 'id']);
+        return $this->hasMany(Multimedias::className(), ['id' => 'multimedias_id'])
+            ->viaTable(BikeKeepersMultimedias::tableName(), ['bike_keepers_id' => 'id']);
     }
     
     /**
@@ -226,10 +226,10 @@ class BikeKeepers extends GeoJSON_ActiveRecord
                 $multimedia->created_date = date('Y-m-d H:i:s');
                 $saved = $file->saveAs($this->public_dir.'/images/' . $file->baseName . '.' . $file->extension, false);
                 if($saved){
-                    $multimedia->src = $this->public_dir.'/images/' . $file->baseName . '.' . $file->extension;
-                    if($multimedia->save())
-                        $this->multimedias[] = $multimedia;
-                    else{
+                    $multimedia->src = $file->baseName . '.' . $file->extension;
+                    if($multimedia->save()){
+                        $this->_multimedias[] = $multimedia;
+                    }else{
                         unset($this->multimedia_files);
                         unlink($multimedia->src);
                     }

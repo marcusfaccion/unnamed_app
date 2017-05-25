@@ -199,7 +199,7 @@ class Users extends ActiveRecord implements IdentityInterface
      */
     public function getActiveAlerts()
     {
-        return $this->hasMany(Alerts::className(), ['user_id' => 'id'])->active();
+        return $this->hasMany(Alerts::className(), ['user_id' => 'id'])->active()->orderBy('id desc');
     }
     
     /**
@@ -208,7 +208,7 @@ class Users extends ActiveRecord implements IdentityInterface
      */
     public function getNonexistentAlerts()
     {
-        return $this->hasMany(Alerts::className(), ['user_id' => 'id'])->nonexistent();
+        return $this->hasMany(Alerts::className(), ['user_id' => 'id'])->nonexistent()->orderBy('id desc');
     }
 
     /**
@@ -218,7 +218,7 @@ class Users extends ActiveRecord implements IdentityInterface
      */
     public function getActiveNonexistentAlerts()
     {
-        return $this->hasMany(Alerts::className(), ['user_id' => 'id'])->nonexistent()->active();
+        return $this->hasMany(Alerts::className(), ['user_id' => 'id'])->nonexistent()->active()->orderBy('id desc');
     }
     
     /**
@@ -228,7 +228,7 @@ class Users extends ActiveRecord implements IdentityInterface
      */
     public function getActiveNonexistentBikeKeepers()
     {
-        return $this->hasMany(BikeKeepers::className(), ['user_id' => 'id'])->nonexistent()->active();
+        return $this->hasMany(BikeKeepers::className(), ['user_id' => 'id'])->nonexistent()->active()->orderBy('id desc');
     }
     
     /**
@@ -238,7 +238,7 @@ class Users extends ActiveRecord implements IdentityInterface
      */
     public function getActiveBikeKeepers()
     {
-        return $this->hasMany(BikeKeepers::className(), ['user_id' => 'id'])->active();
+        return $this->hasMany(BikeKeepers::className(), ['user_id' => 'id'])->active()->orderBy('id desc');
     }
     
     /**

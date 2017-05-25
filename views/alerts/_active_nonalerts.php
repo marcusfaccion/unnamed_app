@@ -3,7 +3,6 @@ use yii\helpers\Url;
 use yii\bootstrap\Html;
 //Url::to(['alerts/test', 'id'=>$alert->id])
 ?>
-
 <div class="panel-group top-buffer-3" id="nonalert-accordion" role="tablist" aria-multiselectable="true">
 <?php foreach ($non_alerts as $alert): ?>
   <div class="panel panel-default">
@@ -28,4 +27,10 @@ use yii\bootstrap\Html;
       </div>
     </div>
 <?php endforeach; ?>
+<?php if(count($non_alerts)==0):?>
+<div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Fechar"><span aria-hidden="true">×</span></button>
+                <strong>Não há problemas reportados.</strong></div>
+
+<?php endif;?>
 </div>

@@ -218,6 +218,13 @@ $('body').on('click', '.btn.bike-keeper-disable', function(e){
                 });
 });
 
+
+
+$('body').on('click', '.btn.bike-keeper-photos', function(e){
+    app.bike_keeper.id = $(this).parent().next().val();
+    console.log(app.bike_keeper.id);
+});
+
 $('body').on('click', '.btn.bike-keeper-comment', function(e){
     var $btn = $(this).button('loading');
     var bike_keeper_comment = $(this).parent().parent().find('textarea.bike-keeper-comment').val();

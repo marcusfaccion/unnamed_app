@@ -187,6 +187,8 @@ $('body').on('click', '#nonalert-accordion .btn.nonalert-disable', function(){
         app.alert.id = $(this).parent().find('input:last-child').val();
         //Mensagem de confirmação
         app.message_code = 'alerts.disable.confirmation'; 
+        //tab de navegação ativa
+        app.user.tab = 'problem'
         //Função para executar após a requisição
         app.request.afterAction = function(rtn, str){
             Loading.show();    
@@ -199,7 +201,7 @@ $('body').on('click', '#nonalert-accordion .btn.nonalert-disable', function(){
                         $.ajax({
                             type: 'GET',
                             url: 'alerts/active-alerts',
-                            data: { user_id: app.user.id },
+                            data: { user_id: app.user.id, tab: app.user.tab },
                             success: function(response){
                                 $('#alerts-container').html(response); // atualiza as tabelas de alertas
                                 Loading.hide();
