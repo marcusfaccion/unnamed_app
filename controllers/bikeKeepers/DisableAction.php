@@ -32,7 +32,7 @@ class DisableAction extends Action
         }else
         if(count($bike_keepers)==1){
             // Excluindo os reportes de não existência associados
-            UserBikeKeeperNonexistence::deleteAll(['bike_keeper_id'=>$bike_keeper[0]->id]);
+            UserBikeKeeperNonexistence::deleteAll(['bike_keeper_id'=>$bike_keepers[0]->id]);
             if($bike_keepers[0]->disable()){
                 Yii::$app->session->setFlash('successfully-disabled-bike-keepers', 'Bicicletário desativado com sucesso');
                 if($this->isAjax){

@@ -80,7 +80,6 @@ class BikeKeepers extends GeoJSON_ActiveRecord
     // define os atributos seguros "safe" para população massiva via $model->attributes 
     public function scenarios()
     {
-        // verificar se multimedias (manymany relation) pode gerar erro por não ser um atributo(somente em runtime)
         return [
             self::SCENARIO_CREATE => ['title', 'description', 'business_hours', 'multimedia_files', 'is_open', 'capacity', 'cost', 'email', 'tel', 'user_id', 'geojson_string', 'public', 'address', 'outdoor', 'public_dir_name'],
             self::SCENARIO_UPDATE => ['title', 'description', 'business_hours', 'used_capacity', 'is_open', 'cost', 'email', 'tel', 'user_id', 'public', 'address', 'outdoor'],

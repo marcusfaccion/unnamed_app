@@ -326,7 +326,6 @@ $('body').on('click', '#nonbike-keeper-accordion .btn.nonbike-keeper-disable', f
 //Modal de Fotos
 $('body').on('click', '.btn.bike-keeper-photos', function(e){
     app.bike_keeper.id = $(this).parent().next().val();
-    console.log(app.bike_keeper.id);
 });
 
 //Seleciona o bicicletário para verificação de informantes

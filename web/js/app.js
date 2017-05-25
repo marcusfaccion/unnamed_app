@@ -97,7 +97,11 @@ var app = {
         ajax: null,
         afterAction: function(){;;},
     },
-    
+    /**
+     * Geocoder  Nominatim, para operações de query para geocoding e reverse geocoding
+     * @type L.Control.Geocoder.Nominatim()
+     */
+    geocoder: null,
     /**
     * Variável que armazena o código para tradução da mensagem (i18n)
     * @type String
@@ -248,6 +252,14 @@ $(document).on('mousemove', '.modal.in', function(){
     $('[data-toggle="tooltip"]').tooltip({container: 'body'});
 });
 
+// Executa ações após a atualização do elemento html 
+$(document).on('pjax:beforeSend', function(event, xhr, options) {
+      
+      //Bikekeeper Pajax request
+      if(typeof options.bike_keeper_beforeSend === 'function'){
+           options.bike_keeper_beforeSend();
+      }
+})
 // Executa ações após a atualização do elemento html 
 $(document).on('pjax:success', function(event, data, status, xhr, options) {
       
