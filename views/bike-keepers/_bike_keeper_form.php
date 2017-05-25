@@ -21,6 +21,7 @@ use kartik\file\FileInput;
                     //Função executada no evento pjax:success
                     'bike_keeper_success'=> in_array(Yii::$app->controller->action->id,['begin'])?new yii\web\JsExpression('
                                 function(data, status, xhr){
+                                     console.log("Success");
                                      geoJSON_layer.bike_keepers.addData(JSON.parse($(\'#bike-keepers-widget-viewer\').find("input[id=\'BikeKeepers_geojson_string\']").val()),
                                     {    
                                         pointToLayer: generateBikeKeeperMarkerFeature,
@@ -29,6 +30,11 @@ use kartik\file\FileInput;
                                    );
                                 }
                             '):'function(){;;}',
+                    'bike_keeper_beforeSend'=> in_array(Yii::$app->controller->action->id,['begin'])?new yii\web\JsExpression("
+                                function(xhr, options){
+                                    ;;
+                               }
+                            "):'function(){;;}',
                 ],
         //'formSelector'=>'#bike-keepers-widget-form',
 ]);?>
@@ -57,8 +63,13 @@ use kartik\file\FileInput;
         ]); 
     ?>
 
-        <?php echo $form->field($bike_keeper, 'title', ['options' =>['class'=>'']])->textInput(['autofocus'=>true]);?>
+        <?php echo $form->field($bike_keeper, 'title', ['options' =>['class'=>'']])->textInput(['autofocus'=>true, 'class'=>'form-control bike-keepers-reverse-geocoding-trigger']);?>
         <?php echo $form->field($bike_keeper, 'description',['options' => ['class'=>''],'template' => "<div class='row top-buffer-1'><div class='col-lg-10 col-xs-8 top-buffer-2'>{label}<span class='glyphicon glyphicon-info-sign'></span></div>\n<div class='col-lg-10 col-xs-11'>{input}</div>\n<div class='col-lg-2 col-xs-8'>{error}</div></div>", 'labelOptions'=>['class'=>'hasTooltip', 'data-toggle'=>'tooltip', 'data-placement'=>'right', 'title'=>'Informações sobre o bicicletário, dicas de localização, ponto de referência, horário de funcionamento...']])->textArea(['class' => 'wide-12 form-control']);?>
+        <?php if(in_array(Yii::$app->controller->action->id,['update'])):?>
+            <?php if(strlen($bike_keeper->address)>0):?>
+                <?php echo $form->field($bike_keeper, 'address', ['options' =>['class'=>'']])->textInput(['autofocus'=>true,]);?>
+            <?php endif;?>
+        <?php endif;?>
         <?php echo $form->field($bike_keeper, 'business_hours',['options' => ['class'=>''],'template' => "<div class='row top-buffer-1'><div class='col-lg-10 col-xs-8 top-buffer-2'>{label}<span class='glyphicon glyphicon-info-sign'></span></div>\n<div class='col-lg-10 col-xs-11'>{input}</div>\n<div class='col-lg-2 col-xs-8'>{error}</div></div>", 'labelOptions'=>['class'=>'hasTooltip', 'data-toggle'=>'tooltip', 'data-placement'=>'right', 'title'=>'Informe os dias e horário nos quais o bicicletário pode ser utilizado ']])->textArea(['class' => 'wide-12 form-control', 'onfocus'=>'$(this).parent().prev().find(\'label\').tooltip(\'show\')', 'onblur'=>'$(this).parent().prev().find(\'label\').tooltip(\'hide\')']);?>
         <?php echo $form->field($bike_keeper, 'capacity', ['options' =>['class'=>'']])->input('number',['min'=>1]);?>
         <?php echo $form->field($bike_keeper, 'outdoor', ['template' => "<div class='row top-buffer-1'><div class='col-lg-10 col-xs-8 top-buffer-2'>{label}<span class='glyphicon glyphicon-info-sign'></span></div>\n<div class='col-lg-10 col-xs-11 parent-requires'>{input}</div>\n<div class='col-lg-2 col-xs-8'>{error}</div></div>", 'labelOptions'=>['class'=>'hasTooltip', 'data-toggle'=>'tooltip', 'data-placement'=>'right', 'title'=>'O bicicletário é localizado ao ar livre?'],  'options'=>['class'=>'']])->radioList([1=>'Sim',0=>'Não']); ?>
@@ -80,10 +91,12 @@ use kartik\file\FileInput;
 
         <?php if(Yii::$app->controller->action->id==='update'):?>
             <?php echo $form->field($bike_keeper, 'email', ['template' => "<div class='row top-buffer-1 bike-keepers-input-hidden1 ".(!$bike_keeper->public?'':'hide')."'><div class='col-lg-10 col-xs-11 top-buffer-2'>{label}<div class='input-group'><span class='input-group-addon'>@</span><div>{input}</div></div>\n<div class='col-lg-2 col-xs-8'>{error}</div></div></div>", 'labelOptions'=>['class'=>'hasTooltip', 'data-toggle'=>'tooltip', 'data-placement'=>'right', 'title'=>'Email de contato do bicicletário'],  'options'=>['class'=>'']])->input('email',['disabled'=>(bool)$bike_keeper->public]); ?>
-            <?php echo $form->field($bike_keeper, 'tel', ['template' => "<div class='row top-buffer-1 bike-keepers-input-hidden1 ".(!$bike_keeper->public?'':'hide')."'><div class='col-lg-10 col-xs-11 top-buffer-2'>{label}<div class='input-group'><span class='input-group-addon'><span class='glyphicon glyphicon-phone-alt'></span></span><div>{input}</div></div>\n<div class='col-lg-2 col-xs-8'>{error}</div></div></div>", 'labelOptions'=>['class'=>'hasTooltip', 'data-toggle'=>'tooltip', 'data-placement'=>'right', 'title'=>'Telefone de contato do bicicletário'],  'options'=>['class'=>'']])->input('text',['disabled'=>(bool)$bike_keeper->public]); ?>
+            <?php echo $form->field($bike_keeper, 'tel', ['template' => "<div class='row top-buffer-1 bike-keepers-input-hidden1 ".(!$bike_keeper->public?'':'hide')."'><div class='col-lg-10 col-xs-11 top-buffer-2'>{label}<div class='input-group'><span class='input-group-addon'><span class='glyphicon glyphicon-phone-alt'></span></span><div>{input}</div></div>\n<div class='col-lg-2 col-xs-8'>{error}</div></div></div>", 'labelOptions'=>['class'=>'hasTooltip', 'data-toggle'=>'tooltip', 'data-placement'=>'right', 'title'=>'Telefone de contato do bicicletário'],  'options'=>['class'=>'']])->widget(\yii\widgets\MaskedInput::className(),['mask' => '(999) 9999-9999','options'=>['disabled'=>(bool)$bike_keeper->public, 'class'=>'form-control']]); ?>
+            <?php // echo $form->field($bike_keeper, 'tel', ['template' => "<div class='row top-buffer-1 bike-keepers-input-hidden1 hide'><div class='col-lg-10 col-xs-11 top-buffer-2'>{label}<div class='input-group'><span class='input-group-addon'><span class='glyphicon glyphicon-phone-alt'></span></span><div>{input}</div></div>\n<div class='col-lg-2 col-xs-8'>{error}</div></div></div>", 'labelOptions'=>['class'=>'hasTooltip', 'data-toggle'=>'tooltip', 'data-placement'=>'right', 'title'=>'Telefone de contato do bicicletário'],  'options'=>['class'=>'']])->input('text',['disabled'=>(bool)$bike_keeper->public]); ?>
         <?php else:?>
             <?php echo $form->field($bike_keeper, 'email', ['template' => "<div class='row top-buffer-1 bike-keepers-input-hidden1 hide'><div class='col-lg-10 col-xs-11 top-buffer-2'>{label}<div class='input-group'><span class='input-group-addon'>@</span><div>{input}</div></div>\n<div class='col-lg-2 col-xs-8'>{error}</div></div></div>", 'labelOptions'=>['class'=>'hasTooltip', 'data-toggle'=>'tooltip', 'data-placement'=>'right', 'title'=>'Email de contato do bicicletário'],  'options'=>['class'=>'']])->input('email',['disabled'=>true]); ?>
-            <?php echo $form->field($bike_keeper, 'tel', ['template' => "<div class='row top-buffer-1 bike-keepers-input-hidden1 hide'><div class='col-lg-10 col-xs-11 top-buffer-2'>{label}<div class='input-group'><span class='input-group-addon'><span class='glyphicon glyphicon-phone-alt'></span></span><div>{input}</div></div>\n<div class='col-lg-2 col-xs-8'>{error}</div></div></div>", 'labelOptions'=>['class'=>'hasTooltip', 'data-toggle'=>'tooltip', 'data-placement'=>'right', 'title'=>'Telefone de contato do bicicletário'],  'options'=>['class'=>'']])->input('text',['disabled'=>true]); ?>
+            <?php echo $form->field($bike_keeper, 'tel', ['template' => "<div class='row top-buffer-1 bike-keepers-input-hidden1 hide'><div class='col-lg-10 col-xs-11 top-buffer-2'>{label}<div class='input-group'><span class='input-group-addon'><span class='glyphicon glyphicon-phone-alt'></span></span><div>{input}</div></div>\n<div class='col-lg-2 col-xs-8'>{error}</div></div></div>", 'labelOptions'=>['class'=>'hasTooltip', 'data-toggle'=>'tooltip', 'data-placement'=>'right', 'title'=>'Telefone de contato do bicicletário'],  'options'=>['class'=>'']])->widget(\yii\widgets\MaskedInput::className(),['mask' => '(999) 9999-9999','options'=>['disabled'=>true, 'class'=>'form-control']]); ?>
+            <?php // echo $form->field($bike_keeper, 'tel', ['template' => "<div class='row top-buffer-1 bike-keepers-input-hidden1 hide'><div class='col-lg-10 col-xs-11 top-buffer-2'>{label}<div class='input-group'><span class='input-group-addon'><span class='glyphicon glyphicon-phone-alt'></span></span><div>{input}</div></div>\n<div class='col-lg-2 col-xs-8'>{error}</div></div></div>", 'labelOptions'=>['class'=>'hasTooltip', 'data-toggle'=>'tooltip', 'data-placement'=>'right', 'title'=>'Telefone de contato do bicicletário'],  'options'=>['class'=>'']])->input('text',['disabled'=>true]); ?>
         <?php endif;?>
 
         

@@ -4,6 +4,8 @@ namespace app\controllers\bikeKeepers;
 use Yii;
 use yii\base\Action;
 use app\models\BikeKeepers;
+use yii\web\UploadedFile;
+use app\models\BikeKeepersMultimedias;
 
 class UpdateAction extends Action
 {
@@ -31,6 +33,7 @@ class UpdateAction extends Action
             $bike_keeper->used_capacity = $bike_keeper->public?null:$bike_keeper->used_capacity; //se for bicicletário publico não é possível monitorar a quantidade de vagas utilizadas
             $bike_keeper->email = $bike_keeper->public?null:$bike_keeper->email; //se for bicicletário não aceitar formas de contato com o gerente
             $bike_keeper->tel = $bike_keeper->public?null:$bike_keeper->tel; //se for bicicletário não aceitar formas de contato com o gerente
+            $bike_keeper->multimedia_files = UploadedFile::getInstances($bike_keeper, 'multimedia_files');
             
             if($bike_keeper->used_capacity>0 && Yii::$app->request->post('BikeKeepers')['capacity']>0){
                 if((Yii::$app->request->post('BikeKeepers')['capacity']-$bike_keeper->used_capacity)>=0){
@@ -41,7 +44,16 @@ class UpdateAction extends Action
             }
             
             $bike_keeper->updated_date = date('Y-m-d H:i:s');
-            if(!$bike_keeper->hasErrors() && $bike_keeper->save()){
+            if(!$bike_keeper->hasErrors() && $bike_keeper->save() && $bike_keeper->upload()){
+                if(count($bike_keeper->_multimedias)>0){
+                    BikeKeepersMultimedias::deleteAll(['bike_keepers_id'=>$bike_keeper->id]); // excluir fisicamente
+                    foreach ($bike_keeper->_multimedias as $multimedia){
+                        $bm = new BikeKeepersMultimedias(['scenario'=>BikeKeepersMultimedias::SCENARIO_CREATE]);
+                        $bm->bike_keepers_id = $bike_keeper->id;
+                        $bm->multimedias_id = $multimedia->id;
+                        $bm->save();
+                    }
+                }
                 Yii::$app->session->setFlash('successfully-saved-bike-keepers', 'O bicicletário foi atualizado e ajudará outras pessoas a pedalar com segurança!');
                 if($this->isAjax){
                    // $this->controller->renderAjax('@bike-keepers/views/item/view', ['bike_keeper' => $bike_keeper, 'isAjax'=>$this->isAjax]);

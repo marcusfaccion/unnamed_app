@@ -151,7 +151,7 @@ $(document).ready(function() {
        // Adicionando controle de geocoding (provider nominatim.openstreetmap.org)
        // plugin by Per Liedman
        // https://github.com/perliedman/leaflet-control-geocoder
-       geocoder = L.Control.geocoder({
+       control_geocoder = L.Control.geocoder({
            position: 'bottomright',
            placeholder: 'Digite um local',
            //geocoder: new L.Control.Geocoder.Mapbox(map_conf.accessToken),
@@ -159,6 +159,8 @@ $(document).ready(function() {
            defaultMarkGeocode: true,
            showResultIcons: true,
        }).addTo(map);
+       
+       app.geocoder = control_geocoder.options.geocoder;
        
        //Plotando Alertas
         $.ajax({
