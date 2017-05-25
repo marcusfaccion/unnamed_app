@@ -1,7 +1,7 @@
 // Triggered Functions
 function onLocationFound(e) {
-    
-    var radius = (e.accuracy / 2).toFixed(1);
+    console.log('found location event')
+    var radius = (e.accuracy / 7).toFixed(1);
    
     if(me.latlng!=null){
         // Atualizando a posição usuário
@@ -32,6 +32,10 @@ function onLocationFound(e) {
         
         me.marker.addTo(map);
         me.circle.addTo(map);
+        //Mostra a localização ao usuário caso não esteja com visualização automática após o locationfound event
+        if(!map_conf.locate.setView){
+            map.panTo(me.latLng, map_conf.locate.medZoom);
+        }
     }    
 }
 function onLocationError(e) {
@@ -50,9 +54,13 @@ function onClickFired(e){
     ;;
 }
 function onContextMenuFired(e){
-    map_popup_menu.setLatLng(e.latlng);
-    selectedlatlng = [e.latlng.lat, e.latlng.lng];
-    app.latLng = e.latlng;
+    
+    //Correção fina da Latitude para o clique (positivando a latitude faz deslocar o local clicado 0.00008 graus ao norte)
+    mylatlng = L.latLng([e.latlng.lat+0.00008, e.latlng.lng]);
+    
+    map_popup_menu.setLatLng(mylatlng);
+    selectedlatlng = [mylatlng.lat, mylatlng.lng];
+    app.latLng = mylatlng;
     //selectedlatlng = [e.latlng[0],e.latlng[1]];
     
     //Popup Events Listeners
@@ -106,11 +114,12 @@ function showMyLocation(enable, after){
     if(typeof(enable)==='undefined'){
         enable = !map.hasLayer(me.marker);
     };
-    if(enable){
+    if(enable){ 
         if(!app.user.location){
             map.locate({setView: map_conf.locate.setView, enableHighAccuracy: map_conf.locate.enableHighAccuracy , watch: map_conf.locate.watch});
         }
         app.user.location = true;
+        console.log('true mostrando local')
         return true;
     }else{
         map.removeLayer(me.marker);
@@ -119,7 +128,7 @@ function showMyLocation(enable, after){
         me.latlng = null;
         me.latlng_history.destroy();
         app.user.location = false;
-        
+        console.log('false nao mostrando local')
         return false;
     }
     
@@ -152,11 +161,18 @@ function userNavigationStart(enable, itemmenu){
 function setDestination(latLng){
     directions.setDestination(latLng);
     if(directions.getOrigin()){
+        app.directions.routes = [];
+        // proximity a L.LatLng object that is fed into the geocoder and biases matches around a point
         directions.query({proximity:null}, function(err, results){
-            results.routes.forEach(function(route, i){
-                route.steps.forEach(function(step, j){
-                    step.maneuver.instruction = 'Ok'
-                })
+            var results_clone = (JSON.parse(JSON.stringify(results)));
+            app.directions.origin = results_clone.origin;
+            app.directions.destination = results_clone.destination;
+            results_clone.routes.forEach(function(route, i){
+                app.directions.routes.push(route);
+//                route.steps.forEach(function(step, j){
+//                    //step.maneuver.instruction = app.t(step.maneuver.instruction, 'pt-BR')
+//                    console.log(route);
+//                })
             });
         });
     }
@@ -169,9 +185,18 @@ function setDestination(latLng){
 function setOrigin(latLng){
     directions.setOrigin(latLng);
     if(directions.getDestination()){
+        app.directions.routes = [];
         // proximity a L.LatLng object that is fed into the geocoder and biases matches around a point
         directions.query({proximity:null}, function(err, results){
-            console.log(results.routes)
+            var results_clone = (JSON.parse(JSON.stringify(results))); 
+            app.directions.origin = results_clone.origin;
+            app.directions.destination = results_clone.destination;
+            results_clone.routes.forEach(function(route, i){
+                app.directions.routes.push(route);
+//                route.steps.forEach(function(step, j){
+//                    //step.maneuver.instruction = app.t(step.maneuver.instruction, 'pt-BR')
+//                })
+            });
         });
     }
 }

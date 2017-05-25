@@ -30,6 +30,9 @@ $(document).ready(function() {
                             pointToLayer: generateBikeKeeperMarkerFeature,
                             onEachFeature: onEachBikeKeeperMarkerFeature
                             }).addTo(map);
+        //camada rotas
+        geoJSON_layer.routes = L.geoJson(null,{
+                            }).addTo(map);
         //camada de usuário online
         /*geoJSON_layer.users = L.geoJson(null,{   
                             pointToLayer: generateUserMarkerFeature,
@@ -64,34 +67,39 @@ $(document).ready(function() {
             units: 'metric',
         });
         
-        
-        directions.on('load', function(e){
-            console.log('load capturado');
-            console.log(e);
-        });
-        directions.on('unload', function(e){
-            console.log('unload capturado');
-            console.log(e);
-        });
-        directions.on('origin', function(e,t){
-            console.log('origin capturado');
-            console.log(e);
-        });
-        directions.on('destination', function(e){
-            console.log('destination capturado');
-            console.log(e);
-        });
         directions.on('highlightRoute', function(e){
-            console.log('highlightRoute capturado');
-            console.log(e);
+           // console.log('highlightRoute capturado');
+           // console.log(e);
         });
         directions.on('highlightStep', function(e){
-            console.log('highlightStep capturado');
-            console.log(e);
+           // console.log('highlightStep capturado');
+           // console.log(e);
+        });
+        
+        directions.on('origin', function(e,t){
+           // console.log('origin capturado');
+           // console.log(e);
+        });
+        directions.on('destination', function(e){
+           // console.log('destination capturado');
+           // console.log(e);
+        });
+        directions.on('load', function(e){
+           // console.log('load capturado');
+           // console.log(e);
+           app.directions.loadbyUser = true;
         });
         directions.on('selectRoute', function(e){
-            console.log('selectRoute capturado');
-            console.log(e);
+           // console.log('selectRoute capturado');
+            //console.log(e);
+            if(!app.directions.loadbyUser){
+                app.directions.routes = [e.route];
+            }
+            $('#home_user_navigation_modal').modal('show');
+        });
+        directions.on('unload', function(e){
+            //console.log('unload capturado');
+           // console.log(e);
         });
         
         

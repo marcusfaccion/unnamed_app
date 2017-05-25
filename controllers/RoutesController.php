@@ -3,6 +3,8 @@
 namespace app\controllers;
 
 use yii\web\Controller;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 
 class RoutesController extends Controller
 {
@@ -15,7 +17,10 @@ class RoutesController extends Controller
                 'only' => ['logout'],
                 'rules' => [
                     [
-                        'actions' => ['index'],
+                        'actions' => [
+                            'index',
+                            'plan',
+                        ],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -26,6 +31,7 @@ class RoutesController extends Controller
                 'actions' => [
                     'index' => ['get', 'post'],
                     'logout' => ['post'],
+                    'plan' => ['post'],
                 ],
             ],
         ];
@@ -40,6 +46,9 @@ class RoutesController extends Controller
             'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+            ],
+            'plan' => [
+                'class' => 'app\controllers\routes\PlanAction',
             ],
         ];
     }

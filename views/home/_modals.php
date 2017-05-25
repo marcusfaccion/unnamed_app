@@ -21,6 +21,7 @@ Modal::begin([
                     var action = $('#home_actions_trigger').val().split(';');
                     $(this).find('.modal-title').text(action[0]);
                     var modal = $(this);
+
                     $.ajax({
                         type: 'GET',
                         url: ((action.length>2)?action[1]+'/'+action[2]:action[1]+'/begin'),    
@@ -33,6 +34,66 @@ Modal::begin([
           'hide.bs.modal'=>  new JsExpression(
                 "function() {
                             $(this).find('.modal-body').html('');
+                            map.closePopup(map_popup_menu);
+                 }"
+                , [])
+    ]
+]);
+?>
+
+<?php
+Modal::end();
+?>
+
+<?php
+// Modal de informações da navegação do usuário
+Modal::begin([
+    'id' => 'home_user_navigation_modal',
+    'size' => Modal::SIZE_LARGE,
+    'header' =>"<div class='modal-title'><strong class='text-primary'>Informações de rota</strong></div>",
+    //'closeButton' => ['dat'],
+    'options'=>['class' => 'modal modal-wide'],
+    'clientEvents' => [
+        'shown.bs.modal'=>  new JsExpression(
+                "function() {
+                    Loading.show();
+                    //var action = $('#home_actions_trigger').val().split(';');
+                    //$(this).find('.modal-title').text(action[0]);
+                    var modal = $(this);
+                    var myRoute = {};
+                    var myRoutes = [];
+                     app.directions.routes.forEach(function(route, i){
+                        myRoute.geometry = JSON.stringify(route.geometry);
+                        myRoute.duration = route.duration;
+                        myRoute.distance = route.distance;
+                        myRoutes[i] = myRoute;
+                     });
+
+                    $.ajax({
+                        type: 'POST',
+                        url: 'routes/plan',
+                        data: {
+                                    Routes: {
+                                        multiRoutes: (myRoutes.length>1)?1:0,
+                                        origin_geojson: JSON.stringify(app.directions.origin.geometry),
+                                        destination_geojson: JSON.stringify(app.directions.destination.geometry),
+                                        routes: myRoutes,
+                                    }
+                                },
+                        success: function(response){
+                            modal.find('.modal-body').html(response);
+                            Loading.hide();
+                        }
+                    });
+                 }"
+                , []),
+          'hide.bs.modal'=>  new JsExpression(
+                "function() {
+                            $(this).find('.modal-body').html('');
+                            app.directions.loadbyUser = false;
+                            if(app.user.location){
+                                map.setView(me.latLng, map_conf.options.maxZoom);
+                            }
                             map.closePopup(map_popup_menu);
                  }"
                 , [])

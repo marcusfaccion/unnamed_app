@@ -1,5 +1,14 @@
 $('body').on('click', '#home_btn_my_location', function(){
-    showMyLocation();
+    if(showMyLocation()){
+        //Atualizando o menu do mapa quando a navegação for ativada
+        map_popup_menu.setContent(map_conf.popup_menu.getContent({nav:1}));
+        map_popup_menu.update();
+    }else{
+        //Atualizando o menu do mapa quando a navegação for desativada
+        map_popup_menu.setContent(map_conf.popup_menu.getContent({nav:0}));
+        map_popup_menu.update();
+    }
+    
 });
 $('body').on('click', '#user-navigation-pane-toggle, #home-user-menu-navigation', function(){
     if($('#user-navigation-pane-toggle').children('span').hasClass('glyphicon-chevron-right')){

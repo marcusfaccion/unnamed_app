@@ -5,8 +5,8 @@ use yii\base\Action;
 
 class BuildPopupMenuAction extends Action
 {
-    public function run()
+    public function run($nav=null)
     {
-        return $this->controller->renderAjax('build-popup-menu');
+        return $this->controller->renderAjax('build-popup-menu'.((bool)$nav?'-nav':''));
     }
 }

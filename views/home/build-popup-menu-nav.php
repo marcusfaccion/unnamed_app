@@ -6,11 +6,11 @@
   
     <li><a role="button" data-toggle="modal" data-target="#home_actions_modal" onclick="$('#home_actions_trigger').val($(this).find('span').text()+';bike-keepers');map.closePopup(map_popup_menu)" class="btn btn-default"><strong><span class="text-muted tsize-4 glyphicon glyphicon-home"></span> Criar bicicletário aqui</strong></a></li>
     
-    <li class="nav-disabled"><a role="button" onclick="userNavigationStart(true, this);" class="btn btn-default"><strong><span class="text-muted tsize-4 glyphicon glyphicon-screenshot"></span> Ativar navegação</strong></a></li>
+    <li class="nav-disabled" style="display:none"><a role="button" onclick="userNavigationStart(true, this);" class="btn btn-default"><strong><span class="text-muted tsize-4 glyphicon glyphicon-screenshot"></span> Ativar navegação</strong></a></li>
     
-    <li class="nav-enabled" style="display:none"><a role="button" onclick="userNavigationStart(false, this);" class="btn btn-default"><strong><span class="text-muted tsize-4 glyphicon glyphicon-screenshot"></span> Desativar navegação</strong></a></li>
+    <li class="nav-enabled"><a role="button" onclick="userNavigationStart(false, this);" class="btn btn-default"><strong><span class="text-muted tsize-4 glyphicon glyphicon-screenshot"></span> Desativar navegação</strong></a></li>
     
-    <li class="nav-enabled" style="display:none"><a role="button" onclick="setOrigin(me.latLng);map.closePopup(map_popup_menu);" class="btn btn-default"><strong><span class="text-muted tsize-4 glyphicon glyphicon-map-marker"></span> Meu local como origem</strong></a></li>
+    <li class="nav-enabled"><a role="button" onclick="setOrigin(me.latLng);map.closePopup(map_popup_menu);" class="btn btn-default"><strong><span class="text-muted tsize-4 glyphicon glyphicon-map-marker"></span> Meu local como origem</strong></a></li>
     
     <li class="nav-origin"><a role="button" onclick="setOrigin(app.latLng);map.closePopup(map_popup_menu);" class="btn btn-default"><strong><span class="text-muted tsize-4 glyphicon glyphicon-font"></span> Definir origem</strong></a></li>
     

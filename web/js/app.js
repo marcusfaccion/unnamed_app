@@ -120,6 +120,11 @@ var app = {
     controller: {
         id: null
     },
+    directions: {
+        origin:{},
+        destination:{},
+        routes:[],
+    },
     /**
      * Variável para armazenar a resposta sim|não do usuário aos pedidos de confirmação
      * @type Number
@@ -164,6 +169,8 @@ var map_popup_menu = L.popup();
 var map_conf = {
              // leafletJS map <options>
              options:{
+               animate: true,  
+               easeLinearity:1.0,
                center: map_center,
                zoom:    12.0, // zoom inicial
                maxZoom: 18.0, //limit de aproximação do leafletJS
@@ -183,15 +190,20 @@ var map_conf = {
              locate: {
                    setView: false,
                    watch:   true, // para rastrear posição
-                   maxZoom: 16,
+                   maxZoom: 17, //leaflet max limit is 18 min limit is 0(world)
+                   medZoom: 12,           
+                   minZoom: 10,
                    timeout: 20*1000, //20 secs de timeout para geolocalização
                    maximumAge:  0,
                    enableHighAccuracy: true
                },
              popup_menu: {
-                   getContent: function(){
-                        $.ajax({
+                   getContent: function(config){
+                       config = typeof(config)==='undefined'?{}:config;
+                       config.nav = typeof(config.nav)==='undefined'?0:config.nav;
+                       $.ajax({
                             type: 'GET',
+                            data: {nav:config.nav},
                             url: 'home/build-popup-menu',
                             async: false,
                             success: function(response){

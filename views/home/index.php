@@ -20,8 +20,8 @@ AppHomeFriendsAsset::register($this);
         <div>
             <div>
                 <div>
-                    <a id='home_btn_friends' role="button" data-toggle="modal" data-target="#home_actions_modal" onclick="$('#home_actions_trigger').val($(this).find('span').text()+';friends')" class="btn btn-default home"><span>Amigos </span><small><span class="glyphicon glyphicon-user"></span></small></a>
-                    <a id='home_btn_my_location' role="button" title='Ativar localização' class="btn btn-default home"><span class='glyphicon glyphicon-screenshot'></span></a>
+                    <a id='home_btn_friends' role="button" data-toggle="modal" data-target="#home_actions_modal" onclick="$('#home_actions_trigger').val($(this).find('span').text()+';friends')" class="btn btn-default home"><span data-toggle='tooltip' title='Ver painel de Amigos'>Amigos <small><span class="glyphicon glyphicon-user"></span></small></span></a>
+                    <a id='home_btn_my_location' role="button" data-toggle='tooltip' title='Ativar localização' class="btn btn-default home"><span class='glyphicon glyphicon-screenshot'></span></a>
                     <?php // <a role="button" onclick="$('#home_actions_trigger').val($(this).find('span').text()+';layers')" class="btn btn-default"><span>Filtros</span></a>?>
                     <?php echo Html::hiddenInput("home_actions_trigger", 'Alertas;alerts', ['id'=>'home_actions_trigger']);?>
                 </div>
