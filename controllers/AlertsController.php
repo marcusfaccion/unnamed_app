@@ -205,7 +205,9 @@ class AlertsController extends Controller
         //Index Bootstrap
         if(in_array($this->action->id, ['index','active-alerts', 'active-non-alerts'])){
             //Chamada de Store Procedure que desativa alertas vencidos 
-            $row_count = Yii::$app->db->createCommand("SELECT st_alerts_check_duration();")->execute();        
+            //$row_count = Yii::$app->db->createCommand("SELECT st_alerts_check_duration();")->execute();        
+            $alerts_count = (new \yii\db\Query)->select('st_disable_alerts()')->scalar();
+            $alerts_count += (new \yii\db\Query)->select('st_alerts_check_duration()')->scalar();
         }
         return true;
     }
