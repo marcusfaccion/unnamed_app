@@ -130,6 +130,9 @@ var app = {
         routes:[],
         inputSearch: false,
     },
+    messages: {
+        user2: {},
+    },
     /**
      * Variável para armazenar a resposta sim|não do usuário aos pedidos de confirmação
      * @type Number

@@ -144,7 +144,7 @@ class BikeKeepers extends GeoJSON_ActiveRecord
      */
     public function getComments()
     {
-        return $this->hasMany(BikeKeeperComments::className(), ['bike_keeper_id' => 'id']);
+        return $this->hasMany(BikeKeeperComments::className(), ['bike_keeper_id' => 'id'])->orderBy('created_date');
     }
     
     /**

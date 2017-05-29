@@ -15,6 +15,8 @@ use Yii;
  */
 class UserConversations extends \yii\db\ActiveRecord
 {
+    const SCENARIO_CREATE = 'create';
+    //const SCENARIO_UPDATE = 'update';
     /**
      * @inheritdoc
      */
@@ -29,11 +31,36 @@ class UserConversations extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'user_id2'], 'integer'],
+            [['user_id', 'user_id2', 'text'], 'required'],
+            [['user_id', 'user_id2', 'user_saw', 'user2_saw', 'id'], 'integer'],
             [['created_date'], 'safe'],
             [['text'], 'string'],
         ];
     }
+    
+     // define os atributos seguros "safe" para massive atribuition via $model->attributes 
+    public function scenarios()
+    {
+        return [
+            self::SCENARIO_CREATE => ['text', 'created_date', 'user_id', 'user_id2'],
+        ];
+    }
+    
+    /**
+    * @return \yii\db\ActiveQuery
+    */
+   public function getUser()
+   {
+       return $this->hasOne(Users::className(), ['id' => 'user_id']);
+   }
+    
+   /**
+   * @return \yii\db\ActiveQuery
+   */
+   public function getUser2()
+   {
+       return $this->hasOne(Users::className(), ['id' => 'user_id2']);
+   }
 
     /**
      * @inheritdoc

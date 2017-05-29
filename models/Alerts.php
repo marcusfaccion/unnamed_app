@@ -109,7 +109,7 @@ class Alerts extends GeoJSON_ActiveRecord
     */
    public function getComments()
    {
-       return $this->hasMany(AlertComments::className(), ['alert_id' => 'id']);
+       return $this->hasMany(AlertComments::className(), ['alert_id' => 'id'])->orderBy('created_date');
    }
    
     /**

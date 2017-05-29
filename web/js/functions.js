@@ -122,6 +122,11 @@ function onEachUserMarkerFeature(feature, layer){
      }
 }
 
+function timeout(func, delay){
+    window.setTimeout(func(), delay);
+    timeout(func, delay);
+}
+
 // Editar código para criar um helper
 /*
 function uploadFile(){

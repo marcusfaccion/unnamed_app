@@ -41,6 +41,24 @@ ul.navbar-nav.navbar-right.nav > li.active > a{
     background-size: 3.5em;    
     z-index: 400;
 }
+
+#messages-show-sidebar{
+    position: fixed;
+    top: 70px;
+    left: 15px;
+    width: 3.5em;
+    height: 3.5em;
+    border-radius: 50%;
+    box-shadow: 0.1em 0.1em #aaa;
+    background-image: url(../images/icons/friends_256.png);
+    background-color: white;
+    background-attachment: local;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 3.5em;    
+    z-index: 400;
+}
+
 #user-navigation-container{
     position: fixed;
     top: 3.7em;
@@ -300,8 +318,34 @@ a.desc:after {
 .border-right-radius-9{border-top-right-radius: 35px; border-bottom-right-radius: 35px;}
 .border-right-radius-10{border-top-right-radius: 40px; border-bottom-right-radius: 40px;}
 
+.border-left-1{ border-left: solid 1px #ccc} .border-right-1{ border-right: solid 1px #ccc}
+.border-1{ border: solid 1px #ccc}
+
+.box-shadow-1{box-shadow: 0px 1px 3px gray}
+
+.strong-1{ font-weight: 100;} .strong-2{ font-weight: 200;} .strong-3{ font-weight: 300;}
+.strong-4{ font-weight: 400;} .strong-5{ font-weight: 500;} .strong-6{ font-weight: 600;}
+.strong-7{ font-weight: 700;} .strong-8{ font-weight: 800;}
+
+.overflow-y{
+ overflow-y:auto;
+ overflow-x: hidden;
+}
+.overflow-x{
+ overflow-y:hidden;
+ overflow-x: auto;
+}
+
+.height-100{
+    height: 100% !important;
+    
+}
 .display-block{
     display: block;
+}
+
+li.messages-friend{
+   cursor: pointer;
 }
 
 .no-paddings{ padding: 0 !important;} no-bottom-padding{ padding-bottom: 0 !important;} no-top-padding{ padding-top: 0 !important;}
@@ -310,6 +354,8 @@ a.desc:after {
 .text-very-muted{ color: #cccccc}
 
 .bg-default{ color: #fff; background-color: #ccc; border-color: #ddd;} .bg-light-green{ background-color: #DAFCCA; border-color: #DCEBD2;}
+.bg-light-default{ background-color: #eee;}
+.bg-light-primary{ background-color: #79B5E8;}
 .bg-weigth-danger{ background-color: #FF1801} .bg-light-danger{ background-color: #FCC2C1}
 .message p {padding: 15px; border-radius: 5px;}
 
