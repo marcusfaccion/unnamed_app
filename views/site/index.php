@@ -21,7 +21,7 @@ $this->title = Yii::$app->name;
                             Ache onde guardar sua bike
                         </li>
                         <li class="top-buffer-4">
-                            Compartilhe rotas
+                            Envie mensagens para seus amigos
                         </li>
                     </ul>
                 </div>

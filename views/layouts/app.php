@@ -24,6 +24,7 @@ AppAsset::register($this);
     <style>
         body { margin:0; padding:0; }
         <?=Yii::$app->controller->renderFile(in_array(Yii::$app->controller->id, Yii::$app->params['app.layout.mapOverlay.controllers'])?'@app/web/css/_map-overlay.css':'@app/web/css/_map.css')?>
+        <?php if(in_array(Yii::$app->controller->id, Yii::$app->params['app.layout.noMap.controllers']))echo Yii::$app->controller->renderFile('@app/web/css/_nomap.css')?>
     </style>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
@@ -79,7 +80,7 @@ echo Html::hiddenInput('App[controller_id]',Yii::$app->user->isGuest?null:Yii::$
                 . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
                 . Html::img(Url::to("@web/").Yii::$app->user->identity->avatar, ['class'=>'img-circle wide-px5-8 tall-px5-8'])
                 . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
+                    'Logout',
                     ['class' => 'btn btn-link']
                 )
                 . Html::endForm()
@@ -89,12 +90,12 @@ echo Html::hiddenInput('App[controller_id]',Yii::$app->user->isGuest?null:Yii::$
     ]);
     NavBar::end();
     ?>
-    <div class="<?php echo(in_array(Yii::$app->controller->id, Yii::$app->params['app.layout.mapOverlay.controllers'])?'container-fluidMap':'container-fluid') ?>">
+    <div <?=(in_array(Yii::$app->controller->id, ['messages'])?"style='height: 100%;position: absolute;left: 0;right: 0;'":'')?> class="<?php echo(in_array(Yii::$app->controller->id, Yii::$app->params['app.layout.mapOverlay.controllers'])?'container-fluidMap':'container-fluid') ?>">
         <?php //echo Breadcrumbs::widget([ 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [], ]) ?>
         <?= $content ?>
     </div>
 </div>
-
+<?php if(!in_array(Yii::$app->controller->id, ['messages'])):?>
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; Marcus Faccion <?php //= date('Y') ?> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="images/license/cc-by-sa/v4.png" class="col-xs-offset-0 col-sm-offset-0"></a></p>
@@ -102,6 +103,7 @@ echo Html::hiddenInput('App[controller_id]',Yii::$app->user->isGuest?null:Yii::$
         <?php /* <p class="pull-right"><?= Yii::powered() ?></p> */?>
     </div>
 </footer>
+<?php endif;?>
 <?php if(Yii::$app->user->isGuest) {echo $this->renderFile('@app/views/site/_modal_login.php');} ?>
 <?php $this->endBody() ?>
 </body>

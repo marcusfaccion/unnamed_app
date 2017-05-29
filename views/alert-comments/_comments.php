@@ -11,7 +11,7 @@ $comment_history = [];
         <?php if((int)Yii::$app->formatter->asDate($comment_history[$i-1]->created_date, 'dd') < (int)Yii::$app->formatter->asDate($alert_comment->created_date, 'dd')): ?>
             <div class="row top-buffer-1">
                 <div class="col-lg-offset-6 col-xs-offset-6">
-                    <span class="text-muted"><i><?=Yii::$app->formatter->asDate($alert_comment->created_date)?></i></span>
+                    <span class="text-muted"><i><?=(Yii::$app->formatter->asDate(date('Y-m-d'))==Yii::$app->formatter->asDate($alert_comment->created_date)?'Hoje':Yii::$app->formatter->asDate($alert_comment->created_date))?></i></span>
                 </div>
             </div>
         <?php endif;?>
