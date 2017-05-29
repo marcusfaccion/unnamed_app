@@ -5,6 +5,7 @@ use yii\helpers\Html;
 ?>
 <?php
 AppMessagesAsset::register($this);
+$this->title = 'Bike Social - Mensagens';
 ?>
 
 <div class="row height-100">
@@ -38,5 +39,5 @@ AppMessagesAsset::register($this);
         </div>
     </div>
 </div>
-<div id='messages-show-sidebar' class='btn' style="display:none">
+<div id='messages-show-sidebar' class='btn' data-toggle='tooltip' title="Painel de amigos" style="display:none">
 </div>
