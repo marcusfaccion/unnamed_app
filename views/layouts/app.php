@@ -78,9 +78,9 @@ echo Html::hiddenInput('App[controller_id]',Yii::$app->user->isGuest?null:Yii::$
             ) : (
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
-                . Html::img(Url::to("@web/").Yii::$app->user->identity->avatar, ['class'=>'img-circle wide-px5-8 tall-px5-8'])
+                ."<a data-toggle='tooltip' title='Perfil de usuário' data-placement='bottom'  href=".Url::to(['/account']).">".Html::img(Url::to("@web/").Yii::$app->user->identity->avatar, ['class'=>'img-circle wide-px5-8 tall-px5-8']).'</a>'
                 . Html::submitButton(
-                    'Logout',
+                    'Sair',
                     ['class' => 'btn btn-link']
                 )
                 . Html::endForm()
