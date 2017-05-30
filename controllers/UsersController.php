@@ -25,6 +25,8 @@ class UsersController extends Controller
                                         'index', 
                                         'friends-search',
                                         'get-friends',
+                                        'set-online',
+                                        'online',
                             ],
                         'allow' => true,
                         'roles' => ['@'],
@@ -35,11 +37,31 @@ class UsersController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'index' => ['get', 'post'],
+                    'set-online'=>['post'],
+                    'online'=>['get'],
                 ],
             ],
         ];
     }
     
+     public function actions()
+    {
+        return [
+            'error' => [
+                'class' => 'yii\web\ErrorAction',
+            ],
+            'captcha' => [
+                'class' => 'yii\captcha\CaptchaAction',
+                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+            ],
+            'set-online' => [
+                'class'=>'app\controllers\users\SetOnlineAction',
+            ],
+            'online' => [
+                'class'=>'app\controllers\users\OnlineAction',
+            ],
+        ];        
+    }
     /**
      * Renders the index view for the module
      * @return string

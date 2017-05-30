@@ -364,6 +364,21 @@ li.messages-friend{
 .bg-weigth-danger{ background-color: #FF1801} .bg-light-danger{ background-color: #FCC2C1}
 .message p {padding: 15px; border-radius: 5px;}
 
+.badge-primary {
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 7px;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: #337ab7;
+    border-radius: 10px;
+}
+
 .required label:after{
     content: " *" 
 }

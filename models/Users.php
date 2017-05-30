@@ -70,7 +70,6 @@ class Users extends ActiveRecord implements IdentityInterface
             'last_access_date' => Yii::t('app', 'Data Ultimo Acesso'),
             'auth_key' => Yii::t('app', 'Chave de autenticação'),
             'access_token' => Yii::t('app', 'Token de acesso'),
-            'online' =>  Yii::t('app', 'Online'),
             'home_dir_name' =>  Yii::t('app', 'diretório do home'),
             'home_dir' =>  Yii::t('app', 'diretório do home'),
             'avatar_file' => Yii::t('app', 'Imagem do perfil'),
@@ -247,6 +246,56 @@ class Users extends ActiveRecord implements IdentityInterface
     {
         return $this->hasMany(BikeKeepers::className(), ['user_id' => 'id'])->active()->orderBy('id desc');
     }
+   
+    /**
+     * Retorna todos os models OnlineUsers 
+     * @return \yii\db\ActiveQuery ou null
+     */
+    public function getOnliner()
+    {
+        return $this->hasOne(OnlineUsers::className(), ['user_id' => 'id']);
+    }
+    
+    /**
+     * Retorna todos os models UserConversationAlerts onde eu sou o destinatário
+     * @return \yii\db\ActiveQuery ou null
+     */
+    public function getConversationAlerts()
+    {
+        return $this->hasMany(UserConversationAlerts::className(), ['user_id' => 'id']);
+    }
+    
+    /**
+     * Retorna todos os models UserConversationAlerts onde eu sou o remetente
+     * @return \yii\db\ActiveQuery ou null
+     */
+    public function getConversationAlertsSended()
+    {
+        return $this->hasMany(UserConversationAlerts::className(), ['user_id2' => 'id']);
+    }
+    
+    /**
+     * Checa se o usuário está logado de acordo com 
+     * a tabela de controle de usuário online e offline
+     * se a diferença da ultima updated_date para a datetime em minutos for maior que 1 minuto o usuário está offline
+     * @return boolean
+     */
+    public function getOnline()
+    {
+        if(Yii::$app->formatter->asDate($this->onliner->updated_date, 'php:Y-m-d')==date('Y-m-d')){ //icu yyyy-MM-dd            
+            return (((int)date('i')-(int)Yii::$app->formatter->asTime($this->onliner->updated_date, 'mm')) > 1)?0:1;
+        }
+        return 0;
+    }
+    /**
+     * Retorna todos os avisos de mensagens enviados por mim
+     *  para o usuário identificado por $user_id
+     * @param integer $user_id
+     * @return UserConversationAlerts[]
+     */
+    public function conversationsWhith($user_id){
+        return UserConversationAlerts::find()->where(['user_id'=>$user_id,'user_id2'=>$this->id])->all();
+    }
     
     /**
      * @inheritdoc
@@ -264,8 +313,7 @@ class Users extends ActiveRecord implements IdentityInterface
             [['full_name'], 'string', 'max' => 100],
             [['how_to_be_called'], 'string', 'max' => 30],
             [['question','answer','pharse'], 'string'],
-            [['home_dir'], 'string'],
-            [['online'], 'integer'],            
+            [['home_dir'], 'string'],         
             [['username'], 'string', 'max' => 30],
             [['auth_key','access_token'], 'string', 'max' => 32],
             [['email'], 'string', 'max' => 100],

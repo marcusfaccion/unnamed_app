@@ -216,6 +216,14 @@ $('body').on('click', '.btn.alert-disable', function(e){
                 });
 });
 
+//Envia a mensagem usando a tecla Enter
+$('body').on('keyup', 'textarea.alert-comment', function(e){
+    if(e.keyCode==13 && !e.shiftKey){
+        $(this).parent().next().find('.btn.alert-comment').click();
+    }
+});
+
+
 $('body').on('click', '.btn.alert-comment', function(e){
     var $btn = $(this).button('loading');
     var alert_comment = $(this).parent().parent().find('textarea.alert-comment').val();

@@ -22,7 +22,7 @@ $comment_history = [];
 <?php if($bike_keeper_comment->user_id==Yii::$app->user->identity->id): ?>
     <div class=" col-lg-10 col-xs-10 left-buffer-9 bg-light-green border-radius-3">
       <div class='text-right'>
-            <label><?=$bike_keeper_comment->user->how_to_be_called?></label>           
+            <label class="text-success"><?=$bike_keeper_comment->user->how_to_be_called?></label>           
       </div>
       <div>
       <?=$bike_keeper_comment->text?>
@@ -34,7 +34,7 @@ $comment_history = [];
 <?php else:?>
     <div class=" col-lg-10 col-xs-10 left-buffer-3 bg-info border-radius-3">
       <div>
-            <label><?=$bike_keeper_comment->user->how_to_be_called?></label>           
+            <label class="text-primary"><?=$bike_keeper_comment->user->how_to_be_called?></label>           
       </div>
       <div>
       <?=$bike_keeper_comment->text?>

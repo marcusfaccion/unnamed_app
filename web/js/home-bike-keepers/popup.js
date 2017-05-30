@@ -225,6 +225,13 @@ $('body').on('click', '.btn.bike-keeper-photos', function(e){
     console.log(app.bike_keeper.id);
 });
 
+//Envia a mensagem usando a tecla Enter
+$('body').on('keyup', 'textarea.bike-keeper-comment', function(e){
+    if(e.keyCode==13 && !e.shiftKey){
+        $(this).parent().next().find('.btn.bike-keeper-comment').click();
+    }
+});
+
 $('body').on('click', '.btn.bike-keeper-comment', function(e){
     var $btn = $(this).button('loading');
     var bike_keeper_comment = $(this).parent().parent().find('textarea.bike-keeper-comment').val();

@@ -90,6 +90,7 @@ use yii\helpers\Html;
 
 <?php //Data da última atualização de informações do bicicletário ?>
 <div class="row top-buffer-3 col-lg-12 col-xs-12">
+    <?php if(count($bike_keeper->multimedias)>0): ?>
     <div class="col-lg-6 col-xs-6">   
             <div>
                 <span data-toggle="tooltip" title="Veja as fotos do bicicletário">
@@ -100,7 +101,8 @@ use yii\helpers\Html;
         <div class="left-pbuffer-1">
                 <small class="text-primary">Fotos</small>
             </div>
-    </div>    
+    </div>
+    <?php endif; ?>    
 <?php if(!empty($bike_keeper->updated_date)):?>
     <div class="col-lg-6 col-xs-6">   
         <div>

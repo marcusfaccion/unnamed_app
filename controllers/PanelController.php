@@ -8,7 +8,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 
 
-class MessagesController extends Controller
+class PanelController extends Controller
 {
     
      public function behaviors()
@@ -22,9 +22,6 @@ class MessagesController extends Controller
                         //'controllers' => [],
                         'actions' => [
                                         'index',
-                                        'create',
-                                        'conversation',
-                                        'online-friends',
                                     ],
                         'allow' => true,
                         'roles' => ['@'],
@@ -41,9 +38,6 @@ class MessagesController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'index' => ['get', 'post'],
-                    'create'=>['post'],
-                    'conversation'=>['get'],
-                    'online-friends'=>['get'],
                 ],
             ],
         ];
@@ -59,15 +53,9 @@ class MessagesController extends Controller
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
-            'create' => [
-                'class' => 'app\controllers\messages\CreateAction',
-            ],
-            'conversation' => [
-                'class' => 'app\controllers\messages\ConversationAction',
-            ],
-            'online-friends' => [
-                'class' => 'app\controllers\messages\OnlineFriendsAction',
-            ],
+//            'create' => [
+//                'class' => 'app\controllers\messages\CreateAction',
+//            ],
         ];
     }
 
@@ -78,10 +66,10 @@ class MessagesController extends Controller
         return true;
     }
     
-//    public function actionIndex()
-//    {
-//        $user = \app\models\Users::findOne(Yii::$app->user->identity->id);
-//        return $this->render('index', ['user'=>$user, 'user_id2'=>-1]);
-//    }
+    public function actionIndex()
+    {
+        $user = \app\models\Users::findOne(Yii::$app->user->identity->id);
+        return $this->render('index', ['user'=>$user, 'user_id2'=>-1]);
+    }
 
 }

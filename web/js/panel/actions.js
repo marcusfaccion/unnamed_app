@@ -2,6 +2,7 @@ $('body').on('click', '#messages-user-friends-sidebar .messages-friend', functio
     user_id2 = $(this).children().last().val();
     app.messages.user2.id = user_id2;
     if(1){
+        $(this).find('span.conversation-alert').remove();
         $(this).parent().children().toArray().forEach(function(li,i){
            $(li).removeClass('bg-light-primary');
         });
@@ -45,6 +46,12 @@ $('body').on('click', '#messages-show-sidebar', function(){
                                 });
 });
 
+//Envia a mensagem usando a tecla Enter
+$('body').on('keyup', '#userconversations-text', function(e){
+    if(e.keyCode==13 && !e.shiftKey){
+        $('#messages-conversation .btn.send').click();
+    }
+});
 
 $('body').on('click', '#messages-conversation .btn.send', function(){
      user_id2 = app.messages.user2.id;
@@ -53,7 +60,7 @@ $('body').on('click', '#messages-conversation .btn.send', function(){
      textarea.parent().removeClass('has-success');
      
      text = textarea.val().trim();
-    if(text.length>0){ 
+    if(user_id2!==null && text.length>0){ 
         $(this).parent().prev().parent().removeClass('has-error');
         Loading.show();
         $.ajax({

@@ -20,7 +20,7 @@ $comment_history = [];
 <?php if($alert_comment->user_id==Yii::$app->user->identity->id): ?>
     <div class=" col-lg-10 col-xs-10 left-buffer-9 bg-light-green border-radius-3">
       <div class='text-right'>
-            <label><?=$alert_comment->user->how_to_be_called?></label>           
+            <label class="text-success"><?=$alert_comment->user->how_to_be_called?></label>           
       </div>
       <div>
       <?=$alert_comment->text?>
@@ -32,7 +32,7 @@ $comment_history = [];
 <?php else:?>
     <div class=" col-lg-10 col-xs-10 left-buffer-3 bg-info border-radius-3">
       <div>
-            <label><?=$alert_comment->user->how_to_be_called?></label>           
+          <label class="text-primary"><?=$alert_comment->user->how_to_be_called?></label>           
       </div>
       <div>
       <?=$alert_comment->text?>

@@ -82,6 +82,25 @@ $(document).ready(function() {
             }
         });
         
+        // Atualiza de 1 em 1min o status de online
+        setInterval(function() {
+                $.ajax({
+                    url: 'users/set-online',
+                           type: 'POST',
+                           //async: false,
+                    data:{
+                        OnlineUsers: {
+                            user_id: app.user.id,
+                        }
+                    },
+                    success: function(rtn){
+                        if(rtn){
+                            ;;
+                        }
+                    },
+                });
+        },1000*60);
+        
         /**
          * EventListeners do mapa
          */

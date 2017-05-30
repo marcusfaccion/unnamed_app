@@ -24,9 +24,9 @@ $conversation_history = [];
 <?php if($conversation->user_id==Yii::$app->user->identity->id): ?>
     <div class=" col-lg-10 col-xs-10 left-buffer-9 bg-light-green border-1 box-shadow-1 border-radius-3">
       <div class='text-right'>
-            <label><?=$conversation->user->how_to_be_called?></label>           
+            <label class="text-success"><?=$conversation->user->how_to_be_called?></label>           
       </div>
-      <div class='text-left'>
+      <div class='text-left tsize-4'>
       <?=$conversation->text?>
       </div>
       <div class="pull-right right-buffer-1">
@@ -36,9 +36,9 @@ $conversation_history = [];
 <?php else:?>
     <div class=" col-lg-10 col-xs-10 left-buffer-3 bg-info border-1 box-shadow-1 border-radius-3">
         <div class="text-right">
-            <label><?=$conversation->user->how_to_be_called?></label>           
+            <label class="text-primary"><?=$conversation->user->how_to_be_called?></label>           
       </div>
-      <div class='text-left'>
+      <div class='text-left tsize-4'>
       <?=$conversation->text?>
       </div>
       <div class="pull-right right-buffer-1">

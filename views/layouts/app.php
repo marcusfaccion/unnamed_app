@@ -72,7 +72,7 @@ echo Html::hiddenInput('App[controller_id]',Yii::$app->user->isGuest?null:Yii::$
         ],*/
             ['label' => 'Alertas', 'url' => ['/alerts'], 'active'=>(Yii::$app->controller->id=='alerts')],
             ['label' => 'Bicicletários', 'url' => ['/bike-keepers'], 'active'=>(Yii::$app->controller->id=='bike-keepers')],
-            ['label' => 'Mensagens', 'url' => ['/messages'], 'active'=>(Yii::$app->controller->id=='messages')],
+            ['label' => 'Painel', 'url' => ['/panel'], 'active'=>(Yii::$app->controller->id=='panel')],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (
@@ -90,12 +90,12 @@ echo Html::hiddenInput('App[controller_id]',Yii::$app->user->isGuest?null:Yii::$
     ]);
     NavBar::end();
     ?>
-    <div <?=(in_array(Yii::$app->controller->id, ['messages'])?"style='height: 100%;position: absolute;left: 0;right: 0;'":'')?> class="<?php echo(in_array(Yii::$app->controller->id, Yii::$app->params['app.layout.mapOverlay.controllers'])?'container-fluidMap':'container-fluid') ?>">
+    <div <?=(in_array(Yii::$app->controller->id, ['panel'])?"style='height: 100%;position: absolute;left: 0;right: 0;'":'')?> class="<?php echo(in_array(Yii::$app->controller->id, Yii::$app->params['app.layout.mapOverlay.controllers'])?'container-fluidMap':'container-fluid') ?>">
         <?php //echo Breadcrumbs::widget([ 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [], ]) ?>
         <?= $content ?>
     </div>
 </div>
-<?php if(!in_array(Yii::$app->controller->id, ['messages'])):?>
+<?php if(!in_array(Yii::$app->controller->id, ['panel'])):?>
 <footer class="footer">
     <div class="container">
         <p class="pull-left">&copy; Marcus Faccion <?php //= date('Y') ?> <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="images/license/cc-by-sa/v4.png" class="col-xs-offset-0 col-sm-offset-0"></a></p>
