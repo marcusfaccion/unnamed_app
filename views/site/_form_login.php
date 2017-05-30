@@ -31,7 +31,7 @@ use yii\bootstrap\ActiveForm;
         <?= $form->field($model, 'password')->passwordInput(['placeholder' => 'Senha']) ?>
 
         <?= $form->field($model, 'rememberMe')->checkbox([
-            'template' => "<div class=\"col-lg-5\">{input} {label} <a class='strong pull-right' href='#site-signup_form' onclick=$('#modal_login').modal('hide')>Criar conta?</a></div>\n<div class=\"col-lg-7\">{error}</div>",
+            'template' => "<div class=\"col-lg-5\">{input} {label} <a class='strong pull-right' href='#site-signup-form' onclick=$('#modal_login').modal('hide')>Criar conta?</a> <a class='strong pull-right' data-toggle='modal' href='#site_password_reset_modal' onclick=$('#modal_login').modal('hide')>Esqueceu a senha?</a></div>\n<div class=\"col-lg-7\">{error}</div>",
         ]) ?>
         
         <div class="form-group">

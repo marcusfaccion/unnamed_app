@@ -27,6 +27,7 @@ class UsersController extends Controller
                                         'get-friends',
                                         'set-online',
                                         'online',
+                                        'challange',
                             ],
                         'allow' => true,
                         'roles' => ['@'],
@@ -39,6 +40,7 @@ class UsersController extends Controller
                     'index' => ['get', 'post'],
                     'set-online'=>['post'],
                     'online'=>['get'],
+                    'challange'=>['get','post'],
                 ],
             ],
         ];
@@ -59,6 +61,9 @@ class UsersController extends Controller
             ],
             'online' => [
                 'class'=>'app\controllers\users\OnlineAction',
+            ],
+            'challange' => [
+                'class'=>'app\controllers\users\ChallangeAction',
             ],
         ];        
     }

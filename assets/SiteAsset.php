@@ -22,7 +22,11 @@ class SiteAsset extends AssetBundle
         //'css/outro.css',
     ];
     public $js = [
+        'js/site.js',
     ];
+    
+    public $jsOptions = ['position' => \yii\web\View::POS_HEAD];
+    
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',

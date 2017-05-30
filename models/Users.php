@@ -31,6 +31,12 @@ class Users extends ActiveRecord implements IdentityInterface
     const DEFAULT_USERNAME = 'bikesocial';
     
     const SCENARIO_CREATE = 'create';
+    const SCENARIO_UPDATE = 'update';
+    const SCENARIO_PASSWORD_RESET = 'password_reset';
+    const SCENARIO_NULL = 'null';
+    const SCENARIO_CHALLANGE1 = 'challange1';
+    const SCENARIO_CHALLANGE2 = 'challange2';
+    const SCENARIO_CHALLANGE3 = 'challange3';
     
     /**
      * Endereço url relativo/fixo da imagem avtar do usuário 
@@ -297,6 +303,24 @@ class Users extends ActiveRecord implements IdentityInterface
         return UserConversationAlerts::find()->where(['user_id'=>$user_id,'user_id2'=>$this->id])->all();
     }
     
+    
+    /**
+     * Verifica se $answer correspnde a resposta secreta
+     * @param string $answer
+     * @return boolean
+     */
+    public function isAnswerCorrect($answer){
+        return (trim(strtolower($this->answer))===trim(strtolower($answer)));
+    }
+    
+    /**
+     * Verifica se a senha confere com a confirmação de senha
+     * @return boolean
+     */
+    public function checkPasswords(){
+        return ((!empty($this->password) && !empty($this->password_repeat)) && trim(strtolower($this->password))===trim(strtolower($this->password_repeat)));
+    }
+    
     /**
      * @inheritdoc
      */
@@ -308,7 +332,17 @@ class Users extends ActiveRecord implements IdentityInterface
             ['username', 'unique', 'on'=>self::SCENARIO_CREATE],
             ['email', 'unique', 'on'=>self::SCENARIO_CREATE],
             ['password_repeat', 'compare', 'compareAttribute' => 'password', 'on'=>self::SCENARIO_CREATE],
+            
+            ['email', 'required', 'on'=>self::SCENARIO_CHALLANGE1],
+            
+            ['answer', 'required', 'on'=>self::SCENARIO_CHALLANGE2],
+            
+            ['password, password_repeat', 'required', 'on'=>self::SCENARIO_CHALLANGE3],
+            [['email'], 'email'],
+            //['password_repeat', 'compare', 'compareAttribute' => 'password', 'on'=>self::SCENARIO_CHALLANGE3],
+            
             [['signup_date', 'last_access_date'], 'safe'],
+            [['password','password_repeat'], 'string', 'min' => 6,],
             [['first_name', 'last_name'], 'string', 'max' => 50],
             [['full_name'], 'string', 'max' => 100],
             [['how_to_be_called'], 'string', 'max' => 30],
@@ -331,6 +365,12 @@ class Users extends ActiveRecord implements IdentityInterface
     {
         return [
             self::SCENARIO_CREATE => ['first_name', 'last_name', 'how_to_be_called','username', 'password', 'password_repeat', 'email', 'avatar_file', 'question', 'answer'],
+            self::SCENARIO_UPDATE => ['first_name', 'last_name', 'how_to_be_called', 'password', 'password_repeat', 'email', 'avatar_file', 'question', 'answer'],
+            self::SCENARIO_PASSWORD_RESET => ['password', 'password_repeat'],
+            self::SCENARIO_CHALLANGE1 => ['email'],
+            self::SCENARIO_CHALLANGE2 => ['answer'],
+            self::SCENARIO_CHALLANGE3 => ['password', 'password_repeat'],
+            self::SCENARIO_NULL => [],
         ];
     }
 
