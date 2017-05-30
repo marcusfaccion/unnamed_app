@@ -74,6 +74,7 @@ class Users extends ActiveRecord implements IdentityInterface
             'home_dir_name' =>  Yii::t('app', 'diretório do home'),
             'home_dir' =>  Yii::t('app', 'diretório do home'),
             'avatar_file' => Yii::t('app', 'Imagem do perfil'),
+            'pharse' => Yii::t('app', 'Frase do perfil'),
         ];
     }
     /**
@@ -116,6 +117,12 @@ class Users extends ActiveRecord implements IdentityInterface
            union
            select  b.user_id id from ".Users::tableName()." a inner join ".UserFriendships::tableName()." b on (a.id=b.friend_user_id) where a.id = 2  
         ")->execute();
+           
+         /* Cria o registro na tabela de controle de estado online e offline dos usuários */  
+         $online = new OnlineUsers();
+         $online->user_id = $this->id;
+         $online->updated_date = date('Y-m-d H:i:s');
+         $online->save();
            //...
            //...
            //...
@@ -256,7 +263,7 @@ class Users extends ActiveRecord implements IdentityInterface
             [['first_name', 'last_name'], 'string', 'max' => 50],
             [['full_name'], 'string', 'max' => 100],
             [['how_to_be_called'], 'string', 'max' => 30],
-            [['question','answer'], 'string'],
+            [['question','answer','pharse'], 'string'],
             [['home_dir'], 'string'],
             [['online'], 'integer'],            
             [['username'], 'string', 'max' => 30],
