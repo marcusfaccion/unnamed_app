@@ -5,7 +5,7 @@ use app\assets\AppHomeAlertsAsset;
 use app\assets\AppHomeBikeKeepersAsset;
 use app\assets\AppHomeFriendsAsset;
 /* @var $this yii\web\View */
-$this->title = 'Bike Social - Página Inicial';
+$this->title = Yii::$app->name.' - Página Inicial';
 ?>
 
 <?php

@@ -12,7 +12,7 @@ use app\models\BikeKeepers;
 use marcusfaccion\helpers\String;
 use kartik\file\FileInput;
 ?>
-<?php $this->title = 'Cadastro - Bicicletário'; ?>
+<?php $this->title = Yii::$app->name.' - Novo Bicicletário'; ?>
 
 <?php Pjax::begin([
         'id' => 'pjax-bike-keepers-widget-form',

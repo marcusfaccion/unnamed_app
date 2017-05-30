@@ -6,7 +6,7 @@ use yii\widgets\ActiveForm;
 /* @var yii\web\View $this */
 /* @var app\modules\bike_keepers\models\BikeKeepers $bike_keeper  */
 /* @var string $flash_success contém mensagem de sucesso ou null*/
-$this->title = $bike_keeper->title;
+$this->title = Yii::$app->name.' - Bicicletário';
 ?>
 <div id='bike-keepers-widget-viewer' class="bike-keepers-view">
     

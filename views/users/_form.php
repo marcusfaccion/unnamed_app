@@ -2,17 +2,19 @@
 use yii\helpers\Html;
 use kartik\file\FileInput;
 ?>
-  <?= $form->field($user, 'first_name')->textInput(['autofocus' => $user->hasErrors()?true:false, 'placeholder' => 'Primeiro nome']) ?>
+        <?=Html::hiddenInput($user->formName().'[id]', $user->id); ?>
+        
+        <?= $form->field($user, 'first_name')->textInput(['autofocus' => $user->hasErrors()?true:false, 'placeholder' => 'Primeiro nome']) ?>
 
         <?= $form->field($user, 'last_name')->textInput(['placeholder' => 'Último nome']) ?>
         
         <?= $form->field($user, 'how_to_be_called')->textInput(['placeholder' => 'Come quer ser chamado?']) ?>
 
-        <?= $form->field($user, 'username')->textInput(['placeholder' => 'Nome de usuário']) ?>
+        <?=(Yii::$app->controller->id==='site')?$form->field($user, 'username')->textInput(['placeholder' => 'Nome de usuário']):''; ?>
         
         <?= $form->field($user, 'email')->textInput(['placeholder' => 'E-mail']) ?>
         
-        <?= $form->field($user, 'pharse')->textarea(['placeholder' => 'Uma frase que o identifique']) ?>
+        <?= $form->field($user, 'pharse')->textarea(['placeholder' => 'Uma frase com a qual se identifique']) ?>
         
         <?= $form->field($user, 'question')->textInput(['placeholder' => $user->getAttributeLabel('question')]) ?>
         

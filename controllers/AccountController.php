@@ -63,6 +63,7 @@ class AccountController extends Controller
     public function actionIndex()
     {
         $user = Users::findOne(Yii::$app->user->identity->id);
+        $user->password = $user->password_repeat = '';
         return $this->render('index', ['user'=>$user]);
     }
     

@@ -2,7 +2,7 @@
 use yii\helpers\Url;
 /* @var $this yii\web\View */
 
-$this->title = Yii::$app->name;
+$this->title = Yii::$app->name. ' - Site';
 ?>
 <div class="site-index">
     
@@ -41,4 +41,3 @@ $this->title = Yii::$app->name;
     </div>
    
 </div>
-<?=Yii::$app->controller->renderPartial('_modals');?>

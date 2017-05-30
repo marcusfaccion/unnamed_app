@@ -4,7 +4,7 @@ $params = require(__DIR__ . '/params.php');
 
 $config = [
     'id' => 'aplicacao-ACC',
-    'name' => 'BIKE SOCIAL',	
+    'name' => 'Bike Social',	
     'language' => 'pt-BR',
     'sourceLanguage' => 'pt-BR',
     'basePath' => dirname(__DIR__),

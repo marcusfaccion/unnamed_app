@@ -2,7 +2,7 @@
 
 use app\assets\AppBikeKeepersAsset;
 
-$this->title = 'Bike Social - Bicicletários';
+$this->title = Yii::$app->name.' - Bicicletários';
 ?>
 
 <?php

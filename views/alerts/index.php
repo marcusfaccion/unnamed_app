@@ -2,7 +2,7 @@
 
 use app\assets\AppAlertsAsset;
 
-$this->title = 'Bike Social - Alertas';
+$this->title = Yii::$app->name.' - Alertas';
 ?>
 
 <?php

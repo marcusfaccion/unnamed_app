@@ -6,7 +6,7 @@ use yii\widgets\ActiveForm;
 /* @var yii\web\View $this */
 /* @var app\modules\alerts\models\Alerts $alert  */
 /* @var string $flash_success contém mensagem de sucesso ou null*/
-$this->title = $alert->title;
+$this->title = Yii::$app->name.' - Alerta';
 ?>
 
 <div id='alerts-widget-viewer' class="alerts-view<?=(in_array(Yii::$app->controller->id, ['alerts','bikeKeepers'])?' left-buffer-3':'')?>">

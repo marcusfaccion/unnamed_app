@@ -328,9 +328,12 @@ class Users extends ActiveRecord implements IdentityInterface
     {
         return [
             [$this->scenarios()[self::SCENARIO_CREATE], 'required', 'on'=>self::SCENARIO_CREATE],
+            [['first_name', 'last_name', 'how_to_be_called', 'email', 'question', 'answer'], 'required', 'on'=>self::SCENARIO_UPDATE],
+            
             [['avatar_file'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, jpeg, gif', 'maxFiles' => 1, 'on'=>self::SCENARIO_CREATE],
             ['username', 'unique', 'on'=>self::SCENARIO_CREATE],
             ['email', 'unique', 'on'=>self::SCENARIO_CREATE],
+            ['email', 'unique', 'on'=>self::SCENARIO_UPDATE],
             ['password_repeat', 'compare', 'compareAttribute' => 'password', 'on'=>self::SCENARIO_CREATE],
             
             ['email', 'required', 'on'=>self::SCENARIO_CHALLANGE1],
@@ -365,7 +368,7 @@ class Users extends ActiveRecord implements IdentityInterface
     {
         return [
             self::SCENARIO_CREATE => ['first_name', 'last_name', 'how_to_be_called','username', 'password', 'password_repeat', 'email', 'avatar_file', 'question', 'answer'],
-            self::SCENARIO_UPDATE => ['first_name', 'last_name', 'how_to_be_called', 'password', 'password_repeat', 'email', 'avatar_file', 'question', 'answer'],
+            self::SCENARIO_UPDATE => ['first_name', 'last_name', 'how_to_be_called', 'password', 'password_repeat', 'email', 'question', 'answer', 'pharse'],
             self::SCENARIO_PASSWORD_RESET => ['password', 'password_repeat'],
             self::SCENARIO_CHALLANGE1 => ['email'],
             self::SCENARIO_CHALLANGE2 => ['answer'],

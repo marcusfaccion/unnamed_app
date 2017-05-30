@@ -3,7 +3,7 @@ use yii\bootstrap\Html;
 use yii\jui\AutoComplete;
 use yii\web\JsExpression;
 /* @var $this yii\web\View */
-$this->title = 'Apicação Colaborativa para Ciclistas';
+$this->title = Yii::$app->name.' - Interações';
 ?>
 
 <h1>Index Feed!<?=Yii::$app->formatter->asDatetime('now', 'php:Y-m-d H:i:s')?></h1>
