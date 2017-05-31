@@ -1,5 +1,10 @@
 <?php
 use yii\widgets\Pjax;
+use app\assets\AppAccountAsset;
+?>
+
+<?php 
+AppAccountAsset::register($this); 
 ?>
 
 <?php $this->title = Yii::$app->name.' - Conta de usuário';?>

@@ -6,11 +6,11 @@ namespace app\assets;
  * @author Marcus Faccion <marcusfaccion@bol.com.br>
  * @since 1.0
  */
-class AppPanelAsset extends AppAsset
+class AppAccountAsset extends AppAsset
 {
     public $js = [
-       'js/panel/panel.js',
-       'js/panel/actions.js',
+       'js/account/account.js',
+       'js/account/actions.js',
 //     'js/home/functions.js',
 //     'js/home/icons.js',
 //     'js/home/actions.js'

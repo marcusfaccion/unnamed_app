@@ -223,8 +223,8 @@ $(document).ready(function() {
             }
             //Checa se chegou ao destino
             if(directions.queryable() && app.directions.myOrigin && !$('#home_user_navigation_modal').hasClass('in')){
-                //Se a localização do usuário estiver a uma distância linear de 50 metros do local destino, considerar como destino alcançado
-                if(map.distance(me.latlng, [directions.getDestination().geometry.coordinates[1],directions.getDestination().geometry.coordinates[0]])<50){
+                //Se a localização do usuário estiver a uma distância linear de até 10 metros do local destino, considerar como destino alcançado
+                if(parseInt(map.distance(me.latlng, [directions.getDestination().geometry.coordinates[1],directions.getDestination().geometry.coordinates[0]]))<=10){
                     app.directions.myOrigin = false; //Interrompe atualização da posição do usuário
                     app.directions.free = false;
                     app.directions.pause = false;

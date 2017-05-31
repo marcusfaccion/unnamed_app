@@ -11,5 +11,7 @@ $this->title = 'Entrar';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-login">
-    <?=$this->renderFile('@app/views/site/_form_login.php', ['form_number' => 2])?>
+    <?=$this->renderFile('@app/views/site/_form_login.php', ['form_number' => 2,'model'=>$model])?>
 </div>
+
+<?=Yii::$app->controller->renderPartial('_modals');?>

@@ -22,6 +22,7 @@ class PanelController extends Controller
                         //'controllers' => [],
                         'actions' => [
                                         'index',
+                                        'online-friends'
                                     ],
                         'allow' => true,
                         'roles' => ['@'],
@@ -38,6 +39,7 @@ class PanelController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'index' => ['get', 'post'],
+                    'online-friends' => ['get'],
                 ],
             ],
         ];
@@ -52,6 +54,9 @@ class PanelController extends Controller
             'captcha' => [
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+            ],
+           'online-friends' => [
+                'class' => 'app\controllers\panel\OnlineFriendsAction',
             ],
 //            'create' => [
 //                'class' => 'app\controllers\messages\CreateAction',

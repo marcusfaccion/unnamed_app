@@ -18,7 +18,7 @@ $this->title = 'Bike Social - Painel';
         </div>
         <div class="row">
             <div id='messages-friends-placeholder' class="col-lg-11 col-md-10 col-xs-10">
-                <?=Yii::$app->controller->renderPartial('@app/views/messages/_friends_sidebar',['user'=>$user, 'user_id2'=>$user_id2]);?>
+                <?=Yii::$app->controller->renderPartial('@app/views/panel/_friends_sidebar',['user'=>$user, 'user_id2'=>$user_id2]);?>
             </div>
             <?php // <div class="col-lg-1 col-md-1 col-xs-1">>></div> ?>
         </div>
