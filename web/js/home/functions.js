@@ -33,8 +33,11 @@ function onLocationFound(e) {
         me.marker.addTo(map);
         me.circle.addTo(map);
         //Mostra a localização ao usuário caso não esteja com visualização automática após o locationfound event
-        if(!map_conf.locate.setView){
-            map.panTo(me.latLng, map_conf.locate.medZoom);
+        //if(!map_conf.locate.setView){
+        if(app.directions.free){
+            map.panTo(me.latLng, map_conf.locate.maxZoom);
+        }else{
+            map.panTo(me.latLng, map_conf.locate.mexZoom);
         }
     }    
 }
@@ -65,8 +68,14 @@ function onContextMenuFired(e){
     
     //Popup Events Listeners
     map.on('popupclose', function(e){
+        showDirectionsResetMenu();
         e.popup.setContent($('#map_menu').parent().html());
         e.popup.update();
+    });
+    
+    //Popup Events Listeners
+    map.on('popupopen', function(e){
+        showDirectionsResetMenu();
     });
     
     //map.openPopup(map_popup_menu);
@@ -119,7 +128,6 @@ function showMyLocation(enable, after){
             map.locate({setView: map_conf.locate.setView, enableHighAccuracy: map_conf.locate.enableHighAccuracy , watch: map_conf.locate.watch});
         }
         app.user.location = true;
-        console.log('true mostrando local')
         return true;
     }else{
         map.removeLayer(me.marker);
@@ -128,7 +136,6 @@ function showMyLocation(enable, after){
         me.latlng = null;
         me.latlng_history.destroy();
         app.user.location = false;
-        console.log('false nao mostrando local')
         return false;
     }
     
@@ -150,6 +157,33 @@ function userNavigationStart(enable, itemmenu){
                 $(itemmenu).parent().prev().fadeIn('now');
             });
         }
+    }
+}
+
+function resetDirections(){
+    
+    if(directions.queryable() && $('#home-user-navigation-stop').css('display')=='block'){
+        $('#home-user-navigation-stop').click();//trigger para o botão de para navegação de rota
+    }else{
+        directions.setOrigin();
+        directions.setDestination();
+    }
+    showDirectionsResetMenu(); 
+}
+
+/**
+ * Ativa e desativa o menu de redefinir rota
+ * @returns {Boolean} true se o menu é exibido ou false caso não
+ */
+function showDirectionsResetMenu(){
+    if(directions.queryable()){
+        $('#map_menu .nav-destination-reset').show();
+        return true;
+    }else{
+        if($('#map_menu .nav-destination-reset').css('display')=='block'){
+            $('#map_menu .nav-destination-reset').hide();
+            return false;
+        }    
     }
 }
 
@@ -176,6 +210,7 @@ function setDestination(latLng){
             });
         });
     }
+    showDirectionsResetMenu();
 }
 /**
  * Define Mapbox directions.origin
@@ -199,4 +234,5 @@ function setOrigin(latLng){
             });
         });
     }
+    showDirectionsResetMenu();
 }

@@ -24,7 +24,7 @@ ul.navbar-nav.navbar-right.nav > li.active > a{
     font-weight: 800;
 }
 /*fim menu topo*/
-
+/* Botão para mostrar painel de navegação do plugin directions*/
 #home-user-menu-navigation{
     position: fixed;
     top: 70px;
@@ -42,6 +42,24 @@ ul.navbar-nav.navbar-right.nav > li.active > a{
     z-index: 400;
 }
 
+/* Botão para parar de rastrear rota do usuário */
+#home-user-navigation-stop{
+    position: fixed;
+    top: 125px;
+    left: 15px;
+    width: 3.5em;
+    height: 3.5em;
+    border-radius: 50%;
+    box-shadow: 0.1em 0.1em #aaa;
+    background-image: url(../images/icons/stop_256.png);
+    background-color: white;
+    background-attachment: local;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 3.5em;    
+    z-index: 400;
+}
+/* Botão para parar mostrar o painel de amigos na tela /painel */
 #messages-show-sidebar{
     position: fixed;
     top: 70px;

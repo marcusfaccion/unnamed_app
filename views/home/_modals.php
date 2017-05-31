@@ -9,6 +9,7 @@ use yii\web\JsExpression;
 
 ?>
 <?php
+//Modal de escolha de ações
 Modal::begin([
     'id' => 'home_actions_modal',
     'size' => Modal::SIZE_LARGE,
@@ -25,6 +26,43 @@ Modal::begin([
                     $.ajax({
                         type: 'GET',
                         url: ((action.length>2)?action[1]+'/'+action[2]:action[1]+'/begin'),    
+                        success: function(response){
+                            modal.find('.modal-body').html(response);
+                        }
+                    });
+                 }"
+                , []),
+          'hide.bs.modal'=>  new JsExpression(
+                "function() {
+                            $(this).find('.modal-body').html('');
+                            map.closePopup(map_popup_menu);
+                 }"
+                , [])
+    ]
+]);
+?>
+
+<?php
+Modal::end();
+?>
+
+<?php
+// Modal de informações
+Modal::begin([
+    'id' => 'home_information_modal',
+    'size' => Modal::SIZE_SMALL,
+    'header' =>"<div class='modal-title text-primary strong-6'>Informação <span class='glyphicon glyphicon-info-sign'></div>",
+    'footer' =>"<button type='button' class='btn btn-xs btn-danger' value='1' data-dismiss='modal'>Fechar</button>",
+    //'closeButton' => ['dat'],
+    'options'=>['class' => 'modal modal-wide'],
+    'clientEvents' => [
+        'shown.bs.modal'=>  new JsExpression(
+                "function() {
+                    var modal = $(this);
+                    $.ajax({
+                       type:  app.request.ajax.type,
+                        url:  app.request.ajax.url,
+                        data:  app.request.ajax.data,
                         success: function(response){
                             modal.find('.modal-body').html(response);
                         }
@@ -105,7 +143,18 @@ Modal::begin([
                             app.directions.loadbyUser = false;
                             
                             if(app.user.location){
-                                map.setView(me.latLng, map_conf.options.maxZoom);
+                                if(app.directions.myOrigin){
+                                    if(directions.queryable())
+                                        app.directions.pause=false; //para que o mapa possa aplicar flyTo() caso a origem seja a localização do usuário
+                                    map.setView(me.latLng, map_conf.options.maxZoom);
+                                    $('#home-user-navigation-stop').fadeIn('now');
+                                    app.message_code = 'routes.start.navigation.brief';
+                                    app.request.ajax.url = 'app/get-confirm-message';
+                                    app.request.ajax.type = 'post';
+                                    app.request.ajax.data = {confirm_message: app.message_code};
+                                    $('#home_information_modal').modal('show');
+                                    me.latlng_history.destroy();// para zerar e começar a gravar as latlngs da rota
+                                }
                             }
                             map.closePopup(map_popup_menu);
                  }"
@@ -183,6 +232,49 @@ Modal::begin([
                     data: { id: app.bike_keeper.id},
                     success: function(response){
                         //retorna com a mensagem
+                        modal.find('.modal-body').html(response);
+                    }
+                });
+        }", []),
+        'hide.bs.modal'=>  new JsExpression(
+                "function() {
+                            $(this).find('.modal-body').html('');
+                 }"
+                , [])
+    ]
+]);
+?>
+
+<?php
+ Modal::end();
+?>
+
+<?php
+/** 
+ * Modal de compartilhamento
+ */
+Modal::begin([
+    'id' => 'home_user_sharings_modal',
+    'size' => Modal::SIZE_LARGE,
+    'header' =>"<div class='modal-title text-primary tsize-5'><strong><span class='glyphicon glyphicon-share'></span> Compartilhando rota...</strong></div>",
+    'footer' =>"<button id='no-confirm-sharing' type='button' class='btn btn-xs btn-danger' value='1' data-dismiss='modal'>Cancelar</button>
+        <button id='yes-confirm-sharing' type='button' class='btn btn-xs btn-success' value='0' data-dismiss='modal'>Compartilhar</button>",
+    //'closeButton' => ['dat'],
+    'options'=>['class' => 'modal modal-wide'],
+    'clientEvents' => [
+        'shown.bs.modal'=>  new JsExpression("
+            function(e){
+                var modal = $(this);
+
+                $.ajax({
+                    type: 'GET',
+                    url: 'user-sharings/form',
+                    data: { 
+                        UserSharings: {
+                            sharing_type_id: app.user.sharings.selectedTypeId ,
+                        } 
+                    },
+                    success: function(response){
                         modal.find('.modal-body').html(response);
                     }
                 });

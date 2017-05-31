@@ -4,6 +4,8 @@ use app\assets\AppHomeAsset;
 use app\assets\AppHomeAlertsAsset;
 use app\assets\AppHomeBikeKeepersAsset;
 use app\assets\AppHomeFriendsAsset;
+use app\models\UserSharings;
+use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 $this->title = Yii::$app->name.' - Página Inicial';
 ?>
@@ -21,7 +23,7 @@ AppHomeFriendsAsset::register($this);
             <div>
                 <div>
                     <a id='home_btn_friends' role="button" data-toggle="modal" data-target="#home_actions_modal" onclick="$('#home_actions_trigger').val($(this).find('span').text()+';friends')" class="btn btn-default home"><span data-toggle='tooltip' title='Ver painel de Amigos'>Amigos <small><span class="glyphicon glyphicon-user"></span></small></span></a>
-                    <a id='home_btn_my_location' role="button" data-toggle='tooltip' title='Ativar localização' class="btn btn-default home"><span class='glyphicon glyphicon-screenshot'></span></a>
+                    <a id='home_btn_my_location' role="button" data-toggle='tooltip' title='Ativar/Desativar Localização' class="btn btn-default home"><span class='glyphicon glyphicon-screenshot'></span></a>
                     <?php // <a role="button" onclick="$('#home_actions_trigger').val($(this).find('span').text()+';layers')" class="btn btn-default"><span>Filtros</span></a>?>
                     <?php echo Html::hiddenInput("home_actions_trigger", 'Alertas;alerts', ['id'=>'home_actions_trigger']);?>
                 </div>
@@ -65,7 +67,22 @@ AppHomeFriendsAsset::register($this);
         </div>
     </div>    
 </div>
-<div id='home-user-menu-navigation' class='btn'>
+<div id='home-user-menu-navigation' data-placement='right' data-toggle='tooltip' title='Painel de navegaçao' class='btn'>
 </div>
+<div id='home-user-navigation-stop' data-placement='right' data-toggle='tooltip' title='Parar navegação' class='btn' style="display:none">
+</div>
+<?php 
+$userSharingsForm = ActiveForm::begin([
+             //'action'=>  Url::to(['/bike-keeper/item/create']),
+                'id' =>'home-user-sharings-form',
+                'options' => ['enctype' => 'multipart/form-data', 'id'=>'home-user-sharings-form'],
+        ]); 
+?>
 
+<?=Html::hiddenInput((new UserSharings)->formName().'[user_id]',null, ['id'=>'user-sharings-user_id'])?>
+<?=Html::hiddenInput((new UserSharings)->formName().'[sharing_type_id]',null, ['id'=>'user-sharings-sharing_type_id'])?>
+<?=Html::hiddenInput((new UserSharings)->formName().'[content_id]',null, ['id'=>'user-sharings-content_id'])?>
+<?=Html::hiddenInput((new UserSharings)->formName().'[text]',null, ['id'=>'user-sharings-text'])?>
+
+<?php $userSharingsForm->end(); ?>
 <?php echo $this->render('_modals.php'); ?>

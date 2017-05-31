@@ -37,7 +37,7 @@ class AppController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'index' => ['get', 'post'],
-                    'get-confirm-message'=>['post']
+                    'get-confirm-message'=>['post','get']
                 ],
             ],
         ];

@@ -52,12 +52,29 @@ var me = {
         },
         destroy: function(){
             this.items = [];
-        }
+        },
+        toGeoJSON: function(){
+            var ls_array = [];
+            this.items.forEach(function(item, i){
+               ls_array.push(item); 
+            });
+            return (new L.Polyline(ls_array)).toGeoJSON();
+        },
+        toLineStringArray: function(){
+            var ls_array = [];
+            this.items.forEach(function(item, i){
+               ls_array.push(item); 
+            });
+            return ls_array;
+        },
     },
     setNull: function(){
         this.id = this.marker = this.circle = this.latlng = null;
         this.latlng_history.destroy();
-    }
+    },
+    layers:{
+            route: null,
+        }
 };
 
 var users = {
@@ -94,7 +111,11 @@ var app = {
      * @type type
      */
     request: {
-        ajax: null,
+        ajax: {
+            url:null,
+            type:null,
+            data:null,
+        },
         afterAction: function(){;;},
     },
     /**
@@ -113,6 +134,15 @@ var app = {
             //tab:null
         },
         location: false,
+        sharings:{
+            form: null,
+            types:{
+                alerts: 1,
+                bike_keepers: 2,
+                routes: 3,
+            },
+            selectedTypeId: null,
+        },
     },
     alert:{
       id: null  
@@ -129,9 +159,18 @@ var app = {
         destination:{},
         routes:[],
         inputSearch: false,
+        myOrigin: false, //true quando a origem é a localização do usuário
+        free: false, // true quando é ativada a navegação e false quando myOrigin
+        pause:false, // quando true desabilita a funcionalidade de free e myOrigin
     },
     messages: {
         user2: {},
+    },
+    yconfirmation:{
+        action:null,
+    },
+    nconfirmation:{
+        action:null,
     },
     /**
      * Variável para armazenar a resposta sim|não do usuário aos pedidos de confirmação
@@ -198,7 +237,7 @@ var map_conf = {
              locate: {
                    setView: false,
                    watch:   true, // para rastrear posição
-                   maxZoom: 17, //leaflet max limit is 18 min limit is 0(world)
+                   maxZoom: 18, //leaflet max limit is 18 min limit is 0(world)
                    medZoom: 12,           
                    minZoom: 10,
                    timeout: 20*1000, //20 secs de timeout para geolocalização
@@ -220,6 +259,16 @@ var map_conf = {
                        });
                        return _return;
                    }
+            },
+            lineString:{
+                options:{
+                    stroke: true,
+                    color: '#E80C0C',
+                    weight: 6,
+                    opacity: 0.7,
+                    fillOpacity: 0.2,
+                    interactive: true,
+                }
             }
 };
 

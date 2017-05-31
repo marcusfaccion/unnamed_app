@@ -29,7 +29,7 @@ class PlanAction extends Action
             $tmp_route->origin_geojson = $Routes['origin_geojson'];
             $tmp_route->destination_geojson = $Routes['destination_geojson'];
             $tmp_route->line_string_geojson = $route['geometry'];
-            $tmp_route->duration = $route['duration'];
+            $tmp_route->duration = $route['duration']>=60?$route['duration']:100;//correção de bug da API directions da Mapbox duração minima será 60s
             $tmp_route->distance = $route['distance'];
             $tmp_route->user_id = Yii::$app->user->identity->id;
             if($tmp_route->save()){
