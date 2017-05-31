@@ -41,3 +41,5 @@ $this->title = Yii::$app->name. ' - Site';
     </div>
    
 </div>
+
+<?=Yii::$app->controller->renderPartial('_modals');?>
