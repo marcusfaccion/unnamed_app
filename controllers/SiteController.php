@@ -98,6 +98,12 @@ class SiteController extends Controller
             Yii::$app->user->identity->save(false);
             
             return $this->goBack([Yii::$app->homeUrl]);
+        }else{
+            if($model->hasErrors()){
+                $model->clearErrors();
+                $model->addError('password','Usuário ou senha incorretos.');
+            }
+                
         }
         return $this->render('login', [
             'model' => $model,

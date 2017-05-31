@@ -15,7 +15,7 @@ use yii\helpers\Url;
 
 <div class="row bottom-buffer-2">
     <div class="col-lg-6 col-md-6 col-xs-7">
-        <h3 class="text-muted text-right strong-8">Dados do Usuário</h3>  
+        <h3 class="text-muted text-left strong-8"><?=$user->how_to_be_called?></h3>  
     </div>
 </div>
 <div class="row">
@@ -25,7 +25,11 @@ use yii\helpers\Url;
                 <?=Html::img($user->avatar, ['class'=>'img-circle tall-px5-25 wide-px5-25'])?>
             </div>
             <div class="col-lg-12 col-md-12 col-xs-12 top-buffer-1">
-                <cite class="strong-5"><?=!empty($user->pharse)?'"'. $user->pharse. '"':'"Escreva sua frase"'?></cite>
+                <div><label>Último acesso:</label></div>
+                        <div><?=!empty($user->last_access_date)?Yii::$app->formatter->asRelativeTime($user->last_access_date):' primeiro acesso'?></div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-xs-12 top-buffer-4">
+                <cite class="strong-6 text-primary"><?=!empty($user->pharse)?'"'. $user->pharse. '"':'"Escreva sua frase"'?></cite>
             </div>
        </div>
     </div>

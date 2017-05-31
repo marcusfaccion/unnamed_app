@@ -1,5 +1,5 @@
 <?php
-namespace app\controllers\messages;
+namespace app\controllers\panel;
 
 use Yii;
 use yii\base\Action;

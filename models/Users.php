@@ -288,10 +288,35 @@ class Users extends ActiveRecord implements IdentityInterface
      */
     public function getOnline()
     {
+        $timezone = Yii::$app->formatter->timeZone;
+        Yii::$app->formatter->timeZone = 'UTC';
+        
         if(Yii::$app->formatter->asDate($this->onliner->updated_date, 'php:Y-m-d')==date('Y-m-d')){ //icu yyyy-MM-dd            
-            return (((int)date('i')-(int)Yii::$app->formatter->asTime($this->onliner->updated_date, 'mm')) > 1)?0:1;
+            
+            if((int)date('H')-(int)Yii::$app->formatter->asDatetime($this->onliner->updated_date, 'HH') > 1){
+              Yii::$app->formatter->timeZone = $timezone;
+              return  0;
+            }
+            
+            if(
+                    ((int)date('H')-(int)Yii::$app->formatter->asDatetime($this->onliner->updated_date, 'HH')) <= 1
+                    &&
+                    (
+                            ((int)date('i')-(int)Yii::$app->formatter->asDatetime($this->onliner->updated_date, 'mm'))>1
+                            ||
+                            ((int)date('i')-(int)Yii::$app->formatter->asDatetime($this->onliner->updated_date, 'mm'))<0
+                    )
+              ){
+                Yii::$app->formatter->timeZone = $timezone;
+                return 0;
+              }
+                 
+        }else{
+          Yii::$app->formatter->timeZone = $timezone; 
+          return 0;
         }
-        return 0;
+        Yii::$app->formatter->timeZone = $timezone;
+        return 1;
     }
     /**
      * Retorna todos os avisos de mensagens enviados por mim

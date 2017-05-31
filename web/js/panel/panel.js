@@ -55,7 +55,7 @@ $(document).ready(function() {
                         if(rtn){ 
                            //Atualiza a listagem de amigos e status online/offline 
                            $.ajax({
-                                url: 'messages/online-friends',
+                                url: 'panel/online-friends',
                                        type: 'GET',
                                        //async: false,
                                 data:{
@@ -71,7 +71,7 @@ $(document).ready(function() {
                         }
                     },
                 });
-        },1000*60);
+        },1000*10);
         
         Loading.hide();
 });

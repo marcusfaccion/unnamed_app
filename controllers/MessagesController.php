@@ -65,9 +65,6 @@ class MessagesController extends Controller
             'conversation' => [
                 'class' => 'app\controllers\messages\ConversationAction',
             ],
-            'online-friends' => [
-                'class' => 'app\controllers\messages\OnlineFriendsAction',
-            ],
         ];
     }
 

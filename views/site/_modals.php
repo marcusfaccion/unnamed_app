@@ -11,6 +11,7 @@ use yii\web\JsExpression;
 ?>
 
 <?php
+$url = yii\helpers\Url::toRoute('/users/challange');
 Modal::begin([
     'id' => 'site_password_reset_modal', 
     'size' => Modal::SIZE_LARGE,
@@ -23,7 +24,7 @@ Modal::begin([
                     var modal = $(this);
                     $.ajax({
                         type: 'POST',
-                        url: 'users/challange',
+                        url: '$url',
                         data: { 
                             step: 1,
                          },

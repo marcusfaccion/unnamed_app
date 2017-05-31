@@ -19,10 +19,11 @@ class SiteAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
-        //'css/outro.css',
+        'css/Loading.css',
     ];
     public $js = [
         'js/site.js',
+        'js/Loading.js',
     ];
     
     public $jsOptions = ['position' => \yii\web\View::POS_HEAD];

@@ -9,6 +9,11 @@ $(document).ready(function() {
          */
         app.user.id = $('#app-user-id').val();
         app.controller.id = $('#app-controller-id').val();
+        app.user.sharings.form = $('#home-user-sharings-form'); // formulário para envio de dados de compartilhamentos(alertas,bicicletários e rotas)
+        app.user.sharings.form[0].elements[1].value = app.user.id;//id do usuério
+        app.user.sharings.form[0].elements[2].value = null // tipo do compartilhamento
+        app.user.sharings.form[0].elements[3].value = null; // id do conteúdo compartilhado
+        app.user.sharings.form[0].elements[4].value = null; // text do compartilhamento
         
         //verificando se browser suporta API geolocation
         if (!'geolocation' in navigator) {
@@ -79,15 +84,20 @@ $(document).ready(function() {
         directions.on('origin', function(e,t){
            // console.log('origin capturado');
            // console.log(e);
+           if(directions.getDestination())
+                app.directions.pause=false; //para que o mapa possa aplicar flyTo() caso a origem seja a localização do usuário
         });
         directions.on('destination', function(e){
            // console.log('destination capturado');
            // console.log(e);
+           if(directions.getOrigin())
+                app.directions.pause=false; //para que o mapa possa aplicar flyTo() caso a origem seja a localização do usuário
         });
         directions.on('load', function(e){
            // console.log('load capturado');
            // console.log(e);
            app.directions.loadbyUser = true;
+           showDirectionsResetMenu();//para mostrar o menu de reset de destino e origem
         });
         directions.on('selectRoute', function(e){
            // console.log('selectRoute capturado');
@@ -203,6 +213,45 @@ $(document).ready(function() {
                     },
                 });
         },1000*60);
+        
+        // Atualiza de 20 em 20s a posição do usuário
+        //  se a navegação em rota estiver ativada.
+        // Checa se o usuário chegou ao destino
+        setInterval(function() {
+            if((app.directions.myOrigin || app.directions.free) && !app.directions.pause){
+                map.flyTo(me.latLng, map_conf.locate.maxZoom);
+            }
+            //Checa se chegou ao destino
+            if(directions.queryable() && app.directions.myOrigin && !$('#home_user_navigation_modal').hasClass('in')){
+                //Se a localização do usuário estiver a uma distância linear de até 10 metros do local destino, considerar como destino alcançado
+                if(parseInt(map.distance(me.latlng, [directions.getDestination().geometry.coordinates[1],directions.getDestination().geometry.coordinates[0]]))<=10){
+                    app.directions.myOrigin = false; //Interrompe atualização da posição do usuário
+                    app.directions.free = false;
+                    app.directions.pause = false;
+                    
+                    //Guarda o layers (LineString) da rota 
+                    me.layers.route = L.polyline(me.latlng_history.toLineStringArray(),map_conf.lineString.options);
+                    //Adiciona a Latlng do destino ao layer LineString da rota
+                    me.layers.route.addLatLng([directions.getDestination().geometry.coordinates[1],directions.getDestination().geometry.coordinates[0]]);
+                    //me.layers.route.addTo(map);
+                   
+                   app.message_code = 'routes.share.question';
+                   app.request.ajax.url = 'app/get-confirm-message';
+                   app.request.ajax.type = 'post';
+                   app.request.ajax.data = {confirm_message: app.message_code};
+                   app.user.sharings.selectedTypeId = app.user.sharings.types.routes; // tipo de compartilhamento
+                   
+                   
+                   app.yconfirmation.action = function(){
+                        // Confirmação para compartilhar
+                        $('#home_user_sharings_modal').modal('show');   
+                   }
+                   
+                    // Confirmação para compartilhar
+                    $('#home_confirmation_modal').modal('show');
+                }
+            }
+        },1000*20);
         
         /**
          * EventListeners do mapa
