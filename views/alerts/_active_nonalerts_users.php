@@ -9,7 +9,7 @@ use yii\bootstrap\Html;
   <div class="panel panel-default">
       <div class="panel-body">
           <h4 class="panel-title left-pbuffer-0 right-pbuffer-0">
-            <img src="<?=$ane->user->avatar?>" class="img-circle wide-px5-6 tall-px5-6 right-buffer-1"/><span class="text-primary"><strong>@<?=$ane->user->how_to_be_called?></strong></span> <strong><?=Yii::$app->formatter->asRelativeTime($ane->created_date)?></strong>  
+            <img src="<?=$ane->user->avatar?>" class="img-circle wide-px5-6 tall-px5-6 right-buffer-1"/><span class="text-primary"><strong><?=$ane->user->how_to_be_called?></strong></span> <strong><?=Yii::$app->formatter->asRelativeTime($ane->created_date)?></strong>  
           </h4>
           <?php if((!$ane->user->isMyFriend(Yii::$app->user->identity->id)) && !Yii::$app->user->identity->wasIRequestFriendship($ane->user_id)):?>
             <a id='nonalert-<?="$ane->user_id-$ane->alert_id-"?>user-add-btn' data-toggle="tooltip" data-placement="left" title="Solicitar amizade" role="button" class="btn btn-xs btn-default nonalert-user-add pull-right" data-original-title="Solicitar amizade"><span class="text-success glyphicon glyphicon-plus"></span></a>

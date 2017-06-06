@@ -38,11 +38,12 @@ $this->title = 'Bike Social - Painel';
             </div>
         </div>
     </div>
-    <div id='user-feed' class="col-lg-3 col-md-3 col-xs-12 height-100 border-left-1">
-            <div id='feed-placeholder' class="jumbotron"> 
-                    <h2 class="text-muted"><cite>Atualizações de amigos.</cite></h2>
-            </div>
+    <div id='user-feeding' class="col-lg-3 col-md-3 col-xs-12 height-100 border-left-1">
+        <div class="row tall-10 overflow-y">
+            <?=Yii::$app->controller->renderPartial('@app/views/panel/_feeding_sidebar',['user'=>$user,'feedings'=>$feedings]);?>
+        </div>
     </div>
 </div>
 <div id='messages-show-sidebar' class='btn' data-toggle='tooltip' title="Painel de amigos" style="display:none">
 </div>
+<?php echo $this->render('_modals.php'); ?>

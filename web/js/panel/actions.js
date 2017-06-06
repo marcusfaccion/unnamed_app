@@ -89,60 +89,8 @@ $('body').on('click', '#messages-conversation .btn.send', function(){
 });
 
 // Desativa todos os alertas selecionados
-$('body').on('click', '#active-alerts .btn.alert-disable-all', function(){
-    alert_ids = [];
-    $('#alerts-table').find('input[type=checkbox]:checked').each(
-    function(index, elm){
-        alert_ids[index] = elm.value; // guarda os ids marcados para desativação
-    });
-    if(alert_ids.length>0){ 
-        //Mensagem de confirmação
-        app.message_code = 'alerts.disable-all.confirmation'; 
-        //Função para executar após a requisição
-        app.request.afterAction = function(rtn, str){
-            Loading.show();    
-            $.ajax({
-                type: 'GET',
-                url: 'alerts/active-alerts',
-                data: { user_id: app.user.id },
-                success: function(response){
-                    $('#alerts-container').html(response); // atualiza a tabela de alertas
-                    Loading.hide();
-                }
-            });
-        };
-        //Configurando a requisição de desativação
-        app.request.ajax = {
-                    url: 'alerts/disable',
-                    type: 'POST',
-                    async: false,
-                    data:{
-                        Alerts: {id: alert_ids}
-    //                                  Alerts: {id: alert_layer.feature.properties.id}
-                    },
-                    success: function(rtn){
-                        if(rtn){ //remove o alerta do mapa
-                            app.layers.selected.forEach(function(layer, index, array){
-                                geoJSON_layer.alerts.removeLayer(layer);
-                            });
-                        }
-                    },
-                    complete: app.request.afterAction,
-                }
+$('body').on('click', '#user-feeding-list li', function(){
+    app.user_feedings.id = $(this).prop('id').split('-')[2];
 
-        // Percorre todo o Layer alerts para encontrar os alertas sendo desativados
-        app.layers.selected = [];
-        geoJSON_layer.alerts.getLayers().forEach(
-                function(alert_layer, index, array){
-                    if(alert_ids.includes(alert_layer.feature.properties.id.toString())){
-                       app.layers.selected[index] = alert_layer; // guarda alerta
-                     }
-                });
-        //Mostra o modal de confirmação
-        $('#alerts_confirmation_modal').modal('show');
-    }else{
-        app.message_code = 'alerts.disable-all.select-error'; 
-        //Mostra o modal de inforrmação
-        $('#alerts_information_modal').modal('show');
-    }
+    $('#panel_user_feeding_item_modal').modal('show');
 });

@@ -180,6 +180,9 @@ var app = {
      * @type Number
      */
     user_confirmation: 0,
+    user_feedings:{
+        id: null,
+    }
 }
 
 

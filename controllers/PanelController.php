@@ -74,7 +74,14 @@ class PanelController extends Controller
     public function actionIndex()
     {
         $user = \app\models\Users::findOne(Yii::$app->user->identity->id);
-        return $this->render('index', ['user'=>$user, 'user_id2'=>-1]);
+        
+        // Obtendo os itens do feeding do usuário composto pelos compartilhamentos de seus amigos e os seus próprios
+        $feedings = \app\models\UserFeedings::find()->where('user_id in (select * from user_'.$user->id.'_friends_id)')
+                ->orWhere(['user_id'=>$user->id])
+                ->orderBy('created_date desc')
+                ->limit(7)
+                ->all();
+        return $this->render('index', ['user'=>$user, 'user_id2'=>-1, 'feedings'=>$feedings]);
     }
 
 }

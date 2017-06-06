@@ -93,7 +93,7 @@ class UserSharings extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getSharingType()
+    public function getType()
     {
         return $this->hasOne(UserSharingTypes::className(), ['id' => 'sharing_type_id']);
     }
