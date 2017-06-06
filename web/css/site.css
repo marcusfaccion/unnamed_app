@@ -323,6 +323,10 @@ li.messages-friend{
 
 .text-white{ color: #ffffff!important} .text-hint{ color: #777!important} 
 
+.text-jumbotron-primary{ color: #337ab7!important}
+.text-jumbotron-danger{ color: #a94442!important}
+.strong-jumbotron-6{ font-weight:600!important}
+
 .btn-primary {
     color: #fff;
     background-color: #FFC222;

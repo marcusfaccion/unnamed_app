@@ -24,6 +24,7 @@ use Yii;
  */
 class UserFeedings extends \yii\db\ActiveRecord
 {
+    const SCENARIO_CREATE = 'create';
     /**
      * @inheritdoc
      */
@@ -65,6 +66,16 @@ class UserFeedings extends \yii\db\ActiveRecord
         ];
     }
 
+       // define os atributos seguros "safe" para população massiva via $model->attributes 
+    public function scenarios()
+    {
+        return [
+            self::SCENARIO_CREATE => ['text', 'user_id', 'user_sharing_id'],
+            //self::SCENARIO_UPDATE => ['title', 'description', 'business_hours', 'used_capacity', 'is_open', 'cost', 'email', 'tel', 'user_id', 'public', 'address', 'outdoor'],
+        ];
+    }
+
+    
     /**
      * @return \yii\db\ActiveQuery
      */

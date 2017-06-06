@@ -119,7 +119,7 @@ function onCreatedMarkerClick(marker){
  * @returns {Boolean} true se a localização foi ativada false caso contrário 
  */
 function showMyLocation(enable, after){
-    
+    geoJSON_layer.routes.clearLayers(); // apaga as rotas do usuário do layers routes, removendo-a da tela consecutivamente.
     if(typeof(enable)==='undefined'){
         enable = !map.hasLayer(me.marker);
     };

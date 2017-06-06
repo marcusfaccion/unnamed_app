@@ -25,7 +25,7 @@ class PlanAction extends Action
         }
         
         foreach($Routes['routes'] as $route){
-            $tmp_route = new UserNavigationRoutes(['scenario'=>BikeKeepers::SCENARIO_CREATE]);
+            $tmp_route = new UserNavigationRoutes(['scenario'=>UserNavigationRoutes::SCENARIO_CREATE]);
             $tmp_route->origin_geojson = $Routes['origin_geojson'];
             $tmp_route->destination_geojson = $Routes['destination_geojson'];
             $tmp_route->line_string_geojson = $route['geometry'];

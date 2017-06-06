@@ -6,6 +6,9 @@ use yii\base\Action;
 use app\models\AlertTypes;
 use app\models\Alerts;
 use app\models\Users;
+use app\models\UserSharings;
+use app\models\UserSharingTypes;
+use app\models\UserFeedings;
 use marcusfaccion\helpers\String;
 
 class CreateAction extends Action
@@ -15,15 +18,17 @@ class CreateAction extends Action
     public function run()        
     {
         
-        $alert = new Alerts(['scenario'=>Alerts::SCENARIO_CREATE]);
         $this->isAjax = \Yii::$app->request->isAjax;
+        $alert = new Alerts(['scenario'=>Alerts::SCENARIO_CREATE]);
+        $user_sharing = new UserSharings(['scenario'=>  UserSharings::SCENARIO_CREATE]);
+        $user_feeding = new UserFeedings(['scenario'=> UserFeedings::SCENARIO_CREATE]);
         
         $alert->attributes = Yii::$app->request->post('Alerts');
         $alert->created_date = date('Y-m-d H:i:s');
         
 
         
-        //Momentaneamente alterando o timezone da aplicação para salvar data futura em UTC no banco
+        //Momentaneamente alterando o timezone da aplicação para salvar data futura de duração do alerta de America/Sao_Paulo para UTC no banco
         date_default_timezone_set(Yii::$app->formatter->timeZone);
         $alert->duration_date = !empty($alert->duration_date) ? gmdate('Y-m-d H:i:s', strtotime($alert->duration_date)):null;
         date_default_timezone_set(Yii::$app->formatter->defaultTimeZone);
@@ -35,6 +40,23 @@ class CreateAction extends Action
         $alert_type_name = count($alert_type_name)>1 ? implode('_', $alert_type_name) : $alert_type_name[0];
         
         if($alert->save()){
+            
+            //Criando o registro no feed
+            $user_sharing->user_id = $alert->user_id;
+            $user_sharing->sharing_type_id = UserSharingTypes::findOne(['name'=>'alert'])->id;
+            $user_sharing->content_id = $alert->id;
+            $user_sharing->created_date = date('Y-m-d H:i:s');
+            
+            if($user_sharing->save()){
+                $user_feeding->user_sharing_id = $user_sharing->id;
+                $user_feeding->user_id = $user_sharing->user_id;
+                $user_feeding->created_date = date('Y-m-d H:i:s');
+                if($user_feeding->save()){
+                    $user_sharing->user_feeding_id = $user_feeding->id;
+                    $user_sharing->save(false);
+                }
+                
+            }
             
             Yii::$app->session->setFlash('successfully-saved-alerts', 'Seu alerta foi publicado e ajudará outras pessoas a pedalar com segurança!');
             if($this->isAjax){

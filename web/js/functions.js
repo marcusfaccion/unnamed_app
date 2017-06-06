@@ -89,6 +89,29 @@ function onEachBikeKeeperMarkerFeature(feature, layer){
         });
      }
 }
+
+/**
+ * A Function that will be called once for each created Feature, after it has
+ * been created and styled. Useful for attaching events and popups to features. 
+ * The default is to do nothing with the newly created layers:
+ * @param Object(Feature) feature LineString GeoJSON
+ * @param {type} latlng
+ * @returns {L.Marker}
+*/
+function onEachRouteLineStringFeature(feature, layer){
+    ;;
+}
+
+/**
+ * A Function defining the Path options for styling GeoJSON lines
+ * and polygons, called internally when data is added.
+ * The default value is to not override any defaults:
+ * @param Object(Feature) feature LineString GeoJSON 
+ * @returns Object(GeoJSON Feature style)
+*/
+function styleEachRouteLineStringFeature(feature){
+    return map_conf.lineString.options;
+}
 /**
  * Gera um L.Marker a partir do feature geoJSON passado
  * @param {geoJSON Feature} feature

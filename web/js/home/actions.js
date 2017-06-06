@@ -1,6 +1,9 @@
 $('body').on('click', '#home-user-navigation-stop', function(){
     app.message_code = 'routes.stop.navigation';
      app.yconfirmation.action = function(){
+         
+         geoJSON_layer.routes.clearLayers(); // apaga as rotas do usuário do layers routes, removendo-a da tela consecutivamente.
+         
          directions.setOrigin();
          directions.setDestination();
          me.latlng_history.destroy();
@@ -64,20 +67,33 @@ $('body').on('click', '#no-confirm, #yes-confirm', function(){
 // Clique dos botões do Modal de Compartilhamento
 $('body').on('click', '#no-confirm-sharing, #yes-confirm-sharing', function(){
     app.user_confirmation = parseInt($(this).val());
+    sharing_modal = $('#home_user_sharings_modal');
     
-    //Configurando a requisição de compartilhamento
-    app.user.sharings.form[0].elements[2].value = app.user.sharings.selectedTypeId; // tipo do compartilhamento
-    app.user.sharings.form[0].elements[3].value = null; // id do conteúdo compartilhado, rota inda não criada
-    app.user.sharings.form[0].elements[4].value = $('#home_user_sharings_modal').find('.sharing-text').val(); // text do compartilhamento
-    
-    $.ajax({
-        type: 'GET',
-        url: 'user-sharings/create',
-        //data: { id_sharing_type: id },
-        data: app.user.sharings.form.serialize(),
-        success: function(response){
-            modal.find('.modal-body').html(response);
-        }
-    });
+    if(app.user_confirmation){
+        //Configurando a requisição de compartilhamento
+        app.user.sharings.form = $('#user-sharings-form');
+        app.user.sharings.form[0].elements[1].value = app.user.id;//id do usuério
+        app.user.sharings.form[0].elements[2].value = app.user.sharings.selectedTypeId; // tipo do compartilhamento
+        app.user.sharings.form[0].elements[3].value = null; // id do conteúdo compartilhado, rota inda não criada
+        app.user.sharings.form[0].elements[4].value = app.user.sharings.form.find('.feeding-text').val(); // text do compartilhamento
+        app.user.sharings.form[0].elements[5].value = JSON.stringify(app.directions.origin.geometry), //geoJSON da origem
+        app.user.sharings.form[0].elements[6].value = JSON.stringify(app.directions.destination.geometry), //geoJSON do destino
+        app.user.sharings.form[0].elements[7].value = JSON.stringify(me.layers.route.toGeoJSON().geometry), //geoJSON da LineString da rota
+        app.user.sharings.form[0].elements[8].value = app.directions.elapsed_time, //tempo gasto em rota pelo usuário, calculado pelo js
+
+        $.ajax({
+            type: 'POST',
+            url: 'user-sharings/create',
+            //data: { id_sharing_type: id },
+            data: app.user.sharings.form.serialize(),
+            success: function(response){
+                sharing_modal.find('.modal-body').html(response);
+                $('#home_user_sharings_modal').find('.modal-footer .toBeclosed').hide();
+                $('#home_user_sharings_modal').find('#confirm-sharing-close').show();
+            }
+        });
+    }else{
+        ;;
+    }
     
 });

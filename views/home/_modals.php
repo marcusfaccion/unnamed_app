@@ -154,6 +154,7 @@ Modal::begin([
                                     app.request.ajax.data = {confirm_message: app.message_code};
                                     $('#home_information_modal').modal('show');
                                     me.latlng_history.destroy();// para zerar e começar a gravar as latlngs da rota
+                                    app.t0 = performance.now(); // começa a guardar o tempo da rota em msec
                                 }
                             }
                             map.closePopup(map_popup_menu);
@@ -180,8 +181,8 @@ Modal::begin([
     'id' => 'home_confirmation_modal',
     'size' => Modal::SIZE_SMALL,
     'header' =>"<div class='modal-title'>Confirmação <span class='glyphicon glyphicon-question-sign'></span></div>",
-    'footer' =>"<button id='yes-confirm' type='button' class='btn btn-xs btn-danger' value='1' data-dismiss='modal'>Sim</button>
-        <button id='no-confirm' type='button' class='btn btn-xs btn-success' value='0' data-dismiss='modal'>Não</button>",
+    'footer' =>"<button id='yes-confirm' type='button' class='btn btn-xs btn-success' value='1' data-dismiss='modal'>Sim</button>
+        <button id='no-confirm' type='button' class='btn btn-xs btn-danger' value='0' data-dismiss='modal'>Não</button>",
     //'closeButton' => ['dat'],
     'options'=>['class' => 'modal modal-wide'],
     'clientEvents' => [
@@ -257,8 +258,9 @@ Modal::begin([
     'id' => 'home_user_sharings_modal',
     'size' => Modal::SIZE_LARGE,
     'header' =>"<div class='modal-title text-primary tsize-5'><strong><span class='glyphicon glyphicon-share'></span> Compartilhando rota...</strong></div>",
-    'footer' =>"<button id='no-confirm-sharing' type='button' class='btn btn-xs btn-danger' value='1' data-dismiss='modal'>Cancelar</button>
-        <button id='yes-confirm-sharing' type='button' class='btn btn-xs btn-success' value='0' data-dismiss='modal'>Compartilhar</button>",
+    'footer' =>"<button id='no-confirm-sharing' type='button' class='btn btn-xs btn-danger toBeclosed' value='0' data-dismiss='modal'>Cancelar</button>
+        <button id='yes-confirm-sharing' type='button' class='btn btn-xs btn-success toBeclosed' value='1'>Compartilhar</button>
+        <button id='confirm-sharing-close' type='button' class='btn btn-xs btn-default' data-dismiss='modal' style='display:none;'>Fechar</button>",
     //'closeButton' => ['dat'],
     'options'=>['class' => 'modal modal-wide'],
     'clientEvents' => [
@@ -282,6 +284,8 @@ Modal::begin([
         'hide.bs.modal'=>  new JsExpression(
                 "function() {
                             $(this).find('.modal-body').html('');
+                            $(this).find('.modal-footer .toBeclosed').show();
+                            $(this).find('#confirm-sharing-close').hide();
                  }"
                 , [])
     ]

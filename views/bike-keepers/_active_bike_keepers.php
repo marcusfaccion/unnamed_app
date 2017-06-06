@@ -64,7 +64,7 @@ use yii\bootstrap\Html;
                         <a data-toggle="tooltip" data-placement="left" title="Fechar o bicicletário por hoje" role='button' class='btn btn-xs btn-default bg-light-danger bike-keeper-off'><span class="text-danger glyphicon glyphicon-off"></span></a>
                     <?php endif;?>
                     <?php if(!$bike_keeper->isItOpen):?>
-                        <a data-toggle="tooltip" data-placement="left" title="Abrir bicicletário ao uso agora" role='button' class='btn btn-xs btn-default bg-light-green bike-keeper-on'><span class="text-success glyphicon glyphicon-off"></span></a>
+                        <a data-toggle="tooltip" data-placement="left" title="Abrir bicicletário para uso agora" role='button' class='btn btn-xs btn-default bg-light-green bike-keeper-on'><span class="text-success glyphicon glyphicon-off"></span></a>
                     <?php endif;?>
                 <?php endif;?>
                 <?php // Html::hiddenInput($bike-keeper->formName().'[id]', $bike-keeper->id)?>

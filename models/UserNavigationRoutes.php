@@ -129,11 +129,13 @@ class UserNavigationRoutes extends GeoJSON_ActiveRecord
     
     public function beforeSave($insert) {
         if (parent::beforeSave($insert)) {
-            //$this->geom = (new \yii\db\Query)->select("ST_SetSRID(ST_GeomFromGeoJSON('$this->geom'),$this->srid)")->scalar();
-            $this->origin_geom = Yii::$app->db->createCommand("SELECT ST_SetSRID(ST_GeomFromGeoJSON('$this->origin_geojson'),$this->srid)")->queryScalar();
-            $this->destination_geom = Yii::$app->db->createCommand("SELECT ST_SetSRID(ST_GeomFromGeoJSON('$this->destination_geojson'),$this->srid)")->queryScalar();
-            // Quando um valor do tipo geometry no postgre se torna grande demais ele deixa de ser visível como string
-            $this->line_string_geom = Yii::$app->db->createCommand("SELECT ST_SetSRID(ST_GeomFromGeoJSON('$this->line_string_geojson'),$this->srid)")->queryScalar();
+            if($this->isNewRecord){
+                //$this->geom = (new \yii\db\Query)->select("ST_SetSRID(ST_GeomFromGeoJSON('$this->geom'),$this->srid)")->scalar();
+                $this->origin_geom = Yii::$app->db->createCommand("SELECT ST_SetSRID(ST_GeomFromGeoJSON('$this->origin_geojson'),$this->srid)")->queryScalar();
+                $this->destination_geom = Yii::$app->db->createCommand("SELECT ST_SetSRID(ST_GeomFromGeoJSON('$this->destination_geojson'),$this->srid)")->queryScalar();
+                // Quando um valor do tipo geometry no postgre se torna grande demais ele deixa de ser visível como string
+                $this->line_string_geom = Yii::$app->db->createCommand("SELECT ST_SetSRID(ST_GeomFromGeoJSON('$this->line_string_geojson'),$this->srid)")->queryScalar();
+            }
             return true;
         } else {
             return false;

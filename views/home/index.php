@@ -71,18 +71,4 @@ AppHomeFriendsAsset::register($this);
 </div>
 <div id='home-user-navigation-stop' data-placement='right' data-toggle='tooltip' title='Parar navegação' class='btn' style="display:none">
 </div>
-<?php 
-$userSharingsForm = ActiveForm::begin([
-             //'action'=>  Url::to(['/bike-keeper/item/create']),
-                'id' =>'home-user-sharings-form',
-                'options' => ['enctype' => 'multipart/form-data', 'id'=>'home-user-sharings-form'],
-        ]); 
-?>
-
-<?=Html::hiddenInput((new UserSharings)->formName().'[user_id]',null, ['id'=>'user-sharings-user_id'])?>
-<?=Html::hiddenInput((new UserSharings)->formName().'[sharing_type_id]',null, ['id'=>'user-sharings-sharing_type_id'])?>
-<?=Html::hiddenInput((new UserSharings)->formName().'[content_id]',null, ['id'=>'user-sharings-content_id'])?>
-<?=Html::hiddenInput((new UserSharings)->formName().'[text]',null, ['id'=>'user-sharings-text'])?>
-
-<?php $userSharingsForm->end(); ?>
 <?php echo $this->render('_modals.php'); ?>

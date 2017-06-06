@@ -16,4 +16,8 @@ return [
     'routes.start.navigation.brief'=>'A partir de agora toda sua rota será guardada! Não esqueça de compartilhar ao fim, é claro se quiser!',
     'routes.stop.navigation'=>'Tem certeza que deseja interromper a navegação nessa rota?',
     'routes.share.question'=>'Você chegou ao destino!!! Deseja compartilhar essa rota com seus amigos?',
+    
+    'route'=>'rota',
+    'bike keeper'=>'bicicletário',
+    'alert'=>'alerta',
 ];

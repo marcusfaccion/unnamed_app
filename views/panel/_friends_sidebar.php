@@ -16,11 +16,11 @@ use yii\helpers\Html;
         </div>
         <div class="col-lg-3 col-md-3 col-xs-3">
             <?php if($f->online):?>
-            <span data-toggle="popover" data-content="Online" data-placement='top'>
+            <span data-toggle="tooltip" title="Online" data-placement='top'>
                 <img src="images/green_32.png" class="img-circle tall-px5-3 wide-px5-3 top-buffer-3"/>
             </span>
             <?php else:?>
-            <span data-toggle="popover" data-content="Offline" data-placement='top'>
+            <span data-toggle="tooltip" title="Offline" data-placement='top'>
                 <img src="images/gray_32.png" class="img-circle tall-px5-3 wide-px5-3 top-buffer-3"/>
             </span>
             <?php endif;?>

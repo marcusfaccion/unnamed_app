@@ -94,6 +94,8 @@ var isAjax = false;
  * @type Object
  */
 var app = {
+    t0:0, // para cálculos de tempo decorrido
+    t1:0,
     layers:{
         alerts: {
         },
@@ -162,6 +164,7 @@ var app = {
         myOrigin: false, //true quando a origem é a localização do usuário
         free: false, // true quando é ativada a navegação e false quando myOrigin
         pause:false, // quando true desabilita a funcionalidade de free e myOrigin
+        elapsed_time: 0, //Usado para guardar a duração da rota de um usuário utiliza a API performance
     },
     messages: {
         user2: {},
