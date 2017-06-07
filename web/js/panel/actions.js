@@ -90,7 +90,8 @@ $('body').on('click', '#messages-conversation .btn.send', function(){
 
 // Desativa todos os alertas selecionados
 $('body').on('click', '#user-feeding-list li', function(){
-    app.user_feedings.id = $(this).prop('id').split('-')[2];
-
+    app.user_feedings.id = $(this).prop('id').split('-')[4];
+    app.user.sharings.content.id = $(this).prop('id').split('-')[3];
+    app.user.sharings.selectedTypeId = $(this).prop('id').split('-')[2];
     $('#panel_user_feeding_item_modal').modal('show');
 });

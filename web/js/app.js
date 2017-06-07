@@ -143,6 +143,9 @@ var app = {
                 bike_keepers: 2,
                 routes: 3,
             },
+            content: {
+                id: null,
+            },
             selectedTypeId: null,
         },
     },

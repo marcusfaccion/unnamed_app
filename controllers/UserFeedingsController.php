@@ -2,13 +2,17 @@
 
 namespace app\controllers;
 
+use Yii;
 use yii\web\Controller;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 
-class RoutesController extends Controller
+
+/**
+ * Default controller for the `users` module
+ */
+class UserFeedingsController extends Controller
 {
-      
     public function behaviors()
     {
         return [
@@ -18,10 +22,8 @@ class RoutesController extends Controller
                 'rules' => [
                     [
                         'actions' => [
-                            'index',
-                            'plan',
-                            'get-feature',
-                        ],
+                                        'interaction-panel', 
+                            ],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -30,16 +32,13 @@ class RoutesController extends Controller
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'index' => ['get', 'post'],
-                    'get-feature' => ['get', 'post'],
-                    'logout' => ['post'],
-                    'plan' => ['post'],
+                    'interaction-panel' => ['get', 'post'],
                 ],
             ],
         ];
     }
-
-    public function actions()
+    
+     public function actions()
     {
         return [
             'error' => [
@@ -49,21 +48,10 @@ class RoutesController extends Controller
                 'class' => 'yii\captcha\CaptchaAction',
                 'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
             ],
-            'plan' => [
-                'class' => 'app\controllers\routes\PlanAction',
+            'interaction-panel' => [
+                'class'=>'app\controllers\userFeedings\InteractionPanelAction',
             ],
-            'get-feature' => [
-                'class' => 'app\controllers\routes\GetFeatureAction',
-            ],
-        ];
+        ];        
     }
     
-    /**
-     * Renders the index view for the module
-     * @return string
-     */
-    public function actionIndex()
-    {
-        return $this->renderFile('@routes/views/widget/index.php');
-    }
 }

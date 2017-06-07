@@ -7,7 +7,6 @@ use yii\helpers\Html;
 AppPanelAsset::register($this);
 $this->title = 'Bike Social - Painel';
 ?>
-
 <div class="row height-100">
     <div id='messages-user-friends-sidebar' class="col-lg-3 col-md-3 col-xs-12 height-100 overflow-y">
         <div class="row">

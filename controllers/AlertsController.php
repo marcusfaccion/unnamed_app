@@ -26,6 +26,7 @@ class AlertsController extends Controller
                                         'render-popup',
                                         'render-popup-readonly',
                                         'form',
+                                        'get-feature',
                                         'get-features',
                                         'create',
                                         'view',
@@ -55,6 +56,7 @@ class AlertsController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'index'=>['get'],
+                    'get-feature'=>['get'],
                     'get-features'=>['get'],
                     'get-user-features'=>['get'],
                     'begin' => ['get'],
@@ -108,6 +110,9 @@ class AlertsController extends Controller
             ],
              'render-popup-readonly' => [
                 'class'=>'app\controllers\alerts\RenderPopupReadonlyAction',
+            ],
+             'get-feature' => [
+                'class'=>'app\controllers\alerts\GetFeatureAction',
             ],
              'get-features' => [
                 'class'=>'app\controllers\alerts\GetFeaturesAction',

@@ -28,6 +28,7 @@ class BikeKeepersController extends Controller
                                         'form',
                                         'render-popup',
                                         'render-popup-readonly',
+                                        'get-feature',
                                         'get-features',
                                         'multimideas',
                                         'get-user-features',
@@ -53,6 +54,7 @@ class BikeKeepersController extends Controller
                     'bike-keeper-nonexistence-users'=> ['get'],
                     'delete-user-bike-keeper-nonexistence' =>['post'],
                     'begin' => ['get'],
+                    'get-feature'=>['get'],
                     'get-features'=>['get'],
                     'multimideas'=>['get'],
                     'get-user-features'=>['get'],
@@ -99,6 +101,9 @@ class BikeKeepersController extends Controller
             ],
             'render-popup-readonly' => [
                 'class'=>'app\controllers\bikeKeepers\RenderPopupReadonlyAction',
+            ],
+             'get-feature' => [
+                'class'=>'app\controllers\bikeKeepers\GetFeatureAction',
             ],
              'get-features' => [
                 'class'=>'app\controllers\bikeKeepers\GetFeaturesAction',

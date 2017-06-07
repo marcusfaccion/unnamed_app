@@ -17,7 +17,7 @@ use app\models\UserFeedings;
                  $gender = 'other';
             }
         ?>
-        <li id='user-feeding-<?=$feed->id?>' class="messages-friend border-radius-2 border-1 left-buffer-1 top-buffer-2 bottom-buffer-1 box-shadow-1">
+        <li id='user-feeding-<?=$feed->userSharing->type->id?>-<?=$feed->userSharing->content_id?>-<?=$feed->id?>' class="messages-friend border-radius-2 border-1 left-buffer-1 top-buffer-2 bottom-buffer-1 box-shadow-1">
         <div class="top-buffer-2">
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-xs-12">
