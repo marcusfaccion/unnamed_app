@@ -50,8 +50,9 @@ function onLocationError(e) {
         me.marker.update();
         me.marker.update();
     }
-    
-    //alert(e.message);
+    //mostra o modal com informações da API Geolocation
+    app.message_code = 'user.agent.geolocation.error'+e.code;
+    $('#home_geolocation_info_modal').modal('show');
 }
 function onClickFired(e){
     ;;
@@ -130,11 +131,13 @@ function showMyLocation(enable, after){
         app.user.location = true;
         return true;
     }else{
-        map.removeLayer(me.marker);
-        map.removeLayer(me.circle);
+        if(me.marker!=null){
+            map.removeLayer(me.marker);
+            map.removeLayer(me.circle);
+            me.latlng = null;
+            me.latlng_history.destroy();
+        }
         map.stopLocate();
-        me.latlng = null;
-        me.latlng_history.destroy();
         app.user.location = false;
         return false;
     }

@@ -89,9 +89,35 @@ $('body').on('click', '#messages-conversation .btn.send', function(){
 });
 
 // Desativa todos os alertas selecionados
-$('body').on('click', '#user-feeding-list li', function(){
+$('body').on('click', '#user-feeding-list li.item', function(){
     app.user_feedings.id = $(this).prop('id').split('-')[4];
     app.user.sharings.content.id = $(this).prop('id').split('-')[3];
     app.user.sharings.selectedTypeId = $(this).prop('id').split('-')[2];
     $('#panel_user_feeding_item_modal').modal('show');
+});
+
+$('body').on('click', 'li#user-feeding-load-button', function(){
+    
+    var _button = $(this);
+    app.user_feedings.id = $(this).prev().prop('id').split('-')[4];
+    
+    $('#user-feeding').fadeOut(800, function(){
+        $.ajax({
+             url: 'user-feedings/more',
+                    type: 'GET',
+                    //async: false,
+                    data:{
+                         id: app.user_feedings.id,
+                    },
+                    success: function(rtn){
+                        _button.before(rtn);
+                        $('#user-feeding').fadeIn(800);
+                    },
+        });
+    })
+});
+
+//Modal de fotos dos bicicletários
+$('body').on('click', '.btn.bike-keeper-photos', function(e){
+    app.bike_keeper.id = $(this).parent().next().val();
 });

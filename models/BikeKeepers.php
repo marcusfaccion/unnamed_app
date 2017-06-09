@@ -166,6 +166,16 @@ class BikeKeepers extends GeoJSON_ActiveRecord
     }
     
     /**
+     * Se o bicicletário possuir até 3 reportes de não existência ele é considerado confiável 
+     * @return boolean true se for um bicicletário confiável e falso caso não
+     */
+    public function getIsUnreliable()
+    {
+        return count($this->nonExistence)>3?true:false;
+        //return $this->hasMany(UserBikeKeeperNonexistence::className(), ['bike_keeper_id' => 'id'])->orderBy('id desc');
+    }
+    
+    /**
      * Tranforma o model BikeKeepers numa string Feature/geoJSON
      * @param array $attributes nomes dos atributos a retornar, se null retornará todos
      * @return type

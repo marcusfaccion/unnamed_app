@@ -214,6 +214,48 @@ Modal::begin([
 
 <?php
 /** 
+ * Modal de informações da API geolocation
+ */
+Modal::begin([
+    'id' => 'home_geolocation_info_modal',
+    'size' => Modal::SIZE_SMALL,
+    'header' =>"<div class='modal-title text-danger strong-6 tsize-4'>API de geolocalização <span class='glyphicon glyphicon-bullhorn'></span></div>",
+    'footer' =>"<button type='button' class='btn btn-xs btn-default' value='1' data-dismiss='modal'>Fechar</button>",
+    //'closeButton' => ['dat'],
+    'options'=>['class' => 'modal modal-wide'],
+    'clientEvents' => [
+        'shown.bs.modal'=>  new JsExpression("
+            function(e){
+                var modal = $(this);
+                $.ajax({
+                    type: 'POST',
+                    url: 'app/get-confirm-message',
+                    data: {confirm_message: app.message_code},
+                    success: function(response){
+                        //retorna com a mensagem
+                        modal.find('.modal-body').html(response);
+                    }
+                });
+        }", []),
+        'hide.bs.modal'=>  new JsExpression(
+                "function() {
+                            $(this).find('.modal-body').html('');
+                            //Se falhar na primeira tentativa recarrega a página para uma nova tentativa
+                            if(me.marker==null){
+                                document.location.reload()
+                            }
+                 }"
+                , [])
+    ]
+]);
+?>
+
+<?php
+ Modal::end();
+?>
+
+<?php
+/** 
  * Modal de fotos dos bicicletários
  */
 Modal::begin([

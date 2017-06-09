@@ -5,6 +5,7 @@ namespace app\models;
 use Yii;
 use marcusfaccion\db\GeoJSON_ActiveRecord;
 use app\models\Users;
+use yii\helpers\Json;
 
 /**
  * This is the model class for table "user_navigation_routes".
@@ -39,6 +40,7 @@ class UserNavigationRoutes extends GeoJSON_ActiveRecord
         return [
             [['origin_geom', 'destination_geom', 'line_string_geom'], 'string'],
             [['user_id', 'duration'], 'integer'],
+            [['origin_address', 'destination_address'], 'string'],
             [['distance'], 'double'],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => Users::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
@@ -55,6 +57,8 @@ class UserNavigationRoutes extends GeoJSON_ActiveRecord
             'destination_geom' => 'Destination',
             'line_string_geom' => 'Line String',
             'distance'=>'Distância',
+            'origin_address'=>'Endereço de partida',
+            'destination_address'=>'Endereço de chegada',
             'duration'=>'Duração',
             'user_id'=>'Usuário',
         ];
@@ -71,8 +75,8 @@ class UserNavigationRoutes extends GeoJSON_ActiveRecord
     {
         // verificar se multimedias (manymany relation) pode gerar erro por não ser um atributo(somente em runtime)
         return [
-            self::SCENARIO_CREATE => ['origin_geom', 'destination_geom', 'duration', 'distance', 'user_id', 'line_string_geom',],
-            self::SCENARIO_UPDATE => ['origin_geom', 'destination_geom', 'duration', 'distance', 'user_id','line_string_geom',],
+            self::SCENARIO_CREATE => ['origin_geom', 'destination_geom', 'duration', 'distance', 'user_id', 'line_string_geom', 'origin_address', 'destination_address'],
+            self::SCENARIO_UPDATE => ['origin_geom', 'destination_geom', 'duration', 'distance', 'user_id', 'line_string_geom', 'origin_address', 'destination_address'],
         ];
     }
    
@@ -92,38 +96,30 @@ class UserNavigationRoutes extends GeoJSON_ActiveRecord
    /**
      * Tranforma o model UserNavigationRoutes numa string Feature/geoJSON
      * @param array $attributes nomes dos atributos a retornar, se null retornará todos
-     * @return type
+     * @return string GeoJSON
      */
     public function toFeature($attributes=null) {
         parent::toFeture();
-        $type = $this->type;
         $this->geojson_array['geometry'] = Json::decode($this->geojson_string);
         $this->geojson_array['properties'] = $this->getAttributes($attributes);
         
         // propridades adicionais para o marcador do alerta
-        $this->geojson_array['properties'] = array_merge($this->geojson_array['properties'],[
-            'type_desc' => $type->description,
-            'type_desc_en' =>  str_replace(' ', '_', String::changeChars(strtolower($type->description), String::PTBR_DIACR_SEARCH, String::PTBR_DIACR_REPLACE)),
-        ]);
+        $this->geojson_array['properties'] = array_merge($this->geojson_array['properties'],[]);
         
-        $this->geojson_array['id'] = strtolower($this->formName()).'_'.$this->type_id."_$this->id";
+        $this->geojson_array['id'] = strtolower($this->formName()).'_'.$this->id;
         return $this->toGeoJSON();
     }
     
     public function toArray(array $fields = [], array $expand = [], $recursive = true) {
         //parent::toArray($fields, $expand, $recursive = true);
-        $type = $this->type;
         $fields = empty($fields)?null:$fields;
         $this->geojson_array['geometry'] = Json::decode($this->geojson_string);
         $this->geojson_array['properties'] = $this->getAttributes($fields); //$this->getAttributes();
         
         // propridades adicionais para o marcador do alerta
-        $this->geojson_array['properties'] = array_merge($this->geojson_array['properties'],[
-            'type_desc' => $type->description,
-            'type_desc_en' =>String::changeChars(strtolower($type->description), String::PTBR_DIACR_SEARCH, String::PTBR_DIACR_REPLACE),
-        ]);
+        $this->geojson_array['properties'] = array_merge($this->geojson_array['properties'],[]);
         
-        $this->geojson_array['id'] = strtolower($this->formName()).'_'.$this->type_id."_$this->id";
+        $this->geojson_array['id'] = strtolower($this->formName()).'_'.$this->id;
         return $this->geojson_array;
     }
     
@@ -141,4 +137,10 @@ class UserNavigationRoutes extends GeoJSON_ActiveRecord
             return false;
         }
     }
+    
+     public function afterFind(){
+        $this->geojson_string = Yii::$app->db->createCommand("SELECT ST_AsGeoJSON('$this->line_string_geom')")->queryScalar();
+        $this->geojson_array = $this->toArray();
+    }
+    
 }

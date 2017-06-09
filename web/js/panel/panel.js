@@ -91,8 +91,9 @@ $(document).ready(function() {
             }
         },1000*5);
         
-        // Atualiza de 1 em 1min o status de online
+        // Atualiza o status de online a cada 1min
         setInterval(function() {
+                //Status de online
                 $.ajax({
                     url: 'users/set-online',
                            type: 'POST',
@@ -124,6 +125,25 @@ $(document).ready(function() {
                 });
         },1000*60);
         
+        // Atualiza o Feeding a cada 1min e 15s
+         setInterval(function() {
+            app.user_feedings.id = $('#user-feeding-first-item').next().prop('id').split('-')[4];
+            $('#user-feeding').fadeOut(800, function(){
+                $.ajax({
+                     url: 'user-feedings/more',
+                            type: 'GET',
+                            //async: false,
+                            data:{
+                                 id: app.user_feedings.id,
+                                 news: 1,
+                            },
+                            success: function(rtn){
+                                $('#user-feeding-first-item').after(rtn);
+                                $('#user-feeding').fadeIn(800);
+                            },
+                });
+            });
+         },1250*60);
         Loading.hide();
 });
  

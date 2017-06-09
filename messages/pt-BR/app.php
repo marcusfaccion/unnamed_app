@@ -20,4 +20,9 @@ return [
     'route'=>'rota',
     'bike keeper'=>'bicicletário',
     'alert'=>'alerta',
+    
+    'user.agent.geolocation.error1' => 'O Bike Social não tem permissão para obter sua localização. Por favor autorize-a em seu browser',
+    'user.agent.geolocation.error2' => 'Erro, o provedor de locais em https://www.googleapis.com/ não respondeu.',
+    'user.agent.geolocation.error3' => 'Erro, Tempo de localização excedido.',
+    'user.agent.geolocation.unavailable' => 'API de geolocalização não disponível para seu browser',
 ];

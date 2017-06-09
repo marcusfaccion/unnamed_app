@@ -222,7 +222,6 @@ $('body').on('click', '.btn.bike-keeper-disable', function(e){
 
 $('body').on('click', '.btn.bike-keeper-photos', function(e){
     app.bike_keeper.id = $(this).parent().next().val();
-    console.log(app.bike_keeper.id);
 });
 
 //Envia a mensagem usando a tecla Enter

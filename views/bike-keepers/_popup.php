@@ -16,6 +16,12 @@ use yii\helpers\Html;
         <p class="bg-default text-center"><strong><span class="glyphicon glyphicon-exclamation-sign"></span> <?=$bike_keeper->title?></strong></p>
     </div>
 </div>
+<?php if($bike_keeper->IsUnreliable):?>
+<div class="alert alert-danger alert-dismissible" role="alert">
+  <button type="button" class="close" data-dismiss="alert" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+  <strong>Atenção!</strong> <?=count($bike_keeper->nonExistence)?> <?=Yii::t('app', '{n,plural, =1{usuário reportou} other{usuários reportaram}}',['n'=>count($bike_keeper->nonExistence)])?> que esse bicicletário não existe mais.
+</div>
+<?php endif;?>
 <div class="row">
     <div class="col-lg-12 col-xs-12">
         <div class="col-lg-3 col-xs-3">
@@ -43,7 +49,20 @@ use yii\helpers\Html;
         </div>
     </div>
 </div>
+<?php if(!empty(trim($bike_keeper->address))): ?>
+<div class="col-lg-12 col-xs-12 left-pbuffer-0 top-buffer-1">
+    <div class="col-lg-12 col-xs-12 left-pbuffer-0 right-pbuffer-0">   
+        <div class="col-lg-3 col-xs-2">
+            <label>Endereço:</label>
+        </div>
+        <div class="col-lg-9 col-xs-9">
+            <?=$bike_keeper->address?>
+        </div>
+    </div>
+</div>
+<?php endif; ?>
 
+<?php if(!empty($bike_keeper->tel)||!empty($bike_keeper->email)):?>
 <div class="row top-buffer-1 col-lg-12 col-xs-12">
         <?php if(!empty($bike_keeper->tel)):?>
         <div class="col-lg-5 col-xs-5 left-pbuffer-0 right-pbuffer-0">
@@ -66,6 +85,7 @@ use yii\helpers\Html;
         </div>
         <?php endif;?>
 </div>
+<?php endif;?>
 
 <div class="row top-buffer-1 col-lg-12 col-xs-12">
     <div class="col-lg-6 col-xs-6">
@@ -89,6 +109,7 @@ use yii\helpers\Html;
 </div>
 
 <?php //Data da última atualização de informações do bicicletário ?>
+<?php if(!empty($bike_keeper->updated_date)||count($bike_keeper->multimedias)>0):?>
 <div class="row top-buffer-3 col-lg-12 col-xs-12">
     <?php if(count($bike_keeper->multimedias)>0): ?>
     <div class="col-lg-6 col-xs-6">   
@@ -106,7 +127,7 @@ use yii\helpers\Html;
 <?php if(!empty($bike_keeper->updated_date)):?>
     <div class="col-lg-6 col-xs-6">   
         <div>
-            <label class="text-danger">Última atuallização:</label>
+            <label class="text-danger">Atuallizado:</label>
         </div>
         <div>
             <i class="text-danger"><?=Yii::$app->formatter->asRelativeTime($bike_keeper->updated_date)?></i>
@@ -114,6 +135,7 @@ use yii\helpers\Html;
     </div>    
 <?php endif;?>
 </div>
+<?php endif;?>
 
 <div class="row top-buffer-2 col-lg-12 col-xs-12 left-pbuffer-0 left-buffer-0">
     <?php if(!$bike_keeper->public):?>
@@ -124,19 +146,24 @@ use yii\helpers\Html;
         <div class="text-center">
             <strong class="tsize-4">Diária: <?=Yii::$app->formatter->asCurrency($bike_keeper->cost)?></strong>
         </div>
+         <div class="text-center">
+            <small class="strong-6"><?=$bike_keeper->outdoor?'(bicicletário coberto)':'(bicicletário ao ar livre)'?></small>
+        </div>
     </div>
     <?php else:?>
     <div class="left-pbuffer-1 left-buffer-2 border-radius-3 bg-light-green top-pbuffer-1">
         <div class="text-center">
             <label class="text-success tsize-4">Bicicletário Público</label>
         </div>
+        <div class="text-center">
+            <small class="strong-6"><?=$bike_keeper->outdoor?'(bicicletário coberto)':'(bicicletário ao ar livre)'?></small>
+        </div>
     </div>
     <?php endif;?>
 </div>
 
 <?php if(!empty($bike_keeper->description)):?>
-<div class="row">
-    <div class="top-buffer-3 col-lg-12 col-xs-12">
+    <div class="top-buffer-3 left-pbuffer-0 col-lg-12 col-xs-12">
         <div class="col-lg-3 col-xs-3">
             <label>Descrição:</label>
         </div>
@@ -144,10 +171,8 @@ use yii\helpers\Html;
             <i><?=$bike_keeper->description?></i>
         </div>
     </div>
-</div>
 <?php endif;?>
-<div class="row">
-    <div class="col-lg-12 col-xs-12 top-buffer-1">
+    <div class="col-lg-12 col-xs-12 top-buffer-1 left-pbuffer-0">
         <?php if($user_avaliation && !$user_bike_keeper_existence): ?>
             <?php if($user_avaliation->rating=='likes'): ?>
               <div class="left-pbuffer-0 right-buffer-minus2 col-lg-3 col-xs-3">
@@ -239,7 +264,6 @@ use yii\helpers\Html;
             <small class="text-success" style="display: none;">Informação enviada!</small>
         </div>
     </div>
-</div>
 <?php //Comentários ?>
 <div class="row top-buffer-1 popup-comment-header">
     <div class="col-lg-12 col-xs-12">

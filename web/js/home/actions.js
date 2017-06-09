@@ -80,6 +80,8 @@ $('body').on('click', '#no-confirm-sharing, #yes-confirm-sharing', function(){
         app.user.sharings.form[0].elements[6].value = JSON.stringify(app.directions.destination.geometry), //geoJSON do destino
         app.user.sharings.form[0].elements[7].value = JSON.stringify(me.layers.route.toGeoJSON().geometry), //geoJSON da LineString da rota
         app.user.sharings.form[0].elements[8].value = app.directions.elapsed_time, //tempo gasto em rota pelo usuário, calculado pelo js
+        app.user.sharings.form[0].elements[9].value = app.directions.origin.properties.name, //endereço textual da origem (rua)
+        app.user.sharings.form[0].elements[10].value = app.directions.destination.properties.name, //endereço textual do destino (rua)
 
         $.ajax({
             type: 'POST',

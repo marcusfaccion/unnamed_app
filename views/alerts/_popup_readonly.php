@@ -35,6 +35,18 @@ use yii\helpers\Html;
         </div>
     </div>
 </div>
+<?php if(!empty(trim($alert->address))): ?>
+    <div class="col-lg-12 col-xs-12 left-pbuffer-0 top-buffer-1">
+        <div class="col-lg-12 col-xs-12 left-pbuffer-0 right-pbuffer-0">   
+            <div class="col-lg-3 col-xs-2">
+                <label>Endereço aproximado:</label>
+            </div>
+            <div class="col-lg-9 col-xs-9">
+                <?=$alert->address?>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
 <div class="col-lg-12 col-xs-12 left-pbuffer-0 top-buffer-1">
         <?php if($alert->duration_date):?>
             <div class="col-lg-4 col-xs-12 left-pbuffer-0 right-pbuffer-0">   

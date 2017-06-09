@@ -14,11 +14,19 @@ var Icons;
 var alerts = {
     alert: []
 }*/
-
+/*
+ * Array de objetos GeoJSON
+ * @type Leafletjs/GeoJSON[]
+ */
 var geoJSON_layer = {
     alerts:{},
     bike_keepers:{},
 };
+/**
+ * objetos GeoJSON
+ * @type Leafletjs/GeoJSON
+ */
+var _geoJSON_layer = null;
 
 var directions;
 var directionsLayer;

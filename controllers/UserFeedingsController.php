@@ -23,6 +23,7 @@ class UserFeedingsController extends Controller
                     [
                         'actions' => [
                                         'interaction-panel', 
+                                        'more', 
                             ],
                         'allow' => true,
                         'roles' => ['@'],
@@ -33,6 +34,7 @@ class UserFeedingsController extends Controller
                 'class' => VerbFilter::className(),
                 'actions' => [
                     'interaction-panel' => ['get', 'post'],
+                    'more' => ['get'],
                 ],
             ],
         ];
@@ -50,6 +52,9 @@ class UserFeedingsController extends Controller
             ],
             'interaction-panel' => [
                 'class'=>'app\controllers\userFeedings\InteractionPanelAction',
+            ],
+            'more' => [
+                'class'=>'app\controllers\userFeedings\MoreAction',
             ],
         ];        
     }

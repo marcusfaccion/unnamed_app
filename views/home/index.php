@@ -67,7 +67,7 @@ AppHomeFriendsAsset::register($this);
         </div>
     </div>    
 </div>
-<div id='home-user-menu-navigation' data-placement='right' data-toggle='tooltip' title='Painel de navegaçao' class='btn'>
+<div id='home-user-menu-navigation' data-placement='right' data-toggle='tooltip' title='Painel de navegação' class='btn'>
 </div>
 <div id='home-user-navigation-stop' data-placement='right' data-toggle='tooltip' title='Parar navegação' class='btn' style="display:none">
 </div>

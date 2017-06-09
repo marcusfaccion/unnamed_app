@@ -12,7 +12,9 @@ $(document).ready(function() {
         
         //verificando se browser suporta API geolocation
         if (!'geolocation' in navigator) {
-            alert('Seu navergador não possui suporte a geolocalização ou está desativada');
+             //mostra o modal com informações da API Geolocation
+            app.message_code = 'user.agent.geolocation.unavailable';
+            $('#home_geolocation_info_modal').modal('show');
         }
         //Inicializando opções de mapa e renderizando
         map = new L.map('map', map_conf.options);
@@ -218,7 +220,9 @@ $(document).ready(function() {
         // Checa se o usuário chegou ao destino
         setInterval(function() {
             if((app.directions.myOrigin || app.directions.free) && !app.directions.pause){
-                map.flyTo(me.latLng, map_conf.locate.maxZoom);
+                if(me.latLng!=null){
+                    map.flyTo(me.latLng, map_conf.locate.maxZoom);
+                }
             }
             //Checa se chegou ao destino
             if(directions.queryable() && app.directions.myOrigin && !$('#home_user_navigation_modal').hasClass('in')){

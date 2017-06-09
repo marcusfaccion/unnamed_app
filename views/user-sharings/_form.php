@@ -39,6 +39,8 @@ use app\models\UserNavigationRoutes;
         <?=Html::hiddenInput($user_route->formName().'[destination_geom]', $user_route->origin_geojson, ['id'=>  strtolower($user_route->formName()).'-destination-geom']);?>
         <?=Html::hiddenInput($user_route->formName().'[line_string_geom]', $user_route->line_string_geom, ['id'=>  strtolower($user_route->formName()).'-line-string-geom']);?>
         <?=Html::hiddenInput($user_route->formName().'[duration]', $user_route->duration, ['id'=>  strtolower($user_route->formName()).'-duration']);?>
+        <?=Html::hiddenInput($user_route->formName().'[origin_address]', $user_route->origin_address, ['id'=>  strtolower($user_route->formName()).'-origin-address']);?>
+        <?=Html::hiddenInput($user_route->formName().'[destination_address]', $user_route->destination_address, ['id'=>  strtolower($user_route->formName()).'-destination-address']);?>
         
         
 
