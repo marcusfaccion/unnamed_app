@@ -9,6 +9,9 @@
     <div class='col-xs-12 col-md-12 col-lg-12'>
         <ul class="list-unstyled">
             <li>
+                <label>Tipo:</label> <span class="left-buffer-1 text-muted"><?=$content->type->description?></span>
+            </li>
+            <li>
                 <label>Estado:</label> <span class="left-buffer-1 text-muted"><?=$content->enable?'ativo':'desativado'?></span>
             </li>
         </ul>
@@ -22,8 +25,11 @@
     </div>
     <div class='col-xs-12 col-md-12 col-lg-12'>
         <ul class="list-unstyled">
-           <li>
-                <label>Estado:</label> <span class="left-buffer-1 text-muted"><?=$content->enable?'ativo':'desativado'?></span>
+            <li>
+                <label>Tipo:</label> <span class="left-buffer-1 text-muted"><?=$content->public?'público':'privado'?></span>
+            </li>
+            <li>
+                <label>Estado:</label> <span class="left-buffer-1 text-muted"><?=$content->enable&&$content->is_open?'aberto':'fechado'?></span>
             </li>
         </ul>
     </div>

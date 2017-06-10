@@ -33,6 +33,7 @@ class UpdateAction extends Action
             $bike_keeper->used_capacity = $bike_keeper->public?null:$bike_keeper->used_capacity; //se for bicicletário publico não é possível monitorar a quantidade de vagas utilizadas
             $bike_keeper->email = $bike_keeper->public?null:$bike_keeper->email; //se for bicicletário não aceitar formas de contato com o gerente
             $bike_keeper->tel = $bike_keeper->public?null:$bike_keeper->tel; //se for bicicletário não aceitar formas de contato com o gerente
+            $bike_keeper->is_open = $bike_keeper->public?1:$bike_keeper->is_open;
             $bike_keeper->multimedia_files = UploadedFile::getInstances($bike_keeper, 'multimedia_files');
             
             if($bike_keeper->used_capacity>0 && Yii::$app->request->post('BikeKeepers')['capacity']>0){
