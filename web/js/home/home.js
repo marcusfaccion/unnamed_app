@@ -9,6 +9,7 @@ $(document).ready(function() {
          */
         app.user.id = $('#app-user-id').val();
         app.controller.id = $('#app-controller-id').val();
+        app.directions.t = directionsTranslate;
         
         //verificando se browser suporta API geolocation
         if (!'geolocation' in navigator) {
@@ -88,7 +89,6 @@ $(document).ready(function() {
         });
         directions.on('destination', function(e){
            // console.log('destination capturado');
-           // console.log(e);
            if(directions.getOrigin())
                 app.directions.pause=false; //para que o mapa possa aplicar flyTo() caso a origem seja a localização do usuário
         });
@@ -98,13 +98,16 @@ $(document).ready(function() {
            app.directions.loadbyUser = true;
            geoJSON_layer.routes.clearLayers(); // apaga as rotas do usuário do layers routes, removendo-a da tela consecutivamente.
            showDirectionsResetMenu();//para mostrar o menu de reset de destino e origem
+            
         });
         directions.on('selectRoute', function(e){
-           // console.log('selectRoute capturado');
+            //console.log('selectRoute capturado');
             //console.log(e);
+            
             if(!app.directions.loadbyUser){
                 app.directions.routes = [e.route];
             }
+            
             $('#home_user_navigation_modal').modal('show');
            
         });
@@ -215,6 +218,34 @@ $(document).ready(function() {
                 });
         },1000*60);
         
+        // Atualiza de 2 em 2min atualiza os layers de alertas e bicicletários
+        setInterval(function() {
+            //Plotando Alertas
+            geoJSON_layer.alerts.clearLayers();
+            $.ajax({
+                url: 'alerts/get-features',
+                type: 'GET',
+                async: false,
+                success: function(geojson){
+                    geoJSON_layer.alerts.addData(
+                            JSON.parse(geojson)
+                    );
+                }
+            });
+            //Plotando Bicicletários
+            geoJSON_layer.bike_keepers.clearLayers();
+            $.ajax({
+                url: 'bike-keepers/get-features',
+                type: 'GET',
+                async: false,
+                success: function(geojson){
+                    geoJSON_layer.bike_keepers.addData(
+                            JSON.parse(geojson)
+                    );
+                }
+            });
+      },1000*60*2);
+
         // Atualiza de 20 em 20s a posição do usuário
         //  se a navegação em rota estiver ativada.
         // Checa se o usuário chegou ao destino

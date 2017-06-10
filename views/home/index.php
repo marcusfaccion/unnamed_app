@@ -50,6 +50,9 @@ AppHomeFriendsAsset::register($this);
                     </ul>*/?>
                     <div id='errors'></div>
                     <div id='inputs'></div>
+                    <?php /* <div id='inputs-buttons text-right'>
+                        <a id='directions-query-btn' class="btn btn-xs btn-success pull-right">Aplicar</a>
+                    </div>*/?>
                 </div>
               <div id="user-navigation-details" class="col-lg-12">
                 <?php /* <p>latin lorem psuin

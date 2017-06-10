@@ -1,4 +1,4 @@
-var directions = {
+var cardinal_directions = {
     'N': 'norte',
     'NE': 'nordestet',
     'E': 'leste',
@@ -6,7 +6,7 @@ var directions = {
     'S': 'sul',
     'SW': 'sudoeste',
     'W': 'oeste',
-    'NW': 'norte'
+    'NW': 'noroeste'
 };
 
 var maneuvers = {

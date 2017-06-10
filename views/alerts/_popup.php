@@ -37,9 +37,9 @@ use yii\helpers\Html;
         <div class="col-lg-12 col-xs-12 left-pbuffer-0 top-buffer-1">
             <div class="col-lg-12 col-xs-12 left-pbuffer-0 right-pbuffer-0">   
                 <div class="col-lg-3 col-xs-2">
-                    <label>Endereço aproximado:</label>
+                    <label>Endereço:</label>
                 </div>
-                <div class="col-lg-9 col-xs-9">
+                <div class="left-pbuffer-6 col-lg-9 col-xs-9">
                     <?=$alert->address?>
                 </div>
             </div>

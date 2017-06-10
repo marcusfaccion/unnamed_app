@@ -176,6 +176,7 @@ var app = {
         free: false, // true quando é ativada a navegação e false quando myOrigin
         pause:false, // quando true desabilita a funcionalidade de free e myOrigin
         elapsed_time: 0, //Usado para guardar a duração da rota de um usuário utiliza a API performance
+        t: function(){}, //função de tradução de instruções
     },
     messages: {
         user2: {},
@@ -193,6 +194,11 @@ var app = {
     user_confirmation: 0,
     user_feedings:{
         id: null,
+    },
+    geolocation:{
+        error3:{
+            count: 0,
+        }
     }
 }
 
@@ -257,8 +263,8 @@ var map_conf = {
                    maxZoom: 18, //leaflet max limit is 18 min limit is 0(world)
                    medZoom: 12,           
                    minZoom: 10,
-                   timeout: 20*1000, //20 secs de timeout para geolocalização
-                   maximumAge:  0, //denotes the maximum age of a cached position that the application will be willing to accept. In milliseconds, with a default value of 0, which means that an attempt must be made to obtain a new position object immediately
+                   timeout: 0, //1 min de timeout para geolocalização
+                   maximumAge:  'Infinity', //denotes the maximum age of a cached position that the application will be willing to accept. In milliseconds, with a default value of 0, which means that an attempt must be made to obtain a new position object immediately
                    enableHighAccuracy: true
                },
              popup_menu: {

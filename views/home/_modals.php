@@ -100,8 +100,7 @@ Modal::begin([
                         return;
                     }
                     Loading.show();
-                    //var action = $('#home_actions_trigger').val().split(';');
-                    //$(this).find('.modal-title').text(action[0]);
+
                     var modal = $(this);
                     var myRoute = {};
                     var myRoutes = [];

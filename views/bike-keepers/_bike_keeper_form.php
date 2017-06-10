@@ -21,7 +21,6 @@ use kartik\file\FileInput;
                     //Função executada no evento pjax:success
                     'bike_keeper_success'=> in_array(Yii::$app->controller->action->id,['begin'])?new yii\web\JsExpression('
                                 function(data, status, xhr){
-                                     console.log("Success");
                                      geoJSON_layer.bike_keepers.addData(JSON.parse($(\'#bike-keepers-widget-viewer\').find("input[id=\'BikeKeepers_geojson_string\']").val()),
                                     {    
                                         pointToLayer: generateBikeKeeperMarkerFeature,

@@ -31,7 +31,7 @@ $this->title = Yii::$app->name.' - Interações';
                                         '),
                                     'open' => new JsExpression('
                                                 function( event, ui ) {
-                                                    console.log(ui);
+                                                    ;;
                                                 }
                                             '),
                                 'minLength'=> 2,
@@ -63,7 +63,6 @@ $this->title = Yii::$app->name.' - Interações';
             'clientEvents'=>[
                 'show'=>'function(){alert(\'Mostrar\')}',
                 'changeDate'=>'function(){alert(\'Mostrar2\')}',
-                //'hide'=>'console.log("ok2")',
             ]
         ]);?>
         <?php dosamigos\datetimepicker\DateTimePicker::end();?>

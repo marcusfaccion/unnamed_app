@@ -39,6 +39,52 @@ $('body').on('click', '#user-navigation-pane-toggle, #home-user-menu-navigation'
         $('#user-navigation-pane-toggle').children('span').removeClass('glyphicon-chevron-left');
         $('#user-navigation-pane-toggle').children('span').addClass('glyphicon-chevron-right');
     }
+      //Tradução das instruções do plugin directions
+       for(i=0; i<$('#instructions').find('div.mapbox-directions-step-maneuver').length;++i){
+           $('#instructions').find('div.mapbox-directions-step-maneuver')[i].innerHTML = app.directions.t($('#instructions').find('div.mapbox-directions-step-maneuver')[i].innerHTML);
+       }
+       $('#instructions ol.mapbox-directions-steps').before('<a class="translater-control hide"></a>');
+       
+});
+
+// Botão do painel de navegação que dispara a query de roteamento para o plugin directions
+//$('body').on('click', '#directions-query-btn', function(){
+      //if(directions.queryable())
+  //      directions.query();
+//});
+
+$('body').on('click', '#routes li.mapbox-directions-route', function(){
+      //Tradução das instruções do plugin directions
+       for(i=0; i<$('#instructions').find('div.mapbox-directions-step-maneuver').length;++i){
+           $('#instructions').find('div.mapbox-directions-step-maneuver')[i].innerHTML = app.directions.t($('#instructions').find('div.mapbox-directions-step-maneuver')[i].innerHTML);
+       }
+       $('#instructions ol.mapbox-directions-steps').before('<a class="translater-control hide"></a>');
+});
+
+
+$('body').on('mousemove', '#user-navigation-container', function(){
+      //Tradução das instruções do plugin directions
+      if(!$('#instructions').children().first().hasClass('translater-control')){
+          $('#instructions ol.mapbox-directions-steps').before('<a class="translater-control hide"></a>');
+           if($('#instructions').find('div.mapbox-directions-step-maneuver').length>0){
+               for(i=0; i<$('#instructions').find('div.mapbox-directions-step-maneuver').length;++i){
+                   $('#instructions').find('div.mapbox-directions-step-maneuver')[i].innerHTML = app.directions.t($('#instructions').find('div.mapbox-directions-step-maneuver')[i].innerHTML);
+               }
+               $('#instructions').children().first().remove();
+           }
+      }
+});
+$('body').on('touchmove', '#user-navigation-container', function(){
+      //Tradução das instruções do plugin directions
+      if(!$('#instructions').children().first().hasClass('translater-control')){
+          $('#instructions ol.mapbox-directions-steps').before('<a class="translater-control hide"></a>');
+           if($('#instructions').find('div.mapbox-directions-step-maneuver').length>0){
+               for(i=0; i<$('#instructions').find('div.mapbox-directions-step-maneuver').length;++i){
+                   $('#instructions').find('div.mapbox-directions-step-maneuver')[i].innerHTML = app.directions.t($('#instructions').find('div.mapbox-directions-step-maneuver')[i].innerHTML);
+               }
+               $('#instructions').children().first().remove();
+           }
+      }
 });
 
 // Clique dos botões do Modal de Confirmação

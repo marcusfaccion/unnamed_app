@@ -55,7 +55,7 @@ use yii\helpers\Html;
         <div class="col-lg-3 col-xs-2">
             <label>Endereço:</label>
         </div>
-        <div class="col-lg-9 col-xs-9">
+        <div class="left-pbuffer-6 col-lg-9 col-xs-9">
             <?=$bike_keeper->address?>
         </div>
     </div>

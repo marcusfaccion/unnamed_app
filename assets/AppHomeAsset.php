@@ -12,13 +12,13 @@ class AppHomeAsset extends AppAsset
         'js/home/home.js',
         'js/home/functions.js',
         'js/home/actions.js'
-        
     ];
 
     public $depends = [
         'app\assets\AppAsset',
         'app\assets\LeafletGeocoderControlPluginAsset',
-        'app\assets\MapboxDirectionsPluginAsset'
+        'app\assets\MapboxDirectionsPluginAsset',
+        'app\assets\MapboxDirectionsTranslateAsset'
     ];
     
     public $jsOptions = ['position' => \yii\web\View::POS_BEGIN];

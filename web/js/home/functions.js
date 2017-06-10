@@ -1,6 +1,7 @@
 // Triggered Functions
 function onLocationFound(e) {
     console.log('found location event')
+    --app.geolocation.error3.count;
     var radius = (e.accuracy / 7).toFixed(1);
    
     if(me.latlng!=null){
@@ -52,7 +53,21 @@ function onLocationError(e) {
     }
     //mostra o modal com informações da API Geolocation
     app.message_code = 'user.agent.geolocation.error'+e.code;
-    $('#home_geolocation_info_modal').modal('show');
+    if(e.code==3){
+        exp = app.geolocation.error3.count>10; // O error de code 3 é referente ao timeout, quando não consegue obter a localização
+    }else{
+        exp = 1;
+    }
+    
+    if(exp){ 
+        if(e.code==3){
+            app.geolocation.error3.count = 0;
+        }
+        $('#home_geolocation_info_modal').modal('show');
+    }else{
+        app.geolocation.error3.count++;
+    }
+        
 }
 function onClickFired(e){
     ;;
@@ -204,12 +219,12 @@ function setDestination(latLng){
             var results_clone = (JSON.parse(JSON.stringify(results)));
             app.directions.origin = results_clone.origin;
             app.directions.destination = results_clone.destination;
-            results_clone.routes.forEach(function(route, i){
-                app.directions.routes.push(route);
+            
+            results.routes.forEach(function(route, i){
 //                route.steps.forEach(function(step, j){
-//                    //step.maneuver.instruction = app.t(step.maneuver.instruction, 'pt-BR')
-//                    console.log(route);
+//                    step.maneuver.instruction = directionsTranslate(step.maneuver.instruction);
 //                })
+                app.directions.routes.push(route);
             });
         });
     }
@@ -229,13 +244,33 @@ function setOrigin(latLng){
             var results_clone = (JSON.parse(JSON.stringify(results))); 
             app.directions.origin = results_clone.origin;
             app.directions.destination = results_clone.destination;
-            results_clone.routes.forEach(function(route, i){
-                app.directions.routes.push(route);
+            
+            results.routes.forEach(function(route, i){
 //                route.steps.forEach(function(step, j){
-//                    //step.maneuver.instruction = app.t(step.maneuver.instruction, 'pt-BR')
+//                    step.maneuver.instruction = directionsTranslate(step.maneuver.instruction);
 //                })
+                app.directions.routes.push(route);
             });
         });
     }
     showDirectionsResetMenu();
+}
+
+function directionsTranslate(text){
+    var _text = text.split(' ');
+    var text_t = [];
+    _text.forEach(function(it,i){
+	for(k=1;;++k){
+		if(typeof(en_US[k])!='undefined'){
+			if(it==en_US[k]){
+            			text_t[i]=pt_BR[k];
+				break;
+			}
+                }else{
+                    text_t[i] = it;
+                    break;
+		}
+	}
+    });
+    return text_t.join(' ');
 }
