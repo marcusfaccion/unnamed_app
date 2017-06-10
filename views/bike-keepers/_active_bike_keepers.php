@@ -30,6 +30,7 @@ use yii\bootstrap\Html;
     <thead> 
         <tr> 
             <th>#</th>
+            <th>Nome</th>
             <th>Tipo</th>
             <th>Endereço</th>
             <th>Descrição</th>
@@ -41,6 +42,7 @@ use yii\bootstrap\Html;
     <?php foreach ($bike_keepers as $bike_keeper): ?>
         <tr class="data"> 
             <th scope="row"><?=Html::checkbox($bike_keeper->formName().'[][id]', false, ['value'=>$bike_keeper->id])?> <?=$i?></th> 
+            <td class="text-muted"><strong><?=$bike_keeper->title?></strong></td>
             <?php if($bike_keeper->public):?>
             <td data-toggle="tooltip" data-placement="right" title="Bicicletário de uso público e gratuíto"><span class="text-success"><strong>Público</strong></span></td>
             <?php else:?>

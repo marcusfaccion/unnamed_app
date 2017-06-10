@@ -106,7 +106,7 @@ use kartik\file\FileInput;
             <?=Html::hiddenInput($bike_keeper->formName().'[id]', $bike_keeper->id);?>
         <?php endif;?>
         <?=Html::hiddenInput($bike_keeper->formName().'[user_id]', $bike_keeper->user_id);?>
-        <?=Html::hiddenInput($bike_keeper->formName().'[address]', $bike_keeper->address, ['id'=>  strtolower($bike_keeper->formName()).'-address']);?>
+        <?php // =Html::hiddenInput($bike_keeper->formName().'[address]', $bike_keeper->address, ['id'=>  strtolower($bike_keeper->formName()).'-address']); ?>
         <?=Html::hiddenInput($bike_keeper->formName().'[geojson_string]', $bike_keeper->geojson_string, ['id'=>  strtolower($bike_keeper->formName()).'-geojson-string']);?>
 
         <?php // Define se a requisição é via Ajax   ?>

@@ -8,7 +8,7 @@ $comment_history = [];
     <?php //log de data dos comentários ?>
     <?php $comment_history[$i] = $bike_keeper_comment; ?>
     <?php if($i>0 && $comment_history[$i-1]): ?>
-        <?php if((int)Yii::$app->formatter->asDate($comment_history[$i-1]->created_date, 'dd') < (int)Yii::$app->formatter->asDate($bike_keeper_comment->created_date, 'dd')): ?>
+        <?php if(strtotime(Yii::$app->formatter->asDate($comment_history[$i-1]->created_date)) < strtotime(Yii::$app->formatter->asDate($bike_keeper_comment->created_date))): ?>
             <div class="row top-buffer-1">
                 <div class="col-lg-offset-6 col-xs-offset-6">
                     <span class="text-muted"><i><?=(Yii::$app->formatter->asDate(date('Y-m-d'))==Yii::$app->formatter->asDate($bike_keeper_comment->created_date)?'Hoje':Yii::$app->formatter->asDate($bike_keeper_comment->created_date))?></i></span>

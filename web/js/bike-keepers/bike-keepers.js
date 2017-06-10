@@ -13,11 +13,7 @@ $(document).ready(function() {
         $('[data-toggle="tooltip"]').tooltip({container: 'body'});
         $('[data-toggle="popover"]').tooltip({container: 'body'});
         
-        
-        //verificando se browser suporta API geolocation
-        if (!'geolocation' in navigator) {
-            alert('Seu navergador não possui suporte a geolocalização ou está desativada');
-        }
+
         //Inicializando opções de mapa e renderizando
         map = new L.map('map', map_conf.options);
         //http://leafletjs.com/examples/geojson/

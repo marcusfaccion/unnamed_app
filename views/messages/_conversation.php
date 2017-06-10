@@ -12,10 +12,10 @@ $conversation_history = [];
     <?php //log de data das mensagens ?>
     <?php $conversation_history[$i] = $conversation; ?>
     <?php if($i>0 && $conversation_history[$i-1]): ?>
-        <?php if((int)Yii::$app->formatter->asDate($conversation_history[$i-1]->created_date, 'dd') < (int)Yii::$app->formatter->asDate($conversation->created_date, 'dd')): ?>
+        <?php if(strtotime(Yii::$app->formatter->asDate($conversation_history[$i-1]->created_date)) < strtotime(Yii::$app->formatter->asDate($conversation->created_date))): ?>
             <div class="row top-buffer-1">
                 <div class="col-lg-offset-6 col-xs-offset-6 text-left">
-                    <span class="text-muted"><i><?=(Yii::$app->formatter->asDate(date('Y-m-d'))==Yii::$app->formatter->asDate($conversation->created_date)?'Hoje':Yii::$app->formatter->asDate($conversation->created_date))?></i></span>
+                    <span class="text-muted"><i><?=(Yii::$app->formatter->asDate(date('Y-m-d H:i:s'))==Yii::$app->formatter->asDate($conversation->created_date)?'Hoje':Yii::$app->formatter->asDate($conversation->created_date))?></i></span>
                 </div>
             </div>
         <?php endif;?>
