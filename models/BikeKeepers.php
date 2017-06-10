@@ -65,7 +65,7 @@ class BikeKeepers extends GeoJSON_ActiveRecord
         return [
             [['title', 'business_hours', 'capacity', 'public', 'outdoor'], 'required'],
             [['multimedia_files'], 'required', 'on'=>self::SCENARIO_CREATE],
-            [['multimedia_files'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, jpeg, avi, mp4, webm', 'maxFiles' => 4],
+            [['multimedia_files'], 'file', 'skipOnEmpty' => false, 'extensions' => 'png, jpg, jpeg', 'maxFiles' => 4],
             [['likes', 'dislikes', 'capacity', 'used_capacity', 'user_id', 'is_open','public', 'outdoor', 'enable'], 'integer'],
             [['created_date', "updated_date"], 'safe'],
             [['title'], 'string', 'max' => 40],

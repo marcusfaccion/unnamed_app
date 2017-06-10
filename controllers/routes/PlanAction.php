@@ -44,7 +44,7 @@ class PlanAction extends Action
                 $alerts[$i] = Alerts::findBySql(
                         '
                           SELECT * FROM '.Alerts::tableName().' a, '.UserNavigationRoutes::tableName().' route WHERE (route.id='.$tmp_route->id.') AND a.enable=1 AND  
-                              (ST_Distance_Spheroid(route.line_string_geom, a.geom, \'SPHEROID["WGS 84",6378137,298.257223563]\')<= 10.0) 
+                              (ST_Distance_Spheroid(route.line_string_geom, a.geom, \'SPHEROID["WGS 84",6378137,298.257223563]\')<= 12.0) 
                               ORDER BY ST_Line_Locate_Point(route.line_string_geom, a.geom), ST_Distance_Spheroid(route.line_string_geom, a.geom, \'SPHEROID["WGS 84", 6378137, 298.257223563]\') ASC
                         ')->all();
                 //Obtém todos os bicicletários que estão a uma distância de até 1km do destino da rota

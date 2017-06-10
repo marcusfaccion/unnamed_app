@@ -64,11 +64,9 @@ use kartik\file\FileInput;
 
         <?php echo $form->field($bike_keeper, 'title', ['options' =>['class'=>'']])->textInput(['autofocus'=>true, 'class'=>'form-control bike-keepers-reverse-geocoding-trigger']);?>
         <?php echo $form->field($bike_keeper, 'description',['options' => ['class'=>''],'template' => "<div class='row top-buffer-1'><div class='col-lg-10 col-xs-8 top-buffer-2'>{label}<span class='glyphicon glyphicon-info-sign'></span></div>\n<div class='col-lg-10 col-xs-11'>{input}</div>\n<div class='col-lg-2 col-xs-8'>{error}</div></div>", 'labelOptions'=>['class'=>'hasTooltip', 'data-toggle'=>'tooltip', 'data-placement'=>'right', 'title'=>'Informações sobre o bicicletário, dicas de localização, ponto de referência, horário de funcionamento...']])->textArea(['class' => 'wide-12 form-control']);?>
-        <?php if(in_array(Yii::$app->controller->action->id,['update'])):?>
-            <?php if(strlen($bike_keeper->address)>0):?>
-                <?php echo $form->field($bike_keeper, 'address', ['options' =>['class'=>'']])->textInput(['autofocus'=>true,]);?>
-            <?php endif;?>
-        <?php endif;?>
+        
+        <?php echo $form->field($bike_keeper, 'address', ['options' =>['class'=>'']])->textInput(['autofocus'=>true,]);?>
+        
         <?php echo $form->field($bike_keeper, 'business_hours',['options' => ['class'=>''],'template' => "<div class='row top-buffer-1'><div class='col-lg-10 col-xs-8 top-buffer-2'>{label}<span class='glyphicon glyphicon-info-sign'></span></div>\n<div class='col-lg-10 col-xs-11'>{input}</div>\n<div class='col-lg-2 col-xs-8'>{error}</div></div>", 'labelOptions'=>['class'=>'hasTooltip', 'data-toggle'=>'tooltip', 'data-placement'=>'right', 'title'=>'Informe os dias e horário nos quais o bicicletário pode ser utilizado ']])->textArea(['class' => 'wide-12 form-control', 'onfocus'=>'$(this).parent().prev().find(\'label\').tooltip(\'show\')', 'onblur'=>'$(this).parent().prev().find(\'label\').tooltip(\'hide\')']);?>
         <?php echo $form->field($bike_keeper, 'capacity', ['options' =>['class'=>'']])->input('number',['min'=>1]);?>
         <?php echo $form->field($bike_keeper, 'outdoor', ['template' => "<div class='row top-buffer-1'><div class='col-lg-10 col-xs-8 top-buffer-2'>{label}<span class='glyphicon glyphicon-info-sign'></span></div>\n<div class='col-lg-10 col-xs-11 parent-requires'>{input}</div>\n<div class='col-lg-2 col-xs-8'>{error}</div></div>", 'labelOptions'=>['class'=>'hasTooltip', 'data-toggle'=>'tooltip', 'data-placement'=>'right', 'title'=>'O bicicletário é localizado ao ar livre?'],  'options'=>['class'=>'']])->radioList([1=>'Sim',0=>'Não']); ?>
@@ -99,7 +97,7 @@ use kartik\file\FileInput;
         <?php endif;?>
 
         
-       <?php echo $form->field($bike_keeper, 'multimedia_files[]', ['template' => "<div class='row top-buffer-1'><div class='col-lg-10 col-xs-8 top-buffer-2'>{label}<span class='glyphicon glyphicon-info-sign'></span></div>\n<div class='col-lg-10 col-xs-11 parent-requires'>{input}</div>\n<div class='col-lg-2 col-xs-8'>{error}</div></div>", 'labelOptions'=>['class'=>'hasTooltip', 'data-toggle'=>'tooltip', 'data-placement'=>'right', 'title'=>'Inclua fotos ou vídeos que identifiquem o local'],  'options'=>['class'=>'', 'multiple'=>true]])->widget(FileInput::classname(),  ['options' => ['accept' => 'image/*,video/*', 'multiple'=>true], 'pluginOptions'=>['showUpload'=>false, 'fileActionSettings'=>['showZoom'=>false],'browseOnZoneClick'=>true, 'language'=>Yii::$app->language, 'allowedFileTypes'=>['image', 'video'], 'maxFileCount'=>5,'browseLabel'=>'Multimidia']]) ?>
+       <?php echo $form->field($bike_keeper, 'multimedia_files[]', ['template' => "<div class='row top-buffer-1'><div class='col-lg-10 col-xs-8 top-buffer-2'>{label}<span class='glyphicon glyphicon-info-sign'></span></div>\n<div class='col-lg-10 col-xs-11 parent-requires'>{input}</div>\n<div class='col-lg-2 col-xs-8'>{error}</div></div>", 'labelOptions'=>['class'=>'hasTooltip', 'data-toggle'=>'tooltip', 'data-placement'=>'right', 'title'=>'Inclua fotos ou vídeos que identifiquem o local'],  'options'=>['class'=>'', 'multiple'=>true]])->widget(FileInput::classname(),  ['options' => ['accept' => 'image/*', 'multiple'=>true], 'pluginOptions'=>['showUpload'=>false, 'fileActionSettings'=>['showZoom'=>false],'browseOnZoneClick'=>true, 'language'=>Yii::$app->language, 'allowedFileTypes'=>['image'], 'maxFileCount'=>5,'browseLabel'=>'Multimidia']]) ?>
 
         <?php // Model BikeKeepers ?>
         <?php if(Yii::$app->controller->action->id==='update'):?>
