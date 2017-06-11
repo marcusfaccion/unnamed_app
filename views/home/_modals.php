@@ -240,9 +240,9 @@ Modal::begin([
                 "function() {
                             $(this).find('.modal-body').html('');
                             //Se falhar na primeira tentativa recarrega a página para uma nova tentativa
-                            if(me.marker==null){
-                                document.location.reload()
-                            }
+                           // if(me.marker==null){
+                             //   document.location.reload()
+                           // }
                  }"
                 , [])
     ]
