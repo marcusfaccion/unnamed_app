@@ -42,6 +42,7 @@ echo Html::hiddenInput('App[controller_id]',Yii::$app->user->isGuest?null:Yii::$
 <div class="wrap">
     <?php
     NavBar::begin([
+        'id'=>'home_nav_bar',
         'brandLabel' => 
         "<ul class='list-unstyled list-inline'>
             <li>"
@@ -58,6 +59,7 @@ echo Html::hiddenInput('App[controller_id]',Yii::$app->user->isGuest?null:Yii::$
         ],
     ]);
     echo Nav::widget([
+        'id'=>'home_nav',
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Início', 'url' => ['/home'], 'active'=>(Yii::$app->controller->id=='home')],
