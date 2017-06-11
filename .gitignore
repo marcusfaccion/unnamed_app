@@ -13,13 +13,13 @@ nbproject
 Thumbs.db
 
 # composer vendor dir
-/vendor/*
+
 
 # run-time dir
 /runtime
 
 # public app content dir
-/web/bs-contents
+
 
 # composer itself is not needed
 composer.phar

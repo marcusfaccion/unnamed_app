@@ -16,7 +16,7 @@ class ComposerAutoloaderInit2d0b5ed2e5aa32bfac6e7c17995017eb
     public static function getLoader()
     {
         if (null !== self::$loader) {
-            return self::$loader;
+            return self::$loader; 
         }
 
         spl_autoload_register(array('ComposerAutoloaderInit2d0b5ed2e5aa32bfac6e7c17995017eb', 'loadClassLoader'), true, true);

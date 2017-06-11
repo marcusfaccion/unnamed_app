@@ -16,7 +16,7 @@ class ComposerStaticInit2d0b5ed2e5aa32bfac6e7c17995017eb
     public static $prefixLengthsPsr4 = array (
         'y' => 
         array (
-            'yii\\swiftmailer\\' => 16,
+            'yii\\swiftmailer\\' => 16, 
             'yii\\jui\\' => 8,
             'yii\\gii\\' => 8,
             'yii\\faker\\' => 10,
