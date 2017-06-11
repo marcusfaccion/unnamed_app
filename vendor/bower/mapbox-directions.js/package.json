@@ -1,0 +1,36 @@
+{
+  "name": "@mapbox/mapbox-directions.js",
+  "version": "0.4.0",
+  "description": "Leaflet plugin for the Mapbox Directions API",
+  "main": "index.js",
+  "scripts": {
+    "test": "jshint src && npm run build && browserify --debug test/test.js | tap-closer | smokestack -b firefox | tap-spec",
+    "test:cr": "jshint src && npm run build && browserify --debug test/test.js | tap-closer | smokestack -b chrome | tap-spec",
+    "build": "browserify --debug index.js > dist/mapbox.directions.js",
+    "start": "budo index.js --live --serve=dist/mapbox.directions.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mapbox/mapbox-directions.js.git"
+  },
+  "dependencies": {
+    "corslite": "0.0.5",
+    "d3": "3.4.1",
+    "debounce": "0.0.3",
+    "mapbox.js": "1.5.2",
+    "polyline": "0.0.3",
+    "queue-async": "^1.0.7"
+  },
+  "devDependencies": {
+    "browserify": "^13.0.0",
+    "budo": "^8.1.0",
+    "jshint": "2",
+    "sinon": "^1.17.1",
+    "smash": "0.0",
+    "smokestack": "^3.4.1",
+    "tap-closer": "^1.0.0",
+    "tap-spec": "^4.1.0",
+    "tape": "^4.2.1"
+  },
+  "license": "BSD-2-Clause"
+}
