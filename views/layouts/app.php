@@ -63,15 +63,6 @@ echo Html::hiddenInput('App[controller_id]',Yii::$app->user->isGuest?null:Yii::$
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Início', 'url' => ['/home'], 'active'=>(Yii::$app->controller->id=='home')],
-             /*[
-            'label' => 'Dropdown',
-            'items' => [
-                 ['label' => 'Level 1 - Dropdown A', 'url' => '#'],
-                 '<li class="divider"></li>',
-                 '<li class="dropdown-header">Dropdown Header</li>',
-                 ['label' => 'Level 1 - Dropdown B', 'url' => '#'],
-            ],
-        ],*/
             ['label' => 'Alertas', 'url' => ['/alerts'], 'active'=>(Yii::$app->controller->id=='alerts')],
             ['label' => 'Bicicletários', 'url' => ['/bike-keepers'], 'active'=>(Yii::$app->controller->id=='bike-keepers')],
             ['label' => 'Painel', 'url' => ['/panel'], 'active'=>(Yii::$app->controller->id=='panel')],

@@ -5,7 +5,7 @@
 -- Dumped from database version 9.5.2
 -- Dumped by pg_dump version 9.5.1
 
--- Started on 2017-06-11 06:44:22
+-- Started on 2017-06-12 09:00:54
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -1760,37 +1760,37 @@ ALTER TABLE ONLY view_levels ALTER COLUMN id SET DEFAULT nextval('view_levels_id
 -- Data for Name: alert_comments; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO alert_comments (id, alert_id, user_id, text, created_date) VALUES (1, 24, 1, 'teste de comentario!!', '2017-05-02 01:08:04');
-INSERT INTO alert_comments (id, alert_id, user_id, text, created_date) VALUES (2, 24, 1, 'teste de comentario!!', '2017-05-02 01:09:17');
-INSERT INTO alert_comments (id, alert_id, user_id, text, created_date) VALUES (13, 33, 1, 'Boa informação.', '2017-05-02 14:40:10');
-INSERT INTO alert_comments (id, alert_id, user_id, text, created_date) VALUES (14, 30, 1, 'Que perigo, obrigado vou evitar passar por ai.', '2017-05-02 14:47:54');
-INSERT INTO alert_comments (id, alert_id, user_id, text, created_date) VALUES (15, 30, 1, ':)', '2017-05-02 14:49:31');
-INSERT INTO alert_comments (id, alert_id, user_id, text, created_date) VALUES (16, 30, 1, ':(', '2017-05-02 14:54:52');
-INSERT INTO alert_comments (id, alert_id, user_id, text, created_date) VALUES (17, 30, 2, 'Vlw marcus!', '2017-05-02 14:59:34');
-INSERT INTO alert_comments (id, alert_id, user_id, text, created_date) VALUES (18, 22, 2, 'Essa obra náo acaba nunca', '2017-05-02 17:16:12');
-INSERT INTO alert_comments (id, alert_id, user_id, text, created_date) VALUES (19, 24, 2, 'Essa ciclovia está cada vez mais perigosa hein. Poxa vida!', '2017-05-02 17:28:24');
-INSERT INTO alert_comments (id, alert_id, user_id, text, created_date) VALUES (20, 35, 1, 'ooops', '2017-05-02 18:59:50');
-INSERT INTO alert_comments (id, alert_id, user_id, text, created_date) VALUES (21, 35, 2, 'obrigado!', '2017-05-02 19:00:40');
-INSERT INTO alert_comments (id, alert_id, user_id, text, created_date) VALUES (26, 37, 1, 'Cuidado pista com muito buraco', '2017-05-12 11:31:39');
-INSERT INTO alert_comments (id, alert_id, user_id, text, created_date) VALUES (27, 23, 1, 'Teste', '2017-05-12 15:47:47');
-INSERT INTO alert_comments (id, alert_id, user_id, text, created_date) VALUES (28, 23, 1, 'opss', '2017-05-12 15:48:00');
-INSERT INTO alert_comments (id, alert_id, user_id, text, created_date) VALUES (29, 23, 1, 'bobs', '2017-05-12 15:48:34');
-INSERT INTO alert_comments (id, alert_id, user_id, text, created_date) VALUES (30, 24, 1, 'Bom', '2017-05-12 16:59:43');
-INSERT INTO alert_comments (id, alert_id, user_id, text, created_date) VALUES (31, 24, 1, 'Teste', '2017-05-14 01:29:13');
-INSERT INTO alert_comments (id, alert_id, user_id, text, created_date) VALUES (32, 73, 1, 'teste', '2017-05-25 00:49:14');
-INSERT INTO alert_comments (id, alert_id, user_id, text, created_date) VALUES (34, 96, 1, 'Teste', '2017-05-29 17:40:48');
-INSERT INTO alert_comments (id, alert_id, user_id, text, created_date) VALUES (35, 96, 1, 'Teste', '2017-05-29 17:40:54');
-INSERT INTO alert_comments (id, alert_id, user_id, text, created_date) VALUES (33, 96, 1, 'Eita!!', '2017-05-28 17:40:41');
-INSERT INTO alert_comments (id, alert_id, user_id, text, created_date) VALUES (36, 96, 1, 'teste 2', '2017-05-28 17:42:21');
-INSERT INTO alert_comments (id, alert_id, user_id, text, created_date) VALUES (37, 96, 2, 'Olá', '2017-05-30 07:20:30');
-INSERT INTO alert_comments (id, alert_id, user_id, text, created_date) VALUES (38, 96, 2, 'Olá', '2017-05-30 07:20:30');
-INSERT INTO alert_comments (id, alert_id, user_id, text, created_date) VALUES (39, 96, 2, 'Teste de comment', '2017-05-30 07:22:14');
-INSERT INTO alert_comments (id, alert_id, user_id, text, created_date) VALUES (40, 96, 1, 'opa', '2017-05-30 07:57:26');
-INSERT INTO alert_comments (id, alert_id, user_id, text, created_date) VALUES (41, 96, 1, 'Muito obrigado', '2017-05-30 07:59:46');
-INSERT INTO alert_comments (id, alert_id, user_id, text, created_date) VALUES (43, 104, 2, 'Esse fica perto da UVA né?', '2017-06-10 19:53:01');
-INSERT INTO alert_comments (id, alert_id, user_id, text, created_date) VALUES (42, 104, 1, 'Mais um buraco!!', '2017-06-09 10:35:45');
-INSERT INTO alert_comments (id, alert_id, user_id, text, created_date) VALUES (44, 107, 2, 'Horrível passar ai rsrs.', '2017-06-10 21:38:13');
-INSERT INTO alert_comments (id, alert_id, user_id, text, created_date) VALUES (45, 107, 2, 'Ainda mais de bike', '2017-06-10 21:38:28');
+INSERT INTO alert_comments VALUES (1, 24, 1, 'teste de comentario!!', '2017-05-02 01:08:04');
+INSERT INTO alert_comments VALUES (2, 24, 1, 'teste de comentario!!', '2017-05-02 01:09:17');
+INSERT INTO alert_comments VALUES (13, 33, 1, 'Boa informação.', '2017-05-02 14:40:10');
+INSERT INTO alert_comments VALUES (14, 30, 1, 'Que perigo, obrigado vou evitar passar por ai.', '2017-05-02 14:47:54');
+INSERT INTO alert_comments VALUES (15, 30, 1, ':)', '2017-05-02 14:49:31');
+INSERT INTO alert_comments VALUES (16, 30, 1, ':(', '2017-05-02 14:54:52');
+INSERT INTO alert_comments VALUES (17, 30, 2, 'Vlw marcus!', '2017-05-02 14:59:34');
+INSERT INTO alert_comments VALUES (18, 22, 2, 'Essa obra náo acaba nunca', '2017-05-02 17:16:12');
+INSERT INTO alert_comments VALUES (19, 24, 2, 'Essa ciclovia está cada vez mais perigosa hein. Poxa vida!', '2017-05-02 17:28:24');
+INSERT INTO alert_comments VALUES (20, 35, 1, 'ooops', '2017-05-02 18:59:50');
+INSERT INTO alert_comments VALUES (21, 35, 2, 'obrigado!', '2017-05-02 19:00:40');
+INSERT INTO alert_comments VALUES (26, 37, 1, 'Cuidado pista com muito buraco', '2017-05-12 11:31:39');
+INSERT INTO alert_comments VALUES (27, 23, 1, 'Teste', '2017-05-12 15:47:47');
+INSERT INTO alert_comments VALUES (28, 23, 1, 'opss', '2017-05-12 15:48:00');
+INSERT INTO alert_comments VALUES (29, 23, 1, 'bobs', '2017-05-12 15:48:34');
+INSERT INTO alert_comments VALUES (30, 24, 1, 'Bom', '2017-05-12 16:59:43');
+INSERT INTO alert_comments VALUES (31, 24, 1, 'Teste', '2017-05-14 01:29:13');
+INSERT INTO alert_comments VALUES (32, 73, 1, 'teste', '2017-05-25 00:49:14');
+INSERT INTO alert_comments VALUES (34, 96, 1, 'Teste', '2017-05-29 17:40:48');
+INSERT INTO alert_comments VALUES (35, 96, 1, 'Teste', '2017-05-29 17:40:54');
+INSERT INTO alert_comments VALUES (33, 96, 1, 'Eita!!', '2017-05-28 17:40:41');
+INSERT INTO alert_comments VALUES (36, 96, 1, 'teste 2', '2017-05-28 17:42:21');
+INSERT INTO alert_comments VALUES (37, 96, 2, 'Olá', '2017-05-30 07:20:30');
+INSERT INTO alert_comments VALUES (38, 96, 2, 'Olá', '2017-05-30 07:20:30');
+INSERT INTO alert_comments VALUES (39, 96, 2, 'Teste de comment', '2017-05-30 07:22:14');
+INSERT INTO alert_comments VALUES (40, 96, 1, 'opa', '2017-05-30 07:57:26');
+INSERT INTO alert_comments VALUES (41, 96, 1, 'Muito obrigado', '2017-05-30 07:59:46');
+INSERT INTO alert_comments VALUES (43, 104, 2, 'Esse fica perto da UVA né?', '2017-06-10 19:53:01');
+INSERT INTO alert_comments VALUES (42, 104, 1, 'Mais um buraco!!', '2017-06-09 10:35:45');
+INSERT INTO alert_comments VALUES (44, 107, 2, 'Horrível passar ai rsrs.', '2017-06-10 21:38:13');
+INSERT INTO alert_comments VALUES (45, 107, 2, 'Ainda mais de bike', '2017-06-10 21:38:28');
 
 
 --
@@ -1808,10 +1808,10 @@ SELECT pg_catalog.setval('alert_comments_id_seq', 45, true);
 -- Data for Name: alert_types; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO alert_types (id, description, parent_type_id) VALUES (3, 'Roubos e Furtos', NULL);
-INSERT INTO alert_types (id, description, parent_type_id) VALUES (2, 'Perigo na Via', NULL);
-INSERT INTO alert_types (id, description, parent_type_id) VALUES (4, 'Interdições', NULL);
-INSERT INTO alert_types (id, description, parent_type_id) VALUES (1, 'Alerta Genérico', NULL);
+INSERT INTO alert_types VALUES (3, 'Roubos e Furtos', NULL);
+INSERT INTO alert_types VALUES (2, 'Perigo na Via', NULL);
+INSERT INTO alert_types VALUES (4, 'Interdições', NULL);
+INSERT INTO alert_types VALUES (1, 'Alerta Genérico', NULL);
 
 
 --
@@ -1820,9 +1820,9 @@ INSERT INTO alert_types (id, description, parent_type_id) VALUES (1, 'Alerta Gen
 -- Data for Name: alert_types_spatial_types; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO alert_types_spatial_types (alert_types_id, spatial_types_id) VALUES (4, 1);
-INSERT INTO alert_types_spatial_types (alert_types_id, spatial_types_id) VALUES (3, 1);
-INSERT INTO alert_types_spatial_types (alert_types_id, spatial_types_id) VALUES (2, 1);
+INSERT INTO alert_types_spatial_types VALUES (4, 1);
+INSERT INTO alert_types_spatial_types VALUES (3, 1);
+INSERT INTO alert_types_spatial_types VALUES (2, 1);
 
 
 --
@@ -1831,68 +1831,68 @@ INSERT INTO alert_types_spatial_types (alert_types_id, spatial_types_id) VALUES 
 -- Data for Name: alerts; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (36, 'Muitos Pivetes 2220', '00 Muitos pivetes estão andando pela estrada!!!!!!', 3, 1, '2017-05-03 20:01:54', NULL, NULL, '14:36:52', '0101000020110F0000FBFFFF7FC7CF45C095909184F4FC36C0', 0, NULL, NULL);
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (38, 'Acidentess', 'Acidente em frente ao santa Mônica dois ciclistas', 2, 1, '2017-05-06 16:28:01', NULL, NULL, '18:17:25', '0101000020110F0000030000C62ED745C04C2589FFC1EC36C0', 0, NULL, NULL);
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (73, 'Teste', 'Teste', 3, 1, '2017-05-23 23:30:38', NULL, NULL, NULL, '0101000020110F0000FCFFFF5589CE45C0D67E1B8A7FE936C0', 0, NULL, '');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (76, 'teste', 'teste', 4, 1, '2017-05-23 23:32:16', NULL, NULL, NULL, '0101000020110F00000200001CB3CF45C047D60189FCE936C0', 0, NULL, '');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (24, 'Teste de roubo', 'Ooopps
+INSERT INTO alerts VALUES (36, 'Muitos Pivetes 2220', '00 Muitos pivetes estão andando pela estrada!!!!!!', 3, 1, '2017-05-03 20:01:54', NULL, NULL, '14:36:52', '0101000020110F0000FBFFFF7FC7CF45C095909184F4FC36C0', 0, NULL, NULL);
+INSERT INTO alerts VALUES (38, 'Acidentess', 'Acidente em frente ao santa Mônica dois ciclistas', 2, 1, '2017-05-06 16:28:01', NULL, NULL, '18:17:25', '0101000020110F0000030000C62ED745C04C2589FFC1EC36C0', 0, NULL, NULL);
+INSERT INTO alerts VALUES (73, 'Teste', 'Teste', 3, 1, '2017-05-23 23:30:38', NULL, NULL, NULL, '0101000020110F0000FCFFFF5589CE45C0D67E1B8A7FE936C0', 0, NULL, '');
+INSERT INTO alerts VALUES (76, 'teste', 'teste', 4, 1, '2017-05-23 23:32:16', NULL, NULL, NULL, '0101000020110F00000200001CB3CF45C047D60189FCE936C0', 0, NULL, '');
+INSERT INTO alerts VALUES (24, 'Teste de roubo', 'Ooopps
 ', 3, 2, '2017-04-19 23:31:39', NULL, NULL, NULL, '0101000020110F0000FFFFFF3FEFC945C0FFD28F68B1E936C0', 0, NULL, NULL);
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (30, 'Uruguaiana está perigosa!', 'Ladrões estão roubando bicicletas nos bicicletários do metrô.', 3, 3, '2017-04-30 07:41:01', 1, NULL, NULL, '0101000020110F000002000080199C45C0F401B1B811EB36C0', 0, NULL, NULL);
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (88, 'saddadas', 'adsddsadsa', 3, 1, '2017-05-26 02:20:39', NULL, NULL, NULL, '0101000020110F00000800008913C645C05957C20C8EE536C0', 0, NULL, '');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (7, 'Saneamento da orla', 'Rua interditada', 4, 1, '2016-10-28 23:47:09', NULL, NULL, NULL, '0101000020110F0000010000C09CD845C0F9F9FF6294FB36C0', 0, '2017-04-20 15:58:53', NULL);
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (81, 'teste', 'teste', 2, 1, '2017-05-25 01:51:31', 9, 14, NULL, '0101000020110F0000030000A7CDCF45C08FD517510FEA36C0', 0, NULL, '');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (74, 'Teste 7', 'Teste', 2, 1, '2017-05-23 23:31:13', NULL, NULL, NULL, '0101000020110F0000FBFFFFA8CCCE45C0B079A58097E936C0', 0, NULL, '');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (75, 'Teste Teste 7', 'Teste', 1, 1, '2017-05-23 23:31:38', NULL, NULL, NULL, '0101000020110F00000000003261CF45C0B69D21DEE5E936C0', 0, NULL, '');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (77, 'Teste', 'Teste', 3, 1, '2017-05-25 00:41:41', NULL, NULL, NULL, '0101000020110F0000010000088BCF45C0741ABD07F7E936C0', 0, NULL, '');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (95, 'Operação SMTRJ', 'Rua interditada', 4, 1, '2017-05-25 14:28:21', 3, 5, NULL, '0101000020110F0000010000E0E1BE45C0CCD5EF13CB0537C0', 0, '2017-05-25 18:55:50', 'Avenida Teotônio Vilela, Recreio dos Bandeirantes, Rio de Janeiro/Rio de Janeiro - Brasil');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (25, '', 'Perigo animal morto', 2, 1, '2017-04-19 23:32:19', NULL, NULL, NULL, '0101000020110F000004000000C3BD45C0CAC271511CE136C0', 0, '2017-04-20 15:58:53', NULL);
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (6, 'Incêndio na morro de Paciências', 'Bombeiros no local, rua interditada000s', 4, 1, '2016-10-28 23:44:41', NULL, NULL, '15:19:07', '0101000020110F00000400000073D145C0BA2741A543E736C0', 0, NULL, NULL);
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (35, 'Teste', 'Teste mais e mais 2017', 1, 1, '2017-04-30 07:59:13', NULL, NULL, '14:36:25', '0101000020110F0000FCFFFF3FCCB045C02BCB5B315FF736C0', 0, NULL, NULL);
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (90, 'Arrastão', 'Bandidos armados na estrada!', 3, 1, '2017-05-26 13:29:52', NULL, NULL, NULL, '0101000020110F0000FBFFFF9092D545C0650E0FF48AEA36C0', 0, NULL, '');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (59, 'teste', 'Teste', 4, 1, '2017-05-21 22:11:01', NULL, NULL, NULL, '0101000020110F0000070000B8C3C845C0B6C22369BF0A37C0', 0, NULL, '');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (72, 'Perigo, obras', 'Prefeitura resolveu faze operação tapa buraco.', 4, 1, '2017-05-21 23:25:20', NULL, NULL, '23:43:11', '0101000020110F000000000000DCC245C0A041F719AAEA36C0', 0, NULL, '');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (37, 'Acidente', 'Acidente de dois ciclistas em frente ao santa mônica7', 1, 1, '2017-05-06 16:27:06', NULL, 1, '20:45:36', '0101000020110F0000FDFFFF6B2ED745C096208FE9C4EC36C0', 0, NULL, '');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (78, 'Teste', 'teste', 2, 1, '2017-05-25 00:42:11', NULL, NULL, NULL, '0101000020110F00000800002280CF45C0874EC68DF0E936C0', 0, NULL, '');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (91, 'Buraco!', 'Buraco no acostamento cuidado!', 2, 1, '2017-05-25 13:44:22', NULL, NULL, NULL, '0101000020110F0000FFFFFFFC32C945C02502212637ED36C0', 0, NULL, '');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (92, 'teste', 'teste', 1, 1, '2017-05-25 13:47:33', NULL, NULL, NULL, '0101000020110F0000FFFFFF89AECF45C0EEDFE9481EF536C0', 0, NULL, '');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (93, 'Teste', 'teste', 2, 1, '2017-05-25 13:49:47', NULL, NULL, NULL, '0101000020110F0000FEFFFFC9B9CF45C050315439EAF536C0', 0, NULL, '');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (31, 'Via perigosa15', 'Via com muito alagamento! 9', 2, 1, '2017-04-30 07:51:15', NULL, 1, '18:17:49', '0101000020110F0000FCFFFFFF10CA45C06075383DC8F436C0', 0, NULL, NULL);
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (41, 'Obras', 'Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste ', 4, 4, '2017-05-26 19:53:44', NULL, NULL, NULL, '0101000020110F00000100000056B245C0132B224C5DEC36C0', 0, NULL, NULL);
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (87, 'addsad', 'asdasads', 2, 1, '2017-05-25 02:20:02', NULL, NULL, NULL, '0101000020110F0000FCFFFF2093CC45C09E7DC6C0CBE836C0', 0, '2017-05-29 02:20:39', '');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (85, 'sdfsf', 'sdfdsf', 1, 1, '2017-05-25 02:18:39', NULL, NULL, NULL, '0101000020110F0000010000F255CF45C05600E6D816F536C0', 0, '2017-05-29 02:20:39', '');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (22, 'Obras no asfalto', 'Obras prefeitura do Rio de Janeiro.', 4, 1, '2017-04-20 23:21:52', 1, 1, '10:47:45', '0101000020110F0000FBFFFF7F53DA45C0DE76AA1403ED36C0', 0, '2017-05-08 20:40:14', NULL);
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (8, 'Acidênte no posto de combustível', 'Carro bateu em uma das bombas de combustível do posto da Av. João XXIII', 4, 2, '2016-10-28 23:50:19', NULL, NULL, '09:29:55', '0101000020110F0000FCFFFFFF20D845C08CB9C8C849E936C0', 0, '2017-05-22 10:35:46', '');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (21, 'Obras BRT', 'teste', 4, 1, '2017-04-15 00:33:14', NULL, NULL, NULL, '0101000020110F0000FCFFFF6F0CB945C060449B3700DD36C0', 0, '2017-04-15 02:25:00', NULL);
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (33, 'Teste', 'Teste test testet teste', 1, 2, '2017-05-26 19:53:44', NULL, NULL, NULL, '0101000020110F000001000080C8BF45C01518CE7738FF36C0', 0, NULL, NULL);
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (26, 'Teste de outro 2', 'Teste mais e mais e de novo 4', 1, 1, '2017-04-19 23:34:08', NULL, NULL, '10:45:49', '0101000020110F000002000080C9AF45C064F765AEF5EB36C0', 0, '2017-05-08 21:10:33', NULL);
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (34, 'dsdsdsd 2017', 'came on baby chance!ss', 4, 1, '2017-04-30 07:54:06', 1, NULL, '00:12:39', '0101000020110F0000070000007ABB45C0248C6E9A76FF36C0', 0, '2017-05-22 01:10:31', '');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (23, 'Teste teste Enable', 'Teste de novo ?', 4, 2, '2017-05-26 19:53:44', NULL, NULL, NULL, '0101000020110F0000FEFFFF7F9ACF45C0D247EE7A42EA36C0', 0, NULL, NULL);
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (27, 'Teste Enable', 'Teste1', 1, 1, '2017-04-19 23:51:24', NULL, NULL, NULL, '0101000020110F0000FE7F0BB785C745C09B8180BFBC0137C0', 0, '2017-04-20 15:58:53', NULL);
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (32, 'Asfalto quebrada', 'Muitos buracos divido asfalto quebrado ', 2, 2, '2017-05-26 19:58:44', NULL, NULL, '09:14:16', '0101000020110F0000040000C057C345C01503BAC5360237C0', 0, NULL, '');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (89, 'addadsdas', 'adsdsadsa', 4, 1, '2017-05-25 02:21:06', NULL, NULL, NULL, '0101000020110F00000400008918D045C0F7EABD3527EA36C0', 0, NULL, '');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (86, 'sdsdf', 'sfsd', 3, 1, '2017-05-24 02:19:18', NULL, NULL, '04:01:52', '0101000020110F00000200006DE1C845C011BB2A2B74E736C0', 0, NULL, '');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (83, 'teste', 'teste', 2, 1, '2017-05-25 02:16:54', NULL, NULL, NULL, '0101000020110F0000FFFFFF1BE0CF45C00BEF937514EA36C0', 0, NULL, '');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (94, 'Alfalto quebrado', 'Ciclovia muito precária!!', 2, 1, '2017-05-26 19:24:38', NULL, NULL, NULL, '0101000020110F00000000004D5DC745C0B8F52894C6E636C0', 0, NULL, 'Rua Campo Grande, Campo Grande, Rio de Janeiro/Rio de Janeiro - Brasil');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (82, 'teste', 'teste
+INSERT INTO alerts VALUES (30, 'Uruguaiana está perigosa!', 'Ladrões estão roubando bicicletas nos bicicletários do metrô.', 3, 3, '2017-04-30 07:41:01', 1, NULL, NULL, '0101000020110F000002000080199C45C0F401B1B811EB36C0', 0, NULL, NULL);
+INSERT INTO alerts VALUES (88, 'saddadas', 'adsddsadsa', 3, 1, '2017-05-26 02:20:39', NULL, NULL, NULL, '0101000020110F00000800008913C645C05957C20C8EE536C0', 0, NULL, '');
+INSERT INTO alerts VALUES (7, 'Saneamento da orla', 'Rua interditada', 4, 1, '2016-10-28 23:47:09', NULL, NULL, NULL, '0101000020110F0000010000C09CD845C0F9F9FF6294FB36C0', 0, '2017-04-20 15:58:53', NULL);
+INSERT INTO alerts VALUES (81, 'teste', 'teste', 2, 1, '2017-05-25 01:51:31', 9, 14, NULL, '0101000020110F0000030000A7CDCF45C08FD517510FEA36C0', 0, NULL, '');
+INSERT INTO alerts VALUES (74, 'Teste 7', 'Teste', 2, 1, '2017-05-23 23:31:13', NULL, NULL, NULL, '0101000020110F0000FBFFFFA8CCCE45C0B079A58097E936C0', 0, NULL, '');
+INSERT INTO alerts VALUES (75, 'Teste Teste 7', 'Teste', 1, 1, '2017-05-23 23:31:38', NULL, NULL, NULL, '0101000020110F00000000003261CF45C0B69D21DEE5E936C0', 0, NULL, '');
+INSERT INTO alerts VALUES (77, 'Teste', 'Teste', 3, 1, '2017-05-25 00:41:41', NULL, NULL, NULL, '0101000020110F0000010000088BCF45C0741ABD07F7E936C0', 0, NULL, '');
+INSERT INTO alerts VALUES (95, 'Operação SMTRJ', 'Rua interditada', 4, 1, '2017-05-25 14:28:21', 3, 5, NULL, '0101000020110F0000010000E0E1BE45C0CCD5EF13CB0537C0', 0, '2017-05-25 18:55:50', 'Avenida Teotônio Vilela, Recreio dos Bandeirantes, Rio de Janeiro/Rio de Janeiro - Brasil');
+INSERT INTO alerts VALUES (25, '', 'Perigo animal morto', 2, 1, '2017-04-19 23:32:19', NULL, NULL, NULL, '0101000020110F000004000000C3BD45C0CAC271511CE136C0', 0, '2017-04-20 15:58:53', NULL);
+INSERT INTO alerts VALUES (6, 'Incêndio na morro de Paciências', 'Bombeiros no local, rua interditada000s', 4, 1, '2016-10-28 23:44:41', NULL, NULL, '15:19:07', '0101000020110F00000400000073D145C0BA2741A543E736C0', 0, NULL, NULL);
+INSERT INTO alerts VALUES (35, 'Teste', 'Teste mais e mais 2017', 1, 1, '2017-04-30 07:59:13', NULL, NULL, '14:36:25', '0101000020110F0000FCFFFF3FCCB045C02BCB5B315FF736C0', 0, NULL, NULL);
+INSERT INTO alerts VALUES (90, 'Arrastão', 'Bandidos armados na estrada!', 3, 1, '2017-05-26 13:29:52', NULL, NULL, NULL, '0101000020110F0000FBFFFF9092D545C0650E0FF48AEA36C0', 0, NULL, '');
+INSERT INTO alerts VALUES (59, 'teste', 'Teste', 4, 1, '2017-05-21 22:11:01', NULL, NULL, NULL, '0101000020110F0000070000B8C3C845C0B6C22369BF0A37C0', 0, NULL, '');
+INSERT INTO alerts VALUES (72, 'Perigo, obras', 'Prefeitura resolveu faze operação tapa buraco.', 4, 1, '2017-05-21 23:25:20', NULL, NULL, '23:43:11', '0101000020110F000000000000DCC245C0A041F719AAEA36C0', 0, NULL, '');
+INSERT INTO alerts VALUES (37, 'Acidente', 'Acidente de dois ciclistas em frente ao santa mônica7', 1, 1, '2017-05-06 16:27:06', NULL, 1, '20:45:36', '0101000020110F0000FDFFFF6B2ED745C096208FE9C4EC36C0', 0, NULL, '');
+INSERT INTO alerts VALUES (78, 'Teste', 'teste', 2, 1, '2017-05-25 00:42:11', NULL, NULL, NULL, '0101000020110F00000800002280CF45C0874EC68DF0E936C0', 0, NULL, '');
+INSERT INTO alerts VALUES (91, 'Buraco!', 'Buraco no acostamento cuidado!', 2, 1, '2017-05-25 13:44:22', NULL, NULL, NULL, '0101000020110F0000FFFFFFFC32C945C02502212637ED36C0', 0, NULL, '');
+INSERT INTO alerts VALUES (92, 'teste', 'teste', 1, 1, '2017-05-25 13:47:33', NULL, NULL, NULL, '0101000020110F0000FFFFFF89AECF45C0EEDFE9481EF536C0', 0, NULL, '');
+INSERT INTO alerts VALUES (93, 'Teste', 'teste', 2, 1, '2017-05-25 13:49:47', NULL, NULL, NULL, '0101000020110F0000FEFFFFC9B9CF45C050315439EAF536C0', 0, NULL, '');
+INSERT INTO alerts VALUES (31, 'Via perigosa15', 'Via com muito alagamento! 9', 2, 1, '2017-04-30 07:51:15', NULL, 1, '18:17:49', '0101000020110F0000FCFFFFFF10CA45C06075383DC8F436C0', 0, NULL, NULL);
+INSERT INTO alerts VALUES (41, 'Obras', 'Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste Teste ', 4, 4, '2017-05-26 19:53:44', NULL, NULL, NULL, '0101000020110F00000100000056B245C0132B224C5DEC36C0', 0, NULL, NULL);
+INSERT INTO alerts VALUES (87, 'addsad', 'asdasads', 2, 1, '2017-05-25 02:20:02', NULL, NULL, NULL, '0101000020110F0000FCFFFF2093CC45C09E7DC6C0CBE836C0', 0, '2017-05-29 02:20:39', '');
+INSERT INTO alerts VALUES (85, 'sdfsf', 'sdfdsf', 1, 1, '2017-05-25 02:18:39', NULL, NULL, NULL, '0101000020110F0000010000F255CF45C05600E6D816F536C0', 0, '2017-05-29 02:20:39', '');
+INSERT INTO alerts VALUES (22, 'Obras no asfalto', 'Obras prefeitura do Rio de Janeiro.', 4, 1, '2017-04-20 23:21:52', 1, 1, '10:47:45', '0101000020110F0000FBFFFF7F53DA45C0DE76AA1403ED36C0', 0, '2017-05-08 20:40:14', NULL);
+INSERT INTO alerts VALUES (8, 'Acidênte no posto de combustível', 'Carro bateu em uma das bombas de combustível do posto da Av. João XXIII', 4, 2, '2016-10-28 23:50:19', NULL, NULL, '09:29:55', '0101000020110F0000FCFFFFFF20D845C08CB9C8C849E936C0', 0, '2017-05-22 10:35:46', '');
+INSERT INTO alerts VALUES (21, 'Obras BRT', 'teste', 4, 1, '2017-04-15 00:33:14', NULL, NULL, NULL, '0101000020110F0000FCFFFF6F0CB945C060449B3700DD36C0', 0, '2017-04-15 02:25:00', NULL);
+INSERT INTO alerts VALUES (33, 'Teste', 'Teste test testet teste', 1, 2, '2017-05-26 19:53:44', NULL, NULL, NULL, '0101000020110F000001000080C8BF45C01518CE7738FF36C0', 0, NULL, NULL);
+INSERT INTO alerts VALUES (26, 'Teste de outro 2', 'Teste mais e mais e de novo 4', 1, 1, '2017-04-19 23:34:08', NULL, NULL, '10:45:49', '0101000020110F000002000080C9AF45C064F765AEF5EB36C0', 0, '2017-05-08 21:10:33', NULL);
+INSERT INTO alerts VALUES (34, 'dsdsdsd 2017', 'came on baby chance!ss', 4, 1, '2017-04-30 07:54:06', 1, NULL, '00:12:39', '0101000020110F0000070000007ABB45C0248C6E9A76FF36C0', 0, '2017-05-22 01:10:31', '');
+INSERT INTO alerts VALUES (23, 'Teste teste Enable', 'Teste de novo ?', 4, 2, '2017-05-26 19:53:44', NULL, NULL, NULL, '0101000020110F0000FEFFFF7F9ACF45C0D247EE7A42EA36C0', 0, NULL, NULL);
+INSERT INTO alerts VALUES (27, 'Teste Enable', 'Teste1', 1, 1, '2017-04-19 23:51:24', NULL, NULL, NULL, '0101000020110F0000FE7F0BB785C745C09B8180BFBC0137C0', 0, '2017-04-20 15:58:53', NULL);
+INSERT INTO alerts VALUES (32, 'Asfalto quebrada', 'Muitos buracos divido asfalto quebrado ', 2, 2, '2017-05-26 19:58:44', NULL, NULL, '09:14:16', '0101000020110F0000040000C057C345C01503BAC5360237C0', 0, NULL, '');
+INSERT INTO alerts VALUES (89, 'addadsdas', 'adsdsadsa', 4, 1, '2017-05-25 02:21:06', NULL, NULL, NULL, '0101000020110F00000400008918D045C0F7EABD3527EA36C0', 0, NULL, '');
+INSERT INTO alerts VALUES (86, 'sdsdf', 'sfsd', 3, 1, '2017-05-24 02:19:18', NULL, NULL, '04:01:52', '0101000020110F00000200006DE1C845C011BB2A2B74E736C0', 0, NULL, '');
+INSERT INTO alerts VALUES (83, 'teste', 'teste', 2, 1, '2017-05-25 02:16:54', NULL, NULL, NULL, '0101000020110F0000FFFFFF1BE0CF45C00BEF937514EA36C0', 0, NULL, '');
+INSERT INTO alerts VALUES (94, 'Alfalto quebrado', 'Ciclovia muito precária!!', 2, 1, '2017-05-26 19:24:38', NULL, NULL, NULL, '0101000020110F00000000004D5DC745C0B8F52894C6E636C0', 0, NULL, 'Rua Campo Grande, Campo Grande, Rio de Janeiro/Rio de Janeiro - Brasil');
+INSERT INTO alerts VALUES (82, 'teste', 'teste
 ', 2, 1, '2017-05-25 01:52:13', NULL, NULL, NULL, '0101000020110F0000080000C0D2CF45C0C7FEA9D913EA36C0', 0, NULL, '');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (84, 'sadsad', 'asdsad', 1, 1, '2017-05-25 02:17:23', NULL, NULL, NULL, '0101000020110F0000050000193DD045C01E30531438EA36C0', 0, '2017-05-29 02:20:39', '');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (79, 'Teste', 'teste', 3, 1, '2017-05-20 00:42:45', NULL, NULL, NULL, '0101000020110F0000FDFFFF47C3CF45C01D4A516E0BEA36C0', 0, NULL, '');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (96, 'Buraco na rua', 'Teste', 4, 1, '2017-05-29 17:40:23', NULL, NULL, NULL, '0101000020110F00000000008057C745C018A9CA5D06E936C0', 0, NULL, 'Rua Cumaí, s/n, Campo Grande, Rio de Janeiro/Rio de Janeiro - Brasil');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (97, 'Cuidado dobrado!', 'Ladrões estão roubando na saída da ciclovia para a estrada', 3, 1, '2017-06-01 05:06:54', NULL, NULL, NULL, '0101000020110F000000000000A0D145C074DA7F8F12ED36C0', 0, NULL, 'Rua Pedra do Sino, s/n, Paciência, Rio de Janeiro/Rio de Janeiro - Brasil');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (99, 'Buraco', 'Ciclovia com buraco grande, cuidado!', 2, 1, '2017-06-06 11:13:43', NULL, NULL, NULL, '0101000020110F00000100002B41D845C0B49CE58550E936C0', 0, NULL, 'Rua Tenente Roland Ritimeister, s/n, Santa Cruz, Rio de Janeiro/Rio de Janeiro - Brasil');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (80, 'Obras BRT', 'gygyut', 4, 1, '2017-05-25 00:48:13', 3, 4, NULL, '0101000020110F00000100007D70CF45C0F445036EE9E936C0', 0, NULL, '');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (102, 'Trânsito intenso', 'Muitos carros e pedestres em frente a UVA', 2, 1, '2017-06-08 00:14:22', NULL, NULL, NULL, '0101000020110F0000010000BF619C45C0C931E63F87E936C0', 0, NULL, 'Rua Ibituruna, s/n, Maracanã, Rio de Janeiro/Rio de Janeiro - Brasil');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (100, 'Obras no asfalto', 'Rua parcialmente interditada devido a obra no asfalto', 4, 1, '2017-06-06 11:20:17', NULL, NULL, NULL, '0101000020110F0000000000CC17D945C06A214B317CEB36C0', 0, '2017-06-09 13:15:55', 'Rua do Império, s/n, Santa Cruz, Rio de Janeiro/Rio de Janeiro - Brasil');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (98, 'Obras CEDAE', 'Obras de esgoto feita pela CEDAE', 4, 1, '2017-06-01 05:09:08', 1, NULL, NULL, '0101000020110F0000070000007ED545C0E19C4EA9A9EF36C0', 0, '2017-06-10 05:05:39', 'Estrada de Sepetiba, s/n, Santa Cruz, Rio de Janeiro/Rio de Janeiro - Brasil');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (101, 'Animais', 'Animais silvestres atravessando a pista', 2, 1, '2017-06-07 21:01:51', NULL, NULL, NULL, '0101000020110F00000100003EF3C745C01B83944CFDE836C0', 0, NULL, 'Rua Avaré, s/n, Campo Grande, Rio de Janeiro/Rio de Janeiro - Brasil');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (103, 'atenção', 'Buraco na ciclovia', 2, 1, '2017-06-10 13:32:55', NULL, NULL, NULL, '0101000020110F000005000038DA9B45C0BAA6751CF2E936C0', 0, NULL, 'Rua Mariz e Barros, s/n, Maracanã, Rio de Janeiro/Rio de Janeiro - Brasil');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (104, 'Atenção', ' Buraco na via pessoal!!', 2, 1, '2017-06-10 14:46:21', NULL, NULL, NULL, '0101000020110F0000010000DBDC9B45C082A54A2DD9E936C0', 1, NULL, 'Rua Mariz e Barros, s/n, Maracanã, Rio de Janeiro/Rio de Janeiro - Brasil');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (105, 'Acidente de carro', 'Acidente grave, fecharam a rua
+INSERT INTO alerts VALUES (84, 'sadsad', 'asdsad', 1, 1, '2017-05-25 02:17:23', NULL, NULL, NULL, '0101000020110F0000050000193DD045C01E30531438EA36C0', 0, '2017-05-29 02:20:39', '');
+INSERT INTO alerts VALUES (79, 'Teste', 'teste', 3, 1, '2017-05-20 00:42:45', NULL, NULL, NULL, '0101000020110F0000FDFFFF47C3CF45C01D4A516E0BEA36C0', 0, NULL, '');
+INSERT INTO alerts VALUES (96, 'Buraco na rua', 'Teste', 4, 1, '2017-05-29 17:40:23', NULL, NULL, NULL, '0101000020110F00000000008057C745C018A9CA5D06E936C0', 0, NULL, 'Rua Cumaí, s/n, Campo Grande, Rio de Janeiro/Rio de Janeiro - Brasil');
+INSERT INTO alerts VALUES (97, 'Cuidado dobrado!', 'Ladrões estão roubando na saída da ciclovia para a estrada', 3, 1, '2017-06-01 05:06:54', NULL, NULL, NULL, '0101000020110F000000000000A0D145C074DA7F8F12ED36C0', 0, NULL, 'Rua Pedra do Sino, s/n, Paciência, Rio de Janeiro/Rio de Janeiro - Brasil');
+INSERT INTO alerts VALUES (99, 'Buraco', 'Ciclovia com buraco grande, cuidado!', 2, 1, '2017-06-06 11:13:43', NULL, NULL, NULL, '0101000020110F00000100002B41D845C0B49CE58550E936C0', 0, NULL, 'Rua Tenente Roland Ritimeister, s/n, Santa Cruz, Rio de Janeiro/Rio de Janeiro - Brasil');
+INSERT INTO alerts VALUES (80, 'Obras BRT', 'gygyut', 4, 1, '2017-05-25 00:48:13', 3, 4, NULL, '0101000020110F00000100007D70CF45C0F445036EE9E936C0', 0, NULL, '');
+INSERT INTO alerts VALUES (102, 'Trânsito intenso', 'Muitos carros e pedestres em frente a UVA', 2, 1, '2017-06-08 00:14:22', NULL, NULL, NULL, '0101000020110F0000010000BF619C45C0C931E63F87E936C0', 0, NULL, 'Rua Ibituruna, s/n, Maracanã, Rio de Janeiro/Rio de Janeiro - Brasil');
+INSERT INTO alerts VALUES (100, 'Obras no asfalto', 'Rua parcialmente interditada devido a obra no asfalto', 4, 1, '2017-06-06 11:20:17', NULL, NULL, NULL, '0101000020110F0000000000CC17D945C06A214B317CEB36C0', 0, '2017-06-09 13:15:55', 'Rua do Império, s/n, Santa Cruz, Rio de Janeiro/Rio de Janeiro - Brasil');
+INSERT INTO alerts VALUES (98, 'Obras CEDAE', 'Obras de esgoto feita pela CEDAE', 4, 1, '2017-06-01 05:09:08', 1, NULL, NULL, '0101000020110F0000070000007ED545C0E19C4EA9A9EF36C0', 0, '2017-06-10 05:05:39', 'Estrada de Sepetiba, s/n, Santa Cruz, Rio de Janeiro/Rio de Janeiro - Brasil');
+INSERT INTO alerts VALUES (101, 'Animais', 'Animais silvestres atravessando a pista', 2, 1, '2017-06-07 21:01:51', NULL, NULL, NULL, '0101000020110F00000100003EF3C745C01B83944CFDE836C0', 0, NULL, 'Rua Avaré, s/n, Campo Grande, Rio de Janeiro/Rio de Janeiro - Brasil');
+INSERT INTO alerts VALUES (103, 'atenção', 'Buraco na ciclovia', 2, 1, '2017-06-10 13:32:55', NULL, NULL, NULL, '0101000020110F000005000038DA9B45C0BAA6751CF2E936C0', 0, NULL, 'Rua Mariz e Barros, s/n, Maracanã, Rio de Janeiro/Rio de Janeiro - Brasil');
+INSERT INTO alerts VALUES (104, 'Atenção', ' Buraco na via pessoal!!', 2, 1, '2017-06-10 14:46:21', NULL, NULL, NULL, '0101000020110F0000010000DBDC9B45C082A54A2DD9E936C0', 1, NULL, 'Rua Mariz e Barros, s/n, Maracanã, Rio de Janeiro/Rio de Janeiro - Brasil');
+INSERT INTO alerts VALUES (105, 'Acidente de carro', 'Acidente grave, fecharam a rua
 ', 4, 1, '2017-06-10 20:20:33', NULL, NULL, NULL, '0101000020110F0000010000C5699D45C08E24554625EA36C0', 1, '2017-06-12 23:00:30', 'Rua Visconde de Itamarati, s/n, Maracanã, Rio de Janeiro/Rio de Janeiro - Brasil');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (106, 'Trânsito intenso', 'Muitos veículos, ônibus, carros e pedestres', 1, 1, '2017-06-10 20:44:04', NULL, NULL, NULL, '0101000020110F0000010000B0169C45C0CF67D07630E936C0', 1, '2017-06-12 22:40:20', 'Rua Senador Furtado, s/n, Maracanã, Rio de Janeiro/Rio de Janeiro - Brasil');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (107, 'Díficil de passar', 'Quasa não dá pra passar aqui a tarde. Muitos alunos da UVA!!!', 1, 1, '2017-06-10 20:48:10', NULL, NULL, NULL, '0101000020110F0000000000486F9C45C0BE3EB6803AE936C0', 1, '2017-06-13 03:00:21', 'Rua General Canabarro, s/n, Maracanã, Rio de Janeiro/Rio de Janeiro - Brasil');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (108, 'Bueiro aberto', 'Cuidado há um boeiro aberto.', 2, 1, '2017-06-10 21:32:55', NULL, NULL, NULL, '0101000020110F000000000050769C45C07744F61A6AE936C0', 1, '2017-06-13 03:00:21', 'Rua Moraes e Silva, s/n, Maracanã, Rio de Janeiro/Rio de Janeiro - Brasil');
-INSERT INTO alerts (id, title, description, type_id, user_id, created_date, likes, dislikes, updated_date, geom, enable, duration_date, address) VALUES (109, 'Ciclovia danificada', 'Bloco de concreto elevado, risco de queda!', 2, 1, '2017-06-12 10:56:14', NULL, NULL, NULL, '0101000020110F00000100006C3CD845C07680FDAC56E936C0', 1, NULL, 'Avenida João XXIII, s/n, Santa Cruz, Rio de Janeiro/Rio de Janeiro - Brasil');
+INSERT INTO alerts VALUES (106, 'Trânsito intenso', 'Muitos veículos, ônibus, carros e pedestres', 1, 1, '2017-06-10 20:44:04', NULL, NULL, NULL, '0101000020110F0000010000B0169C45C0CF67D07630E936C0', 1, '2017-06-12 22:40:20', 'Rua Senador Furtado, s/n, Maracanã, Rio de Janeiro/Rio de Janeiro - Brasil');
+INSERT INTO alerts VALUES (107, 'Díficil de passar', 'Quasa não dá pra passar aqui a tarde. Muitos alunos da UVA!!!', 1, 1, '2017-06-10 20:48:10', NULL, NULL, NULL, '0101000020110F0000000000486F9C45C0BE3EB6803AE936C0', 1, '2017-06-13 03:00:21', 'Rua General Canabarro, s/n, Maracanã, Rio de Janeiro/Rio de Janeiro - Brasil');
+INSERT INTO alerts VALUES (108, 'Bueiro aberto', 'Cuidado há um boeiro aberto.', 2, 1, '2017-06-10 21:32:55', NULL, NULL, NULL, '0101000020110F000000000050769C45C07744F61A6AE936C0', 1, '2017-06-13 03:00:21', 'Rua Moraes e Silva, s/n, Maracanã, Rio de Janeiro/Rio de Janeiro - Brasil');
+INSERT INTO alerts VALUES (109, 'Ciclovia danificada', 'Bloco de concreto elevado, risco de queda!', 2, 1, '2017-06-12 10:56:14', NULL, NULL, NULL, '0101000020110F00000100006C3CD845C07680FDAC56E936C0', 1, NULL, 'Avenida João XXIII, s/n, Santa Cruz, Rio de Janeiro/Rio de Janeiro - Brasil');
 
 
 --
@@ -1928,31 +1928,31 @@ SELECT pg_catalog.setval('alerts_types_id_seq', 3, true);
 -- Data for Name: bike_keeper_comments; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO bike_keeper_comments (id, bike_keeper_id, user_id, text, created_date) VALUES (1, 12, 1, 'Estou testando!', '2017-05-12 11:11:15');
-INSERT INTO bike_keeper_comments (id, bike_keeper_id, user_id, text, created_date) VALUES (2, 12, 2, 'Obrigado Marcus', '2017-05-12 11:12:09');
-INSERT INTO bike_keeper_comments (id, bike_keeper_id, user_id, text, created_date) VALUES (3, 12, 2, ':)', '2017-05-13 13:12:37');
-INSERT INTO bike_keeper_comments (id, bike_keeper_id, user_id, text, created_date) VALUES (4, 12, 3, 'Teste', '2017-05-15 10:00:00');
-INSERT INTO bike_keeper_comments (id, bike_keeper_id, user_id, text, created_date) VALUES (6, 12, 1, '<h1>Teste </h1>', '2017-05-12 11:25:33');
-INSERT INTO bike_keeper_comments (id, bike_keeper_id, user_id, text, created_date) VALUES (5, 12, 1, '<img src=txt.png>Teste 2 </img>', '2017-05-12 11:25:10');
-INSERT INTO bike_keeper_comments (id, bike_keeper_id, user_id, text, created_date) VALUES (7, 8, 1, 'Muito bom esse bicicletário', '2017-05-12 12:51:04');
-INSERT INTO bike_keeper_comments (id, bike_keeper_id, user_id, text, created_date) VALUES (8, 3, 1, 'Okkek', '2017-05-12 15:14:11');
-INSERT INTO bike_keeper_comments (id, bike_keeper_id, user_id, text, created_date) VALUES (9, 3, 1, 'teste', '2017-05-12 15:15:03');
-INSERT INTO bike_keeper_comments (id, bike_keeper_id, user_id, text, created_date) VALUES (10, 6, 1, 'teste', '2017-05-12 15:25:34');
-INSERT INTO bike_keeper_comments (id, bike_keeper_id, user_id, text, created_date) VALUES (11, 6, 1, 'teste 2', '2017-05-12 15:25:50');
-INSERT INTO bike_keeper_comments (id, bike_keeper_id, user_id, text, created_date) VALUES (12, 6, 1, 'teste 3', '2017-05-12 15:29:59');
-INSERT INTO bike_keeper_comments (id, bike_keeper_id, user_id, text, created_date) VALUES (13, 7, 1, 'Teste', '2017-05-12 15:30:52');
-INSERT INTO bike_keeper_comments (id, bike_keeper_id, user_id, text, created_date) VALUES (17, 13, 1, 'Teste', '2017-05-12 15:41:39');
-INSERT INTO bike_keeper_comments (id, bike_keeper_id, user_id, text, created_date) VALUES (18, 3, 1, 'chochomery', '2017-05-12 15:50:16');
-INSERT INTO bike_keeper_comments (id, bike_keeper_id, user_id, text, created_date) VALUES (19, 13, 1, 'opa', '2017-05-12 17:31:28');
-INSERT INTO bike_keeper_comments (id, bike_keeper_id, user_id, text, created_date) VALUES (20, 6, 1, 'Teste', '2017-05-14 01:29:04');
-INSERT INTO bike_keeper_comments (id, bike_keeper_id, user_id, text, created_date) VALUES (21, 19, 2, 'Ok', '2017-05-14 01:29:25');
-INSERT INTO bike_keeper_comments (id, bike_keeper_id, user_id, text, created_date) VALUES (23, 35, 1, 'Outro teste', '2017-05-29 17:48:52');
-INSERT INTO bike_keeper_comments (id, bike_keeper_id, user_id, text, created_date) VALUES (22, 35, 1, 'Teste', '2017-05-28 10:48:44');
-INSERT INTO bike_keeper_comments (id, bike_keeper_id, user_id, text, created_date) VALUES (24, 14, 2, 'Teste de software', '2017-05-30 07:24:53');
-INSERT INTO bike_keeper_comments (id, bike_keeper_id, user_id, text, created_date) VALUES (25, 35, 1, 'Sério?', '2017-05-30 08:00:06');
-INSERT INTO bike_keeper_comments (id, bike_keeper_id, user_id, text, created_date) VALUES (27, 41, 2, 'Não, só pela manhã por causa da escola', '2017-06-10 19:44:13');
-INSERT INTO bike_keeper_comments (id, bike_keeper_id, user_id, text, created_date) VALUES (26, 41, 1, 'Só vive cheio!', '2017-06-08 16:41:53');
-INSERT INTO bike_keeper_comments (id, bike_keeper_id, user_id, text, created_date) VALUES (28, 41, 1, 'Ok obrigado', '2017-06-10 19:45:43');
+INSERT INTO bike_keeper_comments VALUES (1, 12, 1, 'Estou testando!', '2017-05-12 11:11:15');
+INSERT INTO bike_keeper_comments VALUES (2, 12, 2, 'Obrigado Marcus', '2017-05-12 11:12:09');
+INSERT INTO bike_keeper_comments VALUES (3, 12, 2, ':)', '2017-05-13 13:12:37');
+INSERT INTO bike_keeper_comments VALUES (4, 12, 3, 'Teste', '2017-05-15 10:00:00');
+INSERT INTO bike_keeper_comments VALUES (6, 12, 1, '<h1>Teste </h1>', '2017-05-12 11:25:33');
+INSERT INTO bike_keeper_comments VALUES (5, 12, 1, '<img src=txt.png>Teste 2 </img>', '2017-05-12 11:25:10');
+INSERT INTO bike_keeper_comments VALUES (7, 8, 1, 'Muito bom esse bicicletário', '2017-05-12 12:51:04');
+INSERT INTO bike_keeper_comments VALUES (8, 3, 1, 'Okkek', '2017-05-12 15:14:11');
+INSERT INTO bike_keeper_comments VALUES (9, 3, 1, 'teste', '2017-05-12 15:15:03');
+INSERT INTO bike_keeper_comments VALUES (10, 6, 1, 'teste', '2017-05-12 15:25:34');
+INSERT INTO bike_keeper_comments VALUES (11, 6, 1, 'teste 2', '2017-05-12 15:25:50');
+INSERT INTO bike_keeper_comments VALUES (12, 6, 1, 'teste 3', '2017-05-12 15:29:59');
+INSERT INTO bike_keeper_comments VALUES (13, 7, 1, 'Teste', '2017-05-12 15:30:52');
+INSERT INTO bike_keeper_comments VALUES (17, 13, 1, 'Teste', '2017-05-12 15:41:39');
+INSERT INTO bike_keeper_comments VALUES (18, 3, 1, 'chochomery', '2017-05-12 15:50:16');
+INSERT INTO bike_keeper_comments VALUES (19, 13, 1, 'opa', '2017-05-12 17:31:28');
+INSERT INTO bike_keeper_comments VALUES (20, 6, 1, 'Teste', '2017-05-14 01:29:04');
+INSERT INTO bike_keeper_comments VALUES (21, 19, 2, 'Ok', '2017-05-14 01:29:25');
+INSERT INTO bike_keeper_comments VALUES (23, 35, 1, 'Outro teste', '2017-05-29 17:48:52');
+INSERT INTO bike_keeper_comments VALUES (22, 35, 1, 'Teste', '2017-05-28 10:48:44');
+INSERT INTO bike_keeper_comments VALUES (24, 14, 2, 'Teste de software', '2017-05-30 07:24:53');
+INSERT INTO bike_keeper_comments VALUES (25, 35, 1, 'Sério?', '2017-05-30 08:00:06');
+INSERT INTO bike_keeper_comments VALUES (27, 41, 2, 'Não, só pela manhã por causa da escola', '2017-06-10 19:44:13');
+INSERT INTO bike_keeper_comments VALUES (26, 41, 1, 'Só vive cheio!', '2017-06-08 16:41:53');
+INSERT INTO bike_keeper_comments VALUES (28, 41, 1, 'Ok obrigado', '2017-06-10 19:45:43');
 
 
 --
@@ -1970,48 +1970,48 @@ SELECT pg_catalog.setval('bike_keeper_comments_id_seq', 28, true);
 -- Data for Name: bike_keepers; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (2, 'Bike Park', 1, 1, 15, 15, 1, 'Administração privada, próximo ao centro de Santa Cruz.', 0, 0, '2017-01-27 20:43:02', 0, '0101000020110F000002000004E1D745C06B44DE3313EA36C0', 'fcbe800376b367d2ee2aff49f589e68105223f1ef74675c4527ecbbd86f833232', 3, '2017-05-22 04:28:10', 'Segunda a Sexta 8h-22h', '', '', '', 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (17, 'Teste', NULL, NULL, 120, NULL, 1, 'Marambaia', 0, 0, '2017-05-09 12:21:24', 0, '0101000020110F00000200008035F845C051C8CB80A91137C0', 'f4da9f0fb3cab7656917532e4b7507fe17c0157d0c90b5f6521d0b5b3997e61d17', 0, '2017-05-21 17:51:56', '31h', '', '', NULL, 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (21, 'Teste', NULL, NULL, 4, 4, 1, 'Teste dois', 0, 0, '2017-05-10 14:00:30', 0, '0101000020110F000002000098CBD145C0EE4968488CF336C0', 'b098cceb6eb93af9a666550b60d9ea66bd0aba757f37812a8961b975cfd606a621', 3, '2017-05-22 06:24:34', 'Teste', '21 998555555', 'teste@golp.net', '', 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (3, 'Biciletário Comunitário', 1, NULL, 200, NULL, 1, 'Teste', 1, 0, '2017-05-03 19:58:19', 0, '0101000020110F00000200008055BA45C05E6317C745E136C0', '7b1403a21d566ab260697b6be6071b8a6584055c1e3c5f35531c038faccbea5f3', 0, NULL, 'sds', NULL, NULL, NULL, 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (30, 'Teste ssss', NULL, NULL, 150, NULL, 1, 'teste ssss', 1, 1, '2017-05-24 16:34:44', 0, '0101000020110F000004000060DBCC45C09A78C7F815E936C0', '92ef4d128f5428735be5bd332510bb5cfe51c05e490cfefe5afb47b3803cda8f29', NULL, '2017-05-25 04:00:30', '24h', NULL, NULL, '', 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (4, 'Teste', NULL, 1, 150, NULL, 1, 'Teste', 0, 0, '2017-05-09 11:38:20', 0, '0101000020110F00000200008049C645C084ECE2D281E736C0', 'c6b73e816c0d379fdc8d48cfc960d4d678ecc90a1e3bd9ae7cd00f95e7ec841d4', 0, NULL, 'dssf', NULL, NULL, NULL, 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (28, 'Teste cg', NULL, NULL, 56, NULL, 1, 'teste', 0, 1, '2017-05-21 20:19:13', 0, '0101000020110F0000FDFFFF5F49C845C0CF256B2EA6F336C0', 'ed030e4c1f2caecb5a980160ae6e08d64cc7ae9207cd0884ebad9221acbc3f2a28', 0, NULL, 'Seg a Sex 06h-22h', NULL, NULL, '', 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (19, 'EB bike', NULL, NULL, 200, 3, 1, 'Teste', 1, 0, '2017-05-10 13:47:50', 0, '0101000020110F0000000000D06FD745C08E471FD1EDE836C0', 'ffeef7dfc257127d87214c15e3afb6ec110928b4059d6d4dbe285c9eaf95ee6919', 1, '2017-05-22 06:23:39', '24h', NULL, NULL, NULL, 0);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (9, 'teste', NULL, 1, 40, NULL, 1, 'teste', 1, 0, '2017-05-09 12:07:11', 0, '0101000020110F00000500008004B145C097996E1C1BF536C0', 'd64d764cbbb0d412e80d0a16521b97918bb4ba7f01f6ece82f718d7bc06906719', 0, NULL, 'gd', NULL, NULL, NULL, 0);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (25, 'Bike CG', NULL, NULL, 16, 16, 2, 'Teste', 0, 0, '2017-05-21 20:14:47', 0, '0101000020110F0000010000C008C745C0028A9ABD70EF36C0', 'c8cfc93e3d74e487d8edb6b967a9a8ba4071be02f0fb2265f62b14369579e26925', 3, '2017-05-22 09:28:16', 'Seg a Sex 06h-22h', '21 30458956', 'Teste@ets.com', '', 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (1, 'Bicicletário Supervia', NULL, NULL, 250, 1, 1, 'Administrado pela concessionária de trens Supervia. Clientes que seguirem viagem de trêm não pagam taxa.', 0, 1, '2017-01-27 18:59:05', 0, '0101000020110F00000300006481D745C038B9F43D3FEA36C0', '798130f65d286205a6325ef533858fbc6ce81ad0afd8d26b4c7716388bbcc3bb1', 1, '2017-05-21 14:44:54', 'dsds', NULL, NULL, NULL, 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (18, 'Bike Vila', NULL, NULL, 150, NULL, 1, 'Teste', 1, 0, '2017-05-10 13:40:18', 0, '0101000020110F0000080000B421D845C00C43CA6629E936C0', '2bd8e87de8bd2e7ea1ba3acd3a45a052eeb04c66657134651d1538ce0186779c18', 0, '2017-05-21 17:52:34', 'seg-sab 08-22h', '', '', NULL, 0);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (10, 'tetste', NULL, NULL, 5, NULL, 1, 'tytyu', 1, 1, '2017-05-09 12:08:34', 0, '0101000020110F0000FDFFFFBF2DC045C01B26A4F3B7F936C0', 'fcc81c0395a450dcb1a256a8c7837ddacc5c5bfcdccab781aa6381f47a1c6ebb10', 1, NULL, 'g', NULL, NULL, NULL, 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (11, 'dsds', NULL, NULL, 1, NULL, 1, 'dsds', 1, 0, '2017-05-09 12:10:41', 0, '0101000020110F0000FDFFFFBF2DC045C01B26A4F3B7F936C0', '6a6749f90ef25cbf7fdd7cdf986cbb91ad3b860ad548833576bdf94de65774ce11', 0, NULL, 'dg', NULL, NULL, NULL, 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (12, 'tete', NULL, NULL, 5, NULL, 1, 'teste', 1, 1, '2017-05-09 12:11:45', 0, '0101000020110F0000FDFFFFBF2DC045C01B26A4F3B7F936C0', 'da07b04761b09443b9c392574fc4eac0925d0a3afccb8283f921dc0ee178ddd012', 1, NULL, 'dg', NULL, NULL, NULL, 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (13, 'sdsd', NULL, NULL, 1, NULL, 1, 'dsd', 1, 1, '2017-05-09 12:12:49', 0, '0101000020110F0000FAFFFFBFBED445C0D0E37F7028F636C0', '9688bc68aa8dc2d9b51acf427d9c0c9936d920577b52861c4956db368eb22bfb13', 1, NULL, 'dg', NULL, NULL, NULL, 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (16, 'teste', NULL, 1, 5, NULL, 1, 'teste', 1, 1, '2017-05-09 12:17:14', 0, '0101000020110F0000FAFFFFBF32CA45C0803467F56AFB36C0', 'fbfa7649d9b8ef423337faf13d3b15d6c5ff23121476e2d6b51fb7052849f6cf16', 5, NULL, 'dg', NULL, NULL, NULL, 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (36, 'teste', NULL, NULL, 120, NULL, 1, 'teste', 1, 1, '2017-05-25 14:57:25', 0, '0101000020110F000006000040B9D245C08AD106962AF536C0', 'f72d6f0a7605004bcaca9a633bea13500a05e460e424a6431109ecf2e10ce89d36', 0, NULL, 'ee', NULL, NULL, '', 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (24, 'Bike Thaty', NULL, NULL, 15, NULL, 2, '', 1, 1, '2017-05-21 15:55:51', 0, '0101000020110F00000300007062CC45C0C09352C5BBE936C0', '3bed12d7fede28f9e5750ff8b2c2efd94db73dad71195a12f12ecde9df370b9124', NULL, '2017-05-21 17:43:44', 'Segunda a Sexta 8h-22h', NULL, NULL, NULL, 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (7, 'Teste0000', NULL, 1, 30, NULL, 1, 'dsdsds', 1, 0, '2017-05-09 12:01:17', 0, '0101000020110F0000020000A440D845C0529D5C0A7CF836C0', 'dae30693d68e08df98e50f87b00328cd99e27caa86b873f067ad31bf0213453e7', 0, NULL, 'gd', NULL, NULL, NULL, 0);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (8, 'sdsd', 2, NULL, 45, NULL, 1, 'ghgjh', 1, 0, '2017-05-09 12:04:53', 0, '0101000020110F0000040000C0E3CD45C0D0E37F7028F636C0', '8b6be9b5487ea6de330c87b96f7fa1f7730e6e82c2f6496fa3258381b24739098', 0, '2017-05-21 15:00:00', 'gd', NULL, NULL, NULL, 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (5, 'Teste 200', NULL, NULL, 25, 10, 1, 'Mais um teste', 0, 1, '2017-05-09 11:44:41', 0, '0101000020110F0000FBFFFF7FBBAE45C064F765AEF5EB36C0', '0e03792ad29adc35de79be9fd53141cc96c36c8376883894eacc8b7cd4d0fec05', 1.29999995, NULL, 'gdf', NULL, NULL, NULL, 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (6, 'Teste +', 1, NULL, 50, NULL, 1, 'Teste :)', 0, 1, '2017-05-09 11:47:23', 0, '0101000020110F0000FBFFFFDF23D745C03E7B78D8D1F936C0', '63dcb488f0e1ea0fa7e02d4a26270005d43f73c8fafb7141cf685bc3b392dcb16', NULL, '2017-05-25 03:59:55', 'gd', NULL, NULL, '', 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (27, 'Bike Freguesia', NULL, NULL, 400, 71, 4, 'Teste', 0, 0, '2017-05-21 20:16:45', 1, '0101000020110F0000FCFFFF3F74BD45C0A3B7633C31F236C0', '671b452af42960c521138a6d34303667f44a81f1f73ca4cf75f695bebcaa14fc26', 5, '2017-05-22 09:12:14', 'Seg a Sex 06h-22h', '21 3049-0095', 'freguesia-bike@gmail.com', '', 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (32, 'ssds', NULL, NULL, 1, NULL, 1, 'sdsd', 1, 1, '2017-05-25 02:25:19', 0, '0101000020110F0000FEFFFFC242D545C09AFFB1D6E2EB36C0', 'eae2a071a1a22872e957f3ea3696dd2216d34a6a78702e1601098c7e4cf727ae32', NULL, '2017-05-25 03:59:32', 'sdsd', NULL, NULL, '', 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (37, 'Teste', 1, NULL, 22, NULL, 1, 'teste', 1, 1, '2017-05-25 15:39:55', 0, '0101000020110F00000500008078D345C0A095145839F336C0', '0c9efb7cb0e123e8dbf66339f0b27762d9e81130af9d03195fb739bb7083408437', NULL, '2017-05-25 18:34:39', '4545', NULL, NULL, '', 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (38, 'Teste de bicicletário', NULL, NULL, 15, NULL, 1, 'Teste2222 7', 0, 0, '2017-05-25 15:43:21', 0, '0101000020110F0000040000600BCA45C06B9FC2EA8BFD36C0', '46e1d5f366e3a23c44ae85211edc57c4e3083644eeb308c1c4cedd1c861eed5438', 2.9000001, '2017-06-10 18:43:51', '24h', '(021) 3386-7455', 'ccion@botat.com.br', '', 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (22, 'Bicicletário Gomes', 1, NULL, 5, NULL, 1, 'Teste de biciletário', 1, 1, '2017-05-15 21:48:45', 0, '0101000020110F000003000040BAC245C0F2834B60C8E336C0', 'e58912834f6450d62be7a1b59f202c2542e6a465e5f89ea56d1c4cc24af0f34a22', 0, NULL, 'Seg-Sex 09 as 22h', NULL, NULL, NULL, 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (33, 'Bicicletário fonte nova', 1, NULL, 30, NULL, 4, '', 0, 0, '2017-05-25 08:47:19', 1, '0101000020110F000005000008D2C445C05AE089A435E536C0', '79c69381a00bb283bde8f7e2740f507fc7b84d8792bed50143e16aefc7d2abd533', 4, NULL, 'Segunda a Sexta 08h-22h', '21 3049-0000', 's-bike@gmail.com', '', 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (23, 'teste', NULL, NULL, 10, 3, 1, 'Teste kjkkjkjjkkjk', 1, 0, '2017-05-20 18:53:19', 0, '0101000020110F0000020000809DCC45C0E47D95CE65E836C0', 'fab322ba15e25daf457023e35a779f75acfb65261b64636069b3a3d18ef262e723', 3.5, '2017-05-25 15:36:18', 'seg 24h sex 23h', '(021) 3021-5564', 'marcusfaccion@bol.com.br', '', 0);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (20, 'Teste Jardim da saud bike', 1, NULL, 30, NULL, 1, 'Teste', 1, 1, '2017-05-10 13:56:45', 0, '0101000020110F0000060000409DD045C06DDBA745C2F236C0', '63ae6a07abf3e7030ce4a43d681746f57d79e4501b9654407efada41edc4d10120', 0, NULL, 'Até as 22hs', NULL, NULL, NULL, 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (14, 'Teste', NULL, NULL, 1, NULL, 1, 'tygyu', 1, 1, '2017-05-09 12:13:36', 0, '0101000020110F0000FBFFFF7FC7CF45C0B4F771FB6DF536C0', '01e0ecf778c4cc97ab1c626a954ca9e2ce2ce29a1ef9de68dd0c7faebc7962d514', NULL, '2017-05-21 17:55:17', '16h', NULL, NULL, NULL, 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (31, 'Teste', NULL, NULL, 5, NULL, 1, 'teste', 1, 1, '2017-05-24 18:05:30', 0, '0101000020110F0000010000BE9BCC45C08BCEDC8ED4E836C0', 'b4005924e7d42e743cd8bb802e4eca50f1b2a9239fe0ed47496c12ea30ff74fe31', NULL, '2017-05-25 04:44:27', '454545', NULL, NULL, '', 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (15, 'hghg', NULL, NULL, 8, NULL, 1, 'hgjhg', 0, 0, '2017-05-09 12:14:55', 0, '0101000020110F00000600004005D245C0BFB4645BDEF136C0', '01bc5f8d88b3ddc66e7196bdd672bf69d6cf54cadc43eda05b3b178c78b568b015', 0, '2017-05-21 17:46:16', '24h', '', '', NULL, 0);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (35, 'Bike Fontes', NULL, NULL, 50, NULL, 1, 'Localizado na rua Silva Fontes Teste de imagem', 0, 0, '2017-05-25 08:58:40', 0, '0101000020110F00000300007006BF45C03AD86165FCE136C0', '84c92b7911b1515a2b73e7c72c6d8c98a1ccd1a0c82022933256c645f0a8083135', 0, '2017-05-25 15:20:34', 'seg-sex 8-22h', '(21) 33169-55__', '', '', 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (42, 'Bicicletário UVA', NULL, NULL, 15, NULL, 1, 'Acesso pela rua Senador furtado', 1, 1, '2017-06-10 21:01:03', 0, '0101000020110F000007000026469C45C0EA13C98F5AE936C0', '3cba53bdb9eeea5347de07e757b490c653e4ff41002c97bc48688b133df1183e42', NULL, '2017-06-10 21:02:01', 'Seg-Sab 07-22h', NULL, NULL, NULL, 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (44, 'CEFET-RJ', NULL, NULL, 80, NULL, 1, 'Localizado dentro do colégio', 1, 1, '2017-06-10 21:19:26', 0, '0101000020110F0000010000B4B79C45C0CD31E63F87E936C0', 'c84a89f54bb566dcc5f597eb12d783df03a01d3d7b8f6ccba35ca00abba376ff44', NULL, '2017-06-10 21:24:51', 'seg-sab 07h30 as 22h', NULL, NULL, 'aaaaa', 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (39, 'Bicicletário comunitário', NULL, NULL, 100, NULL, 1, 'Teste2103', 1, 1, '2017-05-25 16:05:15', 0, '0101000020110F0000FDFFFFCD37B745C0033861ADA70137C0', '64d37806f5f6dc8b1cc16aa8d7b90bc1bf8ca168d3124ebfd0083ef0e678e3a039', NULL, '2017-05-25 18:34:20', '8h-22h', NULL, NULL, 'Rua Sílvio da Rocha Pollis, s/n, Barra da Tijuca, Rio de Janeiro/Rio de Janeiro - Brasil', 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (45, 'CEFET-RJ', NULL, NULL, 49, NULL, 1, 'Funciona dentro do campus', 1, 1, '2017-06-10 21:27:22', 1, '0101000020110F000001000087B79C45C09705E47C8AE936C0', 'bf644e2c84edfaa4fcbf927e686de96a25a6de8b952a96233ccc4f0192c3be7245', 0, NULL, 'Segunda a Sábado 07h-22h', NULL, NULL, 'Rua General Canabarro, s/n, Maracanã, Rio de Janeiro/Rio de Janeiro - Brasil', 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (41, 'Bicicletário municipal', NULL, NULL, 100, NULL, 2, 'Bicicletário da Escola', 1, 1, '2017-06-06 11:35:44', 1, '0101000020110F000000000022FCCB45C0C77896411AE436C0', 'd4efe4ae9401434aa7fb946b66db02db86a2286406fc41102a56d16409f21fd041', 0, NULL, '24hs', NULL, NULL, 'Rua Moreno Brandão, s/n, Inhoaíba, Rio de Janeiro/Rio de Janeiro - Brasil', 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (40, 'Bike Park', 1, NULL, 200, 90, 1, 'Preço bom e confiável.', 0, 0, '2017-05-25 18:39:33', 1, '0101000020110F0000FCFFFF63DBD745C05F6A3DBB15EA36C0', 'b94af9ca8048b3c918755f316d2ddee266f064446c0cd108d65596f5eeebe96340', 2.5, '2017-06-10 22:02:58', 'Segunda a Sexta 06h-22h', '', '', 'Rua do Império 02, Santa Cruz, Rio de Janeiro/Rio de Janeiro - Brasil', 1);
-INSERT INTO bike_keepers (id, title, likes, dislikes, capacity, used_capacity, user_id, description, outdoor, public, created_date, enable, geom, public_dir_name, cost, updated_date, business_hours, tel, email, address, is_open) VALUES (43, 'Supervia Realengo', NULL, NULL, 250, NULL, 1, '', 0, 1, '2017-06-10 21:09:00', 1, '0101000020110F0000FDFFFF72EDB645C0F233C899E6DF36C0', 'ebd36777c646580afc55c25f40b53e4f866bd608b15ffe70fdaaeb8b4cf2916043', NULL, '2017-06-10 22:04:12', '06h-22h', NULL, NULL, 'Rua Doutor Lessa, s/n, Realengo, Rio de Janeiro/Rio de Janeiro - Brasil', 1);
+INSERT INTO bike_keepers VALUES (2, 'Bike Park', 1, 1, 15, 15, 1, 'Administração privada, próximo ao centro de Santa Cruz.', 0, 0, '2017-01-27 20:43:02', 0, '0101000020110F000002000004E1D745C06B44DE3313EA36C0', 'fcbe800376b367d2ee2aff49f589e68105223f1ef74675c4527ecbbd86f833232', 3, '2017-05-22 04:28:10', 'Segunda a Sexta 8h-22h', '', '', '', 1);
+INSERT INTO bike_keepers VALUES (17, 'Teste', NULL, NULL, 120, NULL, 1, 'Marambaia', 0, 0, '2017-05-09 12:21:24', 0, '0101000020110F00000200008035F845C051C8CB80A91137C0', 'f4da9f0fb3cab7656917532e4b7507fe17c0157d0c90b5f6521d0b5b3997e61d17', 0, '2017-05-21 17:51:56', '31h', '', '', NULL, 1);
+INSERT INTO bike_keepers VALUES (21, 'Teste', NULL, NULL, 4, 4, 1, 'Teste dois', 0, 0, '2017-05-10 14:00:30', 0, '0101000020110F000002000098CBD145C0EE4968488CF336C0', 'b098cceb6eb93af9a666550b60d9ea66bd0aba757f37812a8961b975cfd606a621', 3, '2017-05-22 06:24:34', 'Teste', '21 998555555', 'teste@golp.net', '', 1);
+INSERT INTO bike_keepers VALUES (3, 'Biciletário Comunitário', 1, NULL, 200, NULL, 1, 'Teste', 1, 0, '2017-05-03 19:58:19', 0, '0101000020110F00000200008055BA45C05E6317C745E136C0', '7b1403a21d566ab260697b6be6071b8a6584055c1e3c5f35531c038faccbea5f3', 0, NULL, 'sds', NULL, NULL, NULL, 1);
+INSERT INTO bike_keepers VALUES (30, 'Teste ssss', NULL, NULL, 150, NULL, 1, 'teste ssss', 1, 1, '2017-05-24 16:34:44', 0, '0101000020110F000004000060DBCC45C09A78C7F815E936C0', '92ef4d128f5428735be5bd332510bb5cfe51c05e490cfefe5afb47b3803cda8f29', NULL, '2017-05-25 04:00:30', '24h', NULL, NULL, '', 1);
+INSERT INTO bike_keepers VALUES (4, 'Teste', NULL, 1, 150, NULL, 1, 'Teste', 0, 0, '2017-05-09 11:38:20', 0, '0101000020110F00000200008049C645C084ECE2D281E736C0', 'c6b73e816c0d379fdc8d48cfc960d4d678ecc90a1e3bd9ae7cd00f95e7ec841d4', 0, NULL, 'dssf', NULL, NULL, NULL, 1);
+INSERT INTO bike_keepers VALUES (28, 'Teste cg', NULL, NULL, 56, NULL, 1, 'teste', 0, 1, '2017-05-21 20:19:13', 0, '0101000020110F0000FDFFFF5F49C845C0CF256B2EA6F336C0', 'ed030e4c1f2caecb5a980160ae6e08d64cc7ae9207cd0884ebad9221acbc3f2a28', 0, NULL, 'Seg a Sex 06h-22h', NULL, NULL, '', 1);
+INSERT INTO bike_keepers VALUES (19, 'EB bike', NULL, NULL, 200, 3, 1, 'Teste', 1, 0, '2017-05-10 13:47:50', 0, '0101000020110F0000000000D06FD745C08E471FD1EDE836C0', 'ffeef7dfc257127d87214c15e3afb6ec110928b4059d6d4dbe285c9eaf95ee6919', 1, '2017-05-22 06:23:39', '24h', NULL, NULL, NULL, 0);
+INSERT INTO bike_keepers VALUES (9, 'teste', NULL, 1, 40, NULL, 1, 'teste', 1, 0, '2017-05-09 12:07:11', 0, '0101000020110F00000500008004B145C097996E1C1BF536C0', 'd64d764cbbb0d412e80d0a16521b97918bb4ba7f01f6ece82f718d7bc06906719', 0, NULL, 'gd', NULL, NULL, NULL, 0);
+INSERT INTO bike_keepers VALUES (25, 'Bike CG', NULL, NULL, 16, 16, 2, 'Teste', 0, 0, '2017-05-21 20:14:47', 0, '0101000020110F0000010000C008C745C0028A9ABD70EF36C0', 'c8cfc93e3d74e487d8edb6b967a9a8ba4071be02f0fb2265f62b14369579e26925', 3, '2017-05-22 09:28:16', 'Seg a Sex 06h-22h', '21 30458956', 'Teste@ets.com', '', 1);
+INSERT INTO bike_keepers VALUES (1, 'Bicicletário Supervia', NULL, NULL, 250, 1, 1, 'Administrado pela concessionária de trens Supervia. Clientes que seguirem viagem de trêm não pagam taxa.', 0, 1, '2017-01-27 18:59:05', 0, '0101000020110F00000300006481D745C038B9F43D3FEA36C0', '798130f65d286205a6325ef533858fbc6ce81ad0afd8d26b4c7716388bbcc3bb1', 1, '2017-05-21 14:44:54', 'dsds', NULL, NULL, NULL, 1);
+INSERT INTO bike_keepers VALUES (18, 'Bike Vila', NULL, NULL, 150, NULL, 1, 'Teste', 1, 0, '2017-05-10 13:40:18', 0, '0101000020110F0000080000B421D845C00C43CA6629E936C0', '2bd8e87de8bd2e7ea1ba3acd3a45a052eeb04c66657134651d1538ce0186779c18', 0, '2017-05-21 17:52:34', 'seg-sab 08-22h', '', '', NULL, 0);
+INSERT INTO bike_keepers VALUES (10, 'tetste', NULL, NULL, 5, NULL, 1, 'tytyu', 1, 1, '2017-05-09 12:08:34', 0, '0101000020110F0000FDFFFFBF2DC045C01B26A4F3B7F936C0', 'fcc81c0395a450dcb1a256a8c7837ddacc5c5bfcdccab781aa6381f47a1c6ebb10', 1, NULL, 'g', NULL, NULL, NULL, 1);
+INSERT INTO bike_keepers VALUES (11, 'dsds', NULL, NULL, 1, NULL, 1, 'dsds', 1, 0, '2017-05-09 12:10:41', 0, '0101000020110F0000FDFFFFBF2DC045C01B26A4F3B7F936C0', '6a6749f90ef25cbf7fdd7cdf986cbb91ad3b860ad548833576bdf94de65774ce11', 0, NULL, 'dg', NULL, NULL, NULL, 1);
+INSERT INTO bike_keepers VALUES (12, 'tete', NULL, NULL, 5, NULL, 1, 'teste', 1, 1, '2017-05-09 12:11:45', 0, '0101000020110F0000FDFFFFBF2DC045C01B26A4F3B7F936C0', 'da07b04761b09443b9c392574fc4eac0925d0a3afccb8283f921dc0ee178ddd012', 1, NULL, 'dg', NULL, NULL, NULL, 1);
+INSERT INTO bike_keepers VALUES (13, 'sdsd', NULL, NULL, 1, NULL, 1, 'dsd', 1, 1, '2017-05-09 12:12:49', 0, '0101000020110F0000FAFFFFBFBED445C0D0E37F7028F636C0', '9688bc68aa8dc2d9b51acf427d9c0c9936d920577b52861c4956db368eb22bfb13', 1, NULL, 'dg', NULL, NULL, NULL, 1);
+INSERT INTO bike_keepers VALUES (16, 'teste', NULL, 1, 5, NULL, 1, 'teste', 1, 1, '2017-05-09 12:17:14', 0, '0101000020110F0000FAFFFFBF32CA45C0803467F56AFB36C0', 'fbfa7649d9b8ef423337faf13d3b15d6c5ff23121476e2d6b51fb7052849f6cf16', 5, NULL, 'dg', NULL, NULL, NULL, 1);
+INSERT INTO bike_keepers VALUES (36, 'teste', NULL, NULL, 120, NULL, 1, 'teste', 1, 1, '2017-05-25 14:57:25', 0, '0101000020110F000006000040B9D245C08AD106962AF536C0', 'f72d6f0a7605004bcaca9a633bea13500a05e460e424a6431109ecf2e10ce89d36', 0, NULL, 'ee', NULL, NULL, '', 1);
+INSERT INTO bike_keepers VALUES (24, 'Bike Thaty', NULL, NULL, 15, NULL, 2, '', 1, 1, '2017-05-21 15:55:51', 0, '0101000020110F00000300007062CC45C0C09352C5BBE936C0', '3bed12d7fede28f9e5750ff8b2c2efd94db73dad71195a12f12ecde9df370b9124', NULL, '2017-05-21 17:43:44', 'Segunda a Sexta 8h-22h', NULL, NULL, NULL, 1);
+INSERT INTO bike_keepers VALUES (7, 'Teste0000', NULL, 1, 30, NULL, 1, 'dsdsds', 1, 0, '2017-05-09 12:01:17', 0, '0101000020110F0000020000A440D845C0529D5C0A7CF836C0', 'dae30693d68e08df98e50f87b00328cd99e27caa86b873f067ad31bf0213453e7', 0, NULL, 'gd', NULL, NULL, NULL, 0);
+INSERT INTO bike_keepers VALUES (8, 'sdsd', 2, NULL, 45, NULL, 1, 'ghgjh', 1, 0, '2017-05-09 12:04:53', 0, '0101000020110F0000040000C0E3CD45C0D0E37F7028F636C0', '8b6be9b5487ea6de330c87b96f7fa1f7730e6e82c2f6496fa3258381b24739098', 0, '2017-05-21 15:00:00', 'gd', NULL, NULL, NULL, 1);
+INSERT INTO bike_keepers VALUES (5, 'Teste 200', NULL, NULL, 25, 10, 1, 'Mais um teste', 0, 1, '2017-05-09 11:44:41', 0, '0101000020110F0000FBFFFF7FBBAE45C064F765AEF5EB36C0', '0e03792ad29adc35de79be9fd53141cc96c36c8376883894eacc8b7cd4d0fec05', 1.29999995, NULL, 'gdf', NULL, NULL, NULL, 1);
+INSERT INTO bike_keepers VALUES (6, 'Teste +', 1, NULL, 50, NULL, 1, 'Teste :)', 0, 1, '2017-05-09 11:47:23', 0, '0101000020110F0000FBFFFFDF23D745C03E7B78D8D1F936C0', '63dcb488f0e1ea0fa7e02d4a26270005d43f73c8fafb7141cf685bc3b392dcb16', NULL, '2017-05-25 03:59:55', 'gd', NULL, NULL, '', 1);
+INSERT INTO bike_keepers VALUES (27, 'Bike Freguesia', NULL, NULL, 400, 71, 4, 'Teste', 0, 0, '2017-05-21 20:16:45', 1, '0101000020110F0000FCFFFF3F74BD45C0A3B7633C31F236C0', '671b452af42960c521138a6d34303667f44a81f1f73ca4cf75f695bebcaa14fc26', 5, '2017-05-22 09:12:14', 'Seg a Sex 06h-22h', '21 3049-0095', 'freguesia-bike@gmail.com', '', 1);
+INSERT INTO bike_keepers VALUES (32, 'ssds', NULL, NULL, 1, NULL, 1, 'sdsd', 1, 1, '2017-05-25 02:25:19', 0, '0101000020110F0000FEFFFFC242D545C09AFFB1D6E2EB36C0', 'eae2a071a1a22872e957f3ea3696dd2216d34a6a78702e1601098c7e4cf727ae32', NULL, '2017-05-25 03:59:32', 'sdsd', NULL, NULL, '', 1);
+INSERT INTO bike_keepers VALUES (37, 'Teste', 1, NULL, 22, NULL, 1, 'teste', 1, 1, '2017-05-25 15:39:55', 0, '0101000020110F00000500008078D345C0A095145839F336C0', '0c9efb7cb0e123e8dbf66339f0b27762d9e81130af9d03195fb739bb7083408437', NULL, '2017-05-25 18:34:39', '4545', NULL, NULL, '', 1);
+INSERT INTO bike_keepers VALUES (38, 'Teste de bicicletário', NULL, NULL, 15, NULL, 1, 'Teste2222 7', 0, 0, '2017-05-25 15:43:21', 0, '0101000020110F0000040000600BCA45C06B9FC2EA8BFD36C0', '46e1d5f366e3a23c44ae85211edc57c4e3083644eeb308c1c4cedd1c861eed5438', 2.9000001, '2017-06-10 18:43:51', '24h', '(021) 3386-7455', 'ccion@botat.com.br', '', 1);
+INSERT INTO bike_keepers VALUES (22, 'Bicicletário Gomes', 1, NULL, 5, NULL, 1, 'Teste de biciletário', 1, 1, '2017-05-15 21:48:45', 0, '0101000020110F000003000040BAC245C0F2834B60C8E336C0', 'e58912834f6450d62be7a1b59f202c2542e6a465e5f89ea56d1c4cc24af0f34a22', 0, NULL, 'Seg-Sex 09 as 22h', NULL, NULL, NULL, 1);
+INSERT INTO bike_keepers VALUES (33, 'Bicicletário fonte nova', 1, NULL, 30, NULL, 4, '', 0, 0, '2017-05-25 08:47:19', 1, '0101000020110F000005000008D2C445C05AE089A435E536C0', '79c69381a00bb283bde8f7e2740f507fc7b84d8792bed50143e16aefc7d2abd533', 4, NULL, 'Segunda a Sexta 08h-22h', '21 3049-0000', 's-bike@gmail.com', '', 1);
+INSERT INTO bike_keepers VALUES (23, 'teste', NULL, NULL, 10, 3, 1, 'Teste kjkkjkjjkkjk', 1, 0, '2017-05-20 18:53:19', 0, '0101000020110F0000020000809DCC45C0E47D95CE65E836C0', 'fab322ba15e25daf457023e35a779f75acfb65261b64636069b3a3d18ef262e723', 3.5, '2017-05-25 15:36:18', 'seg 24h sex 23h', '(021) 3021-5564', 'marcusfaccion@bol.com.br', '', 0);
+INSERT INTO bike_keepers VALUES (20, 'Teste Jardim da saud bike', 1, NULL, 30, NULL, 1, 'Teste', 1, 1, '2017-05-10 13:56:45', 0, '0101000020110F0000060000409DD045C06DDBA745C2F236C0', '63ae6a07abf3e7030ce4a43d681746f57d79e4501b9654407efada41edc4d10120', 0, NULL, 'Até as 22hs', NULL, NULL, NULL, 1);
+INSERT INTO bike_keepers VALUES (14, 'Teste', NULL, NULL, 1, NULL, 1, 'tygyu', 1, 1, '2017-05-09 12:13:36', 0, '0101000020110F0000FBFFFF7FC7CF45C0B4F771FB6DF536C0', '01e0ecf778c4cc97ab1c626a954ca9e2ce2ce29a1ef9de68dd0c7faebc7962d514', NULL, '2017-05-21 17:55:17', '16h', NULL, NULL, NULL, 1);
+INSERT INTO bike_keepers VALUES (31, 'Teste', NULL, NULL, 5, NULL, 1, 'teste', 1, 1, '2017-05-24 18:05:30', 0, '0101000020110F0000010000BE9BCC45C08BCEDC8ED4E836C0', 'b4005924e7d42e743cd8bb802e4eca50f1b2a9239fe0ed47496c12ea30ff74fe31', NULL, '2017-05-25 04:44:27', '454545', NULL, NULL, '', 1);
+INSERT INTO bike_keepers VALUES (15, 'hghg', NULL, NULL, 8, NULL, 1, 'hgjhg', 0, 0, '2017-05-09 12:14:55', 0, '0101000020110F00000600004005D245C0BFB4645BDEF136C0', '01bc5f8d88b3ddc66e7196bdd672bf69d6cf54cadc43eda05b3b178c78b568b015', 0, '2017-05-21 17:46:16', '24h', '', '', NULL, 0);
+INSERT INTO bike_keepers VALUES (35, 'Bike Fontes', NULL, NULL, 50, NULL, 1, 'Localizado na rua Silva Fontes Teste de imagem', 0, 0, '2017-05-25 08:58:40', 0, '0101000020110F00000300007006BF45C03AD86165FCE136C0', '84c92b7911b1515a2b73e7c72c6d8c98a1ccd1a0c82022933256c645f0a8083135', 0, '2017-05-25 15:20:34', 'seg-sex 8-22h', '(21) 33169-55__', '', '', 1);
+INSERT INTO bike_keepers VALUES (42, 'Bicicletário UVA', NULL, NULL, 15, NULL, 1, 'Acesso pela rua Senador furtado', 1, 1, '2017-06-10 21:01:03', 0, '0101000020110F000007000026469C45C0EA13C98F5AE936C0', '3cba53bdb9eeea5347de07e757b490c653e4ff41002c97bc48688b133df1183e42', NULL, '2017-06-10 21:02:01', 'Seg-Sab 07-22h', NULL, NULL, NULL, 1);
+INSERT INTO bike_keepers VALUES (44, 'CEFET-RJ', NULL, NULL, 80, NULL, 1, 'Localizado dentro do colégio', 1, 1, '2017-06-10 21:19:26', 0, '0101000020110F0000010000B4B79C45C0CD31E63F87E936C0', 'c84a89f54bb566dcc5f597eb12d783df03a01d3d7b8f6ccba35ca00abba376ff44', NULL, '2017-06-10 21:24:51', 'seg-sab 07h30 as 22h', NULL, NULL, 'aaaaa', 1);
+INSERT INTO bike_keepers VALUES (39, 'Bicicletário comunitário', NULL, NULL, 100, NULL, 1, 'Teste2103', 1, 1, '2017-05-25 16:05:15', 0, '0101000020110F0000FDFFFFCD37B745C0033861ADA70137C0', '64d37806f5f6dc8b1cc16aa8d7b90bc1bf8ca168d3124ebfd0083ef0e678e3a039', NULL, '2017-05-25 18:34:20', '8h-22h', NULL, NULL, 'Rua Sílvio da Rocha Pollis, s/n, Barra da Tijuca, Rio de Janeiro/Rio de Janeiro - Brasil', 1);
+INSERT INTO bike_keepers VALUES (45, 'CEFET-RJ', NULL, NULL, 49, NULL, 1, 'Funciona dentro do campus', 1, 1, '2017-06-10 21:27:22', 1, '0101000020110F000001000087B79C45C09705E47C8AE936C0', 'bf644e2c84edfaa4fcbf927e686de96a25a6de8b952a96233ccc4f0192c3be7245', 0, NULL, 'Segunda a Sábado 07h-22h', NULL, NULL, 'Rua General Canabarro, s/n, Maracanã, Rio de Janeiro/Rio de Janeiro - Brasil', 1);
+INSERT INTO bike_keepers VALUES (41, 'Bicicletário municipal', NULL, NULL, 100, NULL, 2, 'Bicicletário da Escola', 1, 1, '2017-06-06 11:35:44', 1, '0101000020110F000000000022FCCB45C0C77896411AE436C0', 'd4efe4ae9401434aa7fb946b66db02db86a2286406fc41102a56d16409f21fd041', 0, NULL, '24hs', NULL, NULL, 'Rua Moreno Brandão, s/n, Inhoaíba, Rio de Janeiro/Rio de Janeiro - Brasil', 1);
+INSERT INTO bike_keepers VALUES (40, 'Bike Park', 1, NULL, 200, 90, 1, 'Preço bom e confiável.', 0, 0, '2017-05-25 18:39:33', 1, '0101000020110F0000FCFFFF63DBD745C05F6A3DBB15EA36C0', 'b94af9ca8048b3c918755f316d2ddee266f064446c0cd108d65596f5eeebe96340', 2.5, '2017-06-10 22:02:58', 'Segunda a Sexta 06h-22h', '', '', 'Rua do Império 02, Santa Cruz, Rio de Janeiro/Rio de Janeiro - Brasil', 1);
+INSERT INTO bike_keepers VALUES (43, 'Supervia Realengo', NULL, NULL, 250, NULL, 1, '', 0, 1, '2017-06-10 21:09:00', 1, '0101000020110F0000FDFFFF72EDB645C0F233C899E6DF36C0', 'ebd36777c646580afc55c25f40b53e4f866bd608b15ffe70fdaaeb8b4cf2916043', NULL, '2017-06-10 22:04:12', '06h-22h', NULL, NULL, 'Rua Doutor Lessa, s/n, Realengo, Rio de Janeiro/Rio de Janeiro - Brasil', 1);
 
 
 --
@@ -2029,19 +2029,19 @@ SELECT pg_catalog.setval('bike_keepers_id_seq', 45, true);
 -- Data for Name: bike_keepers_multimedias; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO bike_keepers_multimedias (bike_keepers_id, multimedias_id) VALUES (35, 79);
-INSERT INTO bike_keepers_multimedias (bike_keepers_id, multimedias_id) VALUES (36, 80);
-INSERT INTO bike_keepers_multimedias (bike_keepers_id, multimedias_id) VALUES (37, 81);
-INSERT INTO bike_keepers_multimedias (bike_keepers_id, multimedias_id) VALUES (38, 82);
-INSERT INTO bike_keepers_multimedias (bike_keepers_id, multimedias_id) VALUES (39, 83);
-INSERT INTO bike_keepers_multimedias (bike_keepers_id, multimedias_id) VALUES (41, 85);
-INSERT INTO bike_keepers_multimedias (bike_keepers_id, multimedias_id) VALUES (42, 87);
-INSERT INTO bike_keepers_multimedias (bike_keepers_id, multimedias_id) VALUES (43, 88);
-INSERT INTO bike_keepers_multimedias (bike_keepers_id, multimedias_id) VALUES (44, 89);
-INSERT INTO bike_keepers_multimedias (bike_keepers_id, multimedias_id) VALUES (44, 90);
-INSERT INTO bike_keepers_multimedias (bike_keepers_id, multimedias_id) VALUES (45, 91);
-INSERT INTO bike_keepers_multimedias (bike_keepers_id, multimedias_id) VALUES (45, 92);
-INSERT INTO bike_keepers_multimedias (bike_keepers_id, multimedias_id) VALUES (40, 93);
+INSERT INTO bike_keepers_multimedias VALUES (35, 79);
+INSERT INTO bike_keepers_multimedias VALUES (36, 80);
+INSERT INTO bike_keepers_multimedias VALUES (37, 81);
+INSERT INTO bike_keepers_multimedias VALUES (38, 82);
+INSERT INTO bike_keepers_multimedias VALUES (39, 83);
+INSERT INTO bike_keepers_multimedias VALUES (41, 85);
+INSERT INTO bike_keepers_multimedias VALUES (42, 87);
+INSERT INTO bike_keepers_multimedias VALUES (43, 88);
+INSERT INTO bike_keepers_multimedias VALUES (44, 89);
+INSERT INTO bike_keepers_multimedias VALUES (44, 90);
+INSERT INTO bike_keepers_multimedias VALUES (45, 91);
+INSERT INTO bike_keepers_multimedias VALUES (45, 92);
+INSERT INTO bike_keepers_multimedias VALUES (40, 93);
 
 
 --
@@ -2067,7 +2067,7 @@ SELECT pg_catalog.setval('events_id_seq', 1, false);
 -- Data for Name: galleries; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO galleries (id, title, user_id, created_date) VALUES (0, 'Default Gallery', 0, '2015-11-03 13:41:00');
+INSERT INTO galleries VALUES (0, 'Default Gallery', 0, '2015-11-03 13:41:00');
 
 
 --
@@ -2085,9 +2085,9 @@ SELECT pg_catalog.setval('galleries_id_seq', 1, false);
 -- Data for Name: multimedia_types; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO multimedia_types (id, title, description, mime_types) VALUES (1, 'imagem', 'Fotografias ou  imagens', 'image/jpeg;image/pjpeg;image/jpeg;image/png');
-INSERT INTO multimedia_types (id, title, description, mime_types) VALUES (2, 'vídeo', 'Vídeo de média duração (avi, mp4, webm)', 'video/avi;video/msvideo;video/x-msvideo;video/webm;video/ogg');
-INSERT INTO multimedia_types (id, title, description, mime_types) VALUES (0, 'default', 'Genérico', 'application/octet-stream;');
+INSERT INTO multimedia_types VALUES (1, 'imagem', 'Fotografias ou  imagens', 'image/jpeg;image/pjpeg;image/jpeg;image/png');
+INSERT INTO multimedia_types VALUES (2, 'vídeo', 'Vídeo de média duração (avi, mp4, webm)', 'video/avi;video/msvideo;video/x-msvideo;video/webm;video/ogg');
+INSERT INTO multimedia_types VALUES (0, 'default', 'Genérico', 'application/octet-stream;');
 
 
 --
@@ -2105,99 +2105,99 @@ SELECT pg_catalog.setval('multimedia_types_id_seq', 2, true);
 -- Data for Name: multimedias; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (1, 1, NULL, '2017-01-10 11:38:21', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/fcbe800376b367d2ee2aff49f589e68105223f1ef74675c4527ecbbd86f833232/images/bicicletario_sc1.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (2, 1, NULL, '2017-01-10 11:39:08', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/fcbe800376b367d2ee2aff49f589e68105223f1ef74675c4527ecbbd86f833232/images/bicicletario_sc2.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (3, 1, NULL, '2017-01-26 18:04:30', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/7b1403a21d566ab260697b6be6071b8a6584055c1e3c5f35531c038faccbea5f3/images/bicicletario_sc1.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (4, 1, NULL, '2017-01-26 18:04:31', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/7b1403a21d566ab260697b6be6071b8a6584055c1e3c5f35531c038faccbea5f3/images/bicicletario_sc2.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (5, 1, NULL, '2017-01-26 18:10:02', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/7b1403a21d566ab260697b6be6071b8a6584055c1e3c5f35531c038faccbea5f3/images/bicicletario_sc1.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (6, 1, NULL, '2017-01-26 18:10:02', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/7b1403a21d566ab260697b6be6071b8a6584055c1e3c5f35531c038faccbea5f3/images/bicicletario_sc2.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (7, 1, NULL, '2017-01-26 18:11:10', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/798130f65d286205a6325ef533858fbc6ce81ad0afd8d26b4c7716388bbcc3bb1/images/bicicletario_sc1.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (8, 1, NULL, '2017-01-26 18:11:10', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/798130f65d286205a6325ef533858fbc6ce81ad0afd8d26b4c7716388bbcc3bb1/images/bicicletario_sc2.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (9, 1, NULL, '2017-01-26 18:45:32', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/63dcb488f0e1ea0fa7e02d4a26270005d43f73c8fafb7141cf685bc3b392dcb16/images/bicicletario_sc1.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (10, 1, NULL, '2017-01-26 18:45:32', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/63dcb488f0e1ea0fa7e02d4a26270005d43f73c8fafb7141cf685bc3b392dcb16/images/bicicletario_sc2.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (11, 1, NULL, '2017-01-26 18:48:23', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/dae30693d68e08df98e50f87b00328cd99e27caa86b873f067ad31bf0213453e7/images/bicicletario_sc1.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (12, 1, NULL, '2017-01-26 18:48:24', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/dae30693d68e08df98e50f87b00328cd99e27caa86b873f067ad31bf0213453e7/images/bicicletario_sc2.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (13, 1, NULL, '2017-01-26 19:05:48', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/798130f65d286205a6325ef533858fbc6ce81ad0afd8d26b4c7716388bbcc3bb1/images/bicicletario_sc1.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (14, 1, NULL, '2017-01-26 19:05:48', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/798130f65d286205a6325ef533858fbc6ce81ad0afd8d26b4c7716388bbcc3bb1/images/bicicletario_sc2.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (15, 1, NULL, '2017-01-26 19:11:04', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/7b1403a21d566ab260697b6be6071b8a6584055c1e3c5f35531c038faccbea5f3/images/bicicletario_sc1.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (16, 1, NULL, '2017-01-26 19:11:04', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/7b1403a21d566ab260697b6be6071b8a6584055c1e3c5f35531c038faccbea5f3/images/bicicletario_sc2.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (17, 1, NULL, '2017-01-26 19:56:05', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/c6b73e816c0d379fdc8d48cfc960d4d678ecc90a1e3bd9ae7cd00f95e7ec841d4/images/bicicletario_sc2.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (18, 1, NULL, '2017-01-26 19:59:14', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/0e03792ad29adc35de79be9fd53141cc96c36c8376883894eacc8b7cd4d0fec05/images/bicicletario_sc1.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (19, 1, NULL, '2017-01-26 20:04:48', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/63dcb488f0e1ea0fa7e02d4a26270005d43f73c8fafb7141cf685bc3b392dcb16/images/bicicletario_sc1.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (20, 1, NULL, '2017-01-26 20:07:43', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/dae30693d68e08df98e50f87b00328cd99e27caa86b873f067ad31bf0213453e7/images/bicicletario_sc2.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (21, 1, NULL, '2017-01-26 20:09:43', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/8b6be9b5487ea6de330c87b96f7fa1f7730e6e82c2f6496fa3258381b24739098/images/bicicletario_sc1.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (22, 1, NULL, '2017-01-26 20:27:33', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/d64d764cbbb0d412e80d0a16521b97918bb4ba7f01f6ece82f718d7bc06906719/images/bicicletario_sc1.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (23, 1, NULL, '2017-01-26 20:37:55', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/fcc81c0395a450dcb1a256a8c7837ddacc5c5bfcdccab781aa6381f47a1c6ebb10/images/bicicletario_sc2.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (24, 1, NULL, '2017-01-26 20:50:39', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/798130f65d286205a6325ef533858fbc6ce81ad0afd8d26b4c7716388bbcc3bb1/images/bicicletario_sc1.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (25, 1, NULL, '2017-01-26 20:53:53', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/7b1403a21d566ab260697b6be6071b8a6584055c1e3c5f35531c038faccbea5f3/images/bicicletario_sc2.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (26, 1, NULL, '2017-01-26 21:00:23', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/c6b73e816c0d379fdc8d48cfc960d4d678ecc90a1e3bd9ae7cd00f95e7ec841d4/images/bicicletario_sc2.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (27, 1, NULL, '2017-01-26 21:02:59', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/0e03792ad29adc35de79be9fd53141cc96c36c8376883894eacc8b7cd4d0fec05/images/bicicletario_sc2.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (28, 1, NULL, '2017-01-26 21:09:37', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/63dcb488f0e1ea0fa7e02d4a26270005d43f73c8fafb7141cf685bc3b392dcb16/images/bicicletario_sc2.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (29, 1, NULL, '2017-01-26 21:24:45', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/dae30693d68e08df98e50f87b00328cd99e27caa86b873f067ad31bf0213453e7/images/Maki_Icons_By_Mapbox.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (30, 1, NULL, '2017-01-26 21:25:54', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/8b6be9b5487ea6de330c87b96f7fa1f7730e6e82c2f6496fa3258381b24739098/images/Maki_Icons_By_Mapbox.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (31, 1, NULL, '2017-01-26 22:04:42', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/d64d764cbbb0d412e80d0a16521b97918bb4ba7f01f6ece82f718d7bc06906719/images/bicycle_512.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (32, 1, NULL, '2017-01-26 22:06:36', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/fcc81c0395a450dcb1a256a8c7837ddacc5c5bfcdccab781aa6381f47a1c6ebb10/images/alert_construction_40.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (33, 1, NULL, '2017-01-26 22:07:29', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/6a6749f90ef25cbf7fdd7cdf986cbb91ad3b860ad548833576bdf94de65774ce11/images/alert_construction_bk_80.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (34, 1, NULL, '2017-01-26 22:10:31', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/798130f65d286205a6325ef533858fbc6ce81ad0afd8d26b4c7716388bbcc3bb1/images/bicicletario_sc1.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (35, 1, NULL, '2017-01-26 22:10:31', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/798130f65d286205a6325ef533858fbc6ce81ad0afd8d26b4c7716388bbcc3bb1/images/bicicletario_sc2.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (36, 1, NULL, '2017-01-26 22:12:38', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/fcbe800376b367d2ee2aff49f589e68105223f1ef74675c4527ecbbd86f833232/images/bicicletario_sc1.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (37, 1, NULL, '2017-01-27 18:59:05', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/798130f65d286205a6325ef533858fbc6ce81ad0afd8d26b4c7716388bbcc3bb1/images/bicicletario_sc1.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (38, 1, NULL, '2017-01-27 20:43:02', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/fcbe800376b367d2ee2aff49f589e68105223f1ef74675c4527ecbbd86f833232/images/bike_park_sc.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (39, 1, NULL, '2017-05-03 19:58:20', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/7b1403a21d566ab260697b6be6071b8a6584055c1e3c5f35531c038faccbea5f3/images/13221035_1190969917582113_5869141520709282375_n.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (40, 1, NULL, '2017-05-09 11:38:21', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/c6b73e816c0d379fdc8d48cfc960d4d678ecc90a1e3bd9ae7cd00f95e7ec841d4/images/php-logo.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (41, 1, NULL, '2017-05-09 11:44:41', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/0e03792ad29adc35de79be9fd53141cc96c36c8376883894eacc8b7cd4d0fec05/images/leafletJS-logo.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (42, 1, NULL, '2017-05-09 11:47:23', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/63dcb488f0e1ea0fa7e02d4a26270005d43f73c8fafb7141cf685bc3b392dcb16/images/how_gps_works.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (43, 1, NULL, '2017-05-09 12:01:17', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/dae30693d68e08df98e50f87b00328cd99e27caa86b873f067ad31bf0213453e7/images/imagem_pedestre_ciclista_km_percorridos.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (44, 1, NULL, '2017-05-09 12:04:53', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/8b6be9b5487ea6de330c87b96f7fa1f7730e6e82c2f6496fa3258381b24739098/images/postgis-logo.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (45, 1, NULL, '2017-05-09 12:07:11', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/d64d764cbbb0d412e80d0a16521b97918bb4ba7f01f6ece82f718d7bc06906719/images/telas1.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (46, 1, NULL, '2017-05-09 12:08:34', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/fcc81c0395a450dcb1a256a8c7837ddacc5c5bfcdccab781aa6381f47a1c6ebb10/images/how_gps_works.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (47, 1, NULL, '2017-05-09 12:10:42', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/6a6749f90ef25cbf7fdd7cdf986cbb91ad3b860ad548833576bdf94de65774ce11/images/arquitetura_de_um_SIG.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (48, 1, NULL, '2017-05-09 12:11:45', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/da07b04761b09443b9c392574fc4eac0925d0a3afccb8283f921dc0ee178ddd012/images/duolingo_facebook.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (49, 1, NULL, '2017-05-09 12:12:49', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/9688bc68aa8dc2d9b51acf427d9c0c9936d920577b52861c4956db368eb22bfb13/images/telas9.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (50, 1, NULL, '2017-05-09 12:13:36', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/01e0ecf778c4cc97ab1c626a954ca9e2ce2ce29a1ef9de68dd0c7faebc7962d514/images/telas4.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (51, 1, NULL, '2017-05-09 12:14:55', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/01bc5f8d88b3ddc66e7196bdd672bf69d6cf54cadc43eda05b3b178c78b568b015/images/arquitetura_geoapi.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (52, 1, NULL, '2017-05-09 12:17:15', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/fbfa7649d9b8ef423337faf13d3b15d6c5ff23121476e2d6b51fb7052849f6cf16/images/redes_sociais1.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (53, 1, NULL, '2017-05-09 12:21:24', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/f4da9f0fb3cab7656917532e4b7507fe17c0157d0c90b5f6521d0b5b3997e61d17/images/php-logo.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (54, 1, NULL, '2017-05-10 13:40:18', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/2bd8e87de8bd2e7ea1ba3acd3a45a052eeb04c66657134651d1538ce0186779c18/images/IMG_0075.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (55, 1, NULL, '2017-05-10 13:47:51', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/ffeef7dfc257127d87214c15e3afb6ec110928b4059d6d4dbe285c9eaf95ee6919/images/IMG_0015.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (56, 1, NULL, '2017-05-10 13:56:46', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/63ae6a07abf3e7030ce4a43d681746f57d79e4501b9654407efada41edc4d10120/images/IMG_0013.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (57, 1, NULL, '2017-05-10 14:00:30', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/b098cceb6eb93af9a666550b60d9ea66bd0aba757f37812a8961b975cfd606a621/images/IMG_0001.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (58, 1, NULL, '2017-05-15 21:48:45', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/e58912834f6450d62be7a1b59f202c2542e6a465e5f89ea56d1c4cc24af0f34a22/images/MeControlXXLUserTile.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (59, 1, NULL, '2017-05-20 18:53:19', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/fab322ba15e25daf457023e35a779f75acfb65261b64636069b3a3d18ef262e723/images/gps_trilateracao.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (60, 1, NULL, '2017-05-21 15:55:51', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/3bed12d7fede28f9e5750ff8b2c2efd94db73dad71195a12f12ecde9df370b9124/images/agps_opration.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (61, 1, NULL, '2017-05-21 20:14:47', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/c8cfc93e3d74e487d8edb6b967a9a8ba4071be02f0fb2265f62b14369579e26925/images/how_gps_works.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (62, 1, NULL, '2017-05-21 20:15:11', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/671b452af42960c521138a6d34303667f44a81f1f73ca4cf75f695bebcaa14fc26/images/how_gps_works.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (63, 1, NULL, '2017-05-21 20:16:45', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/671b452af42960c521138a6d34303667f44a81f1f73ca4cf75f695bebcaa14fc26/images/13221035_1190969917582113_5869141520709282375_n.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (64, 1, NULL, '2017-05-21 20:19:37', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/ed030e4c1f2caecb5a980160ae6e08d64cc7ae9207cd0884ebad9221acbc3f2a28/images/leafletJS-logo.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (65, 1, NULL, '2017-05-21 20:21:22', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/92ef4d128f5428735be5bd332510bb5cfe51c05e490cfefe5afb47b3803cda8f29/images/leafletJS-logo.png', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (66, 1, NULL, '2017-05-24 16:34:44', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/92ef4d128f5428735be5bd332510bb5cfe51c05e490cfefe5afb47b3803cda8f29/images/348126.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (67, 1, NULL, '2017-05-24 18:05:30', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/b4005924e7d42e743cd8bb802e4eca50f1b2a9239fe0ed47496c12ea30ff74fe31/images/MeControlXXLUserTile.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (68, 1, NULL, '2017-05-25 02:25:20', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/eae2a071a1a22872e957f3ea3696dd2216d34a6a78702e1601098c7e4cf727ae32/images/12809609_741716492597295_5854081116663842055_n.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (69, 1, NULL, '2017-05-25 08:47:19', '348126.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (70, 1, NULL, '2017-05-25 08:47:19', 'MeControlXXLUserTile.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (71, 1, NULL, '2017-05-25 08:54:31', '348126.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (72, 1, NULL, '2017-05-25 08:54:31', '12809609_741716492597295_5854081116663842055_n.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (73, 1, NULL, '2017-05-25 08:54:31', 'MeControlXXLUserTile.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (74, 1, NULL, '2017-05-25 08:58:40', '348126.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (75, 1, NULL, '2017-05-25 08:58:40', '12809609_741716492597295_5854081116663842055_n.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (76, 1, NULL, '2017-05-25 08:58:40', 'MeControlXXLUserTile.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (77, 1, NULL, '2017-05-25 11:52:52', '12809609_741716492597295_5854081116663842055_n.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (78, 1, NULL, '2017-05-25 11:54:01', '12809609_741716492597295_5854081116663842055_n.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (79, 1, NULL, '2017-05-25 11:54:49', '12809609_741716492597295_5854081116663842055_n.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (80, 1, NULL, '2017-05-25 14:57:25', '12809609_741716492597295_5854081116663842055_n.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (81, 1, NULL, '2017-05-25 15:39:55', 'MeControlXXLUserTile.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (82, 1, NULL, '2017-05-25 15:43:21', 'solar_storm_1920_1080.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (83, 1, NULL, '2017-05-25 16:05:15', 'black_hole_120_1080.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (84, 1, NULL, '2017-05-25 18:39:33', 'wormhole2_1920_1080.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (85, 1, NULL, '2017-06-06 11:35:44', 'bicicletario_lages_rj.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (86, 1, NULL, '2017-06-10 21:01:03', 'slq_joins_cheat_chart.jpeg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (87, 1, NULL, '2017-06-10 21:02:01', 'photoUVA.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (88, 1, NULL, '2017-06-10 21:09:00', 'realengo.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (89, 1, NULL, '2017-06-10 21:19:26', 'cefet1.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (90, 1, NULL, '2017-06-10 21:19:26', 'cefet2.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (91, 1, NULL, '2017-06-10 21:27:22', 'cefet1.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (92, 1, NULL, '2017-06-10 21:27:22', 'cefet2.jpg', 0);
-INSERT INTO multimedias (id, type_id, title, created_date, src, gallery_id) VALUES (93, 1, NULL, '2017-06-10 22:02:58', 'bike_park_sc.png', 0);
+INSERT INTO multimedias VALUES (1, 1, NULL, '2017-01-10 11:38:21', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/fcbe800376b367d2ee2aff49f589e68105223f1ef74675c4527ecbbd86f833232/images/bicicletario_sc1.png', 0);
+INSERT INTO multimedias VALUES (2, 1, NULL, '2017-01-10 11:39:08', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/fcbe800376b367d2ee2aff49f589e68105223f1ef74675c4527ecbbd86f833232/images/bicicletario_sc2.png', 0);
+INSERT INTO multimedias VALUES (3, 1, NULL, '2017-01-26 18:04:30', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/7b1403a21d566ab260697b6be6071b8a6584055c1e3c5f35531c038faccbea5f3/images/bicicletario_sc1.png', 0);
+INSERT INTO multimedias VALUES (4, 1, NULL, '2017-01-26 18:04:31', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/7b1403a21d566ab260697b6be6071b8a6584055c1e3c5f35531c038faccbea5f3/images/bicicletario_sc2.png', 0);
+INSERT INTO multimedias VALUES (5, 1, NULL, '2017-01-26 18:10:02', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/7b1403a21d566ab260697b6be6071b8a6584055c1e3c5f35531c038faccbea5f3/images/bicicletario_sc1.png', 0);
+INSERT INTO multimedias VALUES (6, 1, NULL, '2017-01-26 18:10:02', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/7b1403a21d566ab260697b6be6071b8a6584055c1e3c5f35531c038faccbea5f3/images/bicicletario_sc2.png', 0);
+INSERT INTO multimedias VALUES (7, 1, NULL, '2017-01-26 18:11:10', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/798130f65d286205a6325ef533858fbc6ce81ad0afd8d26b4c7716388bbcc3bb1/images/bicicletario_sc1.png', 0);
+INSERT INTO multimedias VALUES (8, 1, NULL, '2017-01-26 18:11:10', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/798130f65d286205a6325ef533858fbc6ce81ad0afd8d26b4c7716388bbcc3bb1/images/bicicletario_sc2.png', 0);
+INSERT INTO multimedias VALUES (9, 1, NULL, '2017-01-26 18:45:32', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/63dcb488f0e1ea0fa7e02d4a26270005d43f73c8fafb7141cf685bc3b392dcb16/images/bicicletario_sc1.png', 0);
+INSERT INTO multimedias VALUES (10, 1, NULL, '2017-01-26 18:45:32', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/63dcb488f0e1ea0fa7e02d4a26270005d43f73c8fafb7141cf685bc3b392dcb16/images/bicicletario_sc2.png', 0);
+INSERT INTO multimedias VALUES (11, 1, NULL, '2017-01-26 18:48:23', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/dae30693d68e08df98e50f87b00328cd99e27caa86b873f067ad31bf0213453e7/images/bicicletario_sc1.png', 0);
+INSERT INTO multimedias VALUES (12, 1, NULL, '2017-01-26 18:48:24', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/dae30693d68e08df98e50f87b00328cd99e27caa86b873f067ad31bf0213453e7/images/bicicletario_sc2.png', 0);
+INSERT INTO multimedias VALUES (13, 1, NULL, '2017-01-26 19:05:48', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/798130f65d286205a6325ef533858fbc6ce81ad0afd8d26b4c7716388bbcc3bb1/images/bicicletario_sc1.png', 0);
+INSERT INTO multimedias VALUES (14, 1, NULL, '2017-01-26 19:05:48', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/798130f65d286205a6325ef533858fbc6ce81ad0afd8d26b4c7716388bbcc3bb1/images/bicicletario_sc2.png', 0);
+INSERT INTO multimedias VALUES (15, 1, NULL, '2017-01-26 19:11:04', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/7b1403a21d566ab260697b6be6071b8a6584055c1e3c5f35531c038faccbea5f3/images/bicicletario_sc1.png', 0);
+INSERT INTO multimedias VALUES (16, 1, NULL, '2017-01-26 19:11:04', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/7b1403a21d566ab260697b6be6071b8a6584055c1e3c5f35531c038faccbea5f3/images/bicicletario_sc2.png', 0);
+INSERT INTO multimedias VALUES (17, 1, NULL, '2017-01-26 19:56:05', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/c6b73e816c0d379fdc8d48cfc960d4d678ecc90a1e3bd9ae7cd00f95e7ec841d4/images/bicicletario_sc2.png', 0);
+INSERT INTO multimedias VALUES (18, 1, NULL, '2017-01-26 19:59:14', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/0e03792ad29adc35de79be9fd53141cc96c36c8376883894eacc8b7cd4d0fec05/images/bicicletario_sc1.png', 0);
+INSERT INTO multimedias VALUES (19, 1, NULL, '2017-01-26 20:04:48', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/63dcb488f0e1ea0fa7e02d4a26270005d43f73c8fafb7141cf685bc3b392dcb16/images/bicicletario_sc1.png', 0);
+INSERT INTO multimedias VALUES (20, 1, NULL, '2017-01-26 20:07:43', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/dae30693d68e08df98e50f87b00328cd99e27caa86b873f067ad31bf0213453e7/images/bicicletario_sc2.png', 0);
+INSERT INTO multimedias VALUES (21, 1, NULL, '2017-01-26 20:09:43', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/8b6be9b5487ea6de330c87b96f7fa1f7730e6e82c2f6496fa3258381b24739098/images/bicicletario_sc1.png', 0);
+INSERT INTO multimedias VALUES (22, 1, NULL, '2017-01-26 20:27:33', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/d64d764cbbb0d412e80d0a16521b97918bb4ba7f01f6ece82f718d7bc06906719/images/bicicletario_sc1.png', 0);
+INSERT INTO multimedias VALUES (23, 1, NULL, '2017-01-26 20:37:55', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/fcc81c0395a450dcb1a256a8c7837ddacc5c5bfcdccab781aa6381f47a1c6ebb10/images/bicicletario_sc2.png', 0);
+INSERT INTO multimedias VALUES (24, 1, NULL, '2017-01-26 20:50:39', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/798130f65d286205a6325ef533858fbc6ce81ad0afd8d26b4c7716388bbcc3bb1/images/bicicletario_sc1.png', 0);
+INSERT INTO multimedias VALUES (25, 1, NULL, '2017-01-26 20:53:53', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/7b1403a21d566ab260697b6be6071b8a6584055c1e3c5f35531c038faccbea5f3/images/bicicletario_sc2.png', 0);
+INSERT INTO multimedias VALUES (26, 1, NULL, '2017-01-26 21:00:23', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/c6b73e816c0d379fdc8d48cfc960d4d678ecc90a1e3bd9ae7cd00f95e7ec841d4/images/bicicletario_sc2.png', 0);
+INSERT INTO multimedias VALUES (27, 1, NULL, '2017-01-26 21:02:59', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/0e03792ad29adc35de79be9fd53141cc96c36c8376883894eacc8b7cd4d0fec05/images/bicicletario_sc2.png', 0);
+INSERT INTO multimedias VALUES (28, 1, NULL, '2017-01-26 21:09:37', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/63dcb488f0e1ea0fa7e02d4a26270005d43f73c8fafb7141cf685bc3b392dcb16/images/bicicletario_sc2.png', 0);
+INSERT INTO multimedias VALUES (29, 1, NULL, '2017-01-26 21:24:45', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/dae30693d68e08df98e50f87b00328cd99e27caa86b873f067ad31bf0213453e7/images/Maki_Icons_By_Mapbox.png', 0);
+INSERT INTO multimedias VALUES (30, 1, NULL, '2017-01-26 21:25:54', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/8b6be9b5487ea6de330c87b96f7fa1f7730e6e82c2f6496fa3258381b24739098/images/Maki_Icons_By_Mapbox.png', 0);
+INSERT INTO multimedias VALUES (31, 1, NULL, '2017-01-26 22:04:42', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/d64d764cbbb0d412e80d0a16521b97918bb4ba7f01f6ece82f718d7bc06906719/images/bicycle_512.png', 0);
+INSERT INTO multimedias VALUES (32, 1, NULL, '2017-01-26 22:06:36', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/fcc81c0395a450dcb1a256a8c7837ddacc5c5bfcdccab781aa6381f47a1c6ebb10/images/alert_construction_40.png', 0);
+INSERT INTO multimedias VALUES (33, 1, NULL, '2017-01-26 22:07:29', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/6a6749f90ef25cbf7fdd7cdf986cbb91ad3b860ad548833576bdf94de65774ce11/images/alert_construction_bk_80.png', 0);
+INSERT INTO multimedias VALUES (34, 1, NULL, '2017-01-26 22:10:31', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/798130f65d286205a6325ef533858fbc6ce81ad0afd8d26b4c7716388bbcc3bb1/images/bicicletario_sc1.png', 0);
+INSERT INTO multimedias VALUES (35, 1, NULL, '2017-01-26 22:10:31', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/798130f65d286205a6325ef533858fbc6ce81ad0afd8d26b4c7716388bbcc3bb1/images/bicicletario_sc2.png', 0);
+INSERT INTO multimedias VALUES (36, 1, NULL, '2017-01-26 22:12:38', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/fcbe800376b367d2ee2aff49f589e68105223f1ef74675c4527ecbbd86f833232/images/bicicletario_sc1.png', 0);
+INSERT INTO multimedias VALUES (37, 1, NULL, '2017-01-27 18:59:05', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/798130f65d286205a6325ef533858fbc6ce81ad0afd8d26b4c7716388bbcc3bb1/images/bicicletario_sc1.png', 0);
+INSERT INTO multimedias VALUES (38, 1, NULL, '2017-01-27 20:43:02', 'C:\Users\User\Dropbox\www\app/web/bike-keepers/fcbe800376b367d2ee2aff49f589e68105223f1ef74675c4527ecbbd86f833232/images/bike_park_sc.png', 0);
+INSERT INTO multimedias VALUES (39, 1, NULL, '2017-05-03 19:58:20', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/7b1403a21d566ab260697b6be6071b8a6584055c1e3c5f35531c038faccbea5f3/images/13221035_1190969917582113_5869141520709282375_n.jpg', 0);
+INSERT INTO multimedias VALUES (40, 1, NULL, '2017-05-09 11:38:21', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/c6b73e816c0d379fdc8d48cfc960d4d678ecc90a1e3bd9ae7cd00f95e7ec841d4/images/php-logo.png', 0);
+INSERT INTO multimedias VALUES (41, 1, NULL, '2017-05-09 11:44:41', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/0e03792ad29adc35de79be9fd53141cc96c36c8376883894eacc8b7cd4d0fec05/images/leafletJS-logo.png', 0);
+INSERT INTO multimedias VALUES (42, 1, NULL, '2017-05-09 11:47:23', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/63dcb488f0e1ea0fa7e02d4a26270005d43f73c8fafb7141cf685bc3b392dcb16/images/how_gps_works.png', 0);
+INSERT INTO multimedias VALUES (43, 1, NULL, '2017-05-09 12:01:17', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/dae30693d68e08df98e50f87b00328cd99e27caa86b873f067ad31bf0213453e7/images/imagem_pedestre_ciclista_km_percorridos.png', 0);
+INSERT INTO multimedias VALUES (44, 1, NULL, '2017-05-09 12:04:53', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/8b6be9b5487ea6de330c87b96f7fa1f7730e6e82c2f6496fa3258381b24739098/images/postgis-logo.png', 0);
+INSERT INTO multimedias VALUES (45, 1, NULL, '2017-05-09 12:07:11', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/d64d764cbbb0d412e80d0a16521b97918bb4ba7f01f6ece82f718d7bc06906719/images/telas1.png', 0);
+INSERT INTO multimedias VALUES (46, 1, NULL, '2017-05-09 12:08:34', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/fcc81c0395a450dcb1a256a8c7837ddacc5c5bfcdccab781aa6381f47a1c6ebb10/images/how_gps_works.png', 0);
+INSERT INTO multimedias VALUES (47, 1, NULL, '2017-05-09 12:10:42', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/6a6749f90ef25cbf7fdd7cdf986cbb91ad3b860ad548833576bdf94de65774ce11/images/arquitetura_de_um_SIG.png', 0);
+INSERT INTO multimedias VALUES (48, 1, NULL, '2017-05-09 12:11:45', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/da07b04761b09443b9c392574fc4eac0925d0a3afccb8283f921dc0ee178ddd012/images/duolingo_facebook.png', 0);
+INSERT INTO multimedias VALUES (49, 1, NULL, '2017-05-09 12:12:49', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/9688bc68aa8dc2d9b51acf427d9c0c9936d920577b52861c4956db368eb22bfb13/images/telas9.png', 0);
+INSERT INTO multimedias VALUES (50, 1, NULL, '2017-05-09 12:13:36', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/01e0ecf778c4cc97ab1c626a954ca9e2ce2ce29a1ef9de68dd0c7faebc7962d514/images/telas4.png', 0);
+INSERT INTO multimedias VALUES (51, 1, NULL, '2017-05-09 12:14:55', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/01bc5f8d88b3ddc66e7196bdd672bf69d6cf54cadc43eda05b3b178c78b568b015/images/arquitetura_geoapi.jpg', 0);
+INSERT INTO multimedias VALUES (52, 1, NULL, '2017-05-09 12:17:15', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/fbfa7649d9b8ef423337faf13d3b15d6c5ff23121476e2d6b51fb7052849f6cf16/images/redes_sociais1.png', 0);
+INSERT INTO multimedias VALUES (53, 1, NULL, '2017-05-09 12:21:24', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/f4da9f0fb3cab7656917532e4b7507fe17c0157d0c90b5f6521d0b5b3997e61d17/images/php-logo.png', 0);
+INSERT INTO multimedias VALUES (54, 1, NULL, '2017-05-10 13:40:18', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/2bd8e87de8bd2e7ea1ba3acd3a45a052eeb04c66657134651d1538ce0186779c18/images/IMG_0075.jpg', 0);
+INSERT INTO multimedias VALUES (55, 1, NULL, '2017-05-10 13:47:51', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/ffeef7dfc257127d87214c15e3afb6ec110928b4059d6d4dbe285c9eaf95ee6919/images/IMG_0015.jpg', 0);
+INSERT INTO multimedias VALUES (56, 1, NULL, '2017-05-10 13:56:46', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/63ae6a07abf3e7030ce4a43d681746f57d79e4501b9654407efada41edc4d10120/images/IMG_0013.jpg', 0);
+INSERT INTO multimedias VALUES (57, 1, NULL, '2017-05-10 14:00:30', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/b098cceb6eb93af9a666550b60d9ea66bd0aba757f37812a8961b975cfd606a621/images/IMG_0001.jpg', 0);
+INSERT INTO multimedias VALUES (58, 1, NULL, '2017-05-15 21:48:45', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/e58912834f6450d62be7a1b59f202c2542e6a465e5f89ea56d1c4cc24af0f34a22/images/MeControlXXLUserTile.jpg', 0);
+INSERT INTO multimedias VALUES (59, 1, NULL, '2017-05-20 18:53:19', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/fab322ba15e25daf457023e35a779f75acfb65261b64636069b3a3d18ef262e723/images/gps_trilateracao.png', 0);
+INSERT INTO multimedias VALUES (60, 1, NULL, '2017-05-21 15:55:51', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/3bed12d7fede28f9e5750ff8b2c2efd94db73dad71195a12f12ecde9df370b9124/images/agps_opration.jpg', 0);
+INSERT INTO multimedias VALUES (61, 1, NULL, '2017-05-21 20:14:47', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/c8cfc93e3d74e487d8edb6b967a9a8ba4071be02f0fb2265f62b14369579e26925/images/how_gps_works.png', 0);
+INSERT INTO multimedias VALUES (62, 1, NULL, '2017-05-21 20:15:11', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/671b452af42960c521138a6d34303667f44a81f1f73ca4cf75f695bebcaa14fc26/images/how_gps_works.png', 0);
+INSERT INTO multimedias VALUES (63, 1, NULL, '2017-05-21 20:16:45', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/671b452af42960c521138a6d34303667f44a81f1f73ca4cf75f695bebcaa14fc26/images/13221035_1190969917582113_5869141520709282375_n.jpg', 0);
+INSERT INTO multimedias VALUES (64, 1, NULL, '2017-05-21 20:19:37', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/ed030e4c1f2caecb5a980160ae6e08d64cc7ae9207cd0884ebad9221acbc3f2a28/images/leafletJS-logo.png', 0);
+INSERT INTO multimedias VALUES (65, 1, NULL, '2017-05-21 20:21:22', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/92ef4d128f5428735be5bd332510bb5cfe51c05e490cfefe5afb47b3803cda8f29/images/leafletJS-logo.png', 0);
+INSERT INTO multimedias VALUES (66, 1, NULL, '2017-05-24 16:34:44', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/92ef4d128f5428735be5bd332510bb5cfe51c05e490cfefe5afb47b3803cda8f29/images/348126.jpg', 0);
+INSERT INTO multimedias VALUES (67, 1, NULL, '2017-05-24 18:05:30', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/b4005924e7d42e743cd8bb802e4eca50f1b2a9239fe0ed47496c12ea30ff74fe31/images/MeControlXXLUserTile.jpg', 0);
+INSERT INTO multimedias VALUES (68, 1, NULL, '2017-05-25 02:25:20', 'C:\Users\User\Dropbox\www\app/web/bs-contents/bike-keepers/eae2a071a1a22872e957f3ea3696dd2216d34a6a78702e1601098c7e4cf727ae32/images/12809609_741716492597295_5854081116663842055_n.jpg', 0);
+INSERT INTO multimedias VALUES (69, 1, NULL, '2017-05-25 08:47:19', '348126.jpg', 0);
+INSERT INTO multimedias VALUES (70, 1, NULL, '2017-05-25 08:47:19', 'MeControlXXLUserTile.jpg', 0);
+INSERT INTO multimedias VALUES (71, 1, NULL, '2017-05-25 08:54:31', '348126.jpg', 0);
+INSERT INTO multimedias VALUES (72, 1, NULL, '2017-05-25 08:54:31', '12809609_741716492597295_5854081116663842055_n.jpg', 0);
+INSERT INTO multimedias VALUES (73, 1, NULL, '2017-05-25 08:54:31', 'MeControlXXLUserTile.jpg', 0);
+INSERT INTO multimedias VALUES (74, 1, NULL, '2017-05-25 08:58:40', '348126.jpg', 0);
+INSERT INTO multimedias VALUES (75, 1, NULL, '2017-05-25 08:58:40', '12809609_741716492597295_5854081116663842055_n.jpg', 0);
+INSERT INTO multimedias VALUES (76, 1, NULL, '2017-05-25 08:58:40', 'MeControlXXLUserTile.jpg', 0);
+INSERT INTO multimedias VALUES (77, 1, NULL, '2017-05-25 11:52:52', '12809609_741716492597295_5854081116663842055_n.jpg', 0);
+INSERT INTO multimedias VALUES (78, 1, NULL, '2017-05-25 11:54:01', '12809609_741716492597295_5854081116663842055_n.jpg', 0);
+INSERT INTO multimedias VALUES (79, 1, NULL, '2017-05-25 11:54:49', '12809609_741716492597295_5854081116663842055_n.jpg', 0);
+INSERT INTO multimedias VALUES (80, 1, NULL, '2017-05-25 14:57:25', '12809609_741716492597295_5854081116663842055_n.jpg', 0);
+INSERT INTO multimedias VALUES (81, 1, NULL, '2017-05-25 15:39:55', 'MeControlXXLUserTile.jpg', 0);
+INSERT INTO multimedias VALUES (82, 1, NULL, '2017-05-25 15:43:21', 'solar_storm_1920_1080.jpg', 0);
+INSERT INTO multimedias VALUES (83, 1, NULL, '2017-05-25 16:05:15', 'black_hole_120_1080.jpg', 0);
+INSERT INTO multimedias VALUES (84, 1, NULL, '2017-05-25 18:39:33', 'wormhole2_1920_1080.jpg', 0);
+INSERT INTO multimedias VALUES (85, 1, NULL, '2017-06-06 11:35:44', 'bicicletario_lages_rj.jpg', 0);
+INSERT INTO multimedias VALUES (86, 1, NULL, '2017-06-10 21:01:03', 'slq_joins_cheat_chart.jpeg', 0);
+INSERT INTO multimedias VALUES (87, 1, NULL, '2017-06-10 21:02:01', 'photoUVA.jpg', 0);
+INSERT INTO multimedias VALUES (88, 1, NULL, '2017-06-10 21:09:00', 'realengo.jpg', 0);
+INSERT INTO multimedias VALUES (89, 1, NULL, '2017-06-10 21:19:26', 'cefet1.jpg', 0);
+INSERT INTO multimedias VALUES (90, 1, NULL, '2017-06-10 21:19:26', 'cefet2.jpg', 0);
+INSERT INTO multimedias VALUES (91, 1, NULL, '2017-06-10 21:27:22', 'cefet1.jpg', 0);
+INSERT INTO multimedias VALUES (92, 1, NULL, '2017-06-10 21:27:22', 'cefet2.jpg', 0);
+INSERT INTO multimedias VALUES (93, 1, NULL, '2017-06-10 22:02:58', 'bike_park_sc.png', 0);
 
 
 --
@@ -2215,10 +2215,10 @@ SELECT pg_catalog.setval('multimedias_id_seq', 93, true);
 -- Data for Name: online_users; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO online_users (user_id, updated_date) VALUES (2, '2017-06-11 07:47:40');
-INSERT INTO online_users (user_id, updated_date) VALUES (1, '2017-06-11 07:47:53');
-INSERT INTO online_users (user_id, updated_date) VALUES (4, '2017-05-31 18:55:30');
-INSERT INTO online_users (user_id, updated_date) VALUES (5, '2017-06-01 04:49:22');
+INSERT INTO online_users VALUES (2, '2017-06-11 07:47:40');
+INSERT INTO online_users VALUES (1, '2017-06-11 07:47:53');
+INSERT INTO online_users VALUES (4, '2017-05-31 18:55:30');
+INSERT INTO online_users VALUES (5, '2017-06-01 04:49:22');
 
 
 --
@@ -2260,13 +2260,13 @@ SELECT pg_catalog.setval('routes_id_seq', 1, false);
 -- Data for Name: spatial_types; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO spatial_types (id, description) VALUES (1, 'Point');
-INSERT INTO spatial_types (id, description) VALUES (2, 'LineString');
-INSERT INTO spatial_types (id, description) VALUES (3, 'Polygon');
-INSERT INTO spatial_types (id, description) VALUES (4, 'MultiPoint');
-INSERT INTO spatial_types (id, description) VALUES (5, 'MultiLineString');
-INSERT INTO spatial_types (id, description) VALUES (6, 'MultiPolygon');
-INSERT INTO spatial_types (id, description) VALUES (7, 'GeometryCollection');
+INSERT INTO spatial_types VALUES (1, 'Point');
+INSERT INTO spatial_types VALUES (2, 'LineString');
+INSERT INTO spatial_types VALUES (3, 'Polygon');
+INSERT INTO spatial_types VALUES (4, 'MultiPoint');
+INSERT INTO spatial_types VALUES (5, 'MultiLineString');
+INSERT INTO spatial_types VALUES (6, 'MultiPolygon');
+INSERT INTO spatial_types VALUES (7, 'GeometryCollection');
 
 
 --
@@ -2299,10 +2299,10 @@ INSERT INTO spatial_types (id, description) VALUES (7, 'GeometryCollection');
 -- Data for Name: user_alert_nonexistence; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO user_alert_nonexistence (user_id, alert_id, created_date) VALUES (1, 85, '2017-05-27 00:00:00');
-INSERT INTO user_alert_nonexistence (user_id, alert_id, created_date) VALUES (2, 83, '2017-05-27 00:00:00');
-INSERT INTO user_alert_nonexistence (user_id, alert_id, created_date) VALUES (2, 97, '2017-06-01 20:08:21');
-INSERT INTO user_alert_nonexistence (user_id, alert_id, created_date) VALUES (2, 95, '2017-05-27 18:13:44');
+INSERT INTO user_alert_nonexistence VALUES (1, 85, '2017-05-27 00:00:00');
+INSERT INTO user_alert_nonexistence VALUES (2, 83, '2017-05-27 00:00:00');
+INSERT INTO user_alert_nonexistence VALUES (2, 97, '2017-06-01 20:08:21');
+INSERT INTO user_alert_nonexistence VALUES (2, 95, '2017-05-27 18:13:44');
 
 
 --
@@ -2311,13 +2311,13 @@ INSERT INTO user_alert_nonexistence (user_id, alert_id, created_date) VALUES (2,
 -- Data for Name: user_alert_rates; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO user_alert_rates (user_id, alert_id, created_date, rating, updated_date) VALUES (1, 22, '2017-04-30 01:50:51', 'dislikes', NULL);
-INSERT INTO user_alert_rates (user_id, alert_id, created_date, rating, updated_date) VALUES (1, 30, '2017-04-30 08:32:37', 'likes', NULL);
-INSERT INTO user_alert_rates (user_id, alert_id, created_date, rating, updated_date) VALUES (2, 22, '2017-05-02 17:16:17', 'likes', NULL);
-INSERT INTO user_alert_rates (user_id, alert_id, created_date, rating, updated_date) VALUES (1, 37, '2017-05-12 10:46:45', 'dislikes', NULL);
-INSERT INTO user_alert_rates (user_id, alert_id, created_date, rating, updated_date) VALUES (1, 34, '2017-05-12 15:08:57', 'likes', NULL);
-INSERT INTO user_alert_rates (user_id, alert_id, created_date, rating, updated_date) VALUES (1, 31, '2017-05-12 16:59:20', 'dislikes', NULL);
-INSERT INTO user_alert_rates (user_id, alert_id, created_date, rating, updated_date) VALUES (1, 98, '2017-06-01 19:27:12', 'likes', NULL);
+INSERT INTO user_alert_rates VALUES (1, 22, '2017-04-30 01:50:51', 'dislikes', NULL);
+INSERT INTO user_alert_rates VALUES (1, 30, '2017-04-30 08:32:37', 'likes', NULL);
+INSERT INTO user_alert_rates VALUES (2, 22, '2017-05-02 17:16:17', 'likes', NULL);
+INSERT INTO user_alert_rates VALUES (1, 37, '2017-05-12 10:46:45', 'dislikes', NULL);
+INSERT INTO user_alert_rates VALUES (1, 34, '2017-05-12 15:08:57', 'likes', NULL);
+INSERT INTO user_alert_rates VALUES (1, 31, '2017-05-12 16:59:20', 'dislikes', NULL);
+INSERT INTO user_alert_rates VALUES (1, 98, '2017-06-01 19:27:12', 'likes', NULL);
 
 
 --
@@ -2326,10 +2326,10 @@ INSERT INTO user_alert_rates (user_id, alert_id, created_date, rating, updated_d
 -- Data for Name: user_bike_keeper_nonexistence; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO user_bike_keeper_nonexistence (user_id, bike_keeper_id, created_date) VALUES (2, 8, '2017-05-22 06:19:24');
-INSERT INTO user_bike_keeper_nonexistence (user_id, bike_keeper_id, created_date) VALUES (2, 9, '2017-05-22 06:22:53');
-INSERT INTO user_bike_keeper_nonexistence (user_id, bike_keeper_id, created_date) VALUES (2, 6, '2017-05-25 04:04:29');
-INSERT INTO user_bike_keeper_nonexistence (user_id, bike_keeper_id, created_date) VALUES (1, 33, '2017-06-07 22:04:54');
+INSERT INTO user_bike_keeper_nonexistence VALUES (2, 8, '2017-05-22 06:19:24');
+INSERT INTO user_bike_keeper_nonexistence VALUES (2, 9, '2017-05-22 06:22:53');
+INSERT INTO user_bike_keeper_nonexistence VALUES (2, 6, '2017-05-25 04:04:29');
+INSERT INTO user_bike_keeper_nonexistence VALUES (1, 33, '2017-06-07 22:04:54');
 
 
 --
@@ -2338,20 +2338,20 @@ INSERT INTO user_bike_keeper_nonexistence (user_id, bike_keeper_id, created_date
 -- Data for Name: user_bike_keeper_rates; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO user_bike_keeper_rates (user_id, bike_keeper_id, created_date, rating, updated_date) VALUES (2, 8, '2017-05-14 00:30:17', 'likes', NULL);
-INSERT INTO user_bike_keeper_rates (user_id, bike_keeper_id, created_date, rating, updated_date) VALUES (2, 9, '2017-05-14 01:27:02', 'dislikes', NULL);
-INSERT INTO user_bike_keeper_rates (user_id, bike_keeper_id, created_date, rating, updated_date) VALUES (2, 7, '2017-05-20 21:26:05', 'dislikes', NULL);
-INSERT INTO user_bike_keeper_rates (user_id, bike_keeper_id, created_date, rating, updated_date) VALUES (2, 22, '2017-05-20 21:26:57', 'likes', NULL);
-INSERT INTO user_bike_keeper_rates (user_id, bike_keeper_id, created_date, rating, updated_date) VALUES (4, 2, '2017-05-21 17:56:14', 'likes', NULL);
-INSERT INTO user_bike_keeper_rates (user_id, bike_keeper_id, created_date, rating, updated_date) VALUES (2, 2, '2017-05-21 17:56:39', 'dislikes', NULL);
-INSERT INTO user_bike_keeper_rates (user_id, bike_keeper_id, created_date, rating, updated_date) VALUES (1, 37, '2017-06-01 19:16:36', 'likes', NULL);
-INSERT INTO user_bike_keeper_rates (user_id, bike_keeper_id, created_date, rating, updated_date) VALUES (1, 33, '2017-06-07 22:04:51', 'likes', NULL);
-INSERT INTO user_bike_keeper_rates (user_id, bike_keeper_id, created_date, rating, updated_date) VALUES (1, 40, '2017-06-10 13:52:57', 'likes', NULL);
-INSERT INTO user_bike_keeper_rates (user_id, bike_keeper_id, created_date, rating, updated_date) VALUES (1, 6, '2017-05-12 14:38:35', 'likes', NULL);
-INSERT INTO user_bike_keeper_rates (user_id, bike_keeper_id, created_date, rating, updated_date) VALUES (1, 3, '2017-05-12 15:50:00', 'likes', NULL);
-INSERT INTO user_bike_keeper_rates (user_id, bike_keeper_id, created_date, rating, updated_date) VALUES (1, 8, '2017-05-12 17:05:50', 'likes', NULL);
-INSERT INTO user_bike_keeper_rates (user_id, bike_keeper_id, created_date, rating, updated_date) VALUES (1, 4, '2017-05-12 17:11:33', 'dislikes', NULL);
-INSERT INTO user_bike_keeper_rates (user_id, bike_keeper_id, created_date, rating, updated_date) VALUES (1, 20, '2017-05-12 17:31:05', 'likes', NULL);
+INSERT INTO user_bike_keeper_rates VALUES (2, 8, '2017-05-14 00:30:17', 'likes', NULL);
+INSERT INTO user_bike_keeper_rates VALUES (2, 9, '2017-05-14 01:27:02', 'dislikes', NULL);
+INSERT INTO user_bike_keeper_rates VALUES (2, 7, '2017-05-20 21:26:05', 'dislikes', NULL);
+INSERT INTO user_bike_keeper_rates VALUES (2, 22, '2017-05-20 21:26:57', 'likes', NULL);
+INSERT INTO user_bike_keeper_rates VALUES (4, 2, '2017-05-21 17:56:14', 'likes', NULL);
+INSERT INTO user_bike_keeper_rates VALUES (2, 2, '2017-05-21 17:56:39', 'dislikes', NULL);
+INSERT INTO user_bike_keeper_rates VALUES (1, 37, '2017-06-01 19:16:36', 'likes', NULL);
+INSERT INTO user_bike_keeper_rates VALUES (1, 33, '2017-06-07 22:04:51', 'likes', NULL);
+INSERT INTO user_bike_keeper_rates VALUES (1, 40, '2017-06-10 13:52:57', 'likes', NULL);
+INSERT INTO user_bike_keeper_rates VALUES (1, 6, '2017-05-12 14:38:35', 'likes', NULL);
+INSERT INTO user_bike_keeper_rates VALUES (1, 3, '2017-05-12 15:50:00', 'likes', NULL);
+INSERT INTO user_bike_keeper_rates VALUES (1, 8, '2017-05-12 17:05:50', 'likes', NULL);
+INSERT INTO user_bike_keeper_rates VALUES (1, 4, '2017-05-12 17:11:33', 'dislikes', NULL);
+INSERT INTO user_bike_keeper_rates VALUES (1, 20, '2017-05-12 17:31:05', 'likes', NULL);
 
 
 --
@@ -2360,8 +2360,8 @@ INSERT INTO user_bike_keeper_rates (user_id, bike_keeper_id, created_date, ratin
 -- Data for Name: user_conversation_alerts; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO user_conversation_alerts (id, user_id, user_id2, created_date) VALUES (26, 4, 1, '2017-06-07 14:55:06');
-INSERT INTO user_conversation_alerts (id, user_id, user_id2, created_date) VALUES (28, 4, 1, '2017-06-10 19:39:26');
+INSERT INTO user_conversation_alerts VALUES (26, 4, 1, '2017-06-07 14:55:06');
+INSERT INTO user_conversation_alerts VALUES (28, 4, 1, '2017-06-10 19:39:26');
 
 
 --
@@ -2388,63 +2388,63 @@ SELECT pg_catalog.setval('user_conversation_id_seq', 55, true);
 -- Data for Name: user_conversations; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (1, 4, '2017-05-29 16:31:02', 'Testando conseguiremos', 2, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (1, 4, '2017-05-29 16:33:00', 'teste teste', 3, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (4, 1, '2017-05-29 16:38:00', 'Outro teste , agora vai funcionar tudo hein', 4, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (1, 4, '2017-05-29 16:45:00', 'Teste', 5, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (1, 4, '2017-05-28 16:30:00', 'Teste de conversa', 1, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (1, 4, '2017-05-29 19:09:33', 'Oi João tudo bem?', 6, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (1, 4, '2017-05-29 19:13:43', 'Como estão as coisas?', 7, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (4, 1, '2017-05-29 19:15:43', 'Tudo bem e ai?', 8, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (1, 4, '2017-05-29 19:42:02', 'E ai rapaz????', 9, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (4, 1, '2017-05-29 19:42:39', 'Eu estou bem e vc?', 10, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (2, 1, '2017-05-29 19:47:34', 'Oi Marcus tudo bem?', 11, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (1, 2, '2017-05-29 19:47:52', 'E vc?', 12, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (1, 2, '2017-05-29 19:48:16', 'Seu bolo!', 13, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (2, 1, '2017-05-29 19:48:16', 'Qual é a boa do bicicletário?!', 14, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (2, 1, '2017-05-29 19:48:25', 'Eu tô boa', 15, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (1, 2, '2017-05-29 19:48:38', 'Tu é terrível', 16, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (2, 1, '2017-05-29 19:48:40', 'Vamos de bike pra CG', 17, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (2, 1, '2017-05-29 19:48:48', '??', 18, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (1, 2, '2017-05-29 19:48:53', 'kkkk', 19, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (2, 1, '2017-05-29 19:49:12', 'Vamos logo 
+INSERT INTO user_conversations VALUES (1, 4, '2017-05-29 16:31:02', 'Testando conseguiremos', 2, 0, 0);
+INSERT INTO user_conversations VALUES (1, 4, '2017-05-29 16:33:00', 'teste teste', 3, 0, 0);
+INSERT INTO user_conversations VALUES (4, 1, '2017-05-29 16:38:00', 'Outro teste , agora vai funcionar tudo hein', 4, 0, 0);
+INSERT INTO user_conversations VALUES (1, 4, '2017-05-29 16:45:00', 'Teste', 5, 0, 0);
+INSERT INTO user_conversations VALUES (1, 4, '2017-05-28 16:30:00', 'Teste de conversa', 1, 0, 0);
+INSERT INTO user_conversations VALUES (1, 4, '2017-05-29 19:09:33', 'Oi João tudo bem?', 6, 0, 0);
+INSERT INTO user_conversations VALUES (1, 4, '2017-05-29 19:13:43', 'Como estão as coisas?', 7, 0, 0);
+INSERT INTO user_conversations VALUES (4, 1, '2017-05-29 19:15:43', 'Tudo bem e ai?', 8, 0, 0);
+INSERT INTO user_conversations VALUES (1, 4, '2017-05-29 19:42:02', 'E ai rapaz????', 9, 0, 0);
+INSERT INTO user_conversations VALUES (4, 1, '2017-05-29 19:42:39', 'Eu estou bem e vc?', 10, 0, 0);
+INSERT INTO user_conversations VALUES (2, 1, '2017-05-29 19:47:34', 'Oi Marcus tudo bem?', 11, 0, 0);
+INSERT INTO user_conversations VALUES (1, 2, '2017-05-29 19:47:52', 'E vc?', 12, 0, 0);
+INSERT INTO user_conversations VALUES (1, 2, '2017-05-29 19:48:16', 'Seu bolo!', 13, 0, 0);
+INSERT INTO user_conversations VALUES (2, 1, '2017-05-29 19:48:16', 'Qual é a boa do bicicletário?!', 14, 0, 0);
+INSERT INTO user_conversations VALUES (2, 1, '2017-05-29 19:48:25', 'Eu tô boa', 15, 0, 0);
+INSERT INTO user_conversations VALUES (1, 2, '2017-05-29 19:48:38', 'Tu é terrível', 16, 0, 0);
+INSERT INTO user_conversations VALUES (2, 1, '2017-05-29 19:48:40', 'Vamos de bike pra CG', 17, 0, 0);
+INSERT INTO user_conversations VALUES (2, 1, '2017-05-29 19:48:48', '??', 18, 0, 0);
+INSERT INTO user_conversations VALUES (1, 2, '2017-05-29 19:48:53', 'kkkk', 19, 0, 0);
+INSERT INTO user_conversations VALUES (2, 1, '2017-05-29 19:49:12', 'Vamos logo 
 Ainda tenho que passar no veterinário', 20, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (4, 1, '2017-05-30 05:10:14', 'teste', 21, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (4, 2, '2017-05-30 05:14:52', 'Oi Thaty', 22, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (1, 4, '2017-05-30 05:42:00', 'Oi eu vou ai mais tarde', 23, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (1, 4, '2017-05-30 05:42:42', 'Oi eu vou ai mais tarde', 24, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (1, 4, '2017-05-30 05:43:27', 'Vou ai ok?', 25, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (1, 4, '2017-05-30 05:47:27', 'Olá!', 26, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (1, 4, '2017-05-30 05:47:43', 'Vai jogar hj?', 27, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (4, 1, '2017-05-30 06:41:56', 'Tudo bem marcus e vc?', 28, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (4, 1, '2017-05-30 06:42:08', 'Espero que esteja tudo bem ai..', 29, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (4, 1, '2017-05-30 06:42:22', 'Eu vou tentar aparecer mais ok.', 30, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (4, 1, '2017-05-30 06:43:06', 'Teste', 31, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (4, 1, '2017-05-30 06:44:58', 'Tudo bem marcus.', 32, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (4, 1, '2017-05-30 06:45:06', 'Segunda eu vou ai', 33, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (2, 4, '2017-05-30 06:52:10', 'Fala João!', 34, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (4, 2, '2017-05-30 06:56:48', 'Tudo bem thtay. Obrigado!', 35, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (2, 4, '2017-05-30 06:59:55', 'João estou bem obrigado!
+INSERT INTO user_conversations VALUES (4, 1, '2017-05-30 05:10:14', 'teste', 21, 0, 0);
+INSERT INTO user_conversations VALUES (4, 2, '2017-05-30 05:14:52', 'Oi Thaty', 22, 0, 0);
+INSERT INTO user_conversations VALUES (1, 4, '2017-05-30 05:42:00', 'Oi eu vou ai mais tarde', 23, 0, 0);
+INSERT INTO user_conversations VALUES (1, 4, '2017-05-30 05:42:42', 'Oi eu vou ai mais tarde', 24, 0, 0);
+INSERT INTO user_conversations VALUES (1, 4, '2017-05-30 05:43:27', 'Vou ai ok?', 25, 0, 0);
+INSERT INTO user_conversations VALUES (1, 4, '2017-05-30 05:47:27', 'Olá!', 26, 0, 0);
+INSERT INTO user_conversations VALUES (1, 4, '2017-05-30 05:47:43', 'Vai jogar hj?', 27, 0, 0);
+INSERT INTO user_conversations VALUES (4, 1, '2017-05-30 06:41:56', 'Tudo bem marcus e vc?', 28, 0, 0);
+INSERT INTO user_conversations VALUES (4, 1, '2017-05-30 06:42:08', 'Espero que esteja tudo bem ai..', 29, 0, 0);
+INSERT INTO user_conversations VALUES (4, 1, '2017-05-30 06:42:22', 'Eu vou tentar aparecer mais ok.', 30, 0, 0);
+INSERT INTO user_conversations VALUES (4, 1, '2017-05-30 06:43:06', 'Teste', 31, 0, 0);
+INSERT INTO user_conversations VALUES (4, 1, '2017-05-30 06:44:58', 'Tudo bem marcus.', 32, 0, 0);
+INSERT INTO user_conversations VALUES (4, 1, '2017-05-30 06:45:06', 'Segunda eu vou ai', 33, 0, 0);
+INSERT INTO user_conversations VALUES (2, 4, '2017-05-30 06:52:10', 'Fala João!', 34, 0, 0);
+INSERT INTO user_conversations VALUES (4, 2, '2017-05-30 06:56:48', 'Tudo bem thtay. Obrigado!', 35, 0, 0);
+INSERT INTO user_conversations VALUES (2, 4, '2017-05-30 06:59:55', 'João estou bem obrigado!
 E você como está?', 36, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (2, 4, '2017-05-30 07:01:36', 'Estou testando ok', 37, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (2, 4, '2017-05-30 07:02:01', 'beleza', 38, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (2, 4, '2017-05-30 07:02:09', 'depois eu vejo isso', 39, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (4, 2, '2017-05-30 07:06:12', 'Oi Thaty', 40, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (2, 4, '2017-05-30 07:06:45', 'Tudo bem com vc?', 41, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (2, 4, '2017-05-30 07:07:25', 'oque aconteceu', 42, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (2, 4, '2017-05-30 07:07:41', 'sei lá', 43, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (2, 4, '2017-05-30 07:09:24', 'kkkk', 44, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (2, 4, '2017-05-30 07:09:29', 'Até parece', 45, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (1, 4, '2017-05-30 07:35:12', 'valeu', 46, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (1, 2, '2017-05-30 08:00:56', 'Olá', 47, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (1, 2, '2017-05-30 08:01:08', 'como vai vc?', 48, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (1, 2, '2017-05-30 08:01:47', ':)', 49, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (2, 1, '2017-05-30 08:02:44', 'totnery baby', 50, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (1, 4, '2017-06-07 14:55:06', 'Olá ?', 51, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (1, 2, '2017-06-10 19:23:31', 'Thaty depois me liga. Ok?', 52, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (1, 4, '2017-06-10 19:39:26', 'Ei joão vamos pedalar?', 53, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (1, 2, '2017-06-10 21:53:45', 'Vamos segunda para a Tijuca?', 54, 0, 0);
-INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_saw, user2_saw) VALUES (2, 1, '2017-06-10 21:54:10', 'Sim claro!!!', 55, 0, 0);
+INSERT INTO user_conversations VALUES (2, 4, '2017-05-30 07:01:36', 'Estou testando ok', 37, 0, 0);
+INSERT INTO user_conversations VALUES (2, 4, '2017-05-30 07:02:01', 'beleza', 38, 0, 0);
+INSERT INTO user_conversations VALUES (2, 4, '2017-05-30 07:02:09', 'depois eu vejo isso', 39, 0, 0);
+INSERT INTO user_conversations VALUES (4, 2, '2017-05-30 07:06:12', 'Oi Thaty', 40, 0, 0);
+INSERT INTO user_conversations VALUES (2, 4, '2017-05-30 07:06:45', 'Tudo bem com vc?', 41, 0, 0);
+INSERT INTO user_conversations VALUES (2, 4, '2017-05-30 07:07:25', 'oque aconteceu', 42, 0, 0);
+INSERT INTO user_conversations VALUES (2, 4, '2017-05-30 07:07:41', 'sei lá', 43, 0, 0);
+INSERT INTO user_conversations VALUES (2, 4, '2017-05-30 07:09:24', 'kkkk', 44, 0, 0);
+INSERT INTO user_conversations VALUES (2, 4, '2017-05-30 07:09:29', 'Até parece', 45, 0, 0);
+INSERT INTO user_conversations VALUES (1, 4, '2017-05-30 07:35:12', 'valeu', 46, 0, 0);
+INSERT INTO user_conversations VALUES (1, 2, '2017-05-30 08:00:56', 'Olá', 47, 0, 0);
+INSERT INTO user_conversations VALUES (1, 2, '2017-05-30 08:01:08', 'como vai vc?', 48, 0, 0);
+INSERT INTO user_conversations VALUES (1, 2, '2017-05-30 08:01:47', ':)', 49, 0, 0);
+INSERT INTO user_conversations VALUES (2, 1, '2017-05-30 08:02:44', 'totnery baby', 50, 0, 0);
+INSERT INTO user_conversations VALUES (1, 4, '2017-06-07 14:55:06', 'Olá ?', 51, 0, 0);
+INSERT INTO user_conversations VALUES (1, 2, '2017-06-10 19:23:31', 'Thaty depois me liga. Ok?', 52, 0, 0);
+INSERT INTO user_conversations VALUES (1, 4, '2017-06-10 19:39:26', 'Ei joão vamos pedalar?', 53, 0, 0);
+INSERT INTO user_conversations VALUES (1, 2, '2017-06-10 21:53:45', 'Vamos segunda para a Tijuca?', 54, 0, 0);
+INSERT INTO user_conversations VALUES (2, 1, '2017-06-10 21:54:10', 'Sim claro!!!', 55, 0, 0);
 
 
 --
@@ -2453,26 +2453,26 @@ INSERT INTO user_conversations (user_id, user_id2, created_date, text, id, user_
 -- Data for Name: user_feedings; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO user_feedings (id, user_id, user_sharing_id, text, likes, created_date, updated_date, view_level_id, dislikes) VALUES (8, 1, 8, 'Teste real 2', NULL, '2017-06-05 12:12:45', NULL, NULL, NULL);
-INSERT INTO user_feedings (id, user_id, user_sharing_id, text, likes, created_date, updated_date, view_level_id, dislikes) VALUES (9, 1, 9, 'Teste 3', NULL, '2017-06-05 12:29:07', NULL, NULL, NULL);
-INSERT INTO user_feedings (id, user_id, user_sharing_id, text, likes, created_date, updated_date, view_level_id, dislikes) VALUES (12, 1, 12, NULL, NULL, '2017-06-06 11:13:43', NULL, NULL, NULL);
-INSERT INTO user_feedings (id, user_id, user_sharing_id, text, likes, created_date, updated_date, view_level_id, dislikes) VALUES (13, 1, 13, NULL, NULL, '2017-06-06 11:20:18', NULL, NULL, NULL);
-INSERT INTO user_feedings (id, user_id, user_sharing_id, text, likes, created_date, updated_date, view_level_id, dislikes) VALUES (14, 2, 14, NULL, NULL, '2017-06-06 11:35:45', NULL, NULL, NULL);
-INSERT INTO user_feedings (id, user_id, user_sharing_id, text, likes, created_date, updated_date, view_level_id, dislikes) VALUES (15, 1, 15, NULL, NULL, '2017-06-07 21:01:51', NULL, NULL, NULL);
-INSERT INTO user_feedings (id, user_id, user_sharing_id, text, likes, created_date, updated_date, view_level_id, dislikes) VALUES (16, 1, 16, NULL, NULL, '2017-06-07 23:00:00', NULL, NULL, NULL);
-INSERT INTO user_feedings (id, user_id, user_sharing_id, text, likes, created_date, updated_date, view_level_id, dislikes) VALUES (17, 1, 17, 'Uma pedalada rápida, para testar o Bike Social', NULL, '2017-06-08 16:22:42', NULL, NULL, NULL);
-INSERT INTO user_feedings (id, user_id, user_sharing_id, text, likes, created_date, updated_date, view_level_id, dislikes) VALUES (18, 1, 18, 'Essa pedala foi boa pessoal! Recomendo.', NULL, '2017-06-10 12:09:54', NULL, NULL, NULL);
-INSERT INTO user_feedings (id, user_id, user_sharing_id, text, likes, created_date, updated_date, view_level_id, dislikes) VALUES (19, 1, 19, NULL, NULL, '2017-06-10 13:32:55', NULL, NULL, NULL);
-INSERT INTO user_feedings (id, user_id, user_sharing_id, text, likes, created_date, updated_date, view_level_id, dislikes) VALUES (20, 1, 20, NULL, NULL, '2017-06-10 14:46:22', NULL, NULL, NULL);
-INSERT INTO user_feedings (id, user_id, user_sharing_id, text, likes, created_date, updated_date, view_level_id, dislikes) VALUES (21, 1, 21, NULL, NULL, '2017-06-10 20:20:33', NULL, NULL, NULL);
-INSERT INTO user_feedings (id, user_id, user_sharing_id, text, likes, created_date, updated_date, view_level_id, dislikes) VALUES (22, 1, 22, NULL, NULL, '2017-06-10 20:44:04', NULL, NULL, NULL);
-INSERT INTO user_feedings (id, user_id, user_sharing_id, text, likes, created_date, updated_date, view_level_id, dislikes) VALUES (23, 1, 23, NULL, NULL, '2017-06-10 20:48:11', NULL, NULL, NULL);
-INSERT INTO user_feedings (id, user_id, user_sharing_id, text, likes, created_date, updated_date, view_level_id, dislikes) VALUES (24, 1, 24, NULL, NULL, '2017-06-10 21:01:03', NULL, NULL, NULL);
-INSERT INTO user_feedings (id, user_id, user_sharing_id, text, likes, created_date, updated_date, view_level_id, dislikes) VALUES (25, 1, 25, NULL, NULL, '2017-06-10 21:09:00', NULL, NULL, NULL);
-INSERT INTO user_feedings (id, user_id, user_sharing_id, text, likes, created_date, updated_date, view_level_id, dislikes) VALUES (26, 1, 26, NULL, NULL, '2017-06-10 21:19:26', NULL, NULL, NULL);
-INSERT INTO user_feedings (id, user_id, user_sharing_id, text, likes, created_date, updated_date, view_level_id, dislikes) VALUES (27, 1, 27, NULL, NULL, '2017-06-10 21:27:23', NULL, NULL, NULL);
-INSERT INTO user_feedings (id, user_id, user_sharing_id, text, likes, created_date, updated_date, view_level_id, dislikes) VALUES (28, 1, 28, NULL, NULL, '2017-06-10 21:32:55', NULL, NULL, NULL);
-INSERT INTO user_feedings (id, user_id, user_sharing_id, text, likes, created_date, updated_date, view_level_id, dislikes) VALUES (29, 1, 29, NULL, NULL, '2017-06-10 21:56:14', NULL, NULL, NULL);
+INSERT INTO user_feedings VALUES (8, 1, 8, 'Teste real 2', NULL, '2017-06-05 12:12:45', NULL, NULL, NULL);
+INSERT INTO user_feedings VALUES (9, 1, 9, 'Teste 3', NULL, '2017-06-05 12:29:07', NULL, NULL, NULL);
+INSERT INTO user_feedings VALUES (12, 1, 12, NULL, NULL, '2017-06-06 11:13:43', NULL, NULL, NULL);
+INSERT INTO user_feedings VALUES (13, 1, 13, NULL, NULL, '2017-06-06 11:20:18', NULL, NULL, NULL);
+INSERT INTO user_feedings VALUES (14, 2, 14, NULL, NULL, '2017-06-06 11:35:45', NULL, NULL, NULL);
+INSERT INTO user_feedings VALUES (15, 1, 15, NULL, NULL, '2017-06-07 21:01:51', NULL, NULL, NULL);
+INSERT INTO user_feedings VALUES (16, 1, 16, NULL, NULL, '2017-06-07 23:00:00', NULL, NULL, NULL);
+INSERT INTO user_feedings VALUES (17, 1, 17, 'Uma pedalada rápida, para testar o Bike Social', NULL, '2017-06-08 16:22:42', NULL, NULL, NULL);
+INSERT INTO user_feedings VALUES (18, 1, 18, 'Essa pedala foi boa pessoal! Recomendo.', NULL, '2017-06-10 12:09:54', NULL, NULL, NULL);
+INSERT INTO user_feedings VALUES (19, 1, 19, NULL, NULL, '2017-06-10 13:32:55', NULL, NULL, NULL);
+INSERT INTO user_feedings VALUES (20, 1, 20, NULL, NULL, '2017-06-10 14:46:22', NULL, NULL, NULL);
+INSERT INTO user_feedings VALUES (21, 1, 21, NULL, NULL, '2017-06-10 20:20:33', NULL, NULL, NULL);
+INSERT INTO user_feedings VALUES (22, 1, 22, NULL, NULL, '2017-06-10 20:44:04', NULL, NULL, NULL);
+INSERT INTO user_feedings VALUES (23, 1, 23, NULL, NULL, '2017-06-10 20:48:11', NULL, NULL, NULL);
+INSERT INTO user_feedings VALUES (24, 1, 24, NULL, NULL, '2017-06-10 21:01:03', NULL, NULL, NULL);
+INSERT INTO user_feedings VALUES (25, 1, 25, NULL, NULL, '2017-06-10 21:09:00', NULL, NULL, NULL);
+INSERT INTO user_feedings VALUES (26, 1, 26, NULL, NULL, '2017-06-10 21:19:26', NULL, NULL, NULL);
+INSERT INTO user_feedings VALUES (27, 1, 27, NULL, NULL, '2017-06-10 21:27:23', NULL, NULL, NULL);
+INSERT INTO user_feedings VALUES (28, 1, 28, NULL, NULL, '2017-06-10 21:32:55', NULL, NULL, NULL);
+INSERT INTO user_feedings VALUES (29, 1, 29, NULL, NULL, '2017-06-10 21:56:14', NULL, NULL, NULL);
 
 
 --
@@ -2507,9 +2507,9 @@ SELECT pg_catalog.setval('user_friendship_requests_id_seq', 48, true);
 -- Data for Name: user_friendships; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO user_friendships (user_id, friend_user_id, created_date) VALUES (4, 2, '2017-04-11 06:35:55');
-INSERT INTO user_friendships (user_id, friend_user_id, created_date) VALUES (1, 2, '2017-04-11 07:25:03');
-INSERT INTO user_friendships (user_id, friend_user_id, created_date) VALUES (1, 4, '2017-05-25 05:12:15');
+INSERT INTO user_friendships VALUES (4, 2, '2017-04-11 06:35:55');
+INSERT INTO user_friendships VALUES (1, 2, '2017-04-11 07:25:03');
+INSERT INTO user_friendships VALUES (1, 4, '2017-05-25 05:12:15');
 
 
 --
@@ -2527,10 +2527,10 @@ SELECT pg_catalog.setval('user_id_seq', 5, true);
 -- Data for Name: user_navigation_routes; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO user_navigation_routes (id, origin_geom, destination_geom, line_string_geom, user_id, duration, distance, origin_address, destination_address) VALUES (559, '0101000020110F0000AE635C7171D845C0A14CA3C9C5E836C0', '0101000020110F0000CB48BDA772D845C0C23577F4BFE836C0', '0102000020110F000001000000CB48BDA772D845C0C23577F4BFE836C0', 1, 20, 0, 'Rua Tenente Antônio Batista Segundo', 'Rua Ulisses Guimarães');
-INSERT INTO user_navigation_routes (id, origin_geom, destination_geom, line_string_geom, user_id, duration, distance, origin_address, destination_address) VALUES (548, '0101000020110F000061C614AC71D845C0B98B3045B9E836C0', '0101000020110F0000763579CA6AD845C0696FF085C9E836C0', '0102000020110F0000270000007BB6D4626CD845C0472ECDE7BBE836C0D43BC3716CD845C0A66418FBBBE836C09FB237846CD845C0DBF5353FBCE836C01C9F24B86CD845C08EDA928FBCE836C0A5D278B76CD845C034336DDEBCE836C04BBC6ED76CD845C070CDC243BDE836C0C28C63036DD845C081BEA1AEBDE836C0873FBB2A6DD845C03F5D9324BEE836C0981548586DD845C0103964A0BEE836C081ADF98E6DD845C0921F123ABFE836C0DA3631C96DD845C0AAC596D4BFE836C0CEB2401E6ED845C0326533C9C0E836C015FF98526ED845C0A9678344C1E836C0C7CCEC906ED845C0F6EA25BEC1E836C086BB27CD6ED845C020CA4033C2E836C026261C386FD845C02BE0F9A0C2E836C08B52DF856FD845C0D2E0F8D2C2E836C0F642BFBE6FD845C0D20AC2CBC2E836C0858EC29A6FD845C0B439CE6DC2E836C020BADA696FD845C05BE2F182C2E836C091A717426FD845C06DA1759EC2E836C0CD0780016FD845C013CC3DC9C2E836C0807566CC6ED845C0907758F2C2E836C0C70DBF9B6ED845C0D290AF0CC3E836C0273C78586ED845C0E4A3C519C3E836C021EE24016ED845C049115B72C3E836C0DA1796606DD845C02BD67802C4E836C0E60A6B3A6DD845C030615539C4E836C0E0C0600E6DD845C0C5C407F2C3E836C06FB488CD6CD845C001FBA6B8C3E836C0458524926CD845C0D2ECD354C3E836C0CFDEF85E6CD845C02BC65455C3E836C087FD3B2E6CD845C084CDE779C3E836C087774EED6BD845C078F11BB2C3E836C05EF00E956BD845C00D0585A4C3E836C0760082416BD845C019ED2BEEC3E836C0D5ED68F36AD845C00DC11660C4E836C011FA3EC16AD845C0892031EEC4E836C0763579CA6AD845C0696FF085C9E836C0', 1, 68, 42.3353233, 'Rua Tenente Antonio Batista Segundo', 'Rua Tenente Antonio Batista Segundo');
-INSERT INTO user_navigation_routes (id, origin_geom, destination_geom, line_string_geom, user_id, duration, distance, origin_address, destination_address) VALUES (546, '0101000020110F0000E3A430EF71D845C0ACA92C0ABBE836C0', '0101000020110F00008192020B60D845C0DF6B088ECBE836C0', '0102000020110F000027000000802F9EA46DD845C0DB617E34BDE836C02D9CDEA46DD845C01CA59E47BDE836C00FD7C5C86DD845C0E649257EBDE836C0681F2BF86DD845C08D46DB84BDE836C0CE716E136ED845C03F371357BEE836C0DF5ABB276ED845C0CEFDD5E3BEE836C086295F0A6ED845C02D163380BFE836C06F4A9ABB6DD845C03F31DBE3BFE836C0B02D4D5B6DD845C0207CE6B4C0E836C02D62F1FE6CD845C07FC25575C1E836C0C81E259F6CD845C0EAE8D928C2E836C028DEF92C6CD845C0BAF2BCC8C2E836C0B7CDD8C06BD845C08A50325AC3E836C0D5958DD66AD845C06CA718ADC4E836C082284EA46AD845C0CBBB2C1EC5E836C0DBA5AA5C6AD845C0188F185EC5E836C05F74A2F269D845C0002B13C0C5E836C03B59A46869D845C00CE9F010C6E836C0A74C20DB68D845C0E8C60D22C6E836C018991D3568D845C08966F915C6E836C02A4CC6CE67D845C08F49B169C6E836C0E9ED537E67D845C0E225D5CAC6E836C00DCB1B3767D845C0D6519B59C7E836C066DDDCEB66D845C082BB3F20C8E836C0BA92D38D66D845C0287487E2C8E836C07218693566D845C02E31BF68C9E836C0900302DF65D845C0515B34AEC9E836C07F292C8665D845C02233BCFEC9E836C00E5ADD2465D845C06901B948CAE836C0EA83FAD064D845C0B0234884CAE836C03E0F287A64D845C021EF4DBACAE836C06D37A02964D845C02DD3ABD8CAE836C0DFDFC1CB63D845C08C0D4017CBE836C0CD2FB56B63D845C0CE7A2923CBE836C05056881E63D845C009E32339CBE836C00342CAD362D845C074F1F1E8CAE836C0B0FE539A62D845C0AA1A1063CAE836C0B66A956862D845C022ADCEBDC9E836C08192020B60D845C0DF6B088ECBE836C0', 1, 63, 57.2692184, 'Rua Tenente Antonio Batista Segundo', 'Rua Tenente Antonio Batista Segundo');
-INSERT INTO user_navigation_routes (id, origin_geom, destination_geom, line_string_geom, user_id, duration, distance, origin_address, destination_address) VALUES (603, '0101000020110F00007A56D28A6FD845C0ACC612D6C6E836C0', '0101000020110F0000EBFD463B6ED845C0946A9F8EC7E836C0', '0102000020110F000001000000EBFD463B6ED845C0946A9F8EC7E836C0', 1, 11, 0, 'Rua Tenente Antônio Batista Segundo', 'Rua Tenente Antônio Batista Segundo');
+INSERT INTO user_navigation_routes VALUES (559, '0101000020110F0000AE635C7171D845C0A14CA3C9C5E836C0', '0101000020110F0000CB48BDA772D845C0C23577F4BFE836C0', '0102000020110F000001000000CB48BDA772D845C0C23577F4BFE836C0', 1, 20, 0, 'Rua Tenente Antônio Batista Segundo', 'Rua Ulisses Guimarães');
+INSERT INTO user_navigation_routes VALUES (548, '0101000020110F000061C614AC71D845C0B98B3045B9E836C0', '0101000020110F0000763579CA6AD845C0696FF085C9E836C0', '0102000020110F0000270000007BB6D4626CD845C0472ECDE7BBE836C0D43BC3716CD845C0A66418FBBBE836C09FB237846CD845C0DBF5353FBCE836C01C9F24B86CD845C08EDA928FBCE836C0A5D278B76CD845C034336DDEBCE836C04BBC6ED76CD845C070CDC243BDE836C0C28C63036DD845C081BEA1AEBDE836C0873FBB2A6DD845C03F5D9324BEE836C0981548586DD845C0103964A0BEE836C081ADF98E6DD845C0921F123ABFE836C0DA3631C96DD845C0AAC596D4BFE836C0CEB2401E6ED845C0326533C9C0E836C015FF98526ED845C0A9678344C1E836C0C7CCEC906ED845C0F6EA25BEC1E836C086BB27CD6ED845C020CA4033C2E836C026261C386FD845C02BE0F9A0C2E836C08B52DF856FD845C0D2E0F8D2C2E836C0F642BFBE6FD845C0D20AC2CBC2E836C0858EC29A6FD845C0B439CE6DC2E836C020BADA696FD845C05BE2F182C2E836C091A717426FD845C06DA1759EC2E836C0CD0780016FD845C013CC3DC9C2E836C0807566CC6ED845C0907758F2C2E836C0C70DBF9B6ED845C0D290AF0CC3E836C0273C78586ED845C0E4A3C519C3E836C021EE24016ED845C049115B72C3E836C0DA1796606DD845C02BD67802C4E836C0E60A6B3A6DD845C030615539C4E836C0E0C0600E6DD845C0C5C407F2C3E836C06FB488CD6CD845C001FBA6B8C3E836C0458524926CD845C0D2ECD354C3E836C0CFDEF85E6CD845C02BC65455C3E836C087FD3B2E6CD845C084CDE779C3E836C087774EED6BD845C078F11BB2C3E836C05EF00E956BD845C00D0585A4C3E836C0760082416BD845C019ED2BEEC3E836C0D5ED68F36AD845C00DC11660C4E836C011FA3EC16AD845C0892031EEC4E836C0763579CA6AD845C0696FF085C9E836C0', 1, 68, 42.3353233, 'Rua Tenente Antonio Batista Segundo', 'Rua Tenente Antonio Batista Segundo');
+INSERT INTO user_navigation_routes VALUES (546, '0101000020110F0000E3A430EF71D845C0ACA92C0ABBE836C0', '0101000020110F00008192020B60D845C0DF6B088ECBE836C0', '0102000020110F000027000000802F9EA46DD845C0DB617E34BDE836C02D9CDEA46DD845C01CA59E47BDE836C00FD7C5C86DD845C0E649257EBDE836C0681F2BF86DD845C08D46DB84BDE836C0CE716E136ED845C03F371357BEE836C0DF5ABB276ED845C0CEFDD5E3BEE836C086295F0A6ED845C02D163380BFE836C06F4A9ABB6DD845C03F31DBE3BFE836C0B02D4D5B6DD845C0207CE6B4C0E836C02D62F1FE6CD845C07FC25575C1E836C0C81E259F6CD845C0EAE8D928C2E836C028DEF92C6CD845C0BAF2BCC8C2E836C0B7CDD8C06BD845C08A50325AC3E836C0D5958DD66AD845C06CA718ADC4E836C082284EA46AD845C0CBBB2C1EC5E836C0DBA5AA5C6AD845C0188F185EC5E836C05F74A2F269D845C0002B13C0C5E836C03B59A46869D845C00CE9F010C6E836C0A74C20DB68D845C0E8C60D22C6E836C018991D3568D845C08966F915C6E836C02A4CC6CE67D845C08F49B169C6E836C0E9ED537E67D845C0E225D5CAC6E836C00DCB1B3767D845C0D6519B59C7E836C066DDDCEB66D845C082BB3F20C8E836C0BA92D38D66D845C0287487E2C8E836C07218693566D845C02E31BF68C9E836C0900302DF65D845C0515B34AEC9E836C07F292C8665D845C02233BCFEC9E836C00E5ADD2465D845C06901B948CAE836C0EA83FAD064D845C0B0234884CAE836C03E0F287A64D845C021EF4DBACAE836C06D37A02964D845C02DD3ABD8CAE836C0DFDFC1CB63D845C08C0D4017CBE836C0CD2FB56B63D845C0CE7A2923CBE836C05056881E63D845C009E32339CBE836C00342CAD362D845C074F1F1E8CAE836C0B0FE539A62D845C0AA1A1063CAE836C0B66A956862D845C022ADCEBDC9E836C08192020B60D845C0DF6B088ECBE836C0', 1, 63, 57.2692184, 'Rua Tenente Antonio Batista Segundo', 'Rua Tenente Antonio Batista Segundo');
+INSERT INTO user_navigation_routes VALUES (603, '0101000020110F00007A56D28A6FD845C0ACC612D6C6E836C0', '0101000020110F0000EBFD463B6ED845C0946A9F8EC7E836C0', '0102000020110F000001000000EBFD463B6ED845C0946A9F8EC7E836C0', 1, 11, 0, 'Rua Tenente Antônio Batista Segundo', 'Rua Tenente Antônio Batista Segundo');
 
 
 --
@@ -2548,9 +2548,9 @@ SELECT pg_catalog.setval('user_navigation_routes_id_seq', 626, true);
 -- Data for Name: user_sharing_types; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO user_sharing_types (id, name) VALUES (2, 'bike keeper');
-INSERT INTO user_sharing_types (id, name) VALUES (1, 'alert');
-INSERT INTO user_sharing_types (id, name) VALUES (3, 'route');
+INSERT INTO user_sharing_types VALUES (2, 'bike keeper');
+INSERT INTO user_sharing_types VALUES (1, 'alert');
+INSERT INTO user_sharing_types VALUES (3, 'route');
 
 
 --
@@ -2568,26 +2568,26 @@ SELECT pg_catalog.setval('user_sharing_types_id_seq', 3, true);
 -- Data for Name: user_sharings; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO user_sharings (id, user_id, user_feeding_id, view_level_id, content_id, created_date, updated_date, sharing_type_id) VALUES (8, 1, 8, NULL, 546, '2017-06-05 12:12:45', NULL, 3);
-INSERT INTO user_sharings (id, user_id, user_feeding_id, view_level_id, content_id, created_date, updated_date, sharing_type_id) VALUES (9, 1, 9, NULL, 548, '2017-06-05 12:29:07', NULL, 3);
-INSERT INTO user_sharings (id, user_id, user_feeding_id, view_level_id, content_id, created_date, updated_date, sharing_type_id) VALUES (12, 1, 12, NULL, 99, '2017-06-06 11:13:43', NULL, 1);
-INSERT INTO user_sharings (id, user_id, user_feeding_id, view_level_id, content_id, created_date, updated_date, sharing_type_id) VALUES (13, 1, 13, NULL, 100, '2017-06-06 11:20:18', NULL, 1);
-INSERT INTO user_sharings (id, user_id, user_feeding_id, view_level_id, content_id, created_date, updated_date, sharing_type_id) VALUES (14, 2, 14, NULL, 41, '2017-06-06 11:35:45', NULL, 2);
-INSERT INTO user_sharings (id, user_id, user_feeding_id, view_level_id, content_id, created_date, updated_date, sharing_type_id) VALUES (15, 1, 15, NULL, 101, '2017-06-07 21:01:51', NULL, 1);
-INSERT INTO user_sharings (id, user_id, user_feeding_id, view_level_id, content_id, created_date, updated_date, sharing_type_id) VALUES (16, 1, NULL, NULL, 102, '2017-06-08 00:14:22', NULL, 1);
-INSERT INTO user_sharings (id, user_id, user_feeding_id, view_level_id, content_id, created_date, updated_date, sharing_type_id) VALUES (17, 1, 17, NULL, 559, '2017-06-08 16:22:42', NULL, 3);
-INSERT INTO user_sharings (id, user_id, user_feeding_id, view_level_id, content_id, created_date, updated_date, sharing_type_id) VALUES (18, 1, 18, NULL, 603, '2017-06-10 12:09:54', NULL, 3);
-INSERT INTO user_sharings (id, user_id, user_feeding_id, view_level_id, content_id, created_date, updated_date, sharing_type_id) VALUES (19, 1, 19, NULL, 103, '2017-06-10 13:32:55', NULL, 1);
-INSERT INTO user_sharings (id, user_id, user_feeding_id, view_level_id, content_id, created_date, updated_date, sharing_type_id) VALUES (20, 1, 20, NULL, 104, '2017-06-10 14:46:22', NULL, 1);
-INSERT INTO user_sharings (id, user_id, user_feeding_id, view_level_id, content_id, created_date, updated_date, sharing_type_id) VALUES (21, 1, 21, NULL, 105, '2017-06-10 20:20:33', NULL, 1);
-INSERT INTO user_sharings (id, user_id, user_feeding_id, view_level_id, content_id, created_date, updated_date, sharing_type_id) VALUES (22, 1, 22, NULL, 106, '2017-06-10 20:44:04', NULL, 1);
-INSERT INTO user_sharings (id, user_id, user_feeding_id, view_level_id, content_id, created_date, updated_date, sharing_type_id) VALUES (23, 1, 23, NULL, 107, '2017-06-10 20:48:11', NULL, 1);
-INSERT INTO user_sharings (id, user_id, user_feeding_id, view_level_id, content_id, created_date, updated_date, sharing_type_id) VALUES (24, 1, 24, NULL, 42, '2017-06-10 21:01:03', NULL, 2);
-INSERT INTO user_sharings (id, user_id, user_feeding_id, view_level_id, content_id, created_date, updated_date, sharing_type_id) VALUES (25, 1, 25, NULL, 43, '2017-06-10 21:09:00', NULL, 2);
-INSERT INTO user_sharings (id, user_id, user_feeding_id, view_level_id, content_id, created_date, updated_date, sharing_type_id) VALUES (26, 1, 26, NULL, 44, '2017-06-10 21:19:26', NULL, 2);
-INSERT INTO user_sharings (id, user_id, user_feeding_id, view_level_id, content_id, created_date, updated_date, sharing_type_id) VALUES (27, 1, 27, NULL, 45, '2017-06-10 21:27:22', NULL, 2);
-INSERT INTO user_sharings (id, user_id, user_feeding_id, view_level_id, content_id, created_date, updated_date, sharing_type_id) VALUES (28, 1, 28, NULL, 108, '2017-06-10 21:32:55', NULL, 1);
-INSERT INTO user_sharings (id, user_id, user_feeding_id, view_level_id, content_id, created_date, updated_date, sharing_type_id) VALUES (29, 1, 29, NULL, 109, '2017-06-10 21:56:14', NULL, 1);
+INSERT INTO user_sharings VALUES (8, 1, 8, NULL, 546, '2017-06-05 12:12:45', NULL, 3);
+INSERT INTO user_sharings VALUES (9, 1, 9, NULL, 548, '2017-06-05 12:29:07', NULL, 3);
+INSERT INTO user_sharings VALUES (12, 1, 12, NULL, 99, '2017-06-06 11:13:43', NULL, 1);
+INSERT INTO user_sharings VALUES (13, 1, 13, NULL, 100, '2017-06-06 11:20:18', NULL, 1);
+INSERT INTO user_sharings VALUES (14, 2, 14, NULL, 41, '2017-06-06 11:35:45', NULL, 2);
+INSERT INTO user_sharings VALUES (15, 1, 15, NULL, 101, '2017-06-07 21:01:51', NULL, 1);
+INSERT INTO user_sharings VALUES (16, 1, NULL, NULL, 102, '2017-06-08 00:14:22', NULL, 1);
+INSERT INTO user_sharings VALUES (17, 1, 17, NULL, 559, '2017-06-08 16:22:42', NULL, 3);
+INSERT INTO user_sharings VALUES (18, 1, 18, NULL, 603, '2017-06-10 12:09:54', NULL, 3);
+INSERT INTO user_sharings VALUES (19, 1, 19, NULL, 103, '2017-06-10 13:32:55', NULL, 1);
+INSERT INTO user_sharings VALUES (20, 1, 20, NULL, 104, '2017-06-10 14:46:22', NULL, 1);
+INSERT INTO user_sharings VALUES (21, 1, 21, NULL, 105, '2017-06-10 20:20:33', NULL, 1);
+INSERT INTO user_sharings VALUES (22, 1, 22, NULL, 106, '2017-06-10 20:44:04', NULL, 1);
+INSERT INTO user_sharings VALUES (23, 1, 23, NULL, 107, '2017-06-10 20:48:11', NULL, 1);
+INSERT INTO user_sharings VALUES (24, 1, 24, NULL, 42, '2017-06-10 21:01:03', NULL, 2);
+INSERT INTO user_sharings VALUES (25, 1, 25, NULL, 43, '2017-06-10 21:09:00', NULL, 2);
+INSERT INTO user_sharings VALUES (26, 1, 26, NULL, 44, '2017-06-10 21:19:26', NULL, 2);
+INSERT INTO user_sharings VALUES (27, 1, 27, NULL, 45, '2017-06-10 21:27:22', NULL, 2);
+INSERT INTO user_sharings VALUES (28, 1, 28, NULL, 108, '2017-06-10 21:32:55', NULL, 1);
+INSERT INTO user_sharings VALUES (29, 1, 29, NULL, 109, '2017-06-10 21:56:14', NULL, 1);
 
 
 --
@@ -2622,13 +2622,13 @@ SELECT pg_catalog.setval('user_tracking_id_seq', 1, false);
 -- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-INSERT INTO users (id, first_name, last_name, how_to_be_called, username, email, password, signup_date, last_access_date, auth_key, access_token, home_dir_name, question, answer, full_name, pharse) VALUES (3, 'Default', 'Default', 'Default', 'default', 'default@hotmail.com', '123456', '2016-11-20 05:07:14.755831', NULL, 'MFKZdmbnLVXRN3JJqCQVs5BRk-2IsoQE', NULL, '41378f6ece1dbf69d8eebe741a33c11d', 'Primeiro nome do seu criador?', 'marcus', 'Default Default', NULL);
-INSERT INTO users (id, first_name, last_name, how_to_be_called, username, email, password, signup_date, last_access_date, auth_key, access_token, home_dir_name, question, answer, full_name, pharse) VALUES (1, 'Marcus Vinicius', 'Faccion', 'Marcus', 'marcusfaccion', 'marcusfaccion@bol.com.br', '123456', '2016-04-13 11:00:00', '2017-06-10 19:42:40', 'hEhA7gNNCs8NylQ28bjtVpJyb1hqFx1P', NULL, 'a99aa5e1912ac0ee7d0b2f8ce3e272ee', 'Primeiro nome da esposa?', 'thatiane', 'Marcus Vinicius Faccion', 'Pedalo para me manter em equilibrio!
+INSERT INTO users VALUES (3, 'Default', 'Default', 'Default', 'default', 'default@hotmail.com', '123456', '2016-11-20 05:07:14.755831', NULL, 'MFKZdmbnLVXRN3JJqCQVs5BRk-2IsoQE', NULL, '41378f6ece1dbf69d8eebe741a33c11d', 'Primeiro nome do seu criador?', 'marcus', 'Default Default', NULL);
+INSERT INTO users VALUES (1, 'Marcus Vinicius', 'Faccion', 'Marcus', 'marcusfaccion', 'marcusfaccion@bol.com.br', '123456', '2016-04-13 11:00:00', '2017-06-10 19:42:40', 'hEhA7gNNCs8NylQ28bjtVpJyb1hqFx1P', NULL, 'a99aa5e1912ac0ee7d0b2f8ce3e272ee', 'Primeiro nome da esposa?', 'thatiane', 'Marcus Vinicius Faccion', 'Pedalo para me manter em equilibrio!
 ');
-INSERT INTO users (id, first_name, last_name, how_to_be_called, username, email, password, signup_date, last_access_date, auth_key, access_token, home_dir_name, question, answer, full_name, pharse) VALUES (2, 'Thatiane', 'Copque', 'Thaty', 'thatiane', 'thatiane_copque@hotmail.com', '123456', '2016-11-20 04:38:59.73246', '2017-06-10 19:43:26', 'fHAyDZexEGjxh4RvCbHkd4fIP6OQPJWE', NULL, '9e459de99798f751a83cab6667d83491', 'Primeiro nome do esposo?', 'marcus', 'Thatiane Copque', '');
-INSERT INTO users (id, first_name, last_name, how_to_be_called, username, email, password, signup_date, last_access_date, auth_key, access_token, home_dir_name, question, answer, full_name, pharse) VALUES (0, 'Bike', 'Social', 'BikeSocial', 'bikesocial', 'marcusfaccion2@bol.com.br', 'bikesocial', '2016-11-03 13:44:18.824322', '2017-04-11 04:28:56', NULL, NULL, '856399845ab74597eda9777f091b277a', NULL, NULL, 'Bike Social', NULL);
-INSERT INTO users (id, first_name, last_name, how_to_be_called, username, email, password, signup_date, last_access_date, auth_key, access_token, home_dir_name, question, answer, full_name, pharse) VALUES (4, 'João Marcus', 'da Silva Gomes', 'João', 'joaocarlos', 'joaocarlos_1544812120@bol.com.br', '123456', '2017-04-09 22:38:53', '2017-05-31 16:42:55', '03mQZnINC6GUt4Bro2j27UzHC0196IOl', NULL, '34bbc48a4dd10814f2a31e82ecd9f214', 'teste', 'teste', 'João Marcus da Silva Gomes', NULL);
-INSERT INTO users (id, first_name, last_name, how_to_be_called, username, email, password, signup_date, last_access_date, auth_key, access_token, home_dir_name, question, answer, full_name, pharse) VALUES (5, 'Aline', 'Silva', 'Aline', 'aline', 'tt@ss.com.br', '123456789', '2017-06-01 04:49:21', NULL, 'WDnRrmr1KeWyFyd8Ll3kC8lElELoqEMl', NULL, '254a2abaef9dacb844691d577b1c5356', 'teste', 'teste', 'Aline Silva', NULL);
+INSERT INTO users VALUES (2, 'Thatiane', 'Copque', 'Thaty', 'thatiane', 'thatiane_copque@hotmail.com', '123456', '2016-11-20 04:38:59.73246', '2017-06-10 19:43:26', 'fHAyDZexEGjxh4RvCbHkd4fIP6OQPJWE', NULL, '9e459de99798f751a83cab6667d83491', 'Primeiro nome do esposo?', 'marcus', 'Thatiane Copque', '');
+INSERT INTO users VALUES (0, 'Bike', 'Social', 'BikeSocial', 'bikesocial', 'marcusfaccion2@bol.com.br', 'bikesocial', '2016-11-03 13:44:18.824322', '2017-04-11 04:28:56', NULL, NULL, '856399845ab74597eda9777f091b277a', NULL, NULL, 'Bike Social', NULL);
+INSERT INTO users VALUES (4, 'João Marcus', 'da Silva Gomes', 'João', 'joaocarlos', 'joaocarlos_1544812120@bol.com.br', '123456', '2017-04-09 22:38:53', '2017-05-31 16:42:55', '03mQZnINC6GUt4Bro2j27UzHC0196IOl', NULL, '34bbc48a4dd10814f2a31e82ecd9f214', 'teste', 'teste', 'João Marcus da Silva Gomes', NULL);
+INSERT INTO users VALUES (5, 'Aline', 'Silva', 'Aline', 'aline', 'tt@ss.com.br', '123456789', '2017-06-01 04:49:21', NULL, 'WDnRrmr1KeWyFyd8Ll3kC8lElELoqEMl', NULL, '254a2abaef9dacb844691d577b1c5356', 'teste', 'teste', 'Aline Silva', NULL);
 
 
 --
@@ -3461,7 +3461,7 @@ ALTER DEFAULT PRIVILEGES FOR ROLE postgres IN SCHEMA public REVOKE ALL ON TABLES
 ALTER DEFAULT PRIVILEGES FOR ROLE postgres IN SCHEMA public GRANT ALL ON TABLES  TO PUBLIC;
 
 
--- Completed on 2017-06-11 06:44:23
+-- Completed on 2017-06-12 09:00:56
 
 --
 -- PostgreSQL database dump complete

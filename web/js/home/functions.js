@@ -43,18 +43,18 @@ function onLocationFound(e) {
     }    
 }
 function onLocationError(e) {
-    if(me.latlng_history.items.length>0){
+    //if(me.latlng_history.items.length>0){
         // Atualizando a posição usuário para a última válida
-        me.latlng = me.latlng_history.getLast();
-        me.marker.setLatLng(me.latlng);
-        me.circle.setLatLng(me.latlng);
-        me.marker.update();
-        me.marker.update();
-    }
+      //  me.latlng = me.latlng_history.getLast();
+        //me.marker.setLatLng(me.latlng);
+        //me.circle.setLatLng(me.latlng);
+        //me.marker.update();
+        //me.marker.update(); Está dando bug
+    //}
     //mostra o modal com informações da API Geolocation
     app.message_code = 'user.agent.geolocation.error'+e.code;
     if(e.code==3){
-        exp = app.geolocation.error3.count>10; // O error de code 3 é referente ao timeout, quando não consegue obter a localização
+        exp = app.geolocation.error3.count>20; // O error de code 3 é referente ao timeout, quando não consegue obter a localização
     }else{
         exp = 1;
     }

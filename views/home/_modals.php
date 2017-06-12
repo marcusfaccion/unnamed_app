@@ -19,6 +19,7 @@ Modal::begin([
     'clientEvents' => [
         'shown.bs.modal'=>  new JsExpression(
                 "function() {
+                    Loading.show();
                     var action = $('#home_actions_trigger').val().split(';');
                     $(this).find('.modal-title').text(action[0]);
                     var modal = $(this);
@@ -28,6 +29,7 @@ Modal::begin([
                         url: ((action.length>2)?action[1]+'/'+action[2]:action[1]+'/begin'),    
                         success: function(response){
                             modal.find('.modal-body').html(response);
+                            Loading.hide();
                         }
                     });
                  }"
@@ -58,6 +60,7 @@ Modal::begin([
     'clientEvents' => [
         'shown.bs.modal'=>  new JsExpression(
                 "function() {
+                    Loading.show();
                     var modal = $(this);
                     $.ajax({
                        type:  app.request.ajax.type,
@@ -65,6 +68,7 @@ Modal::begin([
                         data:  app.request.ajax.data,
                         success: function(response){
                             modal.find('.modal-body').html(response);
+                            Loading.hide();
                         }
                     });
                  }"
@@ -187,6 +191,7 @@ Modal::begin([
     'clientEvents' => [
         'shown.bs.modal'=>  new JsExpression("
             function(e){
+            Loading.show();
                 var modal = $(this);
                 $.ajax({
                     type: 'POST',
@@ -195,6 +200,7 @@ Modal::begin([
                     success: function(response){
                         //retorna com a mensagem
                         modal.find('.modal-body').html(response);
+                        Loading.hide();
                     }
                 });
         }", []),
@@ -225,6 +231,7 @@ Modal::begin([
     'clientEvents' => [
         'shown.bs.modal'=>  new JsExpression("
             function(e){
+            Loading.show();
                 var modal = $(this);
                 $.ajax({
                     type: 'POST',
@@ -233,6 +240,7 @@ Modal::begin([
                     success: function(response){
                         //retorna com a mensagem
                         modal.find('.modal-body').html(response);
+                        Loading.hide();
                     }
                 });
         }", []),
@@ -267,6 +275,7 @@ Modal::begin([
     'clientEvents' => [
         'shown.bs.modal'=>  new JsExpression("
             function(e){
+            Loading.show();
                 var modal = $(this);
                 $.ajax({
                     type: 'GET',
@@ -275,6 +284,7 @@ Modal::begin([
                     success: function(response){
                         //retorna com a mensagem
                         modal.find('.modal-body').html(response);
+                        Loading.hide();
                     }
                 });
         }", []),
@@ -308,7 +318,7 @@ Modal::begin([
         'shown.bs.modal'=>  new JsExpression("
             function(e){
                 var modal = $(this);
-
+                Loading.show();
                 $.ajax({
                     type: 'GET',
                     url: 'user-sharings/form',
@@ -319,6 +329,7 @@ Modal::begin([
                     },
                     success: function(response){
                         modal.find('.modal-body').html(response);
+                        Loading.hide();
                     }
                 });
         }", []),
